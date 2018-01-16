@@ -1,4 +1,4 @@
-package dto;
+package board;
 
 import java.sql.Date;
 

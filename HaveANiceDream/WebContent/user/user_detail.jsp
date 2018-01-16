@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -281,109 +283,75 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-			<section class="wrapper site-min-height">
-				<h3>
-					<i class="fa fa-angle-right"></i> 회원가입
-				</h3>
+          <section class="wrapper site-min-height">
+          	<h3><i class="fa fa-angle-right"></i> ë´ ì ë³´ ë³´ê¸°</h3>
 				<div class="row mt">
 					<div class="col-lg-12">
 						<div class="form-panel">
 							<form class="form-horizontal style-form" method="get">
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">아이디</label>
+									<label class="col-sm-2 col-sm-2 control-label">ìì´ë</label>
+									<div class="col-lg-10">
+										<p class="form-control-static">leesuj28</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label">ë¹ë°ë²í¸</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control">
+										<input type="password" class="form-control" placeholder="">
 									</div>
 									<div class="col-sm-2">
 										<button type="button"
-											class="btn btn-round btn-primary form-control">중복체크</button>
+											class="btn btn-round btn-primary form-control">ë³ê²½íê¸°</button>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">비밀번호</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control" placeholder="">
+									<label class="col-sm-2 col-sm-2 control-label">ì´ë¦</label>
+									<div class="col-lg-10">
+										<p class="form-control-static">ì´ìì§</p>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">비밀번호 확인</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control" placeholder="">
+									<label class="col-sm-2 col-sm-2 control-label">ì£¼ì</label>
+									<div class="col-lg-10">
+										<p class="form-control-static">(25684) ë«ë«ì ë«ë«êµ¬ ë«ë«ë«ê¸¸ ë«ë«ë« ë«ë«ë«</p>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">이름</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control">
+									<label class="col-sm-2 col-sm-2 control-label">ì´ë©ì¼</label>
+									<div class="col-lg-10">
+										<p class="form-control-static">email@example.com</p>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">주소</label>
-									<div class="col-sm-3">
-										<input type="text" class="form-control">
-									</div>
-									<div class="col-sm-2">
-										<button type="button"
-											class="btn btn-round btn-primary form-control">우편번호
-											검색</button>
+									<label class="col-sm-2 col-sm-2 control-label">ì íë²í¸</label>
+									<div class="col-lg-10">
+										<p class="form-control-static">010-1458-1236</p>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label"></label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control">
-									</div>
-									<div class="col-sm-5">
-										<input type="text" class="form-control">
+									<label class="col-sm-2 col-sm-2 control-label">í¬ì¸í¸</label>
+									<div class="col-lg-10">
+										<p class="form-control-static">5000ì </p>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">이메일</label>
-									<div class="col-sm-3">
-										<input type="text" class="form-control">
-									</div>
-									<div class="col-sm-3">
-										<input type="text" class="form-control">
-									</div>
-									<div class="btn-group col-sm-4">
-										<button type="button" class="btn dropdown-toggle"
-											data-toggle="dropdown">
-											이메일 선택 <span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">@google.com</a></li>
-											<li><a href="#">@naver.com</a></li>
-											<li><a href="#">@hanmail.com</a></li>
-										</ul>
+									<label class="col-sm-2 col-sm-2 control-label">ê°ìë ì§</label>
+									<div class="col-lg-10">
+										<p class="form-control-static">2017ë 12ì 24ì¼</p>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="col-sm-2 col-sm-2 control-label">전화번호</label>
-									<div class="btn-group col-sm-2">
-										<button type="button" class="btn dropdown-toggle"
-											data-toggle="dropdown">
-											전화번호 선택 <span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">010</a></li>
-											<li><a href="#">011</a></li>
-										</ul>
-									</div>
-									<div class="col-sm-2">
-										<input type="text" class="form-control">
-									</div>
-									<div class="col-sm-2">
-										<input type="text" class="form-control">
-									</div>
-								</div>
-								<button type="submit" class="btn btn-theme">Sign in</button>
+								<button type="submit" class="btn btn-theme">ë´ ì ë³´ ë³ê²½íê¸°</button>
+								<button type="submit" class="btn btn-theme">í¬ì¸í¸ë´ì­ì¡°í</button>
+								<button type="submit" class="btn btn-theme">ê±°ëë´ì­ì¡°í</button>
 							</form>
 						</div>
 					</div>
+					<!-- col-lg-12-->
 				</div>
+				<!-- /row -->
 
-			</section>
-			<!--/wrapper -->
+			</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->

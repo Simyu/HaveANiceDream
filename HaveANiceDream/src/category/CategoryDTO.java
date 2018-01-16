@@ -1,4 +1,4 @@
-package dto;
+package category;
 public class CategoryDTO {
 
     private Integer categoryNo;

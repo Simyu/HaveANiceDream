@@ -1,4 +1,4 @@
-package dto;
+package grade;
 public class GradeDTO {
 
     private Integer gradeNo;

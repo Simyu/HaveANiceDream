@@ -1,4 +1,4 @@
-package dto;
+package like;
 public class LikeListDTO {
 
     private String userId;
