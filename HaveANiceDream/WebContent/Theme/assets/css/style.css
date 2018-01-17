@@ -2412,6 +2412,20 @@ body {margin: 10px;}
 	font-size: 16px;
 	
 }
+.start-event-dragon-con {
+	padding-left: 40%;
+	align: center;
+	position: relative;
+	/*opacity: 0.4;*/
+}
 
+.start-event-dragon {
+	padding: 20px;
+	height: 1000px;
+	width: 30%;
+	text-align: center;
+	position: absolute;
+	/*opacity: 0.4;*/
+}
 
 
