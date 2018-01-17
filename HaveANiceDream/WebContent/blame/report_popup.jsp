@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,69 +11,69 @@
 
 
 
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css" rel="stylesheet">
   
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
   
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link href="/HaveANiceDream/Theme/assets/css/style.css" rel="stylesheet">
+    <link href="/HaveANiceDream/Theme/assets/css/style-responsive.css" rel="stylesheet">
 </head>
 <body>
 	<section id="main-content">
 		<section class="wrapper site-min-height">
 			<h3>
-				<i class="fa fa-angle-right"></i>�Ű��ϱ�
+				<i class="fa fa-angle-right"></i>신고하기
 			</h3>
 			<div class="row mt">
 				<div class="col-lg-12">
 					<a href="../view/report.html"></a>
-					<table summary="�Ű�����" height="600" border="1">
+					<table summary="신고정보" height="600" border="1">
 						<colgroup>
 							<col style="width: 14%;">
 							<col>
 						</colgroup>
 						<tbody>
 							<tr>
-								<th>�Ű�</th>
-								<td>�Ű��з� <select>
-										<option selected="selected" value="NONE">�������ּ���</option>
-										<option value="M01">���۽Ű�</option>
-										<option value="M02">�����Ű�</option>
-										<option value="M03">����ģ����Ű�</option>
-										<option value="M04">�������۽Ű�</option>
+								<th>신고</th>
+								<td>신고분류 <select>
+										<option selected="selected" value="NONE">선택해주세요</option>
+										<option value="M01">사기글신고</option>
+										<option value="M02">허위신고</option>
+										<option value="M03">지나친폭언신고</option>
+										<option value="M04">광고성글신고</option>
 								</select>
 								</td>
 							</tr>
 
 							<tr>
-								<th>������</th>
+								<th>상세정보</th>
 								<td>
 									<dl>
-										<label>�Ű���ID</label>
+										<label>신고자ID</label>
 										<span class="input-box mb"><input name="auctionno2"
 											type="text" id="auctionno2" class="txt" maxlength="15"
 											style="width: 133px;" /></span>
 										<dt>
-											<label>����ID</label> <span class="input-box mb"><input
+											<label>상대방ID</label> <span class="input-box mb"><input
 												name="auctionno2" type="text" id="auctionno2" class="txt"
 												maxlength="15" style="width: 133px;" /></span>
 										</dt>
-										<label>���ǹ�ȣ</label>
+										<label>물건번호</label>
 										<span class="input-box mb"><input name="orderno1"
 											type="text" id="orderno1" class="txt" maxlength="15"
 											style="width: 133px;" /></span>
-										<input type="button" value="���ǹ�ȣ��ȸ" onclick="popup()">
+										<input type="button" value="물건번호조회" onclick="popup()">
 									</dl>
 								</td>
 							</tr>
 							<tr>
-								<th>÷������</th>
+								<th>첨부파일</th>
 								<td class="tleft">
 									<ul class="inputfile">
 										<li>
 											<div class="fileinput">
 												<div class="btnbox">
-													<input type="file" class="f-map" title="����÷��"
+													<input type="file" class="f-map" title="파일첨부"
 														style="width: 400px;" />
 												</div>
 
@@ -81,9 +83,9 @@
 								</td>
 							</tr>
 							<tr>
-								<th><label for="inquirySubject">����</label></th>
+								<th><label for="inquirySubject">제목</label></th>
 								<td><span class="input-box"><input name="mailtitle"
-										type="text" id="mailtitle" class="txt" title="����"
+										type="text" id="mailtitle" class="txt" title="제목"
 										style="width: 330px;" /> <input name="Mcategorybox"
 										type="text" value="M0401" id="Mcategorybox"
 										style="border-style: None; width: 0px; DISPLAY: none" /> <input
@@ -91,12 +93,12 @@
 										style="border-style: None; width: 0px; DISPLAY: none" /> </span></td>
 							</tr>
 							<tr>
-								<th>����</th>
+								<th>내용</th>
 								<td>
 									<div>
 										<div>
 											<textarea name="mailcontent" id="mailcontent" rows="70"
-												cols="70" title="�򰡱�" maxlength="4000" class="insert-text"
+												cols="70" title="평가글" maxlength="4000" class="insert-text"
 												style="height: 102px;"
 												onkeyup="CheckLen(this, 4000, &#39;content_cnt&#39;)"
 												onfocus="onFocusContent()"></textarea>
@@ -109,10 +111,10 @@
 					<div class="request-bottom">
 						<div class="btnbox tright">
 							<span class="btn-border"><input type="button"
-								class="orangebtn" value="�Ű��ϱ�" title="�Ű��ϱ�"
+								class="orangebtn" value="신고하기" title="신고하기"
 								onclick="javascript:nReg(); void(0);" /></span> <span
 								class="btn-border type02"><input type="button"
-								class="bluebtn" value="���" title="���"
+								class="bluebtn" value="취소" title="취소"
 								onclick="javascript:document.location.reload(); void(0);" /></span>
 						</div>
 					</div>

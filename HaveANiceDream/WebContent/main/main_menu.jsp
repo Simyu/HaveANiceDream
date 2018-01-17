@@ -14,9 +14,8 @@
 
 <script type="text/javascript">
 	function setPath(url) {
-		viewpath = encodeURIComponent(url);
 
-		location.href = "/HaveANiceDream/view.html?url=" + viewpath;
+		location.href = "/HaveANiceDream/view.html?url=" + url;
 	}
 </script>
 
@@ -35,7 +34,7 @@
 			<ul class="sidebar-menu" id="nav-accordion">
 
 				<p class="centered">
-					<a href="profile.html"><img
+					<a href="javascript:setPath('../user/user_detail.jsp')"><img
 						src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
 						class="img-circle" width="60"></a>
 				</p>
@@ -46,19 +45,19 @@
 				</a></li>
 
 				<li class="sub-menu"><a href="javascript:;"> <i
-						class="fa fa-desktop"></i> <span>UI Elements</span>
+						class="fa fa-desktop"></i> <span>My page</span>
 				</a>
 					<ul class="sub">
-						<li><a href="general.html">General</a></li>
-						<li><a href="buttons.html">Buttons</a></li>
+						<li><a href="#">거래내역 조회</a></li>
+						<li><a href="javascript:setPath('../point/point_detail.jsp')">포인트 조회</a></li>
 						<li><a href="panels.html">Panels</a></li>
 					</ul></li>
 
 				<li class="sub-menu"><a href="javascript:;"> <i
-						class="fa fa-cogs"></i> <span>Components</span>
+						class="fa fa-cogs"></i> <span>거래</span>
 				</a>
 					<ul class="sub">
-						<li><a href="calendar.html">Calendar</a></li>
+						<li><a href="javascript:setPath('../product/product_view_edit.jsp')">물품등록</a></li>
 						<li><a href="gallery.html">Gallery</a></li>
 						<li><a href="todo_list.html">Todo List</a></li>
 					</ul></li>
@@ -77,18 +76,18 @@
 						<li><a href="form_component.html">Form Components</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
-						class="fa fa-th"></i> <span>Data Tables</span>
+						class="fa fa-th"></i> <span>신고</span>
 				</a>
 					<ul class="sub">
-						<li><a href="basic_table.html">Basic Table</a></li>
-						<li><a href="responsive_table.html">Responsive Table</a></li>
+						<li><a href="javascript:setPath('../blame/report_boss.jsp')">신고하기</a></li>
+						<li><a href="javascript:setPath('../blame/reportview_report.jsp')">신고내역조회</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
-						class=" fa fa-bar-chart-o"></i> <span>Charts</span>
+						class=" fa fa-bar-chart-o"></i> <span>관리자</span>
 				</a>
 					<ul class="sub">
-						<li><a href="morris.html">Morris</a></li>
-						<li><a href="chartjs.html">Chartjs</a></li>
+						<li><a href="javascript:setPath('../user/blacklist_page.jsp')">차단유저 조회</a></li>
+						<li><a href="javascript:setPath('../blame/reportview_center.jsp')">신고접수내역</a></li>
 					</ul></li>
 
 			</ul>
