@@ -148,8 +148,7 @@
 
 
 					<div class="form-group" align="center">
-						<button type="submit" class="btn btn-round btn-default">수정하기</button>
-						<button type="submit" class="btn btn-round btn-default">삭제하기</button>
+						<button type="submit" class="btn btn-round btn-default">구매하기</button>
 					</div>
 				</form>
 			</div>
