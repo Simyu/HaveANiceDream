@@ -23,6 +23,13 @@ pageEncoding="utf-8"%>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script type="text/javascript">
+	function setPath(url) {
+
+		location.href = "/HaveANiceDream/view.html?url=" + url;
+	}
+</script>
 </head>
 
 <body>
@@ -69,7 +76,7 @@ pageEncoding="utf-8"%>
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>a테그를 붙여서 넘겨보장!</td>
+						<td><a href="javascript:setPath('../board/board_list_Read.jsp')">a테그를 붙여서 넘겨보장!</a></td>
 						<td>김동혁</td>
 						<td>2018.01.14</td>
 						<td>50</td>
@@ -98,7 +105,7 @@ pageEncoding="utf-8"%>
 				</tbody>
 			</table>
 			<hr />
-			<a class="btn btn-default pull-right" href="#"><i
+			<a class="btn btn-default pull-right" href="javascript:setPath('../board/board_write.jsp')"><i
 				class=" fa fa-edit"></i>글쓰기</a>
 			<div class="text-center">
 				<ul class="pagination">

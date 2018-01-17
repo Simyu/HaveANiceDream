@@ -15,6 +15,12 @@ pageEncoding="utf-8"%>
 <link href="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
 
 <script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+<script type="text/javascript">
+   	function popup(){
+   		window.open("/HaveANiceDream/blame/report_popup.jsp", "a", "width=700, height=900, left=100, top=50")
+   		
+   	}
+   </script>
 </head>
 
 <body>
@@ -55,7 +61,7 @@ pageEncoding="utf-8"%>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-12 mb">
-					<button type="button" class="btn btn-danger pull-right">신고하기</button>
+					<button type="button" class="btn btn-danger pull-right" onclick="popup()">신고하기</button>
 				</div>
 			</div>
 			<div class="form-group">

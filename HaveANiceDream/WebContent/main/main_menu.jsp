@@ -62,10 +62,10 @@
 						<li><a href="todo_list.html">Todo List</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
-						class="fa fa-book"></i> <span>게시판</span>
+						class="fa fa-book"></i> <span>커뮤니티</span>
 				</a>
 					<ul class="sub">
-						<li><a href="blank.html">Blank Page</a></li>
+						<li><a href="javascript:setPath('../board/board_list.jsp')">자유게시판</a></li>
 						<li><a href="login.html">Login</a></li>
 						<li><a href="lock_screen.html">Lock Screen</a></li>
 					</ul></li>
