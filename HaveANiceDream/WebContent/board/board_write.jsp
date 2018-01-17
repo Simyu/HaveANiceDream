@@ -1,6 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -10,23 +11,14 @@
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 
-<!-- Bootstrap core CSS -->
-<link href="assets/css/bootstrap.css" rel="stylesheet">
-<!--external css-->
-<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href="assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
+<link href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
 <!-- Custom styles for this template -->
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/style-responsive.css" rel="stylesheet">
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/Filechose.js"></script>
+<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+<script src="/HaveANiceDream/Theme/assets/js/Filechose.js"></script>
 <script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 
 <body>
@@ -124,13 +116,6 @@
 	</div>
 	<!-- /row -->
 
-	<script type="text/javascript">
-		//custom select box
-
-		$(function() {
-			$("select.styled").customSelect();
-		});
-	</script>
 
 </body>
 </html>
