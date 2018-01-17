@@ -58,14 +58,14 @@
 				</a>
 					<ul class="sub">
 						<li><a href="javascript:setPath('../product/product_view_edit.jsp')">물품등록</a></li>
-						<li><a href="gallery.html">Gallery</a></li>
+						<li><a href="javascript:setPath('../product/product_list.jsp')">물품검색</a></li>
 						<li><a href="todo_list.html">Todo List</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
-						class="fa fa-book"></i> <span>Extra Pages</span>
+						class="fa fa-book"></i> <span>커뮤니티</span>
 				</a>
 					<ul class="sub">
-						<li><a href="blank.html">Blank Page</a></li>
+						<li><a href="javascript:setPath('../board/board_list.jsp')">자유게시판</a></li>
 						<li><a href="login.html">Login</a></li>
 						<li><a href="lock_screen.html">Lock Screen</a></li>
 					</ul></li>

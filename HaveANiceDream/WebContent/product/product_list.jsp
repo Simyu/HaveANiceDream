@@ -12,6 +12,12 @@
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 
+<script type="text/javascript">
+	function setPath(url) {
+
+		location.href = "/HaveANiceDream/view.html?url=" + url;
+	}
+</script>
 </head>
 
 <body>
@@ -89,7 +95,8 @@
 								<td><img
 									src='http://img1.itemmania.com/images/icon/icon_silver_s.gif'
 									width='21' height='19' alt='실버' /></td>
-								<td class="numeric"><a href="#"
+								<td class="numeric"><a
+									href="javascript:setPath('../product/product_view_edit.jsp')"
 									onclick="$.fnViewId('2018011403747952')" class="">유모차 나눔합니다</a></td>
 								<td class="numeric">24,000원</td>
 								<td class="numeric">11:08</td>
@@ -99,8 +106,10 @@
 								<td><img
 									src='http://img1.itemmania.com/images/icon/icon_silver_s.gif'
 									width='21' height='19' alt='실버' /></td>
-								<td><a href="#" onclick="$.fnViewId('2018011403747952')"
-									class="">유모차 나눔합니다.</a>
+								<td class="numeric"><a
+									href="javascript:setPath('../product/product_view_buy.jsp')"
+									onclick="$.fnViewId('2018011403747952')" class="">유모차
+										나눔합니다.</a>
 								<td class="numeric">11,000원</td>
 								<td class="numeric">10:56</td>
 							</tr>
