@@ -19,7 +19,7 @@
 <link
 	href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css"
 	rel="stylesheet" />
-
+<link href="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
 <!-- Custom styles for this template -->
 <link href="/HaveANiceDream/Theme/assets/css/style.css" rel="stylesheet">
 <link href="/HaveANiceDream/Theme/assets/css/style-responsive.css"
@@ -61,6 +61,7 @@
 	</section>
 
 	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.js"></script>   
 	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 	<script src="/HaveANiceDream/Theme/assets/js/bootstrap.min.js"></script>
 	<script
@@ -70,9 +71,7 @@
 	<script class="include" type="text/javascript"
 		src="/HaveANiceDream/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
 	<script src="/HaveANiceDream/Theme/assets/js/jquery.scrollTo.min.js"></script>
-	<script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js"
-		type="text/javascript"></script>
-
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js"type="text/javascript"></script>
 
 	<!--common script for all pages-->
 	<script src="/HaveANiceDream/Theme/assets/js/common-scripts.js"></script>
@@ -86,6 +85,12 @@
 			$('select.styled').customSelect();
 		});
 	</script>
+	  <script type="text/javascript">
+      $(function() {
+        //    fancybox
+          jQuery(".fancybox").fancybox();
+      });
 
+  </script>
 </body>
 </html>
