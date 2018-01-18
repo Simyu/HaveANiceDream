@@ -33,6 +33,23 @@ public class MemberDTO {
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
+			String userAddr, String userTel) {
+		super();
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userEmail = userEmail;
+		this.userName = userName;
+		this.userZipcode = userZipcode;
+		this.userAddr = userAddr;
+		this.userTel = userTel;
+		this.userSigdate = null;
+		this.userLogType = "기본";
+		this.userLastLoginTime = null;
+		this.pointTotal = 5000;
+		this.userType = "일반회원";
+	}
+
+	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
 			String userAddr, String userTel, Date userSigdate, String userLogType, Date userLastLoginTime,
 			Integer pointTotal, String userType) {
 		super();
@@ -138,12 +155,12 @@ public class MemberDTO {
 		this.pointTotal = pointTotal;
 	}
 
-	public String getUserChkBlack() {
+	public String getUserType() {
 		return userType;
 	}
 
-	public void setUserChkBlack(String userChkBlack) {
-		this.userType = userChkBlack;
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 	@Override
