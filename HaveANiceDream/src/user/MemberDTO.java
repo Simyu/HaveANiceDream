@@ -26,7 +26,7 @@ public class MemberDTO {
 
     private Integer pointTotal;
 
-    private String userChkBlack;
+    private String userType;
     
     public MemberDTO() {
 		// TODO Auto-generated constructor stub
@@ -34,7 +34,7 @@ public class MemberDTO {
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
 			String userAddr, String userTel, Date userSigdate, String userLogType, Date userLastLoginTime,
-			Integer pointTotal, String userChkBlack) {
+			Integer pointTotal, String userType) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
@@ -47,7 +47,7 @@ public class MemberDTO {
 		this.userLogType = userLogType;
 		this.userLastLoginTime = userLastLoginTime;
 		this.pointTotal = pointTotal;
-		this.userChkBlack = userChkBlack;
+		this.userType = userType;
 	}
 
 	public String getUserId() {
@@ -139,11 +139,11 @@ public class MemberDTO {
 	}
 
 	public String getUserChkBlack() {
-		return userChkBlack;
+		return userType;
 	}
 
 	public void setUserChkBlack(String userChkBlack) {
-		this.userChkBlack = userChkBlack;
+		this.userType = userChkBlack;
 	}
 
 	@Override
@@ -151,7 +151,7 @@ public class MemberDTO {
 		return "MemberDTO [userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail + ", userName="
 				+ userName + ", userZipcode=" + userZipcode + ", userAddr=" + userAddr + ", userTel=" + userTel
 				+ ", userSigdate=" + userSigdate + ", userLogType=" + userLogType + ", userLastLoginTime="
-				+ userLastLoginTime + ", pointTotal=" + pointTotal + ", userChkBlack=" + userChkBlack + "]";
+				+ userLastLoginTime + ", pointTotal=" + pointTotal + ", userType=" + userType + "]";
 	}
     
 	

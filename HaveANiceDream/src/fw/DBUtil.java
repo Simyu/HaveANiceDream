@@ -18,10 +18,13 @@ public class DBUtil {
 
 	public static Connection getConnect() {
 		Connection connection = null;
-
+		
+		//메인DB에서 테스트할때
+		//String url = "jdbc:oracle:thin:@192.168.9.50:1521:xe";
+		//개인 PC에서 작업할때
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "scott";
-		String password = "tiger";
+		String user = "hand";
+		String password = "hand";
 
 		try {
 			connection = DriverManager.getConnection(url, user, password);

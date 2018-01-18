@@ -139,6 +139,8 @@
 		<div class="top-menu">
 			<ul class="nav pull-right top-menu">
 				<li><a class="logout" href="/HaveANiceDream/user/login.html">Login</a></li>
+				<li><a class="logout" href="#">Logout</a></li>
+				<li><a class="logout" href="#">Signup</a></li>
 			</ul>
 		</div>
 	</header>
