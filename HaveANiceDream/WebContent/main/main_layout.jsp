@@ -13,6 +13,8 @@
 <title>DASHGUM - Bootstrap Admin Template</title>
 
 <!-- Bootstrap core CSS -->
+<link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz'	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/HaveANiceDream/Theme/assets/css/monthly.css">
 <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css"
 	rel="stylesheet">
 <!--external css-->
@@ -72,7 +74,7 @@
 		src="/HaveANiceDream/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
 	<script src="/HaveANiceDream/Theme/assets/js/jquery.scrollTo.min.js"></script>
 	<script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js"type="text/javascript"></script>
-
+	<script type="text/javascript" src="/HaveANiceDream/Theme/assets/js/monthly.js"></script>
 	<!--common script for all pages-->
 	<script src="/HaveANiceDream/Theme/assets/js/common-scripts.js"></script>
 
@@ -92,5 +94,24 @@
       });
 
   </script>
+  <script type="text/javascript">
+						$(window).load(function() {
+
+							$('#mycalendar').monthly({
+								mode : 'event',
+								xmlUrl : 'events.xml'
+							});
+
+							$('#mycalendar2').monthly({
+								mode : 'picker',
+								target : '#mytarget',
+								maxWidth : '250px',
+								startHidden : true,
+								showTrigger : '#mytarget',
+								stylePast : true,
+								disablePast : true
+							});
+						});
+	</script>
 </body>
 </html>
