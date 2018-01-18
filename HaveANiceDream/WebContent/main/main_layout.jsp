@@ -53,7 +53,7 @@
 			<section class="wrapper site-min-height">
 				<jsp:include page="${viewpath}"></jsp:include>
 			</section>
-			<! --/wrapper -->
+			<!--/wrapper -->
 		</section>
 		<!-- /MAIN CONTENT -->
 
