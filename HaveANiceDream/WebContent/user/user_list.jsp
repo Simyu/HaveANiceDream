@@ -16,7 +16,7 @@
 <body>
 
 	<h3>
-		<i class="fa fa-angle-right"></i> 차단회원 조회
+		<i class="fa fa-angle-right"></i> 회원 조회
 	</h3>
 	<div class="row mt">
 
@@ -24,7 +24,7 @@
 			<div class="content-panel">
 				<form class="form-horizontal style-form" method="get">
 					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">차단회원 ID</label>
+						<label class="col-sm-2 col-sm-2 control-label">회원 ID</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control">
 						</div>
@@ -38,8 +38,8 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>차단날짜</th>
-							<th>차단사유</th>
+							<th>마지막 접속 날짜</th>
+							<th>회원종류</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -47,9 +47,11 @@
 						<tr>
 							<td>ark004</td>
 							<td>2017년 12월 31일</td>
-							<td>짜증나서</td>
+							<td>일반회원</td>
 							<td>
-								<button class="btn btn-danger btn-xs">해제</button>
+								<button class="btn btn-primary btn-xs">차단</button>
+								<button class="btn btn-primary btn-xs">관리자</button>
+								<button class="btn btn-primary btn-xs">일반회원</button>
 							</td>
 						</tr>
 					</tbody>
