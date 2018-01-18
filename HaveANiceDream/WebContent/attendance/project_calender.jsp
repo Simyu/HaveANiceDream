@@ -15,7 +15,7 @@
 					<div style="width: 100%; max-width: 600px; display: inline-block;">
 						<div class="monthly" id="mycalendar"></div>
 					</div>
-
+                         
 				</div>
 				<div class="col-lg-12">
 					<br /> <br /> <br /> <br />

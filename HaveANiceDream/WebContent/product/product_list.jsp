@@ -36,8 +36,8 @@
 				</h4>
 				<div class="col-lg-12">
 
-					<div class="col-lg-4">
-						<select name="search_game_text" id="search_game_text">
+					<div class="col-lg-4" >
+						<select name="search_game_text" id="search_game_text" style="width: 100%;" >
 							<option value="java">유아용품
 							<option value="하둡">핸드폰
 							<option value="스프링">기타
@@ -47,7 +47,7 @@
 					</div>
 
 					<div class="col-lg-4">
-						<select name="search_server_text" id="search_server_text"
+						<select name="search_server_text" id="search_server_text" style="width: 100%;" 
 							length="10">
 							<option value="java">유모차
 							<option value="하둡">유아용옷
@@ -60,14 +60,14 @@
 
 
 							<li><input type="text" class="g_text" name="word"
-								value="물품제목" onclick="this.value='';" maxlength="5" /></li>
+								value="물품제목" onclick="this.value='';" maxlength="5" style="width: 100%;" /></li>
 						</ul>
 					</div>
 					<div class="col-lg-2">
 						<ul>
 							<li><input type="image" name="btnSearch"
 								src="http://img2.itemmania.com/images/btn/btn_blue_search.gif"
-								class="g_image" /></li>
+								class="g_image"  style="width: 100%;" /></li>
 						</ul>
 					</div>
 				</div>
