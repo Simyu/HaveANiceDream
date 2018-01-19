@@ -41,8 +41,9 @@
 							<div class="col-sm-5">
 
 								<input type="text" class="form-control" value="글씨를쓰면 DB검색을 통해 ">
-								<br /> <select name="search_game_text" id="search_game_text"
-									size="8" style="width: 100%">
+								<br /> <select multiple class="form-control"
+									name="search_game_text" id="search_game_text" size="8"
+									style="width: 100%">
 									<option value="java">유아용품
 									<option value="하둡">핸드폰
 									<option value="스프링">기타
@@ -53,9 +54,9 @@
 							<div class="col-sm-5">
 
 								<input type="text" class="form-control"
-									value="  list를 받아 올예정입니다"> <br /> <select
-									name="search_game_text" id="search_game_text" size="8"
-									style="width: 100%">
+									value="  list를 받아 올예정입니다"> <br /> <select multiple
+									class="form-control" name="search_game_text"
+									id="search_game_text" size="8" style="width: 100%">
 
 									<option value="java">유모차
 									<option value="하둡">유아용옷
@@ -162,7 +163,8 @@
 
 
 	<!--script for this page-->
-	<script src="/HaveANiceDream/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script
+		src="/HaveANiceDream/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
 
 	<!--custom switch-->
 	<script src="/HaveANiceDream/Theme/assets/js/bootstrap-switch.js"></script>

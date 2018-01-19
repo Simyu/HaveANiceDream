@@ -37,7 +37,8 @@
 				<div class="col-lg-12">
 
 					<div class="col-lg-4">
-						<select name="search_game_text" id="search_game_text">
+						<select class="form-control" name="search_game_text"
+							id="search_game_text" style="width: 100%;">
 							<option value="java">유아용품
 							<option value="하둡">핸드폰
 							<option value="스프링">기타
@@ -46,34 +47,35 @@
 						</select>
 					</div>
 
-					<div class="col-lg-4">
-						<select name="search_server_text" id="search_server_text"
-							length="10">
+					<div class="col-lg-3">
+						<select class="form-control" name="search_server_text"
+							id="search_server_text" style="width: 100%;" length="10">
 							<option value="java">유모차
 							<option value="하둡">유아용옷
 							<option value="스프링">장난감
 							<option value="mean">신발
 						</select>
 					</div>
-					<div class="col-lg-2">
+					<div class="col-lg-3">
 						<ul>
 
 
-							<li><input type="text" class="g_text" name="word"
-								value="물품제목" onclick="this.value='';" maxlength="5" /></li>
+							<li><input type="text" class="form-control"  name="word"
+								value="물품제목" onclick="this.value='';" maxlength="5"
+								style="width:100%";  /></li>
 						</ul>
 					</div>
 					<div class="col-lg-2">
 						<ul>
 							<li><input type="image" name="btnSearch"
 								src="http://img2.itemmania.com/images/btn/btn_blue_search.gif"
-								class="g_image" /></li>
+								class="g_image" style="width: auto;" /></li>
 						</ul>
 					</div>
 				</div>
 
 
-				<select id="goods_list" name="goods_list" class="pull-right mb">
+				<select id="goods_list" name="goods_list"   class="form-control pull-right mb">
 					<option value="25">25개</option>
 					<option value="50">50개</option>
 					<option value="100">100개</option>

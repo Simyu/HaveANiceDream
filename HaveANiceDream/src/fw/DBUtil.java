@@ -19,9 +19,9 @@ public class DBUtil {
 	public static Connection getConnect() {
 		Connection connection = null;
 		
-		//메인DB에서 테스트할때
+		//main DB
 		//String url = "jdbc:oracle:thin:@192.168.9.50:1521:xe";
-		//개인 PC에서 작업할때
+		//Test DB
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hand";
 		String password = "hand";
@@ -56,6 +56,36 @@ public class DBUtil {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	// ResultSet반납
+	public static void close(ResultSet rs) {
+		try {
+			if (rs != null)
+				rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Statement반납
+	public static void close(Statement stmt) {
+		try {
+			if (stmt != null)
+				stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Connection반납
+	public static void close(Connection con) {
+		try {
+			if (con != null)
+				con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 

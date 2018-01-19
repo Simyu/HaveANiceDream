@@ -1,4 +1,4 @@
-package user;
+package user.dto;
 
 import java.sql.Date;
 
@@ -30,6 +30,23 @@ public class MemberDTO {
     
     public MemberDTO() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
+			String userAddr, String userTel) {
+		super();
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userEmail = userEmail;
+		this.userName = userName;
+		this.userZipcode = userZipcode;
+		this.userAddr = userAddr;
+		this.userTel = userTel;
+		this.userSigdate = null;
+		this.userLogType = "�⺻";
+		this.userLastLoginTime = null;
+		this.pointTotal = 5000;
+		this.userType = "�Ϲ�ȸ��";
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
@@ -138,12 +155,12 @@ public class MemberDTO {
 		this.pointTotal = pointTotal;
 	}
 
-	public String getUserChkBlack() {
+	public String getUserType() {
 		return userType;
 	}
 
-	public void setUserChkBlack(String userChkBlack) {
-		this.userType = userChkBlack;
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 	@Override
