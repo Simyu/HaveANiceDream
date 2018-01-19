@@ -59,4 +59,34 @@ public class DBUtil {
 		}
 	}
 
+	// ResultSet반납
+	public static void close(ResultSet rs) {
+		try {
+			if (rs != null)
+				rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Statement반납
+	public static void close(Statement stmt) {
+		try {
+			if (stmt != null)
+				stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Connection반납
+	public static void close(Connection con) {
+		try {
+			if (con != null)
+				con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -57,7 +57,7 @@
 						<label class="col-sm-2 col-sm-2 control-label">주소</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="userZipcode"
-								id="userZipcode">
+								id="userZipcode" disabled>
 						</div>
 						<div class="col-sm-2">
 							<button type="button"
@@ -69,7 +69,7 @@
 						<label class="col-sm-2 col-sm-2 control-label"></label>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" name="userAddr1"
-								id="userAddr1">
+								id="userAddr1" disabled>
 						</div>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" name="userAddr2"
@@ -93,13 +93,13 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="javascript:setEmailAddr('@google.com')">@google.com</a></li>
-								<li><a href="javascript:setEmailAddr('@naver.com)">@naver.com</a></li>
+								<li><a href="javascript:setEmailAddr('@naver.com')">@naver.com</a></li>
 								<li><a href="javascript:setEmailAddr('@hanmail.net')">@hanmail.net</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">전화번호</label>
+						<label class="col-sm-2 col-sm-2 control-label">휴대전화번호</label>
 						<div class="col-sm-3">
 							<select class="form-control" name="userTel1">
 								<option>전화번호 선택</option>
@@ -115,19 +115,20 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-theme">Sign in</button>
+					<button type="submit" class="btn btn-theme">이메일 인증하기</button>
+					<button type="submit" class="btn btn-theme">휴대전화 인증하기</button>
 				</form>
 			</div>
 		</div>
 	</div>
 
 	<!--main content end-->
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
 		function setEmailAddr(mail) {
 			document.getElementById("userEmail2").value = mail;
 		}
-	</script>
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script>
+
 		//http://postcode.map.daum.net/guide
 		function execDaumPostcode() {
 			new daum.Postcode(

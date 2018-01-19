@@ -2,7 +2,7 @@ package user.service;
 
 import java.util.ArrayList;
 
-import user.MemberDTO;
+import user.dto.MemberDTO;
 
 public interface UserService {
 	int userInsert(MemberDTO user);

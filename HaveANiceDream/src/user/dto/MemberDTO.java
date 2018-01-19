@@ -1,4 +1,4 @@
-package user;
+package user.dto;
 
 import java.sql.Date;
 
@@ -43,10 +43,10 @@ public class MemberDTO {
 		this.userAddr = userAddr;
 		this.userTel = userTel;
 		this.userSigdate = null;
-		this.userLogType = "±âº»";
+		this.userLogType = "ï¿½âº»";
 		this.userLastLoginTime = null;
 		this.pointTotal = 5000;
-		this.userType = "ÀÏ¹ÝÈ¸¿ø";
+		this.userType = "ï¿½Ï¹ï¿½È¸ï¿½ï¿½";
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,

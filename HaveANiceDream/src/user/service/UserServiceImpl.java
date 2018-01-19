@@ -1,42 +1,85 @@
 package user.service;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-import user.MemberDTO;
+import fw.DBUtil;
 import user.dao.UserDAO;
 import user.dao.UserDAOImpl;
+import user.dto.MemberDTO;
 
 public class UserServiceImpl implements UserService {
 
 	@Override
 	public int userInsert(MemberDTO user) {
+		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
-		int rowNum = dao.userInsert(user);
+		int rowNum = 0;
+		
+		try {
+			connection = DBUtil.getConnect();
+			rowNum = dao.userInsert(user, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
 		
 		return rowNum;
 	}
 
 	@Override
 	public ArrayList<MemberDTO> userList() {
+		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
-		ArrayList<MemberDTO> dtos = dao.userList();
+		ArrayList<MemberDTO> dtos = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			dtos = dao.userList(connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
 		
 		return dtos;
 	}
 
 	@Override
 	public MemberDTO userSelect(String userId) {
+		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
-		MemberDTO dto = dao.userSelect(userId);
+		MemberDTO dto = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			dto = dao.userSelect(userId,connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
 		
 		return dto;
 	}
 
 	@Override
 	public MemberDTO userLogin(String userId, String userPw) {
+		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
-		MemberDTO dto = dao.userLogin(userId, userPw);
+		MemberDTO dto = null;
 		
+		try {
+			connection = DBUtil.getConnect();
+			dto = dao.userLogin(userId, userPw, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		 
 		return dto;
 	}
 
