@@ -7,6 +7,7 @@ import static fw.DBUtil.*;
 import blame.BlameDAO;
 import blame.dto.BlameDTO;
 import fw.DBUtil;
+import blame.BlameDAOimpl;
 
 public class BlameServiceimpl implements BlameService {
 
