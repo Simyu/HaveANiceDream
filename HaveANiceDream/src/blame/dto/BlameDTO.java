@@ -1,4 +1,4 @@
-package blame;
+package blame.dto;
 
 import java.sql.Date;
 
