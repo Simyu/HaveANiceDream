@@ -39,8 +39,8 @@
 						<tbody>
 							<tr>
 								<th>신고</th>
-								<td>신고분류 <select>
-										<option selected="blameType" value="NONE">선택해주세요</option>
+								<td>신고분류 <select name="blameType">
+										<option selected="selected" value="NONE">선택해주세요</option>
 										<option value="사기글신고">사기글신고</option>
 										<option value="허위신고">허위신고</option>
 										<option value="지나친폭언신고">지나친폭언신고</option>

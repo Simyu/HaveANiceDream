@@ -25,8 +25,7 @@ public class BlameDTO {
     public BlameDTO() {
 		// TODO Auto-generated constructor stub
 	}
-    public BlameDTO(String blameType,String userIdBlamere, String userIdBlamee,
-			Integer productNo, String attachedFile, String blameTitle, String blameContent) {
+    public BlameDTO(String userIdBlamere, String userIdBlamee,String blameType,Integer productNo, String attachedFile, String blameTitle, String blameContent) {
 		super();
 		this.blameNo = null;
 		this.blameDate = null;
@@ -39,7 +38,7 @@ public class BlameDTO {
 		this.blameContent = blameContent;
 	}
 
-	public BlameDTO(Integer blameNo, Date blameDate, String blameType,String userIdBlamere, String userIdBlamee,
+	public BlameDTO(Integer blameNo, Date blameDate,String userIdBlamere, String userIdBlamee,String blameType,
 			Integer productNo, String attachedFile, String blameTitle, String blameContent) {
 		super();
 		this.blameNo = blameNo;

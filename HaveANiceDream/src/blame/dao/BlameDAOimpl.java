@@ -31,9 +31,9 @@ public class BlameDAOimpl implements BlameDAO {
 		PreparedStatement ptmt = null;
 		ptmt = con.prepareStatement(BlameQuery.BLAME_INSERT);
 		
-		ptmt.setString(1, dto.getBlameType());
-		ptmt.setString(2, dto.getUserIdBlamere());
-		ptmt.setString(3, dto.getUserIdBlamee());
+		ptmt.setString(3, dto.getUserIdBlamere());
+		ptmt.setString(1, dto.getUserIdBlamee());
+		ptmt.setString(2, dto.getBlameType());
 		ptmt.setInt(4, dto.getProductNo());
 		ptmt.setString(5, dto.getAttachedFile());
 		ptmt.setString(6, dto.getBlameTitle());
