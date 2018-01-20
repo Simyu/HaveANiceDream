@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import static fw.DBUtil.*;
-import blame.BlameDAO;
+
+import blame.dao.BlameDAO;
+import blame.dao.BlameDAOimpl;
 import blame.dto.BlameDTO;
 import fw.DBUtil;
-import blame.BlameDAOimpl;
 
 public class BlameServiceimpl implements BlameService {
 

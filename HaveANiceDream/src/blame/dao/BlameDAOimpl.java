@@ -1,4 +1,4 @@
-package blame;
+package blame.dao;
 
 import java.sql.Connection;
 
@@ -31,15 +31,13 @@ public class BlameDAOimpl implements BlameDAO {
 		PreparedStatement ptmt = null;
 		ptmt = con.prepareStatement(BlameQuery.BLAME_INSERT);
 		
-		ptmt.setInt(1, dto.getBlameNo());
-		ptmt.setDate(2, dto.getBlameDate());
-		ptmt.setString(3, dto.getUserIdBlamere());
-		ptmt.setString(4, dto.getUserIdBlamee());
-		ptmt.setString(5, dto.getBlameType());
-		ptmt.setInt(6, dto.getProductNo());
-		ptmt.setString(7, dto.getAttachedFile());
-		ptmt.setString(8, dto.getBlameTitle());
-		ptmt.setString(9, dto.getBlameContent());
+		ptmt.setString(1, dto.getUserIdBlamere());
+		ptmt.setString(2, dto.getUserIdBlamee());
+		ptmt.setString(3, dto.getBlameType());
+		ptmt.setInt(4, dto.getProductNo());
+		ptmt.setString(5, dto.getAttachedFile());
+		ptmt.setString(6, dto.getBlameTitle());
+		ptmt.setString(7, dto.getBlameContent());
 		
 		result = ptmt.executeUpdate();
 		
