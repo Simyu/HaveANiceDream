@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fw.DBUtil;
+import point.PointDTO;
+import point.dao.PointDAO;
+import point.dao.PointDAOImpl;
 import user.dao.UserDAO;
 import user.dao.UserDAOImpl;
 import user.dto.MemberDTO;
@@ -20,6 +23,12 @@ public class UserServiceImpl implements UserService {
 		try {
 			connection = DBUtil.getConnect();
 			rowNum = dao.userInsert(user, connection);
+			
+			if(rowNum > 0) {
+				PointDAO pointDAO = new PointDAOImpl();
+				PointDTO point = new PointDTO(0, user.getUserId(), null, "가입", +5000);
+				rowNum += pointDAO.pointInsert(point, connection);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
