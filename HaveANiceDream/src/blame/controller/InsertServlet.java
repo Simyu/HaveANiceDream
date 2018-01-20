@@ -14,12 +14,12 @@ import blame.service.BlameService;
 import blame.service.BlameServiceimpl;
 
 
-@WebServlet("/blame/Insert.do")
+@WebServlet(name = "blame/insert", urlPatterns = {"/blame/insert.do"})
 public class InsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unused")
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -42,7 +42,8 @@ public class InsertServlet extends HttpServlet {
 			String viewpath = "../blame/report_boss.jsp";
 			request.setAttribute("viewpath", viewpath);
 			
-			RequestDispatcher
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
+			requestDispatcher.forward(request, response);
 		}
 	
 	}

@@ -17,5 +17,5 @@ public class BlameQuery {
 	public static final String BLAME_INSERT = "insert into blame values(BLAME_SEQ.nextval,sysdate,?,?,?,?,?,?,?)";
 	public static final String BLAME_LIST = "select * from blame";
 	public static final String BLAME_SELECT = "select * from blame where BLAME_NO = ?";
-	public static final String BLAME_UPDATE = "update into blame values(?,?,?,?,?,?,?,?,?)";
+	public static final String BLAME_UPDATE = "";
 }

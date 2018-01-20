@@ -30,7 +30,7 @@ public class BlameDTO {
 		super();
 		this.blameNo = null;
 		this.blameDate = null;
-		this.userIdBlamere = "한글";
+		this.userIdBlamere = userIdBlamere;
 		this.userIdBlamee = userIdBlamee;
 		this.blameType = blameType;
 		this.productNo = productNo;
