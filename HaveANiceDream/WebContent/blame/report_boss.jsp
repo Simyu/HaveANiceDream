@@ -30,7 +30,7 @@
 		<div class="col-lg-12">
 			<div class="form-panel">
 				<a href="../view/report.html"></a>
-				<form atcion="/HaveANiceDream/blame/Insert.do" method="post">
+				<form atcion="/HaveANiceDream/blame/insert.do" method="get">
 					<table summary="신고정보" height="600" border="1">
 						<colgroup>
 							<col style="width: 14%;">
@@ -114,10 +114,10 @@
 						<div class="btnbox tright">
 							<span class="btn-border"><input type="Submit"
 								class="orangebtn" value="신고하기" title="신고하기"
-								onclick="javascript:nReg(); void(0);" /></span> <span
+								/></span> <span
 								class="btn-border type02"><input type="Submit"
 								class="bluebtn" value="취소" title="취소"
-								onclick="javascript:document.location.reload(); void(0);" /></span>
+								 /></span>
 						</div>
 					</div>
 				</form>
