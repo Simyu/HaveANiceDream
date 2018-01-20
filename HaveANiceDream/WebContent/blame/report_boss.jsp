@@ -30,7 +30,7 @@
 		<div class="col-lg-12">
 			<div class="form-panel">
 				<a href="../view/report.html"></a>
-				<form atcion="/HaveANiceDream/blame/insert.do" method="get">
+				<form action="/HaveANiceDream/blame/insert.do" method="get">
 					<table summary="신고정보" height="600" border="1">
 						<colgroup>
 							<col style="width: 14%;">
@@ -40,11 +40,11 @@
 							<tr>
 								<th>신고</th>
 								<td>신고분류 <select>
-										<option selected="selected" value="NONE">선택해주세요</option>
-										<option value="M01">사기글신고</option>
-										<option value="M02">허위신고</option>
-										<option value="M03">지나친폭언신고</option>
-										<option value="M04">광고성글신고</option>
+										<option selected="blameType" value="NONE">선택해주세요</option>
+										<option value="사기글신고">사기글신고</option>
+										<option value="허위신고">허위신고</option>
+										<option value="지나친폭언신고">지나친폭언신고</option>
+										<option value="광고성글신고">광고성글신고</option>
 								</select>
 								</td>
 							</tr>
@@ -55,12 +55,12 @@
 									<dl>
 										<dt>
 											<label>신고자ID</label> <span class="input-box"><input
-												name="auctionno2" type="text" id="auctionno2" class="txt"
+												name="userIdBlamere" type="text" id="auctionno2" class="txt"
 												maxlength="15" style="width: 133px;" /></span> <label>상대방ID</label>
-											<span class="input-box"><input name="auctionno2"
+											<span class="input-box"><input name="userIdBlamee"
 												type="text" id="auctionno2" class="txt" maxlength="15"
 												style="width: 133px;" /></span> <label>물건번호</label> <span
-												class="input-box"><input name="orderno1" type="text"
+												class="input-box"><input name="productNo" type="text"
 												id="orderno1" class="txt" maxlength="15"
 												style="width: 133px;" /></span> <input type="button"
 												value="물건번호조회" onclick="popup()">
@@ -76,7 +76,7 @@
 											<div class="fileinput">
 												<div class="btnbox">
 													<input type="file" class="f-map" title="파일첨부"
-														style="width: 400px;" />
+														style="width: 400px;" name ="attachedFile"/>
 												</div>
 
 											</div>
@@ -86,7 +86,7 @@
 							</tr>
 							<tr>
 								<th><label for="inquirySubject">제목</label></th>
-								<td><span class="input-box"><input name="mailtitle"
+								<td><span class="input-box"><input name="blameTitle"
 										type="text" id="mailtitle" class="txt" title="제목"
 										style="width: 440px;" /> <input name="Mcategorybox"
 										type="text" value="M0401" id="Mcategorybox"
@@ -99,10 +99,10 @@
 								<td>
 									<div>
 										<div>
-											<textarea name="mailcontent" id="mailcontent" rows="100"
+											<textarea name="blameContent" id="mailcontent" rows="100"
 												cols="100" title="평가글" maxlength="4000" class="insert-text"
 												style="height: 102px;"
-												onkeyup="CheckLen(this, 4000, &#39;content_cnt&#39;)"
+												
 												onfocus="onFocusContent()"></textarea>
 										</div>
 									</div>

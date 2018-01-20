@@ -27,6 +27,7 @@ public class BlameServiceimpl implements BlameService {
 		}
 		
 		return result;
+		 
 	}
 
 	public ArrayList<BlameDTO> list() {
