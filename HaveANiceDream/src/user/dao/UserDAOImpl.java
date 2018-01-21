@@ -130,7 +130,6 @@ public class UserDAOImpl implements UserDAO {
 		DBUtil.close(resultSet);
 		DBUtil.close(preparedStatement);
 
-
 		return dto;
 	}
 
@@ -169,8 +168,40 @@ public class UserDAOImpl implements UserDAO {
 		DBUtil.close(resultSet);
 		DBUtil.close(preparedStatement);
 
-
 		return dto;
+	}
+
+	@Override
+	public int userDelete(String userId, Connection connection) throws SQLException {
+		int rowNum = 0;
+
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_DELETE);
+		// "delete from member where USER_ID = ?";
+
+		preparedStatement.setString(1, userId);
+
+		rowNum = preparedStatement.executeUpdate();
+
+		DBUtil.close(preparedStatement);
+
+		return rowNum;
+	}
+
+	@Override
+	public int userTypeUpdate(String userId, String userType, Connection connection) throws SQLException {
+		int rowNum = 0;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_TYPE_UPDATE);
+		//"update member set USER_TYPE = ?  where USER_ID = ?"; 
+		
+		preparedStatement.setString(1, userType);
+		preparedStatement.setString(2, userId);
+		
+		rowNum = preparedStatement.executeUpdate();
+		
+		DBUtil.close(preparedStatement);
+		
+		return rowNum;
 	}
 
 }

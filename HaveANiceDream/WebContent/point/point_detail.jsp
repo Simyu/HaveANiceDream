@@ -1,3 +1,6 @@
+
+<%@page import="point.dto.PointDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -35,14 +38,45 @@ pageEncoding="utf-8"%>
 							</tr>
 						</thead>
 						<tbody>
+							<%
+								ArrayList<PointDTO> pointlist = (ArrayList<PointDTO>) request.getAttribute("pointlist");
+
+								if (pointlist != null) {
+									int size = pointlist.size();
+									
+									int total = 0;
+									int point = 0;
+									int usedPoint = 0;
+									int getPoint = 0;
+									
+									PointDTO dto = null;
+									
+									for (int i = 0; i < size; i++) {
+										dto = pointlist.get(i);
+										point = dto.getPoint();
+										total += point;
+										
+										if (point > 0) {
+											usedPoint = 0;
+											getPoint = point;
+											
+										} else {
+											usedPoint = getPoint * (-1);
+											getPoint = 0;
+										}
+							%>
 							<tr>
-								<td>1</td>
-								<td>2017년 12월 24일 14시 50분 00초</td>
-								<td>출석</td>
-								<td class="numeric">0</td>
-								<td class="numeric">100</td>
-								<td class="numeric">5100</td>
+								<td><%=dto.getPointNo()%></td>
+								<td><%=dto.getPointDate()%></td>
+								<td><%=dto.getPointType()%></td>
+								<td class="numeric"><%=usedPoint%></td>
+								<td class="numeric"><%=getPoint%></td>
+								<td class="numeric"><%=total%></td>
 							</tr>
+							<%
+								}
+								}
+							%>
 						</tbody>
 					</table>
 				</section>

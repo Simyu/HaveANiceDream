@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fw.DBUtil;
-import point.PointDTO;
 import point.dao.PointDAO;
 import point.dao.PointDAOImpl;
+import point.dto.PointDTO;
 import user.dao.UserDAO;
 import user.dao.UserDAOImpl;
 import user.dto.MemberDTO;
@@ -90,6 +90,43 @@ public class UserServiceImpl implements UserService {
 		}
 		 
 		return dto;
+	}
+
+	@Override
+	public int userDelete(String userId) {
+		Connection connection = null;
+		UserDAO dao = new UserDAOImpl();
+		int rowNum = 0;
+		
+		try {
+			connection = DBUtil.getConnect();
+			rowNum = dao.userDelete(userId, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		
+		return rowNum;
+	}
+
+	@Override
+	public int userTypeUpdate(String userId, String userType) {
+		Connection connection = null;
+		UserDAO dao = new UserDAOImpl();
+		int rowNum = 0;
+
+		try {
+			connection = DBUtil.getConnect();
+			dao.userTypeUpdate(userId, userType, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+
+		return rowNum;
 	}
 
 }

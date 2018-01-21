@@ -21,4 +21,5 @@ public class UserQuery {
 	public static final String USER_SELECT = "select * from member where USER_ID = ?";
 	public static final String USER_LOGIN = "select * from member where USER_ID = ? and USER_PW = ?";
 	public static final String USER_DELETE = "delete from member where USER_ID = ?";
+	public static final String USER_TYPE_UPDATE = "update member set USER_TYPE = ?  where USER_ID = ?"; 
 }

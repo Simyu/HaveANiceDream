@@ -49,7 +49,7 @@
 				</a>
 					<ul class="sub">
 						<li><a href="#">거래내역 조회</a></li>
-						<li><a href="javascript:setPath('../point/point_detail.jsp')">포인트 조회</a></li>
+						<li><a href="/HaveANiceDream/point/list.do">포인트 조회</a></li>
 						<li><a href="javascript:setPath('../attendance/project_calender.jsp')">출석체크</a></li>
 					</ul></li>
 
@@ -86,7 +86,7 @@
 						class=" fa fa-bar-chart-o"></i> <span>관리자</span>
 				</a>
 					<ul class="sub">
-						<li><a href="javascript:setPath('../user/user_list.jsp')">회원 조회</a></li>
+						<li><a href="/HaveANiceDream/user/list.do">회원 조회</a></li>
 						<li><a href="javascript:setPath('../user/blacklist_page.jsp')">차단유저 조회</a></li>
 						<li><a href="javascript:setPath('../blame/reportview_center.jsp')">신고접수내역</a></li>
 					</ul></li>

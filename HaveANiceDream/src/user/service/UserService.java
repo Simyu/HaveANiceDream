@@ -9,5 +9,7 @@ public interface UserService {
 	ArrayList<MemberDTO> userList();
 	MemberDTO userSelect(String userId);
 	MemberDTO userLogin(String userId, String userPw);
+	int userDelete(String userId);
+	int userTypeUpdate(String userId, String userType);
 
 }
