@@ -18,7 +18,7 @@
 		location.href = "/HaveANiceDream/view.html?url=" + url;
 	} */
 	function popup(){
-   		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a", "width=1300, height=800, left=100, top=50")
+   		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a", "width=1400, height=800, left=100, top=50")
    		
    	}
 </script>

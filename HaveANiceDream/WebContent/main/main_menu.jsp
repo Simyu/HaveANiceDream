@@ -59,7 +59,7 @@
 					<ul class="sub">
 						<li><a href="javascript:setPath('../product/product_view_edit.jsp')">물품등록</a></li>
 						<li><a href="javascript:setPath('../product/product_list.jsp')">물품검색</a></li>
-						<li><a href="todo_list.html">Todo List</a></li>
+						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">드림 내역 확인 </a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-book"></i> <span>커뮤니티</span>
