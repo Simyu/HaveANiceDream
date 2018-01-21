@@ -110,7 +110,7 @@
 									src='http://img1.itemmania.com/images/icon/icon_silver_s.gif'
 									width='21' height='19' alt='실버' /></td>
 								<td class="numeric"><a
-									href="javascript:setPath('../product/product_view_edit.jsp')"
+									href="/HaveANiceDream/product_search.do?<%=dto.getProductNo()%>">
 									 class=""><%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
 								<td class="numeric"><%=dto.getProductPrice() %></td>
 								<td class="numeric"><%=dto.getProductDate()%></td>

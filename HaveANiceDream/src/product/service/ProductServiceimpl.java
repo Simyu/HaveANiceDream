@@ -50,4 +50,22 @@ public class ProductServiceimpl implements ProductService {
 		return product_list;
 	}
 
+	@Override
+	public ProductDTO productSelect(int productNo) {
+		ProductDTO product = new ProductDTO();
+		Connection connection = null;
+		productDAO dao = new productDAOimpl();
+		
+		
+		try {
+			connection = DBUtil.getConnect();
+			product = dao.productSelect(productNo, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		return product;
+	}
+
 }

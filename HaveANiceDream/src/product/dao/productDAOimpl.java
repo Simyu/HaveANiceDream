@@ -27,6 +27,20 @@ PRODUCT_NO                                NOT NULL NUMBER
  TRADE_TYPE                                         VARCHAR2(20)
  * */
 	
+	@Override
+	public ProductDTO productSelect(int productNo, Connection connection) throws SQLException {
+		ProductDTO product = null;
+		ResultSet resultSet = null;
+		PreparedStatement ptmt = null;
+		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTPNO);
+		resultSet = ptmt.executeQuery();
+		product = new ProductDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),
+					resultSet.getInt(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),
+						resultSet.getDate(9), resultSet.getInt(10), resultSet.getInt(11), resultSet.getString(12));
+		
+		return product;
+	}
+	
 	
 	@Override
 	public ArrayList<ProductDTO> product_List(Connection connection) throws SQLException {
@@ -96,6 +110,9 @@ PRODUCT_NO                                NOT NULL NUMBER
 
 		return result;
 	}
+
+
+	
 
 	
    
