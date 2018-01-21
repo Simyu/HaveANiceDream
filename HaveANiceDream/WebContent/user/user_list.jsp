@@ -74,14 +74,14 @@
 								<% if(type.equals("일반회원")) {%>
 								
 								<button class="btn btn-danger btn-xs"
-									onclick="javascript:urserTypeUpdate('<%= Id%>','차단회원')">차단</button>
+									onclick="location.href ='/HaveANiceDream/user/block/insert.do?userId=<%= Id%>'">차단</button>
 								<button class="btn btn-primary btn-xs"
 									onclick="javascript:urserTypeUpdate('<%= Id%>','관리자')">관리자</button>
 									
 								<%} else if (type.equals("차단회원")) {%>
 								
 								<button class="btn btn-danger btn-xs"
-									onclick="javascript:urserTypeUpdate('<%= Id%>','일반회원')">해제</button>
+									onclick="location.href ='/HaveANiceDream/user/block/delete.do?userId=<%= Id%>&pageType=userlist'">해제</button>
 									
 								<%} else if (type.equals("관리자")) {%>
 								

@@ -57,7 +57,7 @@
 						class="fa fa-cogs"></i> <span>거래</span>
 				</a>
 					<ul class="sub">
-						<li><a href="javascript:setPath('../product/product_view_edit.jsp')">물품등록</a></li>
+						<li><a href="javascript:setPath('../product/enroll_Sell.jsp')">물품등록</a></li>
 						<li><a href="javascript:setPath('../product/product_list.jsp')">물품검색</a></li>
 						<li><a href="todo_list.html">Todo List</a></li>
 					</ul></li>
@@ -87,7 +87,7 @@
 				</a>
 					<ul class="sub">
 						<li><a href="/HaveANiceDream/user/list.do">회원 조회</a></li>
-						<li><a href="javascript:setPath('../user/blacklist_page.jsp')">차단유저 조회</a></li>
+						<li><a href="/HaveANiceDream/user/block/list.do">차단유저 조회</a></li>
 						<li><a href="javascript:setPath('../blame/reportview_center.jsp')">신고접수내역</a></li>
 					</ul></li>
 
