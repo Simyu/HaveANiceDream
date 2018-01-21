@@ -882,9 +882,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	padding-top: 20px;
 }
 
-.mleft {
-}
-
 .border-head h3 {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2482,7 +2479,10 @@ body {margin: 10px;}
 }
 
 .plus-padding-left{
-	padding-left: 30px;
+	padding-left: 20px;
+}
+.plus-padding-right{
+	padding-right: 30px;
 }
 .product-trade-title-font{
 	color: black;
@@ -2532,7 +2532,21 @@ body {margin: 10px;}
 }
 
 #popup-size{
-	padding-left: 50px;
-	padding-top: 50px;
+	padding-left: 100px;
+	padding-top: 15px;
+	padding-right: 100px;
 }
 
+.trade-popup-content{
+	text-align: justify;
+	padding-left: 50px;
+	max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: 100%;
+}
+.trade-popup-btn{
+	text-align: center;
+	padding-top: 20px;
+
+}

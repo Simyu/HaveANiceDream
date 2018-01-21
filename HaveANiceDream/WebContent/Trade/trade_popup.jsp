@@ -83,7 +83,7 @@ pageEncoding="utf-8"%>
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
-		<section id="popup-size">
+		<section id="popup-size" >
 				<h3>
 					<i class="fa fa-angle-right"></i> 거래하기
 				</h3>
@@ -101,7 +101,7 @@ pageEncoding="utf-8"%>
 							</ul>
 					</div>
 					<div class="col-sm-8 no-pd plus-padding-left">
-						<div class="product-trade-title-font">영어를 못읽어서 드림합니다</div>
+						<div class="product-trade-title-font">내가 쓰다만 여러가지 각종 잡템을 드림해요!</div>
 						<div class="col-sm-2 product-trade-content-title-font" >아이디</div><div class="col-sm-10 product-trade-content-con-font">드림왕</div>
 						<div class="col-sm-2 product-trade-content-title-font" >물품이름</div><div class="col-sm-10 product-trade-content-con-font">구찌가방</div>
 						<div class="col-sm-2 product-trade-content-title-font" >필요 드림포인트</div><div class="col-sm-10 product-trade-content-con-font" ><label class="pt-font">3,000</label>포인트</div>
@@ -111,11 +111,23 @@ pageEncoding="utf-8"%>
 						<div class="col-sm-2 product-trade-content-title-font">사용기간</div><div class="col-sm-10 product-trade-content-con-font" >5개월</div>
 						<div class="col-sm-2 product-trade-content-title-font">등록일자</div><div class="col-sm-10 product-trade-content-con-font" >2018-01-02</div>
 						<div class="col-sm-12 next-line-hr">
-							<button class="btn btn-default btn-lg btn-style-line mr">거래신청</button>
-							<button class="btn btn-default btn-lg btn-style-line mr ml">문의하기</button>
-							<button class="btn btn-default btn-lg btn-style-line mr ml">1:1채팅</button>
+						
 						</div>
 					</div>
+				</div>
+				<div class="col-lg-12 " style="border: 2px solid black;">
+					<h5><i class="fa fa-angle-right"></i> 상세내용 </h5>
+						<div class="col-sm-12 product-trade-content-title-font trade-popup-content" >
+							여기는 내용이 들어갈 공간입니다. 어떤 내용이 들어가도 줄바꿈이 가능하며 걱정없습니다. 
+							계속해서 쭉쭉쭉 써주세요 그리고 신고기능을 추가할 겁니다. 어떻게 해야할까요? 내용안에 넣어야 겠지요? 
+							그럼 신고기능 연결을 위해 우리 진우와 또 의논을 해봐야 겠네요? 자 어때요 css 및 뷰작업은 이제 껌때가리죠? 
+							ㅎㅎㅎㅎㅎ 어떤내용을 넣을지 막막할 때는 무조건 구글링 & 밤샘 작업을 한다면 문제 없지요 자 그럼 우리 다함께 드림 하시다 드림드림드림 드림 드림~~
+							
+						</div>
+				</div>
+				<div class="col-lg-12 trade-popup-btn">
+					<button class="btn btn-default btn-lg btn-style-line mr">거래신청</button>
+					<button class="btn btn-default btn-lg btn-style-line mr ml">1:1채팅</button>
 				</div>
 		</section>
 		<!-- /MAIN CONTENT -->
