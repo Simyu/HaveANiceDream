@@ -34,7 +34,7 @@
 			<ul class="sidebar-menu" id="nav-accordion">
 
 				<p class="centered">
-					<a href="javascript:setPath('../user/user_detail.jsp')"><img
+					<a href="/HaveANiceDream/user/select.do"><img
 						src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
 						class="img-circle" width="60"></a>
 				</p>

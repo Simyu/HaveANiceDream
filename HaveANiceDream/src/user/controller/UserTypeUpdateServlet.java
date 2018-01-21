@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import user.service.UserService;
 import user.service.UserServiceImpl;
 
-@WebServlet(name = "user/typeupdate", urlPatterns = { "/user/typeupdate.do" })
+@WebServlet(name = "user/updatetype", urlPatterns = { "/user/updatetype.do" })
 public class UserTypeUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,11 +24,11 @@ public class UserTypeUpdateServlet extends HttpServlet {
 		String userType = request.getParameter("userType");
 
 		UserService service = new UserServiceImpl();
-		service.userTypeUpdate(userId, userType);
+		service.userUpdateType(userId, userType);
 
 		response.sendRedirect("/HaveANiceDream/user/list.do");
 
-		response.getWriter().println("UserTypeUpdateServlet");
+		//response.getWriter().println("UserTypeUpdateServlet");
 
 	}
 

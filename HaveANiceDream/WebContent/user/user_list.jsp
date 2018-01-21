@@ -107,7 +107,7 @@
 	<script type="text/javascript">
 		function urserTypeUpdate(id, type) {
 			_type = encodeURIComponent(type);
-			location.href = '/HaveANiceDream/user/typeupdate.do?userId=' + id
+			location.href = '/HaveANiceDream/user/updatetype.do?userId=' + id
 					+ '&userType=' + _type;
 		}
 	</script>

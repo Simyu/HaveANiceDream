@@ -188,7 +188,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int userTypeUpdate(String userId, String userType, Connection connection) throws SQLException {
+	public int userUpdateType(String userId, String userType, Connection connection) throws SQLException {
 		int rowNum = 0;
 		
 		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_TYPE_UPDATE);
@@ -202,6 +202,43 @@ public class UserDAOImpl implements UserDAO {
 		DBUtil.close(preparedStatement);
 		
 		return rowNum;
+	}
+
+	@Override
+	public int userUpdatePoint(int pointTotal, String userId, Connection connection) throws SQLException {
+		int rowNum = 0;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_POINT_UPDATE);
+		// "update member set POINT_TOTAL = ?  where USER_ID = ?"; 
+		
+		preparedStatement.setInt(1, pointTotal);
+		preparedStatement.setString(2, userId);
+		
+		rowNum = preparedStatement.executeUpdate();
+		
+		DBUtil.close(preparedStatement);
+		
+		return rowNum;
+	}
+
+	@Override
+	public int userGetPoint(String userId, Connection connection) throws SQLException {
+		int pointTotal = 0;
+				
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_GET_POINT);
+		// "select POINT_TOTAL from member where USER_ID = ?";
+		
+		preparedStatement.setString(1, userId);
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if (resultSet.next()){
+			pointTotal = resultSet.getInt(1);
+		}
+		
+		DBUtil.close(resultSet);
+		DBUtil.close(preparedStatement);
+		
+		return pointTotal;
 	}
 
 }
