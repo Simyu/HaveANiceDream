@@ -1,3 +1,5 @@
+<%@page import="user.dto.MemberDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -38,22 +40,63 @@
 					<thead>
 						<tr>
 							<th>ID</th>
+							<th>이메일</th>
+							<th>이름</th>
+							<th>주소</th>
+							<th>전화번호</th>
+							<th>가입 날짜</th>
 							<th>마지막 접속 날짜</th>
 							<th>회원종류</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
+						<%
+
+							ArrayList<MemberDTO> userList = (ArrayList<MemberDTO>) request.getAttribute("userlist");
+							if (userList != null) {
+								int size = userList.size();
+								for (int i = 0; i < size; i++) {
+									MemberDTO user = userList.get(i);
+									String Id = user.getUserId();
+									String type = user.getUserType();
+						%>
 						<tr>
-							<td>ark004</td>
-							<td>2017년 12월 31일</td>
-							<td>일반회원</td>
+							<td><%= Id %></td>
+							<td><%= user.getUserEmail() %></td>
+							<td><%= user.getUserName() %></td>
+							<td>(<%= user.getUserZipcode() %>)<%= user.getUserAddr() %></td>
+							<td><%= user.getUserTel() %></td>
+							<td><%= user.getUserSigdate() %></td>
+							<td><%= user.getUserLastLoginTime() %></td>
+							<td><%= type %></td>
 							<td>
-								<button class="btn btn-primary btn-xs">차단</button>
-								<button class="btn btn-primary btn-xs">관리자</button>
-								<button class="btn btn-primary btn-xs">일반회원</button>
+								<% if(type.equals("일반회원")) {%>
+								
+								<button class="btn btn-danger btn-xs"
+									onclick="javascript:urserTypeUpdate('<%= Id%>','차단회원')">차단</button>
+								<button class="btn btn-primary btn-xs"
+									onclick="javascript:urserTypeUpdate('<%= Id%>','관리자')">관리자</button>
+									
+								<%} else if (type.equals("차단회원")) {%>
+								
+								<button class="btn btn-danger btn-xs"
+									onclick="javascript:urserTypeUpdate('<%= Id%>','일반회원')">해제</button>
+									
+								<%} else if (type.equals("관리자")) {%>
+								
+								<button class="btn btn-primary btn-xs"
+									onclick="javascript:urserTypeUpdate('<%= Id%>','일반회원')">일반회원</button>
+									
+								<%} %>
+								<button class="btn btn-warning btn-xs"
+									onclick="location.href ='/HaveANiceDream/user/delete.do?userId=<%= Id%>'">탈퇴</button>
 							</td>
 						</tr>
+						<%
+							}
+							}
+						%>
 					</tbody>
 				</table>
 			</div>
@@ -61,7 +104,13 @@
 		</div>
 		<!-- /col-md-12 -->
 	</div>
-
+	<script type="text/javascript">
+		function urserTypeUpdate(id, type) {
+			_type = encodeURIComponent(type);
+			location.href = '/HaveANiceDream/user/updatetype.do?userId=' + id
+					+ '&userType=' + _type;
+		}
+	</script>
 
 </body>
 </html>

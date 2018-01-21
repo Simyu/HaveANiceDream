@@ -43,10 +43,10 @@ public class MemberDTO {
 		this.userAddr = userAddr;
 		this.userTel = userTel;
 		this.userSigdate = null;
-		this.userLogType = "�⺻";
+		this.userLogType = "기본";
 		this.userLastLoginTime = null;
 		this.pointTotal = 5000;
-		this.userType = "�Ϲ�ȸ��";
+		this.userType = "일반회원";
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,

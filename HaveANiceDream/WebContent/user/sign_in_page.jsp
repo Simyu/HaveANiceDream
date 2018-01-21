@@ -57,7 +57,7 @@
 						<label class="col-sm-2 col-sm-2 control-label">주소</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="userZipcode"
-								id="userZipcode" disabled>
+								id="userZipcode" readonly="readonly">
 						</div>
 						<div class="col-sm-2">
 							<button type="button"
@@ -69,7 +69,7 @@
 						<label class="col-sm-2 col-sm-2 control-label"></label>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" name="userAddr1"
-								id="userAddr1" disabled>
+								id="userAddr1" readonly="readonly">
 						</div>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" name="userAddr2"

@@ -25,8 +25,20 @@ public class BlameDTO {
     public BlameDTO() {
 		// TODO Auto-generated constructor stub
 	}
+    public BlameDTO(String userIdBlamere, String userIdBlamee,String blameType,Integer productNo, String attachedFile, String blameTitle, String blameContent) {
+		super();
+		this.blameNo = null;
+		this.blameDate = null;
+		this.userIdBlamere = userIdBlamere;
+		this.userIdBlamee = userIdBlamee;
+		this.blameType = blameType;
+		this.productNo = productNo;
+		this.attachedFile = attachedFile;
+		this.blameTitle = blameTitle;
+		this.blameContent = blameContent;
+	}
 
-	public BlameDTO(Integer blameNo, Date blameDate, String userIdBlamere, String userIdBlamee, String blameType,
+	public BlameDTO(Integer blameNo, Date blameDate,String userIdBlamere, String userIdBlamee,String blameType,
 			Integer productNo, String attachedFile, String blameTitle, String blameContent) {
 		super();
 		this.blameNo = blameNo;

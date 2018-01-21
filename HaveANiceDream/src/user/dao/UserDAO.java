@@ -11,4 +11,8 @@ public interface UserDAO {
 	ArrayList<MemberDTO> userList(Connection connection) throws SQLException;
 	MemberDTO userSelect(String userId, Connection connection) throws SQLException;
 	MemberDTO userLogin(String userId, String userPw, Connection connection) throws SQLException;
+	int userDelete(String userId, Connection connection) throws SQLException;
+	int userUpdateType(String userId, String userType, Connection connection) throws SQLException;
+	int userUpdatePoint(int pointTotal, String userId, Connection connection) throws SQLException;
+	int userGetPoint(String userId, Connection connection) throws SQLException;
 }

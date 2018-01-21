@@ -1,4 +1,4 @@
-package blame;
+package blame.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;

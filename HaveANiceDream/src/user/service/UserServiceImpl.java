@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fw.DBUtil;
+import point.dao.PointDAO;
+import point.dao.PointDAOImpl;
+import point.dto.PointDTO;
 import user.dao.UserDAO;
 import user.dao.UserDAOImpl;
 import user.dto.MemberDTO;
@@ -20,6 +23,12 @@ public class UserServiceImpl implements UserService {
 		try {
 			connection = DBUtil.getConnect();
 			rowNum = dao.userInsert(user, connection);
+			
+			if(rowNum > 0) {
+				PointDAO pointDAO = new PointDAOImpl();
+				PointDTO point = new PointDTO(0, user.getUserId(), null, "가입", +5000);
+				rowNum += pointDAO.pointInsert(point, connection);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -81,6 +90,43 @@ public class UserServiceImpl implements UserService {
 		}
 		 
 		return dto;
+	}
+
+	@Override
+	public int userDelete(String userId) {
+		Connection connection = null;
+		UserDAO dao = new UserDAOImpl();
+		int rowNum = 0;
+		
+		try {
+			connection = DBUtil.getConnect();
+			rowNum = dao.userDelete(userId, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		
+		return rowNum;
+	}
+
+	@Override
+	public int userUpdateType(String userId, String userType) {
+		Connection connection = null;
+		UserDAO dao = new UserDAOImpl();
+		int rowNum = 0;
+
+		try {
+			connection = DBUtil.getConnect();
+			dao.userUpdateType(userId, userType, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+
+		return rowNum;
 	}
 
 }

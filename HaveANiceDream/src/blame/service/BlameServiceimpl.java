@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import static fw.DBUtil.*;
-import blame.BlameDAO;
+
+import blame.dao.BlameDAO;
+import blame.dao.BlameDAOimpl;
 import blame.dto.BlameDTO;
 import fw.DBUtil;
 
@@ -25,6 +27,7 @@ public class BlameServiceimpl implements BlameService {
 		}
 		
 		return result;
+		 
 	}
 
 	public ArrayList<BlameDTO> list() {
