@@ -2,7 +2,15 @@ package product;
 
 public class ProductQuery {
 	public static final String PRODUCT_INSERT = "insert into product values(product_seq.nextval,?,?,?,?,?,?,?,sysdate,?,?,?)";
-//»óÇ°¹øÈ£  ¾ÆÀÌµð Ä«Å×°í¸®¹øÈ£ »óÇ°ÀÌ¸§ °¡°Ý ³»¿ë °¹¼ö Á¦¸ø ³¯Â¥ »óÅÂ ¸¸·áÀÏ Å¸ÀÔ
+	
+	
+	
+	
+	
+	
+	
+	public static final String PRODUCT_SELECTALL="select * from product";
+//ï¿½ï¿½Ç°ï¿½ï¿½È£  ï¿½ï¿½ï¿½Ìµï¿½ Ä«ï¿½×°ï¿½ï¿½ï¿½È£ ï¿½ï¿½Ç°ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½
 
 
 

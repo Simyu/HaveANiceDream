@@ -52,8 +52,8 @@ public class Product_Enroll_Servlet extends HttpServlet {
 
 		request.setAttribute("viewpath", viewpath);
 
-		//RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-		//requestDispatcher.forward(request, response);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
+		requestDispatcher.forward(request, response);
 		
 		
 		

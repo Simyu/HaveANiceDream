@@ -2,27 +2,70 @@ package product.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import fw.DBUtil;
 import product.ProductDTO;
 import product.ProductQuery;
+import user.dto.MemberDTO;
 
 public class productDAOimpl implements productDAO {
 /*
- * PRODUCT_NO                                    NOT NULL NUMBER
- USER_ID                                               VARCHAR2(20)
- CATEGORY_NO                                              NUMBER
- PRODUCT_NAME                                                VARCHAR2(20)
- PRODUCT_PRICE                                               NUMBER
- PRODUCT_CONTENT                                               VARCHAR2(2000)
- PRODUCT_COUNT                                        NUMBER
- PRODUCT_TITLE                            VARCHAR2(200)
- PRODUCT_DATE                             DATE
- PRODUCT_STATE                            VARCHAR2(20)
- PRODUCT_EXF_DATE                               NUMBER
- TRADE_TYPE                            CHAR(1)
+PRODUCT_NO                                NOT NULL NUMBER
+ USER_ID                                            VARCHAR2(20)
+ CATEGORY_NO                                        NUMBER
+ PRODUCT_NAME                                       VARCHAR2(20)
+ PRODUCT_PRICE                                      NUMBER
+ PRODUCT_CONTENT                                    VARCHAR2(2000)
+ PRODUCT_GRADE                                      VARCHAR2(20)
+ PRODUCT_TITLE                                      VARCHAR2(200)
+ PRODUCT_DATE                                       DATE
+ PRODUCT_STATE                                      NUMBER
+ PRODUCT_EXF_DATE                                   NUMBER
+ TRADE_TYPE                                         VARCHAR2(20)
  * */
+	
+	
+	@Override
+	public ArrayList<ProductDTO> product_List(Connection connection) throws SQLException {
+		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
+		ResultSet resultSet = null;
+		PreparedStatement ptmt = null;
+		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL);
+		resultSet = ptmt.executeQuery();
+		while (resultSet.next()) {
+			if (product_list == null) {
+				product_list = new ArrayList<ProductDTO>();
+			}
+
+			ProductDTO  dto = new ProductDTO(
+					resultSet.getInt(1),
+					resultSet.getString(2),
+					resultSet.getInt(3),
+					resultSet.getString(4),
+					resultSet.getInt(5),
+					resultSet.getString(6),
+					resultSet.getString(7),
+					resultSet.getString(8),
+					resultSet.getDate(9),
+					resultSet.getInt(10),
+					resultSet.getInt(11),
+					resultSet.getString(12)
+					);
+
+			product_list.add(dto);
+		}
+		
+		
+		
+		
+		
+		return product_list;
+	}
+	
+	
 	@Override
 	public int insertProduct(ProductDTO product, Connection connection ) throws SQLException {
 		
@@ -53,5 +96,7 @@ public class productDAOimpl implements productDAO {
 
 		return result;
 	}
+
+	
    
 }
