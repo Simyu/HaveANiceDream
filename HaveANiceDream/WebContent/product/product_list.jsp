@@ -13,10 +13,14 @@
 <title>DASHGUM - Bootstrap Admin Template</title>
 
 <script type="text/javascript">
-	function setPath(url) {
+/* 	function setPath(url) {
 
 		location.href = "/HaveANiceDream/view.html?url=" + url;
-	}
+	} */
+	function popup(){
+   		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a", "width=1200, height=700, left=100, top=50")
+   		
+   	}
 </script>
 </head>
 
@@ -99,7 +103,7 @@
 									width='21' height='19' alt='실버' /></td>
 								<td class="numeric"><a
 									href="javascript:setPath('../product/product_view_edit.jsp')"
-									onclick="$.fnViewId('2018011403747952')" class="">유모차 나눔합니다</a></td>
+									onclick="popup()" class="">유모차 나눔합니다</a></td>
 								<td class="numeric">24,000원</td>
 								<td class="numeric">11:08</td>
 							</tr>
