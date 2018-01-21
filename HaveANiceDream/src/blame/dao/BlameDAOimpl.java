@@ -75,10 +75,7 @@ public class BlameDAOimpl implements BlameDAO {
 	}
 
 
-	public int update(BlameDTO dto, Connection con) throws SQLException {
-
-		return 0;
-	}
+	
 
 	public BlameDTO select(int blameNo, Connection con) throws SQLException {
 		BlameDTO dto = null;
@@ -106,6 +103,25 @@ public class BlameDAOimpl implements BlameDAO {
 		DBUtil.close(ptmt);
 		
 		return dto;
+	}
+
+
+	
+	public int update(String blameType, String attachedFile, String blameTitle, String blameContent, Connection con)
+			throws SQLException {
+		int result = 0;
+		
+		PreparedStatement ptmt = con.prepareStatement(BlameQuery.BLAME_UPDATE);
+		
+		ptmt.setString(1, blameType);
+		ptmt.setString(2, attachedFile);
+		ptmt.setString(3, blameTitle);
+		ptmt.setString(4, blameContent);
+		
+		result = ptmt.executeUpdate();
+		
+		DBUtil.close(ptmt);
+		return result;
 	}
 
 }

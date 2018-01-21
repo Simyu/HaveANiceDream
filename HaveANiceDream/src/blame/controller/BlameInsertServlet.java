@@ -15,7 +15,7 @@ import blame.service.BlameServiceimpl;
 
 
 @WebServlet(name = "blame/insert", urlPatterns = {"/blame/insert.do"})
-public class InsertServlet extends HttpServlet {
+public class BlameInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unused")
