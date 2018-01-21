@@ -91,6 +91,14 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-sm-2 col-sm-2 control-label">물품상태</label>
+						<div class="col-sm-10">
+								   <input type="radio" name="productGrade" value="high">상
+	   							   <input type="radio" name="productGrade" value="middle">중
+	   							   <input type="radio" name="productGrade" value="low">하
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">물품제목</label>
 						<div class="col-sm-10">
 							<input class="form-control" type="text" id="productTitle" name="productTitle"

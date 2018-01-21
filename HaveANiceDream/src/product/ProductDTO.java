@@ -6,13 +6,22 @@ public class ProductDTO {
 
     private Integer productNo;
 
-    public ProductDTO(String userId, String productName, Integer productPrice, String productContent,
-			String productTitle, String productState, String tradeType) {
+    public String getProduct_Grade() {
+		return product_Grade;
+	}
+
+	public void setProduct_Grade(String product_Grade) {
+		this.product_Grade = product_Grade;
+	}
+
+	public ProductDTO(String userId, String productName, Integer productPrice, String productContent, String productGrade,
+			String productTitle, int productState, String tradeType) {
 		super();
 		this.userId = userId;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productContent = productContent;
+		this.product_Grade = productGrade;
 		this.productTitle = productTitle;
 		this.productState = productState;
 		this.tradeType = tradeType;
@@ -28,13 +37,13 @@ public class ProductDTO {
 
     private String productContent;
 
-    private Integer productCount;
+    private String product_Grade;
 
     private String productTitle;
 
     private Date productDate;
 
-    private String productState;
+    private int productState;
 
     private Integer productExfDate;
 
@@ -45,7 +54,7 @@ public class ProductDTO {
 	}
 
 	public ProductDTO(Integer productNo, String userId, Integer categoryNo, String productName, Integer productPrice,
-			String productContent, Integer productCount, String productTitle, Date productDate, String productState,
+			String productContent, String product_Grade, String productTitle, Date productDate, int productState,
 			Integer productExfDate, String tradeType) {
 		super();
 		this.productNo = productNo;
@@ -54,7 +63,7 @@ public class ProductDTO {
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productContent = productContent;
-		this.productCount = productCount;
+		this.product_Grade = product_Grade;
 		this.productTitle = productTitle;
 		this.productDate = productDate;
 		this.productState = productState;
@@ -72,6 +81,11 @@ public class ProductDTO {
 
 	public String getUserId() {
 		return userId;
+	}
+
+	public ProductDTO(int productState) {
+		super();
+		this.productState = productState;
 	}
 
 	public void setUserId(String userId) {
@@ -110,13 +124,10 @@ public class ProductDTO {
 		this.productContent = productContent;
 	}
 
-	public Integer getProductCount() {
-		return productCount;
+	public String product_Grade() {
+		return product_Grade;
 	}
 
-	public void setProductCount(Integer productCount) {
-		this.productCount = productCount;
-	}
 
 	public String getProductTitle() {
 		return productTitle;
@@ -134,11 +145,11 @@ public class ProductDTO {
 		this.productDate = productDate;
 	}
 
-	public String getProductState() {
+	public int getProductState() {
 		return productState;
 	}
 
-	public void setProductState(String productState) {
+	public void setProductState(int productState) {
 		this.productState = productState;
 	}
 
@@ -162,7 +173,7 @@ public class ProductDTO {
 	public String toString() {
 		return "ProductDTO [productNo=" + productNo + ", userId=" + userId + ", categoryNo=" + categoryNo
 				+ ", productName=" + productName + ", productPrice=" + productPrice + ", productContent="
-				+ productContent + ", productCount=" + productCount + ", productTitle=" + productTitle
+				+ productContent + ", productCount=" + product_Grade + ", productTitle=" + productTitle
 				+ ", productDate=" + productDate + ", productState=" + productState + ", productExfDate="
 				+ productExfDate + ", tradeType=" + tradeType + "]";
 	}
