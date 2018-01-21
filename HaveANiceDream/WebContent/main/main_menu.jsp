@@ -87,7 +87,7 @@
 				</a>
 					<ul class="sub">
 						<li><a href="/HaveANiceDream/user/list.do">회원 조회</a></li>
-						<li><a href="javascript:setPath('../user/blacklist_page.jsp')">차단유저 조회</a></li>
+						<li><a href="/HaveANiceDream/user/block/list.do">차단유저 조회</a></li>
 						<li><a href="javascript:setPath('../blame/reportview_center.jsp')">신고접수내역</a></li>
 					</ul></li>
 

@@ -1,4 +1,4 @@
-package user.block;
+package user.block.dto;
 
 import java.sql.Date;
 
