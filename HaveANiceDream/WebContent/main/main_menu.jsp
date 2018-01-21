@@ -57,7 +57,7 @@
 						class="fa fa-cogs"></i> <span>거래</span>
 				</a>
 					<ul class="sub">
-						<li><a href="javascript:setPath('../product/product_view_edit.jsp')">물품등록</a></li>
+						<li><a href="javascript:setPath('../product/enroll_Sell.jsp')">물품등록</a></li>
 						<li><a href="javascript:setPath('../product/product_list.jsp')">물품검색</a></li>
 						<li><a href="todo_list.html">Todo List</a></li>
 					</ul></li>
