@@ -6,7 +6,19 @@ public class ProductDTO {
 
     private Integer productNo;
 
-    private String userId;
+    public ProductDTO(String userId, String productName, Integer productPrice, String productContent,
+			String productTitle, String productState, String tradeType) {
+		super();
+		this.userId = userId;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productContent = productContent;
+		this.productTitle = productTitle;
+		this.productState = productState;
+		this.tradeType = tradeType;
+	}
+
+	private String userId;
 
     private Integer categoryNo;
 

@@ -33,8 +33,8 @@
 				<h4 class="mb">
 					<i class="fa fa-angle-right"></i> 판매 등록
 				</h4>
-				<form class="form-horizontal style-form" method="get"
-					action="/project_dream/Theme/chartjs.html">
+				<form class="form-horizontal style-form" method="post"
+					action="/HaveANiceDream/product_enroll.do">
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">카테고리</label>
 						<div class="col-sm-10">
@@ -42,7 +42,7 @@
 
 								<input type="text" class="form-control" value="글씨를쓰면 DB검색을 통해 ">
 								<br /> <select multiple class="form-control"
-									name="search_game_text" id="search_game_text" size="8"
+									name="categoryName" id="categoryName" size="8"
 									style="width: 100%">
 									<option value="java">유아용품
 									<option value="하둡">핸드폰
@@ -55,8 +55,8 @@
 
 								<input type="text" class="form-control"
 									value="  list를 받아 올예정입니다"> <br /> <select multiple
-									class="form-control" name="search_game_text"
-									id="search_game_text" size="8" style="width: 100%">
+									class="form-control" name="categoryDetailName"
+									id="categoryDetailName" size="8" style="width: 100%">
 
 									<option value="java">유모차
 									<option value="하둡">유아용옷
@@ -71,29 +71,36 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">판매금액</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control"> <span
-								class="help-block">A block of help text that breaks onto
+							<input type="text" class="form-control" id="productPrice" name="productPrice"> <span
+								class="help-block" " >A block of help text that breaks onto
 								a new line and may extend beyond one line.</span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">판매자명</label>
+						<label class="col-sm-2 col-sm-2 control-label">상품명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control"> <label>반드시
+							<input type="text" class="form-control" id="productName" name="productName"> <label>반드시
 								실명을 작성해 주시기 바랍니다.</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 col-sm-2 control-label">거래방식</label>
+						<div class="col-sm-10">
+								   <input type="radio" name="tradeType" value="trade">직거래
+	   							   <input type="radio" name="tradeType" value="delivery_trade">택배거래
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">물품제목</label>
 						<div class="col-sm-10">
-							<input class="form-control" type="text"
+							<input class="form-control" type="text" id="productTitle" name="productTitle"
 								value="This is focused...">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-							<textarea rows="10" cols="100%"></textarea>
+							<textarea rows="10" cols="100%" id="productCount" name="productCount"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -130,7 +137,7 @@
 						<div class="col-sm-6">
 							<label class="col-sm-2 col-sm-2 control-label">이름</label>
 							<div class="col-sm-4">
-								<p class="form-control-static">로그인된상태이니까 아이디를 통해 이름을 받아 올
+								<p class="form-control-static" id="userId" name="userId" >로그인된상태이니까 아이디를 통해 이름을 받아 올
 									예정입니다.</p>
 							</div>
 
@@ -152,7 +159,7 @@
 					<div class="form-group" align="center">
 						<button type="submit" class="btn btn-round btn-default">등록하기</button>
 
-						<button type="submit" class="btn btn-round btn-default">취소하기</button>
+						<button type="reset" class="btn btn-round btn-default">취소하기</button>
 					</div>
 				</form>
 			</div>

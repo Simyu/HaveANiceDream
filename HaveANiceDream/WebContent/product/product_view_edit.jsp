@@ -54,7 +54,7 @@
 							<div class="col-sm-5">
 
 								<input type="text" class="form-control" value="  list가 변경될예정입니다">
-								<br /> <select name="search_game_text" id="search_game_text"
+								<br /> <select name="categoryDetailName" id="categoryDetailName"
 									size="8" style="width: 100%">
 
 									<option value="java">유모차
