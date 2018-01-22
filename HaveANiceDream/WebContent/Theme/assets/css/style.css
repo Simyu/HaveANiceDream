@@ -2625,6 +2625,26 @@ body {margin: 10px;}
 	height: 51px;
 	background-color: #f7f7f7;
 }
+.trade-lookup-con3{
+	border: 0.5px solid silver;
+	margin-bottom: 5px;
+	padding-left: 5px;
+	padding-top: 10px;
+	font-weight: 900;
+	color: black;
+	height: auto;
+	background-color: #f7f7f7;
+}
+.trade-lookup-con4{
+	border-bottom: 1px solid silver;
+	border-top: 1px solid silver;
+	font-weight: 900;
+	color: black;
+	height: auto;
+	padding-top: 10px;
+	background-color: #f7f7f7;
+	font-size: 11pt;
+}
 
 .demo-3 i {
   position: absolute;
@@ -2654,4 +2674,15 @@ body {margin: 10px;}
   left: 22px;
   bottom: 5px;
 }
+.p-font-sty1{
+	font-size: 8pt;
+	color: #c1af9e;
+}
+.icon-sty{
+	background-color:#7d7d7c; 
+	color: white; 
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
 

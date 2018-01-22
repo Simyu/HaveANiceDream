@@ -33,6 +33,10 @@
 
 		location.href = "/HaveANiceDream/view.html?url=" + url;
 	}
+	function popup(){
+   		window.open("/HaveANiceDream/Trade/trade_ing-detail.jsp", "button", "width=1200, height=800, left=100, top=50")
+   		
+   	}
 </script>
 </head>
 
@@ -92,7 +96,7 @@
 				<div class="col-lg-1 trade-ing-date height-sort">
 					<p>2018-01-21</p>
 					<div class="col-lg-12">
-						<button class="label label-default trade-btn-height">거래상세보기</button>
+						<button class="label label-default trade-btn-height" onclick="popup()">거래상세보기</button>
 					</div>
 				</div>
 				<div class="col-lg-7">
@@ -137,7 +141,7 @@
 				<div class="col-lg-1 trade-ing-date height-sort">
 					<p>2018-01-21</p>
 					<div class="col-lg-12">
-						<button class="label label-default trade-btn-height">거래상세보기</button>
+						<button class="label label-default trade-btn-height" onclick="popup()">거래상세보기</button>
 					</div>
 				</div>
 				<div class="col-lg-7">
@@ -199,7 +203,7 @@
 							진행 중 </label>
 					</div>
 					<div class="col-lg-12">
-						<button type="button" class="btn btn-success btn-sm">인수확인</button>
+						<button type="button" class="btn btn-primary btn-sm">인계확인</button>
 					</div>
 				</div>
 				<div class="col-lg-2 centered height-sort">
