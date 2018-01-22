@@ -1,4 +1,6 @@
 
+<%@page import="blame.dto.BlameDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -15,6 +17,10 @@
 </head>
 
 <body>
+	<%
+		ArrayList<BlameDTO> list = (ArrayList) request.getAttribute("blamelist");
+		int size = list.size();
+	%>
 
 	<h3>
 		<i class="fa fa-angle-right"></i> 신고 접수내역
@@ -49,32 +55,20 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>1</td>
-							<td>2018-01-21</td>
-							<td>사기신고</td>
-							<td>Atree</td>
-							<td>Britz</td>
-							<td>이러이러햇습니다</td>
-							<td>처리완료</td>
+							<%
+								for (int i = 0; i < size; i++) {
+									BlameDTO dept = list.get(i);
+							%>
+							<td><%=dept.getBlameNo()%></td>
+							<td><%=dept.getBlameDate()%></td>
+							<td><%=dept.getBlameType()%></td>
+							<td><%=dept.getUserIdBlamere()%></td>
+							<td><%=dept.getUserIdBlamee()%></td>
+							<td><a href="/serverweb/blame/Answer_list.jsp"><%=dept.getBlameTitle()%></a></td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>2018-01-21</td>
-							<td>허위신고</td>
-							<td>Quarterback</td>
-							<td>cloud</td>
-							<td>이러이러햇습니다</td>
-							<td>처리대기</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>2018-01-21</td>
-							<td>욕설신고</td>
-							<td>bs050204</td>
-							<td>marcel</td>
-							<td>이러이러햇습니다</td>
-							<td>처리대기</td>
-						</tr>
+						<%
+							}
+						%>
 					</tbody>
 
 				</table>

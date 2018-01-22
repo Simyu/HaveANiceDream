@@ -108,7 +108,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-							<textarea rows="10" cols="100%" id="productCount" name="productCount"></textarea>
+							<textarea rows="10" cols="100%" id="productContent" name="productContent"></textarea>
 						</div>
 					</div>
 					<div class="form-group">

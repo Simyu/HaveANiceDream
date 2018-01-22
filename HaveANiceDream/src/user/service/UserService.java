@@ -11,5 +11,6 @@ public interface UserService {
 	MemberDTO userLogin(String userId, String userPw);
 	int userDelete(String userId);
 	int userUpdateType(String userId, String userType);
+	int userUpdateLoginTime(String userId);
 
 }

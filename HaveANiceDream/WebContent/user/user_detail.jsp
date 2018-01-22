@@ -24,7 +24,7 @@
 			<div class="form-panel">
 				<form class="form-horizontal style-form" method="get">
 					<%
-						MemberDTO user = (MemberDTO) request.getAttribute("user");
+						MemberDTO user = (MemberDTO) session.getAttribute("user");
 					%>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">아이디</label>
