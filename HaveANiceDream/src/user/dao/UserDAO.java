@@ -15,4 +15,5 @@ public interface UserDAO {
 	int userUpdateType(String userId, String userType, Connection connection) throws SQLException;
 	int userUpdatePoint(int pointTotal, String userId, Connection connection) throws SQLException;
 	int userGetPoint(String userId, Connection connection) throws SQLException;
+	int userUpdateLoginTime(String userId, Connection connection) throws SQLException;
 }

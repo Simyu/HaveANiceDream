@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -22,6 +23,9 @@
 </head>
 
 <body>
+	<%
+		MemberDTO user = (MemberDTO) session.getAttribute("user");
+	%>
 
 
 	<!-- **********************************************************************************************************************************************************
@@ -32,17 +36,15 @@
 		<div id="sidebar" class="nav-collapse ">
 			<!-- sidebar menu start-->
 			<ul class="sidebar-menu" id="nav-accordion">
-
+				<%
+					if (user != null) {
+				%>
 				<p class="centered">
-					<a href="/HaveANiceDream/user/select.do"><img
+					<a href="javascript:setPath('../user/user_detail.jsp')"><img
 						src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
 						class="img-circle" width="60"></a>
 				</p>
-				<h5 class="centered">Marcel Newman</h5>
-
-				<li class="mt"><a class="active" href="index.html"> <i
-						class="fa fa-dashboard"></i> <span>Dashboard</span>
-				</a></li>
+				<h5 class="centered"><%=user.getUserName()%></h5>
 
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-desktop"></i> <span>My page</span>
@@ -50,14 +52,20 @@
 					<ul class="sub">
 						<li><a href="#">거래내역 조회</a></li>
 						<li><a href="/HaveANiceDream/point/list.do">포인트 조회</a></li>
+
 						<li><a href="/HaveANiceDream/attendance/insert.do">출석체크</a></li>
+
 					</ul></li>
 
+				<%
+					}
+				%>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-cogs"></i> <span>거래</span>
 				</a>
 					<ul class="sub">
-						<li><a href="javascript:setPath('../product/enroll_Sell.jsp')">물품등록</a></li>
+						<li><a
+							href="javascript:setPath('../product/enroll_Sell.jsp')">물품등록</a></li>
 						<li><a href="/HaveANiceDream/product_list.do">물품검색</a></li>
 						<li><a href="todo_list.html">Todo List</a></li>
 					</ul></li>
@@ -82,14 +90,25 @@
 						<li><a href="javascript:setPath('../blame/report_boss.jsp')">신고하기</a></li>
 						<li><a href="/HaveANiceDream/blame/list.do?state=1">신고내역조회</a></li>
 					</ul></li>
+				<%
+					if (user != null && user.getUserType().equals("관리자")) {
+				%>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class=" fa fa-bar-chart-o"></i> <span>관리자</span>
 				</a>
 					<ul class="sub">
 						<li><a href="/HaveANiceDream/user/list.do">회원 조회</a></li>
 						<li><a href="/HaveANiceDream/user/block/list.do">차단유저 조회</a></li>
+<<<<<<< HEAD
 						<li><a href="/HaveANiceDream/blame/list.do?state=2">신고접수내역</a></li>
+=======
+						<li><a
+							href="javascript:setPath('../blame/report_list_center.jsp')">신고접수내역</a></li>
+>>>>>>> branch 'master' of https://github.com/Simyu/HaveANiceDream.git
 					</ul></li>
+				<%
+					}
+				%>
 
 			</ul>
 			<!-- sidebar menu end-->
