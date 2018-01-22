@@ -1,3 +1,6 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="user.block.dto.BlockDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -44,14 +47,29 @@
 						</tr>
 					</thead>
 					<tbody>
+						<%
+							ArrayList<BlockDTO> blacklist = (ArrayList<BlockDTO>) request.getAttribute("blocklist");
+							SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
+							if (blacklist != null) {
+								int size = blacklist.size();
+								BlockDTO dto = null;
+								for (int i = 0; i < size; i++) {
+									dto = blacklist.get(i);
+									String Id = dto.getUserId();
+						%>
 						<tr>
-							<td>ark004</td>
-							<td>2017년 12월 31일</td>
-							<td>짜증나서</td>
+							<td><%=Id%></td>
+							<td><%=dateFormat.format(dto.getBlockDate())%></td>
+							<td><%=dto.getBlockReason()%></td>
 							<td>
-								<button class="btn btn-danger btn-xs">해제</button>
+								<button class="btn btn-danger btn-xs"
+									onclick="location.href ='/HaveANiceDream/user/block/delete.do?userId=<%=Id%>&pageType=blacklist'">해제</button>
 							</td>
 						</tr>
+						<%
+							}
+							}
+						%>
 					</tbody>
 				</table>
 			</div>

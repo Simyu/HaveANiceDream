@@ -10,6 +10,7 @@ public interface UserService {
 	MemberDTO userSelect(String userId);
 	MemberDTO userLogin(String userId, String userPw);
 	int userDelete(String userId);
-	int userTypeUpdate(String userId, String userType);
+	int userUpdateType(String userId, String userType);
+	int userUpdateLoginTime(String userId);
 
 }

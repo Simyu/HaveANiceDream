@@ -112,20 +112,38 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int userTypeUpdate(String userId, String userType) {
+	public int userUpdateType(String userId, String userType) {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		int rowNum = 0;
 
 		try {
 			connection = DBUtil.getConnect();
-			dao.userTypeUpdate(userId, userType, connection);
+			dao.userUpdateType(userId, userType, connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.close(connection);
 		}
 
+		return rowNum;
+	}
+
+	@Override
+	public int userUpdateLoginTime(String userId) {
+		Connection connection = null;
+		UserDAO dao = new UserDAOImpl();
+		int rowNum = 0;
+		
+		try {
+			connection = DBUtil.getConnect();
+			rowNum = dao.userUpdateLoginTime(userId, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
 		return rowNum;
 	}
 

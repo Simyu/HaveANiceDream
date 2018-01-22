@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import user.service.UserService;
 import user.service.UserServiceImpl;
 
-
 @WebServlet(name = "user/delete", urlPatterns = { "/user/delete.do" })
 public class UserDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserService service = new UserServiceImpl();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String userId = request.getParameter("userId");
-		String userType = request.getParameter("userType");
-		service.userTypeUpdate(userId,userType);
-		
+
+		UserService service = new UserServiceImpl();
+		service.userDelete(userId);
+
 		response.sendRedirect("/HaveANiceDream/user/list.do");
 	}
 
