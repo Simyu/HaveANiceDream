@@ -1,4 +1,4 @@
-package attendance;
+package attendance.dto;
 
 import java.sql.Date;
 
@@ -15,7 +15,14 @@ public class AttendanceDTO {
     public AttendanceDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
+    public AttendanceDTO(String userId, Integer attPoint) {
+		super();
+		
+		this.userId = userId;
+		this.attPoint = attPoint;
+		
+	}
+    
 	public AttendanceDTO(Integer attNo, String userId, Integer attPoint, Date attDate) {
 		super();
 		this.attNo = attNo;

@@ -26,10 +26,15 @@ public class BlameListServlet extends HttpServlet{
 		
 		req.setCharacterEncoding("utf-8");
 		res.setContentType("text/html;charset=utf-8");
-		
+		String state = req.getParameter("state");
 		blamelist = service.list();
+		String viewpath = "";
+		if(state.equals("1")){
+			viewpath = "../blame/report_list.jsp";
+		}else{
+			viewpath = "../blame/report_list_center.jsp";
+		}
 		
-		String viewpath = "../blame/reportview_report.jsp";
 		
 		req.setAttribute("viewpath", viewpath);
 		req.setAttribute("blamelist", blamelist);

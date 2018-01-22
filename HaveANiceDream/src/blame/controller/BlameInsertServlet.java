@@ -37,7 +37,7 @@ public class BlameInsertServlet extends HttpServlet {
 		int result = service.insert(blame);
 		
 		if(result>0){
-			response.sendRedirect("/HaveANiceDream/blame/reportview_report");
+			response.sendRedirect("/HaveANiceDream/blame/list.do?state=1");
 		}else{
 			String viewpath = "../blame/report_boss.jsp";
 			request.setAttribute("viewpath", viewpath);
@@ -45,6 +45,7 @@ public class BlameInsertServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 			requestDispatcher.forward(request, response);
 		}
+		
 	
 	}
 

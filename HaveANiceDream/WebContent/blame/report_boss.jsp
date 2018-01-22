@@ -29,7 +29,6 @@
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
-				<a href="../view/report.html"></a>
 				<form action="/HaveANiceDream/blame/insert.do" method="get">
 					<table summary="신고정보" height="600" border="1">
 						<colgroup>
@@ -112,7 +111,7 @@
 					</table>
 					<div class="request-bottom">
 						<div class="btnbox tright">
-							<span class="btn-border"><input type="Submit"
+							<span class="btn-border"><input type="Submit" 
 								class="orangebtn" value="신고하기" title="신고하기"
 								/></span> <span
 								class="btn-border type02"><input type="Submit"

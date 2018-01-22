@@ -19,6 +19,7 @@ ALTER TABLE product MODIFY(PRODUCT_STATE number);
 
 
 select * from BLAME;
+select * from ATTENDANCE;
 
 CREATE TABLE block
 (

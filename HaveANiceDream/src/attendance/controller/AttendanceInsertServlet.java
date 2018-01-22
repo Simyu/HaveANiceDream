@@ -1,0 +1,52 @@
+package attendance.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import attendance.dto.AttendanceDTO;
+import attendance.service.AttendanceService;
+import attendance.service.AttendanceServiceimpl;
+import javafx.scene.control.Alert;
+import point.dto.PointDTO;
+import point.service.PointService;
+import point.service.PointServiceImpl;
+
+
+@WebServlet(name = "attendance/insert", urlPatterns = {"/attendance/insert.do"})
+public class AttendanceInsertServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings("unused")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		String userId = "atree";
+		int attpoint = 100;
+		
+		AttendanceDTO attendance = new AttendanceDTO(userId,attpoint);
+		AttendanceService service = new AttendanceServiceimpl();
+		int result = service.insert(attendance);
+		
+		if(result>0){
+			PointService point = new PointServiceImpl();
+			point.pointInsert(new PointDTO(0,userId,null,"출석",attpoint));
+			response.sendRedirect("/HaveANiceDream/index.html");
+		}else{
+			String viewpath = "../attendance/project_calender.jsp";
+			request.setAttribute("viewpath", viewpath);
+			
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
+			requestDispatcher.forward(request, response);
+		}
+	
+	}
+
+}
