@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import user.dto.MemberDTO;
+import user.service.UserServiceImpl;
+
 @WebServlet(name = "user/logout", urlPatterns = { "/user/logout.do" })
 public class UserLogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +20,8 @@ public class UserLogOutServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		if(session != null){
+			MemberDTO user = (MemberDTO) session.getAttribute("user");
+			new UserServiceImpl().userUpdateLoginTime(user.getUserId());
 			session.invalidate();
 		}
 		

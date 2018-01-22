@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="user.dto.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -52,8 +53,8 @@
 					</thead>
 					<tbody>
 						<%
-
 							ArrayList<MemberDTO> userList = (ArrayList<MemberDTO>) request.getAttribute("userlist");
+							SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
 							if (userList != null) {
 								int size = userList.size();
 								for (int i = 0; i < size; i++) {
@@ -62,35 +63,43 @@
 									String type = user.getUserType();
 						%>
 						<tr>
-							<td><%= Id %></td>
-							<td><%= user.getUserEmail() %></td>
-							<td><%= user.getUserName() %></td>
-							<td>(<%= user.getUserZipcode() %>)<%= user.getUserAddr() %></td>
-							<td><%= user.getUserTel() %></td>
-							<td><%= user.getUserSigdate() %></td>
-							<td><%= user.getUserLastLoginTime() %></td>
-							<td><%= type %></td>
+							<td><%=Id%></td>
+							<td><%=user.getUserEmail()%></td>
+							<td><%=user.getUserName()%></td>
+							<td>(<%=user.getUserZipcode()%>)<%=user.getUserAddr()%></td>
+							<td><%=user.getUserTel()%></td>
+							<td><%=dateFormat.format(user.getUserSigdate())%></td>
+							<td><%=dateFormat.format(user.getUserLastLoginTime())%></td>
+							<td><%=type%></td>
 							<td>
-								<% if(type.equals("일반회원")) {%>
-								
+								<%
+									if (type.equals("일반회원")) {
+								%>
+
 								<button class="btn btn-danger btn-xs"
-									onclick="location.href ='/HaveANiceDream/user/block/insert.do?userId=<%= Id%>'">차단</button>
+									onclick="location.href ='/HaveANiceDream/user/block/insert.do?userId=<%=Id%>'">차단</button>
 								<button class="btn btn-primary btn-xs"
-									onclick="javascript:urserTypeUpdate('<%= Id%>','관리자')">관리자</button>
-									
-								<%} else if (type.equals("차단회원")) {%>
-								
+									onclick="javascript:urserTypeUpdate('<%=Id%>','관리자')">관리자</button>
+
+								<%
+									} else if (type.equals("차단회원")) {
+								%>
+
 								<button class="btn btn-danger btn-xs"
-									onclick="location.href ='/HaveANiceDream/user/block/delete.do?userId=<%= Id%>&pageType=userlist'">해제</button>
-									
-								<%} else if (type.equals("관리자")) {%>
-								
+									onclick="location.href ='/HaveANiceDream/user/block/delete.do?userId=<%=Id%>&pageType=userlist'">해제</button>
+
+								<%
+									} else if (type.equals("관리자")) {
+								%>
+
 								<button class="btn btn-primary btn-xs"
-									onclick="javascript:urserTypeUpdate('<%= Id%>','일반회원')">일반회원</button>
-									
-								<%} %>
+									onclick="javascript:urserTypeUpdate('<%=Id%>','일반회원')">일반회원</button>
+
+								<%
+									}
+								%>
 								<button class="btn btn-warning btn-xs"
-									onclick="location.href ='/HaveANiceDream/user/delete.do?userId=<%= Id%>'">탈퇴</button>
+									onclick="location.href ='/HaveANiceDream/user/delete.do?userId=<%=Id%>'">탈퇴</button>
 							</td>
 						</tr>
 						<%

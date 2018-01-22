@@ -35,6 +35,8 @@ public class UserLoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			String viewpath = "temp_main_con.jsp";
+			
+			new UserServiceImpl().userUpdateLoginTime(user.getUserId());
 
 			request.setAttribute("viewpath", viewpath);
 			url = "/main/main_layout.jsp";

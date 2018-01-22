@@ -241,4 +241,20 @@ public class UserDAOImpl implements UserDAO {
 		return pointTotal;
 	}
 
+	@Override
+	public int userUpdateLoginTime(String userId, Connection connection) throws SQLException {
+		int rowNum = 0;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_LOGINTIME_UPDATE);
+		// "update member set USER_LAST_LOGIN_TIME = sysdate where USER_ID = ?";
+		
+		preparedStatement.setString(1, userId);
+		
+		rowNum = preparedStatement.executeUpdate();
+		
+		DBUtil.close(preparedStatement);
+		
+		return rowNum;
+	}
+
 }

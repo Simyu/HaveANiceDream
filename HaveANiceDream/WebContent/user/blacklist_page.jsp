@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="user.block.dto.BlockDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -48,6 +49,7 @@
 					<tbody>
 						<%
 							ArrayList<BlockDTO> blacklist = (ArrayList<BlockDTO>) request.getAttribute("blocklist");
+							SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
 							if (blacklist != null) {
 								int size = blacklist.size();
 								BlockDTO dto = null;
@@ -57,11 +59,11 @@
 						%>
 						<tr>
 							<td><%=Id%></td>
-							<td><%=dto.getBlockDate()%></td>
+							<td><%=dateFormat.format(dto.getBlockDate())%></td>
 							<td><%=dto.getBlockReason()%></td>
 							<td>
 								<button class="btn btn-danger btn-xs"
-									onclick="location.href ='/HaveANiceDream/user/block/delete.do?userId=<%= Id%>&pageType=blacklist'">해제</button>
+									onclick="location.href ='/HaveANiceDream/user/block/delete.do?userId=<%=Id%>&pageType=blacklist'">해제</button>
 							</td>
 						</tr>
 						<%
