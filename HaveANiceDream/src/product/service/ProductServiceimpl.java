@@ -68,6 +68,24 @@ public class ProductServiceimpl implements ProductService {
 		return product;
 	}
 
+	@Override
+	public String productSelect_Image(int productNo) {
+		String result="";
+		Connection connection = null;
+		productDAO dao = new productDAOimpl();
+		
+		
+		try {
+			connection = DBUtil.getConnect();
+			result = dao.productSelect_Image(productNo, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		return result;
+	}
+
 
 
 }

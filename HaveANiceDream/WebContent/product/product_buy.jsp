@@ -24,7 +24,7 @@
 <body>
      <%
      ProductDTO product = (ProductDTO)request.getAttribute("product");
-     
+     String file1 =(String) request.getAttribute("file1");
      
      
      %>
@@ -100,7 +100,8 @@
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
 							<textarea rows="10" cols="100%" id="productContent" name="productContent" readonly="readonly">
-							<%-- <img src="/serverweb/upload/<%= file1%>"/> --%>
+						 <img src="/serverweb/upload/<%=file1%>"/> 
+						 <%=product.getProductContent() %>
 							</textarea>
 						</div>
 					</div>

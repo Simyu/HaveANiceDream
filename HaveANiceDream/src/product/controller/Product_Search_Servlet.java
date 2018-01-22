@@ -28,7 +28,7 @@ public class Product_Search_Servlet extends HttpServlet {
 		
 		ProductService service = new ProductServiceimpl();
 		ProductDTO product = service.productSelect(productNo);
-		String fileName ="";
+		String fileName =service.productSelect_Image(productNo);
 		
 		
 		String viewpath="../product/product_buy.jsp";

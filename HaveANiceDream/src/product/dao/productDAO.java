@@ -13,4 +13,6 @@ public interface productDAO {
 	int insertProduct_Image(String imageSrc,Connection connection)throws SQLException;
 	ProductDTO productSelect(int productNo, Connection connection) throws SQLException;
 	
+	String productSelect_Image(int productNo, Connection connection) throws SQLException;
+	
 }
