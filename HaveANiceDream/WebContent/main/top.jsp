@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -138,14 +139,30 @@
 		</div>
 		<div class="top-menu">
 			<ul class="nav pull-right top-menu">
+				<%
+					MemberDTO user = (MemberDTO) session.getAttribute("user");
+					if (user == null) {
+				%>
 				<li><a class="logout" href="/HaveANiceDream/user/login.html">Login</a></li>
-				<li><a class="logout" href="#">Logout</a></li>
-				<li><a class="logout" href="#">Signup</a></li>
+				<li><a class="logout"
+					href="javascript:setPath('../user/sign_in_page.jsp')">Signup</a></li>
+				<%
+					} else {
+				%>
+				<li><a class="logout" href="/HaveANiceDream/user/logout.do">Logout</a></li>
+				<%
+					}
+				%>
 			</ul>
 		</div>
 	</header>
 	<!--header end-->
+	<script type="text/javascript">
+		function setPath(url) {
 
+			location.href = "/HaveANiceDream/view.html?url=" + url;
+		}
+	</script>
 
 </body>
 </html>
