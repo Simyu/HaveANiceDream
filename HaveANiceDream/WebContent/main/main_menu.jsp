@@ -64,16 +64,11 @@
 						class="fa fa-cogs"></i> <span>거래</span>
 				</a>
 					<ul class="sub">
-<<<<<<< HEAD
-						<li><a href="javascript:setPath('../product/product_view_edit.jsp')">물품등록</a></li>
-						<li><a href="javascript:setPath('../product/product_list.jsp')">물품검색</a></li>
-						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">드림 내역 확인 </a></li>
-=======
 						<li><a
 							href="javascript:setPath('../product/enroll_Sell.jsp')">물품등록</a></li>
 						<li><a href="/HaveANiceDream/product_list.do">물품검색</a></li>
-						<li><a href="todo_list.html">Todo List</a></li>
->>>>>>> branch 'master' of https://github.com/Simyu/HaveANiceDream.git
+						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">드림
+								내역 확인 </a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-book"></i> <span>커뮤니티</span>
@@ -105,12 +100,7 @@
 					<ul class="sub">
 						<li><a href="/HaveANiceDream/user/list.do">회원 조회</a></li>
 						<li><a href="/HaveANiceDream/user/block/list.do">차단유저 조회</a></li>
-<<<<<<< HEAD
 						<li><a href="/HaveANiceDream/blame/list.do?state=2">신고접수내역</a></li>
-=======
-						<li><a
-							href="javascript:setPath('../blame/report_list_center.jsp')">신고접수내역</a></li>
->>>>>>> branch 'master' of https://github.com/Simyu/HaveANiceDream.git
 					</ul></li>
 				<%
 					}
