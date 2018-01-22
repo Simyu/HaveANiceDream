@@ -14,7 +14,7 @@
 
 
 <script type="text/javascript">
-   	function popup(){
+   	function popup(){//물건번호조회 팝업
    		window.open("report_popup.jsp", "a", "width=700, height=900, left=100, top=50")
    		
    	}

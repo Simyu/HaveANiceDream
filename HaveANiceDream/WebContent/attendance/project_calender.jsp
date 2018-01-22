@@ -19,7 +19,7 @@
 				</div>
 				<div class="col-lg-12">
 					<br /> <br /> <br /> <br />
-					<button class="btn btn-theme02" type="button" onclick="location.href='/HaveANiceDream/attendance/insert.do''">출석체크</button>
+					<button class="btn btn-theme02" type="button" onclick="location.href='/HaveANiceDream/attendance/insert.do'">출석체크</button>
 				</div>
 			</div>
 		</div>

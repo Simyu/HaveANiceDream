@@ -1,32 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Dashboard">
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
 
 
-    <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css" rel="stylesheet">
-  
-    <link href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  
-    <link href="/HaveANiceDream/Theme/assets/css/style.css" rel="stylesheet">
-    <link href="/HaveANiceDream/Theme/assets/css/style-responsive.css" rel="stylesheet">
+<link href="/HaveANiceDream/Theme/assets/css/bootstrap.css"
+	rel="stylesheet">
+
+<link
+	href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css"
+	rel="stylesheet" />
+
+<link href="/HaveANiceDream/Theme/assets/css/style.css" rel="stylesheet">
+<link href="/HaveANiceDream/Theme/assets/css/style-responsive.css"
+	rel="stylesheet">
 </head>
 <body>
-	<section id="main-content">
-		<section class="wrapper site-min-height">
-			<h3>
-				<i class="fa fa-angle-right"></i>신고하기
-			</h3>
-			<div class="row mt">
-				<div class="col-lg-12">
-					<a href="../view/report.html"></a>
+	<h3>
+		<i class="fa fa-angle-right"></i>신고하기
+	</h3>
+	<div class="row mt">
+		<div class="col-lg-12">
+			<div class="form-panel">
+				<a href="../view/report.html"></a>
+				<form>
 					<table summary="신고정보" height="600" border="1">
 						<colgroup>
 							<col style="width: 14%;">
@@ -49,21 +54,20 @@ pageEncoding="utf-8"%>
 								<th>상세정보</th>
 								<td>
 									<dl>
-										<label>신고자ID</label>
-										<span class="input-box mb"><input name="auctionno2"
-											type="text" id="auctionno2" class="txt" maxlength="15"
-											style="width: 133px;" /></span>
 										<dt>
-											<label>상대방ID</label> <span class="input-box mb"><input
-												name="auctionno2" type="text" id="auctionno2" class="txt"
-												maxlength="15" style="width: 133px;" /></span>
+											<label>신고자ID</label> <span class="input-box"><input
+												name="userIdBlamere" type="text" id="auctionno2" class="txt"
+												maxlength="15" style="width: 133px;" /></span> <label>상대방ID</label>
+											<span class="input-box"><input name="userIdBlamee"
+												type="text" id="auctionno2" class="txt" maxlength="15"
+												style="width: 133px;" /></span> <label>물건번호</label> <span
+												class="input-box"><input name="productNo" type="text"
+												id="orderno1" class="txt" maxlength="15"
+												style="width: 133px;" /></span> <input type="button"
+												value="물건번호조회" onclick="popup()">
 										</dt>
-										<label>물건번호</label>
-										<span class="input-box mb"><input name="orderno1"
-											type="text" id="orderno1" class="txt" maxlength="15"
-											style="width: 133px;" /></span>
-										<input type="button" value="물건번호조회" onclick="popup()">
 									</dl>
+
 								</td>
 							</tr>
 							<tr>
@@ -74,7 +78,7 @@ pageEncoding="utf-8"%>
 											<div class="fileinput">
 												<div class="btnbox">
 													<input type="file" class="f-map" title="파일첨부"
-														style="width: 400px;" />
+														style="width: 400px;" name="attachedFile" />
 												</div>
 
 											</div>
@@ -84,9 +88,9 @@ pageEncoding="utf-8"%>
 							</tr>
 							<tr>
 								<th><label for="inquirySubject">제목</label></th>
-								<td><span class="input-box"><input name="mailtitle"
+								<td><span class="input-box"><input name="blameTitle"
 										type="text" id="mailtitle" class="txt" title="제목"
-										style="width: 330px;" /> <input name="Mcategorybox"
+										style="width: 440px;" /> <input name="Mcategorybox"
 										type="text" value="M0401" id="Mcategorybox"
 										style="border-style: None; width: 0px; DISPLAY: none" /> <input
 										name="CCodeBox" type="text" id="CCodeBox"
@@ -97,11 +101,9 @@ pageEncoding="utf-8"%>
 								<td>
 									<div>
 										<div>
-											<textarea name="mailcontent" id="mailcontent" rows="70"
-												cols="70" title="평가글" maxlength="4000" class="insert-text"
-												style="height: 102px;"
-												onkeyup="CheckLen(this, 4000, &#39;content_cnt&#39;)"
-												onfocus="onFocusContent()"></textarea>
+											<textarea name="blameContent" id="mailcontent" rows="100"
+												cols="100" title="평가글" maxlength="4000" class="insert-text"
+												style="height: 102px;" onfocus="onFocusContent()"></textarea>
 										</div>
 									</div>
 								</td>
@@ -118,9 +120,9 @@ pageEncoding="utf-8"%>
 								onclick="javascript:document.location.reload(); void(0);" /></span>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
-		</section>
-	</section>
+		</div>
+	</div>
 </body>
 </html>

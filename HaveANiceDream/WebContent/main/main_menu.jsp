@@ -52,8 +52,7 @@
 					<ul class="sub">
 						<li><a href="#">거래내역 조회</a></li>
 						<li><a href="/HaveANiceDream/point/list.do">포인트 조회</a></li>
-
-						<li><a href="/HaveANiceDream/attendance/insert.do">출석체크</a></li>
+						<li><a href="javascript:setPath('../attendance/project_calender.jsp')">출석체크</a></li>
 
 					</ul></li>
 
@@ -90,6 +89,7 @@
 					<ul class="sub">
 						<li><a href="javascript:setPath('../blame/report_boss.jsp')">신고하기</a></li>
 						<li><a href="/HaveANiceDream/blame/list.do?state=1">신고내역조회</a></li>
+
 					</ul></li>
 				<%
 					if (user != null && user.getUserType().equals("관리자")) {
@@ -101,7 +101,8 @@
 						<li><a href="/HaveANiceDream/user/list.do">회원 조회</a></li>
 						<li><a href="/HaveANiceDream/user/block/list.do">차단유저 조회</a></li>
 						<li><a href="/HaveANiceDream/blame/list.do?state=2">신고접수내역</a></li>
-					</ul></li>
+
+					</ul>
 				<%
 					}
 				%>

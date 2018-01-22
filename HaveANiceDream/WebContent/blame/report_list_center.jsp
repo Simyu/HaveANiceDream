@@ -1,3 +1,4 @@
+
 <%@page import="blame.dto.BlameDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -63,7 +64,7 @@
 							<td><%=dept.getBlameType()%></td>
 							<td><%=dept.getUserIdBlamere()%></td>
 							<td><%=dept.getUserIdBlamee()%></td>
-							<td><%=dept.getBlameTitle()%></td>
+							<td><a href="/serverweb/blame/Answer_list.jsp"><%=dept.getBlameTitle()%></a></td>
 						</tr>
 						<%
 							}
