@@ -1,4 +1,4 @@
-package product;
+package product.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import product.ProductDTO;
 import product.ProductState;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
@@ -52,8 +54,8 @@ public class Product_Enroll_Servlet extends HttpServlet {
 
 		request.setAttribute("viewpath", viewpath);
 
-		//RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-		//requestDispatcher.forward(request, response);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
+		requestDispatcher.forward(request, response);
 		
 		
 		

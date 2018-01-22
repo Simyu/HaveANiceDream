@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -92,29 +94,30 @@
 							</tr>
 						</thead>
 						<tbody>
+						<%
+						   ArrayList<ProductDTO>  productlist = (ArrayList<ProductDTO>)request.getAttribute("productlist");
+						int size =  productlist.size();
+						
+						for(int i=0;i<size;i++){
+							ProductDTO dto = productlist.get(i);
+						   //검색간...   해당물품 검색 DB접근해서 서블릿요청
+						   //이미지 실버 물품이미지넣을거고... 거레상태는 표시할예정
+						      
+						%>
 							<tr>
 								<td>아이템</td>
 								<td><img
 									src='http://img1.itemmania.com/images/icon/icon_silver_s.gif'
 									width='21' height='19' alt='실버' /></td>
 								<td class="numeric"><a
-									href="javascript:setPath('../product/product_view_edit.jsp')"
-									onclick="$.fnViewId('2018011403747952')" class="">유모차 나눔합니다</a></td>
-								<td class="numeric">24,000원</td>
-								<td class="numeric">11:08</td>
+									href="/HaveANiceDream/product_search.do?<%=dto.getProductNo()%>">
+									 class=""><%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
+								<td class="numeric"><%=dto.getProductPrice() %></td>
+								<td class="numeric"><%=dto.getProductDate()%></td>
 							</tr>
-							<tr>
-								<td>거래종료</td>
-								<td><img
-									src='http://img1.itemmania.com/images/icon/icon_silver_s.gif'
-									width='21' height='19' alt='실버' /></td>
-								<td class="numeric"><a
-									href="javascript:setPath('../product/product_view_buy.jsp')"
-									onclick="$.fnViewId('2018011403747952')" class="">유모차
-										나눔합니다.</a>
-								<td class="numeric">11,000원</td>
-								<td class="numeric">10:56</td>
-							</tr>
+							<%}
+						%>
+							
 						</tbody>
 					</table>
 				</section>

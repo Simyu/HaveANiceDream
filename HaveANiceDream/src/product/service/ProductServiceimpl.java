@@ -2,6 +2,7 @@ package product.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import fw.DBUtil;
 import product.ProductDTO;
@@ -27,6 +28,44 @@ public class ProductServiceimpl implements ProductService {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public ArrayList<ProductDTO> product_List() {
+		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
+		Connection connection = null;
+		productDAO dao = new productDAOimpl();
+		
+		int result = 0;
+		
+		try {
+			connection = DBUtil.getConnect();
+			product_list = dao.product_List(connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		return product_list;
+	}
+
+	@Override
+	public ProductDTO productSelect(int productNo) {
+		ProductDTO product = new ProductDTO();
+		Connection connection = null;
+		productDAO dao = new productDAOimpl();
+		
+		
+		try {
+			connection = DBUtil.getConnect();
+			product = dao.productSelect(productNo, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		return product;
 	}
 
 }

@@ -1,3 +1,4 @@
+<%@page import="product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -40,29 +41,13 @@
 						<div class="col-sm-10">
 							<div class="col-sm-5">
 
-								<input type="text" class="form-control" value="글씨를쓰면 DB검색을 통해 ">
-								<br /> <select multiple class="form-control"
-									name="categoryName" id="categoryName" size="8"
-									style="width: 100%">
-									<option value="java">유아용품
-									<option value="하둡">핸드폰
-									<option value="스프링">기타
-									<option value="mean">MEAN
-									<option value="spark">SPARK
-								</select>
+								<input type="text" class="form-control" value="글씨를쓰면 DB검색을 통해 " name="categoryName" id="categoryName" readonly="readonly">
+								<br /> 
 							</div>
 							<div class="col-sm-5">
 
 								<input type="text" class="form-control"
-									value="  list를 받아 올예정입니다"> <br /> <select multiple
-									class="form-control" name="categoryDetailName"
-									id="categoryDetailName" size="8" style="width: 100%">
-
-									<option value="java">유모차
-									<option value="하둡">유아용옷
-									<option value="스프링">장난감
-									<option value="mean">신발
-								</select>
+									value="  list를 받아 올예정입니다" readonly="readonly" name="categoryDetailName" id="categoryDetailName"> <br />
 							</div>
 
 
@@ -71,44 +56,43 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">판매금액</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="productPrice" name="productPrice"> <span
-								class="help-block" " >A block of help text that breaks onto
-								a new line and may extend beyond one line.</span>
+							<input type="text" class="form-control" id="productPrice" name="productPrice"   readonly="readonly"
+							
+							value="<%= %>" > 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상품명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="productName" name="productName"> <label>반드시
-								실명을 작성해 주시기 바랍니다.</label>
+							<input type="text" class="form-control" id="productName" name="productName"   readonly="readonly" > 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">거래방식</label>
-						<div class="col-sm-10">
-								   <input type="radio" name="tradeType" value="trade">직거래
-	   							   <input type="radio" name="tradeType" value="delivery_trade">택배거래
+						<div class="col-sm-10" >
+								   <input type="radio" name="tradeType" value="trade"   readonly="readonly" >직거래
+	   							   <input type="radio" name="tradeType" value="delivery_trade"   readonly="readonly" >택배거래
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">물품상태</label>
-						<div class="col-sm-10">
-								   <input type="radio" name="productGrade" value="high">상
-	   							   <input type="radio" name="productGrade" value="middle">중
-	   							   <input type="radio" name="productGrade" value="low">하
+						<div class="col-sm-10" >
+								   <input type="radio" name="productGrade" value="high" readonly="readonly">상
+	   							   <input type="radio" name="productGrade" value="middle" readonly="readonly">중
+	   							   <input type="radio" name="productGrade" value="low" readonly="readonly">하
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">물품제목</label>
 						<div class="col-sm-10">
-							<input class="form-control" type="text" id="productTitle" name="productTitle"
+							<input class="form-control" type="text" id="productTitle" name="productTitle" readonly="readonly"
 								value="This is focused...">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-							<textarea rows="10" cols="100%" id="productContent" name="productContent"></textarea>
+							<textarea rows="10" cols="100%" id="productContent" name="productContent" readonly="readonly"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -145,8 +129,8 @@
 						<div class="col-sm-6">
 							<label class="col-sm-2 col-sm-2 control-label">이름</label>
 							<div class="col-sm-4">
-								<p class="form-control-static" id="userId" name="userId" >로그인된상태이니까 아이디를 통해 이름을 받아 올
-									예정입니다.</p>
+								<input type="text" class="form-control" id="userId" name="userId"   readonly="readonly" >
+								
 							</div>
 
 						</div>
@@ -157,7 +141,7 @@
 							<label class="col-sm-2 col-sm-2 control-label">연락처</label>
 
 							<div class="col-sm-4">
-								<p class="form-control-static">010-4442-4421</p>
+							<input type="text" class="form-control" id="userId" name="userId"   readonly="readonly">
 							</div>
 						</div>
 					</div>
