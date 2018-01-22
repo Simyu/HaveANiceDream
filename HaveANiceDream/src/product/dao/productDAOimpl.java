@@ -27,17 +27,42 @@ PRODUCT_NO                                NOT NULL NUMBER
  TRADE_TYPE                                         VARCHAR2(20)
  * */
 	
+	/*
+	 *  Name                                      Null?    Type
+ ----------------------------------------- -------- --------------
+ IMAGE_NO                                  NOT NULL NUMBER
+ PRODUCT_NO                                         NUMBER
+ IMAGE_SRC                                          VARCHAR2(20)
+	 * */
+	@Override
+	public int insertProduct_Image( String imageSrc, Connection connection) throws SQLException {
+		  int result=0;
+		  PreparedStatement ptmt=null;
+		  ptmt = connection.prepareStatement(ProductQuery.PRODUCT_IMG_INSERT);
+		  System.out.println(imageSrc);
+		     ptmt.setString(1, imageSrc);
+		     result=ptmt.executeUpdate();
+		     
+		     DBUtil.close(ptmt);
+		  return result;
+	}
+	
+	
 	@Override
 	public ProductDTO productSelect(int productNo, Connection connection) throws SQLException {
 		ProductDTO product = null;
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
 		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTPNO);
+		ptmt.setInt(1, productNo);
 		resultSet = ptmt.executeQuery();
+		if(resultSet.next()){
 		product = new ProductDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),
 					resultSet.getInt(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),
 						resultSet.getDate(9), resultSet.getInt(10), resultSet.getInt(11), resultSet.getString(12));
+		}
 		
+		System.out.println(product);
 		return product;
 	}
 	
@@ -110,6 +135,9 @@ PRODUCT_NO                                NOT NULL NUMBER
 
 		return result;
 	}
+
+
+	
 
 
 	

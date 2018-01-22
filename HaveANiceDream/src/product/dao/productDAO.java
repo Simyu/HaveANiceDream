@@ -10,7 +10,7 @@ public interface productDAO {
 
 	int insertProduct(ProductDTO product, Connection connection) throws SQLException;
 	ArrayList<ProductDTO>  product_List(Connection connection) throws SQLException;
-	
+	int insertProduct_Image(String imageSrc,Connection connection)throws SQLException;
 	ProductDTO productSelect(int productNo, Connection connection) throws SQLException;
 	
 }

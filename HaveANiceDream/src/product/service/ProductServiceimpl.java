@@ -10,9 +10,8 @@ import product.dao.productDAO;
 import product.dao.productDAOimpl;
 
 public class ProductServiceimpl implements ProductService {
-
 	@Override
-	public int insertProduct(ProductDTO product) {
+	public int insertProduct(ProductDTO product,String imageSrc) {
 		Connection connection = null;
 		productDAO dao = new productDAOimpl();
 		
@@ -21,6 +20,7 @@ public class ProductServiceimpl implements ProductService {
 		try {
 			connection = DBUtil.getConnect();
 			result = dao.insertProduct(product, connection);
+			dao.insertProduct_Image(imageSrc, connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -67,5 +67,7 @@ public class ProductServiceimpl implements ProductService {
 		}
 		return product;
 	}
+
+
 
 }

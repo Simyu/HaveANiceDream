@@ -25,14 +25,18 @@ public class Product_Search_Servlet extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		response.setContentType("text/html; charset=euc-kr");
 		int  productNo = Integer.parseInt(request.getParameter("productNo"));
-		System.out.println(productNo);
+		
 		ProductService service = new ProductServiceimpl();
 		ProductDTO product = service.productSelect(productNo);
+		String fileName ="";
+		
+		
 		String viewpath="../product/product_buy.jsp";
-System.out.println(product);
+		System.out.println(product);
 		request.setAttribute("product", product);
 		request.setAttribute("viewpath", viewpath);
-		
+
+		request.setAttribute("file1", fileName);
 		
 		 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 			requestDispatcher.forward(request, response);

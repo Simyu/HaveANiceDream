@@ -22,7 +22,12 @@
 </head>
 
 <body>
-
+     <%
+     ProductDTO product = (ProductDTO)request.getAttribute("product");
+     
+     
+     
+     %>
 	<h3>
 		<i class="fa fa-angle-right"></i> 물품등록
 	</h3>
@@ -58,20 +63,22 @@
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="productPrice" name="productPrice"   readonly="readonly"
 							
-							value="<%= %>" > 
+							value="<%=product.getProductPrice()%>" > 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상품명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="productName" name="productName"   readonly="readonly" > 
+							<input type="text" class="form-control" id="productName" name="productName"   readonly="readonly" 
+							value="<%=product.getProductName()%>" > 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">거래방식</label>
-						<div class="col-sm-10" >
+						<div class="col-sm-10" > <!--  if로 처리... -->
 								   <input type="radio" name="tradeType" value="trade"   readonly="readonly" >직거래
-	   							   <input type="radio" name="tradeType" value="delivery_trade"   readonly="readonly" >택배거래
+	   							   <input type="radio" name="tradeType" value="delivery_trade"   readonly="readonly"
+	   							    >택배거래
 						</div>
 					</div>
 					<div class="form-group">
@@ -92,7 +99,9 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-							<textarea rows="10" cols="100%" id="productContent" name="productContent" readonly="readonly"></textarea>
+							<textarea rows="10" cols="100%" id="productContent" name="productContent" readonly="readonly">
+							<%-- <img src="/serverweb/upload/<%= file1%>"/> --%>
+							</textarea>
 						</div>
 					</div>
 					<div class="form-group">

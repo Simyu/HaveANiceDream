@@ -33,7 +33,7 @@
 				<h4 class="mb">
 					<i class="fa fa-angle-right"></i> 판매 등록
 				</h4>
-				<form class="form-horizontal style-form" method="post"
+				<form class="form-horizontal style-form" method="post" enctype="multipart/form-data"
 					action="/HaveANiceDream/product_enroll.do">
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">카테고리</label>
@@ -114,10 +114,11 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">업로드</label>
 						<div class="col-sm-10">
-							<div class="filebox bs3-primary preview-image">
-								<input class="upload-name" value="파일선택" disabled="disabled"
-									style="width: 200px;"> <label for="input_file">파일찾기</label>
-								<input type="file" id="input_file" class="upload-hidden">
+							<div >
+								<!--  <input class="upload-name" value="파일선택" readonly="readonly"
+									style="width: 200px;">  <label for="input_file">파일찾기</label>
+								<input type="file" id="input_file"> -->
+								<input type="file" name="uploadFile1" /><br/> 
 								<textarea rows="3" cols="100%"></textarea>
 								<button type="button" class="btn btn-default">+추가</button>
 								<button type="button" class="btn btn-default">-삭제</button>
