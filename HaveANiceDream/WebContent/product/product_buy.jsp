@@ -99,8 +99,9 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
+						<img src="/serverweb/upload/<%=file1%>"/> 
 							<textarea rows="10" cols="100%" id="productContent" name="productContent" readonly="readonly">
-						 <img src="/serverweb/upload/<%=file1%>"/> 
+						 
 						 <%=product.getProductContent() %>
 							</textarea>
 						</div>

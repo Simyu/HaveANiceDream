@@ -111,7 +111,7 @@
 									width='21' height='19' alt='실버' /></td>
 								<td class="numeric"><a
 									href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>">
-									 class=""><%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
+									 <%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
 								<td class="numeric"><%=dto.getProductPrice() %></td>
 								<td class="numeric"><%=dto.getProductDate()%></td>
 							</tr>
