@@ -147,4 +147,22 @@ public class UserServiceImpl implements UserService {
 		return rowNum;
 	}
 
+	@Override
+	public boolean idCheck(String userId) {
+		Connection connection = null;
+		UserDAO dao = new UserDAOImpl();
+		boolean check = false;
+		
+		try {
+			connection = DBUtil.getConnect();
+			check = dao.idCheck(userId, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		return check;
+	}
+
 }

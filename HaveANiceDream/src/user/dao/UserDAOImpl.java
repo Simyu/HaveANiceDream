@@ -257,4 +257,24 @@ public class UserDAOImpl implements UserDAO {
 		return rowNum;
 	}
 
+	@Override
+	public boolean idCheck(String userId, Connection connection) throws SQLException {
+		boolean check = false;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_SELECT);
+		
+		preparedStatement.setString(1, userId);
+		
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if (resultSet.next()){
+			check = true;
+		}
+		
+		DBUtil.close(resultSet);
+		DBUtil.close(preparedStatement);
+		
+		return check;
+	}
+
 }

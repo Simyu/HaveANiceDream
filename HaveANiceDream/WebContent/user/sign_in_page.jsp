@@ -26,12 +26,10 @@
 					action="/HaveANiceDream/user/insert.do" method="post">
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">아이디</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" name="userId">
-						</div>
-						<div class="col-sm-2">
-							<button type="button"
-								class="btn btn-round btn-primary form-control">중복체크</button>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="userId" name="userId"
+								required="required" onkeyup="idVerify()"> <span
+								class="help-block" id="helpId"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -125,6 +123,36 @@
 	<!--main content end-->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
+		function idVerify() {
+			var id = document.getElementById("userId").value;
+			var flag = true;
+			var helpMsg = "";
+			var patten = /^[a-z0-9]*$/;
+
+			if (!patten.test(id)) {
+				document.getElementById("helpId").innerHTML = "ID 는 소문자와 숫자만 사용 할 수 있습니다.";
+				return false;
+			}
+
+			if (id.length < 6) {
+				document.getElementById("helpId").innerHTML = "ID 길이가 짧습니다.";
+				return false;
+			}
+
+			var xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function() {
+				if (xhr.status == 200 && xhr.readyState == 4) {
+					document.getElementById("helpId").innerHTML = xhr.responseText;
+				}
+			}
+
+			xhr.open("GET", "/HaveANiceDream/user/idcheck.do?userId=" + id,
+					true);
+			xhr.send();
+
+		}
+
 		function setEmailAddr(mail) {
 			document.getElementById("userEmail2").value = mail;
 		}
