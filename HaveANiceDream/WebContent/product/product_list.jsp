@@ -81,13 +81,16 @@
 					</div>
 				</div>
 
-
-				<select id="goods_list" name="goods_list"
-					 class="col-lg-2 form-control pull-right mb">
-					<option value="25">25개</option>
-					<option value="50">50개</option>
-					<option value="100">100개</option>
-				</select>
+				<div class="col-lg-10">
+				</div>
+				<div class="col-lg-2">
+					<select id="goods_list" name="goods_list"
+						 class=" form-control pull-right mb">
+						<option value="10">10개</option>
+						<option value="15">15개</option>
+						<option value="20">20개</option>
+					</select>
+				</div>
 				<section id="unseen">
 					<table class="table table-bordered table-striped table-condensed">
 						<thead>
@@ -124,6 +127,16 @@
 							<%
 								}
 							%>
+							<tr>
+								<td>아이템</td>
+								<td><img
+									src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"
+									width='100' height='100' alt='실버' /></td>
+								<td class="numeric">
+								<a  href="javascript:popup()">123123 </a></td>
+								<td class="numeric"></td>
+								<td class="numeric"></td>
+							</tr>
 
 						</tbody>
 					</table>

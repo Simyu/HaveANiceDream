@@ -60,7 +60,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 			result=resultSet.getString(1);
 		}
 		
-		System.out.println(result);
+		//System.out.println(result);
 		return result;
 	}
 	
@@ -79,7 +79,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 						resultSet.getDate(9), resultSet.getInt(10), resultSet.getInt(11), resultSet.getString(12));
 		}
 		
-		System.out.println(product);
+		//System.out.println(product);
 		return product;
 	}
 	
