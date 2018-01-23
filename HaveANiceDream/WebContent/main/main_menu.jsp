@@ -92,7 +92,7 @@
 
 					</ul></li>
 				<%
-					if (user != null && user.getUserType().equals("관리자")) {
+					if (user != null /*&& user.getUserType().equals("관리자")*/) {
 				%>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class=" fa fa-bar-chart-o"></i> <span>관리자</span>
