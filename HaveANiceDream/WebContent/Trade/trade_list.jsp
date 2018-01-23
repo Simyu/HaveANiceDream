@@ -106,8 +106,18 @@
 					</div>
 					<div class="col-lg-10">
 						<div class="col-lg-12">
-							<i class="fa fa-user mr" style="color: #1f85e2"></i><a>드림왕</a>
-							<button class="label label-default trade-btn-height2">문의하기</button>
+							<ul class="no-mg-no-pd">
+								<li id="header_inbox_bar" class="dropdown"><i
+									class="fa fa-user mr" style="color: #1f85e2"></i><a
+									data-toggle="dropdown" href="index.html#">드림왕</a>
+								<button class="label label-default trade-btn-height2">문의하기</button>
+									<ul class="dropdown-menu dropdown-kk inbox">
+										<li><a href="index.html#">프로필 보기</a></li>
+										<li><a href="index.html#">쪽지</a></li>
+										<li><a href="index.html#">1:1채팅</a></li>
+										<li><a href="index.html#">평가보기</a></li>
+									</ul></li>
+							</ul>
 						</div>
 						<div class="col-lg-12">
 							글제목 : <a>내가 쓰다만 여러가지 각종 잡템을 드림해요!</a>
