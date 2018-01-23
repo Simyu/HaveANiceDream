@@ -8,7 +8,7 @@ import blame.dto.BlameDTO;
 public interface BlameDAO {
 	int insert(BlameDTO dto,Connection con) throws SQLException;
 	ArrayList<BlameDTO> list(Connection con) throws SQLException;
-	int update(BlameDTO dto,Connection con) throws SQLException;
+	int update(String blameType,String attachedFile,String blameTitle,String blameContent,Connection con) throws SQLException;
 	BlameDTO select(int blameNo,Connection con) throws SQLException;
 
 }

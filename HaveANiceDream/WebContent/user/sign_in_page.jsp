@@ -114,7 +114,7 @@
 							<input type="text" class="form-control" name="userTel3">
 						</div>
 					</div>
-					<button type="submit" class="btn btn-theme">Sign in</button>
+					<button type="submit" class="btn btn-theme">Sign up</button>
 					<button type="submit" class="btn btn-theme">이메일 인증하기</button>
 					<button type="submit" class="btn btn-theme">휴대전화 인증하기</button>
 				</form>

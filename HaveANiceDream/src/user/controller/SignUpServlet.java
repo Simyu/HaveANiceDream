@@ -47,6 +47,6 @@ public class SignUpServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 			requestDispatcher.forward(request, response);
 		}
-	}
+	} 
 
 }

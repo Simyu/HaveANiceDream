@@ -1,5 +1,5 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="user.block.dto.BlockDTO"%>
+
+<%@page import="blame.dto.BlameDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -17,9 +17,13 @@
 </head>
 
 <body>
+	<%
+		ArrayList<BlameDTO> list = (ArrayList) request.getAttribute("blamelist");
+		int size = list.size();
+	%>
 
 	<h3>
-		<i class="fa fa-angle-right"></i> 차단회원 조회
+		<i class="fa fa-angle-right"></i> 신고 접수내역
 	</h3>
 	<div class="row mt">
 
@@ -27,7 +31,7 @@
 			<div class="content-panel">
 				<form class="form-horizontal style-form" method="get">
 					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">차단회원 ID</label>
+						<label class="col-sm-2 col-sm-2 control-label">신고자 ID</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control">
 						</div>
@@ -40,37 +44,33 @@
 				<table class="table table-striped table-advance table-hover">
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>차단날짜</th>
-							<th>차단사유</th>
-							<th></th>
+							<th>NO</th>
+							<th>신고날짜</th>
+							<th>신고분류</th>
+							<th>신고자ID</th>
+							<th>상대방ID</th>
+							<th>제목</th>
+							<th>처리현황</th>
 						</tr>
 					</thead>
 					<tbody>
-						<%
-							ArrayList<BlockDTO> blacklist = (ArrayList<BlockDTO>) request.getAttribute("blocklist");
-							SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
-							if (blacklist != null) {
-								int size = blacklist.size();
-								BlockDTO dto = null;
-								for (int i = 0; i < size; i++) {
-									dto = blacklist.get(i);
-									String Id = dto.getUserId();
-						%>
 						<tr>
-							<td><%=Id%></td>
-							<td><%=dateFormat.format(dto.getBlockDate())%></td>
-							<td><%=dto.getBlockReason()%></td>
-							<td>
-								<button class="btn btn-danger btn-xs"
-									onclick="location.href ='/HaveANiceDream/user/block/delete.do?userId=<%=Id%>&pageType=blacklist'">해제</button>
-							</td>
+							<%
+								for (int i = 0; i < size; i++) {
+									BlameDTO dept = list.get(i);
+							%>
+							<td><%=dept.getBlameNo()%></td>
+							<td><%=dept.getBlameDate()%></td>
+							<td><%=dept.getBlameType()%></td>
+							<td><%=dept.getUserIdBlamere()%></td>
+							<td><%=dept.getUserIdBlamee()%></td>
+							<td><a href="/serverweb/blame/Answer_list.jsp"><%=dept.getBlameTitle()%></a></td>
 						</tr>
 						<%
 							}
-							}
 						%>
 					</tbody>
+
 				</table>
 			</div>
 			<!-- /content-panel -->

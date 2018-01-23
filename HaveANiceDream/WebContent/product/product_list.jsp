@@ -15,9 +15,14 @@
 <title>DASHGUM - Bootstrap Admin Template</title>
 
 <script type="text/javascript">
-	function setPath(url) {
+	/* 	function setPath(url) {
 
-		location.href = "/HaveANiceDream/view.html?url=" + url;
+	 location.href = "/HaveANiceDream/view.html?url=" + url;
+	 } */
+	function popup() {
+		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a",
+				"width=1400, height=800, left=100, top=50")
+
 	}
 </script>
 </head>
@@ -62,9 +67,9 @@
 						<ul>
 
 
-							<li><input type="text" class="form-control"  name="word"
+							<li><input type="text" class="form-control" name="word"
 								value="물품제목" onclick="this.value='';" maxlength="5"
-								style="width:100%";  /></li>
+								style="width: 100%" ;  /></li>
 						</ul>
 					</div>
 					<div class="col-lg-2">
@@ -77,7 +82,8 @@
 				</div>
 
 
-				<select id="goods_list" name="goods_list"   class="form-control pull-right mb">
+				<select id="goods_list" name="goods_list"
+					class="form-control pull-right mb">
 					<option value="25">25개</option>
 					<option value="50">50개</option>
 					<option value="100">100개</option>
@@ -94,16 +100,15 @@
 							</tr>
 						</thead>
 						<tbody>
-						<%
-						   ArrayList<ProductDTO>  productlist = (ArrayList<ProductDTO>)request.getAttribute("productlist");
-						int size =  productlist.size();
-						
-						for(int i=0;i<size;i++){
-							ProductDTO dto = productlist.get(i);
-						   //검색간...   해당물품 검색 DB접근해서 서블릿요청
-						   //이미지 실버 물품이미지넣을거고... 거레상태는 표시할예정
-						      
-						%>
+							<%
+								ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>) request.getAttribute("productlist");
+								int size = productlist.size();
+
+								for (int i = 0; i < size; i++) {
+									ProductDTO dto = productlist.get(i);
+									//검색간...   해당물품 검색 DB접근해서 서블릿요청
+									//이미지 실버 물품이미지넣을거고... 거레상태는 표시할예정
+							%>
 							<tr>
 								<td>아이템</td>
 								<td><img
@@ -112,12 +117,14 @@
 								<td class="numeric"><a
 									href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>">
 									 <%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
-								<td class="numeric"><%=dto.getProductPrice() %></td>
+
+								<td class="numeric"><%=dto.getProductPrice()%></td>
 								<td class="numeric"><%=dto.getProductDate()%></td>
 							</tr>
-							<%}
-						%>
-							
+							<%
+								}
+							%>
+
 						</tbody>
 					</table>
 				</section>
