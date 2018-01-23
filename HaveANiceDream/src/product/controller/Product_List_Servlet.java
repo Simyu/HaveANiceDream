@@ -25,7 +25,7 @@ public class Product_List_Servlet extends HttpServlet {
 		response.setContentType("text/html; charset=euc-kr");
 		 ProductService service= new ProductServiceimpl();
 		 ArrayList<ProductDTO>  productlist = service.product_List();
-		 System.out.println(productlist);
+		// System.out.println(productlist);
 		 
 		 String viewpath = "../product/product_list.jsp";
 

@@ -8,7 +8,7 @@ public class ProductQuery {
 	public static final String PRODUCT_SELECTALL="select * from product";
 	public static final String PRODUCT_SELECTPNO="select * from product where  product_No= ?";
 	public static final String PRODUCT_IMG_INSERT = "insert into product_image values(PRODUCT_IMAGE_SEQ.nextval,product_seq.currval,?)";
-	public static final String PRODUCT_IMG_SELECTPNO= "select IMAGE_SRC from product where  product_No= ?";
+	public static final String PRODUCT_IMG_SELECTPNO= "select IMAGE_SRC from product_image where  product_No= ?";
 	
 	
 	

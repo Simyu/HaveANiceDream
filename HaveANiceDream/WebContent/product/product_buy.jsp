@@ -93,13 +93,13 @@
 						<label class="col-sm-2 col-sm-2 control-label">물품제목</label>
 						<div class="col-sm-10">
 							<input class="form-control" type="text" id="productTitle" name="productTitle" readonly="readonly"
-								value="This is focused...">
+								value= <%=product.getProductTitle()%> maxlength="50">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-						<img src="/serverweb/upload/<%=file1%>"/> 
+						<img src="/HaveANiceDream/upload/<%=file1%>"/> 
 							<textarea rows="10" cols="100%" id="productContent" name="productContent" readonly="readonly">
 						 
 						 <%=product.getProductContent() %>
@@ -160,9 +160,7 @@
 
 
 					<div class="form-group" align="center">
-						<button type="submit" class="btn btn-round btn-default">등록하기</button>
-
-						<button type="reset" class="btn btn-round btn-default">취소하기</button>
+						<button type="submit" class="btn btn-round btn-default">수정하기</button>
 					</div>
 				</form>
 			</div>
