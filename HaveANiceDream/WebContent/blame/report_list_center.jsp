@@ -13,11 +13,19 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
+<<<<<<< HEAD
 <title>DASHGUM - Bootstrap Admin Template</title>
 <script type="text/javascript">
 function windowpopup(){
 	popup = window.open("Answer_list.jsp","a","width=300,height=300,left=100 top=50");
 }
+=======
+<title>DASHGUM - Bootstrap Admin Template</title>
+<script type="text/javascript">
+function windowpopup(){
+	popup = window.open("Answer_list.jsp","a","width=300,height=300,left=100 top=50");
+}
+>>>>>>> branch 'master' of https://github.com/Simyu/HaveANiceDream.git
 </script>
 </head>
 

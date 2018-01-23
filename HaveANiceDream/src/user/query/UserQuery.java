@@ -25,4 +25,13 @@ public class UserQuery {
 	public static final String USER_POINT_UPDATE = "update member set POINT_TOTAL = ? where USER_ID = ?"; 
 	public static final String USER_GET_POINT = "select POINT_TOTAL from member where USER_ID = ?";
 	public static final String USER_LOGINTIME_UPDATE = "update member set USER_LAST_LOGIN_TIME = sysdate where USER_ID = ?";
+	public static final String USER_UPDATE = "UPDATE member "
+			+ "SET "
+			     + "USER_PW = ?, "
+			     + "USER_NAME = ?, "
+			     + "USER_EMAIL = ?, "
+			     + "USER_ZIPCODE = ?, "
+			     + "USER_ADDR = ?, "
+			     + "USER_TEL = ? "
+			+ "WHERE USER_ID = ?";
 }

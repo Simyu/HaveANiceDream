@@ -26,4 +26,6 @@ public interface UserDAO {
 	int userUpdateLoginTime(String userId, Connection connection) throws SQLException;
 
 	boolean idCheck(String userId, Connection connection) throws SQLException;
+
+	int userUpdate(MemberDTO user, Connection connection) throws SQLException;
 }

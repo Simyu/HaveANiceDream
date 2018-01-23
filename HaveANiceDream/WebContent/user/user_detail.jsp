@@ -22,74 +22,88 @@
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
-				<form class="form-horizontal style-form" method="get">
-					<%
-						MemberDTO user = (MemberDTO) session.getAttribute("user");
-					%>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">아이디</label>
-						<div class="col-lg-10">
-							<p class="form-control-static"><%=user.getUserId() %></p>
-						</div>
+				<%
+					MemberDTO user = (MemberDTO) session.getAttribute("user");
+				%>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">아이디</label>
+					<div class="col-lg-10">
+						<p class="form-control-static"><%=user.getUserId()%></p>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">비밀번호</label>
-						<div class="col-sm-8">
-							<input type="password" class="form-control" placeholder="" value="<%=user.getUserPw()%>">
-						</div>
-						<div class="col-sm-2">
-							<button type="button"
-								class="btn btn-round btn-primary form-control">변경하기</button>
-						</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">비밀번호</label>
+					<div class="col-sm-8">
+						<input type="password" class="form-control" placeholder=""
+							value="<%=user.getUserPw()%>">
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">이름</label>
-						<div class="col-lg-10">
-							<p class="form-control-static"><%=user.getUserName() %></p>
-						</div>
+					<div class="col-sm-2">
+						<button type="button"
+							class="btn btn-round btn-primary form-control">변경하기</button>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">주소</label>
-						<div class="col-lg-10">
-							<p class="form-control-static">(<%=user.getUserZipcode() %>) <%=user.getUserAddr() %></p>
-						</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">이름</label>
+					<div class="col-lg-10">
+						<p class="form-control-static"><%=user.getUserName()%></p>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">이메일</label>
-						<div class="col-lg-10">
-							<p class="form-control-static"><%=user.getUserEmail() %></p>
-						</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">주소</label>
+					<div class="col-lg-10">
+						<p class="form-control-static">
+							(<%=user.getUserZipcode()%>)
+							<%=user.getUserAddr()%></p>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">전화번호</label>
-						<div class="col-lg-10">
-							<p class="form-control-static"><%=user.getUserTel() %></p>
-						</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">이메일</label>
+					<div class="col-lg-10">
+						<p class="form-control-static"><%=user.getUserEmail()%></p>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">포인트</label>
-						<div class="col-lg-10">
-							<p class="form-control-static"><%=user.getPointTotal() %>점</p>
-						</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">전화번호</label>
+					<div class="col-lg-10">
+						<p class="form-control-static"><%=user.getUserTel()%></p>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">가입날짜</label>
-						<div class="col-lg-10">
-							<p class="form-control-static"><%=user.getUserSigdate() %></p>
-						</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">포인트</label>
+					<div class="col-lg-10">
+						<p class="form-control-static"><%=user.getPointTotal()%>점
+						</p>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">최종 방문일</label>
-						<div class="col-lg-10">
-							<p class="form-control-static"><%=user.getUserLastLoginTime() %></p>
-						</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">가입날짜</label>
+					<div class="col-lg-10">
+						<p class="form-control-static"><%=user.getUserSigdate()%></p>
 					</div>
-					<button type="submit" class="btn btn-theme">내 정보 변경하기</button>
-				</form>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-2 col-sm-2 control-label">최종 방문일</label>
+					<div class="col-lg-10">
+						<p class="form-control-static"><%=user.getUserLastLoginTime()%></p>
+					</div>
+				</div>
+				<hr>
+				<button class="btn btn-theme"
+					onclick="location.href='/HaveANiceDream/view.html?url=../user/user_edit_page.jsp'">내
+					정보 변경하기</button>
 			</div>
 		</div>
 		<!-- col-lg-12-->
 	</div>
 	<!-- /row -->
+
 </body>
 </html>

@@ -22,6 +22,7 @@ import category.service.CategoryServiceimpl;
 public class Category_Read_Servlet_Ajax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");

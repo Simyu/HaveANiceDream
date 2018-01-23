@@ -20,4 +20,6 @@ public interface UserService {
 	int userUpdateLoginTime(String userId);
 
 	boolean idCheck(String userId);
+
+	int userUpdate(MemberDTO user);
 }
