@@ -14,14 +14,14 @@ ALTER TABLE product MODIFY(PRODUCT_GRADE VARCHAR2(20));
 ALTER TABLE product MODIFY(trade_type VARCHAR2(20));
 ALTER TABLE product MODIFY(PRODUCT_STATE number);
 ALTER TABLE product_image MODIFY(IMAGE_SRC VARCHAR2(50));
-
+ALTER TABLE product add(CATEGORY_detail_NO number);
 insert into category values(category_seq.nextval,'유아용품');
 insert into category values(category_seq.nextval,'핸드폰');
 
-insert into category_detail values(category_detail_seq.nextval,'기저귀',2);
-insert into category_detail values(category_detail_seq.nextval,'유모차',2);
-insert into category_detail values(category_detail_seq.nextval,'유아용옷',2);
-insert into category_detail values(category_detail_seq.nextval,'장난감',2);
+insert into category_detail values(category_detail_seq.nextval,'기저귀',1);
+insert into category_detail values(category_detail_seq.nextval,'유모차',1);
+insert into category_detail values(category_detail_seq.nextval,'유아용옷',1);
+insert into category_detail values(category_detail_seq.nextval,'장난감',1);
 
 select * from BLAME;
 select * from ATTENDANCE;
