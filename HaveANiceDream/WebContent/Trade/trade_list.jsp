@@ -37,6 +37,10 @@
    		window.open("/HaveANiceDream/Trade/trade_ing-detail.jsp", "button", "width=1200, height=800, left=100, top=50")
    		
    	}
+	function popup2(){
+   		window.open("/HaveANiceDream/blame/report_popup.jsp", "a", "width=700, height=900, left=100, top=50")
+   		
+   	}
 </script>
 </head>
 
@@ -154,7 +158,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default"
 											data-dismiss="modal">아니요</button>
-										<button type="button" class="btn btn-primary">예
+										<button type="button" class="btn btn-primary" onclick="popup2()">예
 											받았습니다!!</button>
 									</div>
 								</div>

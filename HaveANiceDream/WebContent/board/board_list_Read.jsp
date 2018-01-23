@@ -16,7 +16,7 @@ pageEncoding="utf-8"%>
 
 <script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <script type="text/javascript">
-   	function popup(){
+   	function popup2(){
    		window.open("/HaveANiceDream/blame/report_popup.jsp", "a", "width=700, height=900, left=100, top=50")
    		
    	}
