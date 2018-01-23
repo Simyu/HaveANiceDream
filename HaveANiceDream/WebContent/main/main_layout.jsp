@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="/HaveANiceDream/Theme/assets/css/monthly.css">
 <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css"
 	rel="stylesheet">
+	
 <!--external css-->
 <link
 	href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css"
@@ -29,7 +30,7 @@
 <link href="/HaveANiceDream/Theme/assets/css/style.css" rel="stylesheet">
 <link href="/HaveANiceDream/Theme/assets/css/style-responsive.css"
 	rel="stylesheet">
-
+<link rel="stylesheet" type="text/css" href="/HaveANiceDream/Theme/assets/js/gritter/css/jquery.gritter.css" />
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -80,7 +81,8 @@
 	<script type="text/javascript" src="/HaveANiceDream/Theme/assets/js/monthly.js"></script>
 	<!--common script for all pages-->
 	<script src="/HaveANiceDream/Theme/assets/js/common-scripts.js"></script>
-
+	<script type="text/javascript" src="/HaveANiceDream/Theme/assets/js/gritter/js/jquery.gritter.js"></script>
+	<script type="text/javascript" src="/HaveANiceDream/Theme/assets/js/gritter-conf.js"></script>
 	<!--script for this page-->
 
 	<script>

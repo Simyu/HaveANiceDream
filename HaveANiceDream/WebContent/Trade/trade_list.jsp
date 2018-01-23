@@ -134,7 +134,32 @@
 							진행 중 </label>
 					</div>
 					<div class="col-lg-12">
-						<button type="button" class="btn btn-success btn-sm">인수확인</button>
+						<a id="add-regular" class="btn btn-default btn-sm" href="javascript:;">필수확인</a>
+
+
+						<button class="btn btn-success btn-sm" data-toggle="modal"
+							data-target="#myModal">인수확인</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">인수 완료</h4>
+									</div>
+									<div class="modal-body">정말 물품을 인수 받았나요?</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">아니요</button>
+										<button type="button" class="btn btn-primary">예
+											받았습니다!!</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-2 centered height-sort">
