@@ -36,13 +36,16 @@
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" placeholder=""
-								name="userPw">
+								name="userPw" id="userPw"> <span
+								class="help-block" id="helpPw"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호 확인</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" placeholder="">
+							<input type="password" class="form-control" placeholder=""
+								id="userPwConf" onkeyup="pwConf()"> <span
+								class="help-block" id="helpPwConf"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -123,6 +126,17 @@
 	<!--main content end-->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
+		function pwConf() {
+			var pw = document.getElementById("userPw").value;
+			var pwConf = document.getElementById("userPwConf").value;
+			
+			if(pw != pwConf){
+				document.getElementById("helpPwConf").innerHTML = "비밀번호가 일치하지 않습니다.";
+			} else {
+				document.getElementById("helpPwConf").innerHTML = "";
+			}
+		}
+		
 		function idVerify() {
 			var id = document.getElementById("userId").value;
 			var flag = true;
