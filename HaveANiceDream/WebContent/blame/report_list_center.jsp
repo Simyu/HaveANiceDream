@@ -14,6 +14,12 @@
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
 <title>DASHGUM - Bootstrap Admin Template</title>
+<script type="text/javascript">
+function windowpopup(){
+	popup = window.open("Answer_list.jsp","mypopup","width=300,height=300,toolbar=yes,status=yes");
+	popup.document.check.win.value = window.document.window.windowcode.value;
+}
+</script>
 </head>
 
 <body>
@@ -64,7 +70,7 @@
 							<td><%=dept.getBlameType()%></td>
 							<td><%=dept.getUserIdBlamere()%></td>
 							<td><%=dept.getUserIdBlamee()%></td>
-							<td><a href="/serverweb/blame/Answer_list.jsp"><%=dept.getBlameTitle()%></a></td>
+							<td onclick="/HaveANiceDream/blame/Answer_list.jsp"><%=dept.getBlameTitle()%></a></td>
 						</tr>
 						<%
 							}
