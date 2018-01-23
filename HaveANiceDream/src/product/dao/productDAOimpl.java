@@ -76,7 +76,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		if(resultSet.next()){
 		product = new ProductDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),
 					resultSet.getInt(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),
-						resultSet.getDate(9), resultSet.getInt(10), resultSet.getInt(11), resultSet.getString(12));
+						resultSet.getDate(9), resultSet.getInt(10), resultSet.getInt(11), resultSet.getString(12),resultSet.getInt(13));
 		}
 		
 		//System.out.println(product);
@@ -108,7 +108,8 @@ PRODUCT_NO                                NOT NULL NUMBER
 					resultSet.getDate(9),
 					resultSet.getInt(10),
 					resultSet.getInt(11),
-					resultSet.getString(12)
+					resultSet.getString(12),
+					resultSet.getInt(13)
 					);
 
 			product_list.add(dto);
@@ -132,7 +133,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		//"insert into product values(product_seq.nextval,?,?,?,?,?,?,?,sysdate,?,3,?)";
 		
 		ptmt.setString(1, product.getUserId());
-		ptmt.setString(2, "");
+		ptmt.setInt(2, product.getCategoryNo());
 		ptmt.setString(3, product.getProductName());
 		ptmt.setInt(4, product.getProductPrice());
 		ptmt.setString(5, product.getProductContent());
@@ -141,6 +142,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		ptmt.setInt(8, product.getProductState());
 		ptmt.setInt(9, 3);
 		ptmt.setString(10, product.getTradeType());
+		ptmt.setInt(11, product.getCategoryDetailNo());
 		
 		result = ptmt.executeUpdate();
 		

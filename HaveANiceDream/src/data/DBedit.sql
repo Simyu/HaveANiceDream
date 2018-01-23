@@ -18,7 +18,10 @@ ALTER TABLE product MODIFY(trade_type VARCHAR2(20));
 ALTER TABLE product MODIFY(PRODUCT_STATE number);
 ALTER TABLE product_image MODIFY(IMAGE_SRC VARCHAR2(50));
 
+ALTER TABLE product MODIFY(category_detail number);
 
+
+ALTER TABLE product add(category_detail number);
 
 
 

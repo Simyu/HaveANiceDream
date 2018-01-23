@@ -14,10 +14,11 @@ public class ProductDTO {
 		this.product_Grade = product_Grade;
 	}
 
-	public ProductDTO(String userId, String productName, Integer productPrice, String productContent, String productGrade,
-			String productTitle, int productState, String tradeType) {
+	public ProductDTO(String userId, int categoryNo, String productName, Integer productPrice, String productContent, String productGrade,
+			String productTitle, int productState, String tradeType , Integer categoryDetailNo) {
 		super();
 		this.userId = userId;
+		this.categoryNo = categoryNo;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productContent = productContent;
@@ -25,11 +26,14 @@ public class ProductDTO {
 		this.productTitle = productTitle;
 		this.productState = productState;
 		this.tradeType = tradeType;
+		this.categoryDetailNo = categoryDetailNo;
 	}
 
 	private String userId;
 
     private Integer categoryNo;
+    
+    private Integer categoryDetailNo;
 
     private String productName;
 
@@ -55,7 +59,7 @@ public class ProductDTO {
 
 	public ProductDTO(Integer productNo, String userId, Integer categoryNo, String productName, Integer productPrice,
 			String productContent, String product_Grade, String productTitle, Date productDate, int productState,
-			Integer productExfDate, String tradeType) {
+			Integer productExfDate, String tradeType,Integer categoryDetailNo) {
 		super();
 		this.productNo = productNo;
 		this.userId = userId;
@@ -69,6 +73,15 @@ public class ProductDTO {
 		this.productState = productState;
 		this.productExfDate = productExfDate;
 		this.tradeType = tradeType;
+		this.categoryDetailNo = categoryDetailNo;
+	}
+
+	public Integer getCategoryDetailNo() {
+		return categoryDetailNo;
+	}
+
+	public void setCategoryDetailNo(Integer categoryDetailNo) {
+		this.categoryDetailNo = categoryDetailNo;
 	}
 
 	public Integer getProductNo() {

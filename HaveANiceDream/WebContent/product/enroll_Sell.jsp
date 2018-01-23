@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="category.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -40,28 +42,33 @@
 						<div class="col-sm-10">
 							<div class="col-sm-5">
 
-								<input type="text" class="form-control" value="글씨를쓰면 DB검색을 통해 ">
+								<input type="text"  id="categoryNo" name="categoryNo"class="form-control" value="2
+								">
 								<br /> <select multiple class="form-control"
 									name="categoryName" id="categoryName" size="8"
 									style="width: 100%">
-									<option value="java">유아용품
-									<option value="하둡">핸드폰
-									<option value="스프링">기타
-									<option value="mean">MEAN
-									<option value="spark">SPARK
+								 <%
+								/*  ArrayList<CategoryDTO> list =(ArrayList<CategoryDTO>) request.getAttribute("list"); */
+								   
+								 
+								
+								 %>
+									<option value="2">유아용품
+									<option value="3">핸드폰
+									<option value="4">기타
 								</select>
 							</div>
 							<div class="col-sm-5">
 
-								<input type="text" class="form-control"
-									value="  list를 받아 올예정입니다"> <br /> <select multiple
+								<input type="text" class="form-control" id="categoryDetailNo" name="categoryDetailNo"
+									value="1"> <br /> <select multiple
 									class="form-control" name="categoryDetailName"
 									id="categoryDetailName" size="8" style="width: 100%">
 
-									<option value="java">유모차
-									<option value="하둡">유아용옷
-									<option value="스프링">장난감
-									<option value="mean">신발
+									<option value="1">유모차
+									<option value="2">유아용옷
+									<option value="3">장난감
+									<option value="4">신발
 								</select>
 							</div>
 
