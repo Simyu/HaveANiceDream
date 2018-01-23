@@ -76,17 +76,17 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">거래방식</label>
 						<div class="col-sm-10" > <!--  if로 처리... -->
-								   <input type="radio" name="tradeType" value="trade"   readonly="readonly" >직거래
-	   							   <input type="radio" name="tradeType" value="delivery_trade"   readonly="readonly"
+								   <input type="radio" name="tradeType" value="trade"   readonly="readonly" <%if(product.getTradeType().equals("trade")){%>checked="checked" <%} %> >직거래
+	   							   <input type="radio" name="tradeType" value="delivery_trade" <%if(product.getTradeType().equals("delivery_trade")){%>checked="checked" <%} %> readonly="readonly"
 	   							    >택배거래
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">물품상태</label>
 						<div class="col-sm-10" >
-								   <input type="radio" name="productGrade" value="high" readonly="readonly">상
-	   							   <input type="radio" name="productGrade" value="middle" readonly="readonly">중
-	   							   <input type="radio" name="productGrade" value="low" readonly="readonly">하
+								   <input type="radio" name="productGrade" value="high" readonly="readonly" <%if(product.product_Grade().equals("high")){%>checked="checked" <%} %>>상
+	   							   <input type="radio" name="productGrade" value="middle" readonly="readonly"  <%if(product.product_Grade().equals("middle")){%>checked="checked" <%} %>>중
+	   							   <input type="radio" name="productGrade" value="low" readonly="readonly"  <%if(product.product_Grade().equals("low")){%>checked="checked" <%} %>>하
 						</div>
 					</div>
 					<div class="form-group">
