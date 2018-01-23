@@ -83,7 +83,7 @@
 
 
 				<select id="goods_list" name="goods_list"
-					class="form-control pull-right mb">
+					 class="col-lg-2 form-control pull-right mb">
 					<option value="25">25개</option>
 					<option value="50">50개</option>
 					<option value="100">100개</option>
@@ -91,7 +91,7 @@
 				<section id="unseen">
 					<table class="table table-bordered table-striped table-condensed">
 						<thead>
-							<tr>
+							<tr class="trade-ing-line pd-con">
 								<th>종류</th>
 								<th>등급</th>
 								<th class="numeric">물품제목</th>
@@ -112,8 +112,8 @@
 							<tr>
 								<td>아이템</td>
 								<td><img
-									src='http://img1.itemmania.com/images/icon/icon_silver_s.gif'
-									width='21' height='19' alt='실버' /></td>
+									src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"
+									width='100' height='100' alt='실버' /></td>
 								<td class="numeric"><a
 									href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>">
 									 <%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
@@ -128,7 +128,17 @@
 						</tbody>
 					</table>
 				</section>
-
+				<div class="text-center">
+				<ul class="pagination">
+					<li class="previous"><a href="#">이전</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li class="next"><a href="#">다음</a></li>
+				</ul>
+			</div>
 
 			</div>
 			<!-- /content-panel -->
