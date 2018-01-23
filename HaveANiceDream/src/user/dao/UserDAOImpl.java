@@ -277,4 +277,35 @@ public class UserDAOImpl implements UserDAO {
 		return check;
 	}
 
+	@Override
+	public int userUpdate(MemberDTO user, Connection connection) throws SQLException {
+		int rowNum = 0;
+		PreparedStatement preparedStatement = null;
+
+		preparedStatement = connection.prepareStatement(UserQuery.USER_UPDATE);
+//		"UPDATE member "
+//		+ "SET "
+//		     + "USER_PW = ?, "
+//		     + "USER_NAME = ?, "
+//		     + "USER_EMAIL = ?, "
+//		     + "USER_ZIPCODE = ?, "
+//		     + "USER_ADDR = ?, "
+//		     + "USER_TEL = ? "
+//		+ "WHERE USER_ID = ?";
+
+		preparedStatement.setString(1, user.getUserPw());
+		preparedStatement.setString(2, user.getUserName());
+		preparedStatement.setString(3, user.getUserEmail());
+		preparedStatement.setString(4, user.getUserZipcode());
+		preparedStatement.setString(5, user.getUserAddr());
+		preparedStatement.setString(6, user.getUserTel());
+		preparedStatement.setString(7, user.getUserId());
+
+		rowNum = preparedStatement.executeUpdate();
+
+		DBUtil.close(preparedStatement);
+
+		return rowNum;
+	}
+
 }
