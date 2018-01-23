@@ -50,7 +50,7 @@
 						class="fa fa-desktop"></i> <span>My page</span>
 				</a>
 					<ul class="sub">
-						<li><a href="#">거래내역 조회</a></li>
+						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">거래내역 조회</a></li>
 						<li><a href="/HaveANiceDream/point/list.do">포인트 조회</a></li>
 						<li><a href="javascript:setPath('../attendance/project_calender.jsp')">출석체크</a></li>
 
@@ -66,8 +66,6 @@
 						<li><a
 							href="javascript:setPath('../product/enroll_Sell.jsp')">물품등록</a></li>
 						<li><a href="/HaveANiceDream/product_list.do">물품검색</a></li>
-						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">드림
-								내역 확인 </a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-book"></i> <span>커뮤니티</span>
