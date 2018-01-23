@@ -58,6 +58,8 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		
 		
 		int productPrice = Integer.parseInt(multipart.getParameter("productPrice"));
+		int categoryNo = Integer.parseInt(multipart.getParameter("categoryNo"));
+		int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailNo"));
 		String productName = multipart.getParameter("productName");
 		String productTitle = multipart.getParameter("productTitle");
 		String productContent = multipart.getParameter("productContent");
@@ -72,7 +74,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		//���δ�Ʈ �ѹ� ��ǰ��  ������ �ʿ���� ���ܿ���  �Ѱ�����
 		//ProductDTO dto = new ProductDTO(productNo, userId, categoryNo, productName, productPrice, productContent, productCount, productTitle, productDate, productState, productExfDate, tradeType)
 		
-		ProductDTO product = new ProductDTO(userId, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType);
+		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailNo);
 		
 		PrintWriter pw = response.getWriter();
 				

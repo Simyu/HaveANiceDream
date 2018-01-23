@@ -21,8 +21,8 @@ import product.service.ProductServiceimpl;
 public class Product_List_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
-		response.setContentType("text/html; charset=euc-kr");
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		 ProductService service= new ProductServiceimpl();
 		 ArrayList<ProductDTO>  productlist = service.product_List();
 		// System.out.println(productlist);
