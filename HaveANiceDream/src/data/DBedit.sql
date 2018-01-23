@@ -16,7 +16,7 @@ ALTER TABLE product MODIFY(PRODUCT_GRADE VARCHAR2(20));
 ALTER TABLE product MODIFY(trade_type VARCHAR2(20));
 ALTER TABLE product MODIFY(PRODUCT_STATE number);
 ALTER TABLE product_image MODIFY(IMAGE_SRC VARCHAR2(50));
-ALTER TABLE product add(CATEGORY_detail_NO number);
+
 insert into category values(category_seq.nextval,'유아용품');
 insert into category values(category_seq.nextval,'핸드폰');
 
