@@ -23,15 +23,18 @@
 				data:{"categoryName":name},
 				dataType:"json",
 				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
-					alert(data);
-					    for(i=0 ;i<data.length;i++){ 
+					//alert(data.categoryDetailName[0]);//jquery 객체추가
+					str= "<option>"+categoryDetailName[0];
+					$("#categoryDetailName").append(data.categoryDetailName[0]);
+					
+					    //for(i=0 ;i<data.length;i++){ 
 					    
 					    	//data = "<option>"+data[i].categoryDetailName; 
 					    /* 	testnode = document.createTextNode(data);
 					    	destNode = document.getElementById("categoryDetailName");
 					    	destNode.appendChild(testnode); */
-							 $("#categoryDetailName").html(data);//id명 data의i번째 이름..
-					    }
+							// $("#categoryDetailName").html(data);//id명 data의i번째 이름..
+					    //}
 					                           
 				}
     		})
