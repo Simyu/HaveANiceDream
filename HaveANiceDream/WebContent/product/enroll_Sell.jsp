@@ -23,18 +23,29 @@
 				data:{"categoryName":name},
 				dataType:"json",
 				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
-					//alert(data.categoryDetailName[0]);//jquery 객체추가
-					str= "<option>"+categoryDetailName[0];
-					$("#categoryDetailName").append(data.categoryDetailName[0]);
-					
-					    //for(i=0 ;i<data.length;i++){ 
-					    
-					    	//data = "<option>"+data[i].categoryDetailName; 
-					    /* 	testnode = document.createTextNode(data);
-					    	destNode = document.getElementById("categoryDetailName");
-					    	destNode.appendChild(testnode); */
-							// $("#categoryDetailName").html(data);//id명 data의i번째 이름..
-					    //}
+					$("#categoryDetailName").empty();
+					for(i=0 ;i<data.categoryDetailName.length;i++){ 
+						var str="<option>"+data.categoryDetailName[i]+"</option>";
+						//alert(str);
+						//$(str).attr("class","name");
+						//alert($(str).attr("class"));//result의 아이디속성값을 출력
+						 name=$(str);
+						name.attr("class","name"+i);
+						alert(name.attr("class"));
+						// $("#attrtest").attr("href","http://www.naver.com");
+						 //name.
+						$("#categoryDetailName").append(name);
+						     
+					/* 	str=data.categoryDetailName[i];
+						textnode = document.createTextNode(str);
+						 var createOption=document.createElement("option");
+						 createOption.appendChild(textnode);
+						 parentNode=document.getElementById("categoryDetailName");
+						 parentNode.appendChild(createOption); */
+						 //jquery로 간단하게 할것
+
+					}
+					  
 					                           
 				}
     		})
