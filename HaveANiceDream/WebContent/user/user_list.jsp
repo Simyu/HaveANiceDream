@@ -41,12 +41,6 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>이메일</th>
-							<th>이름</th>
-							<th>주소</th>
-							<th>전화번호</th>
-							<th>가입 날짜</th>
-							<th>마지막 접속 날짜</th>
 							<th>회원종류</th>
 							<th></th>
 						</tr>
@@ -54,7 +48,6 @@
 					<tbody>
 						<%
 							ArrayList<MemberDTO> userList = (ArrayList<MemberDTO>) request.getAttribute("userlist");
-							SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
 							if (userList != null) {
 								int size = userList.size();
 								for (int i = 0; i < size; i++) {
@@ -64,12 +57,6 @@
 						%>
 						<tr>
 							<td><%=Id%></td>
-							<td><%=user.getUserEmail()%></td>
-							<td><%=user.getUserName()%></td>
-							<td>(<%=user.getUserZipcode()%>)<%=user.getUserAddr()%></td>
-							<td><%=user.getUserTel()%></td>
-							<td><%=dateFormat.format(user.getUserSigdate())%></td>
-							<td><%=dateFormat.format(user.getUserLastLoginTime())%></td>
 							<td><%=type%></td>
 							<td>
 								<%
