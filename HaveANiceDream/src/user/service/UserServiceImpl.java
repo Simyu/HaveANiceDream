@@ -165,4 +165,23 @@ public class UserServiceImpl implements UserService {
 		return check;
 	}
 
+	@Override
+	public int userUpdate(MemberDTO user) {
+		Connection connection = null;
+		UserDAO dao = new UserDAOImpl();
+		int rowNum = 0;
+		
+		try {
+			connection = DBUtil.getConnect();
+			rowNum = dao.userUpdate(user, connection);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		return rowNum;
+	}
+
 }

@@ -11,7 +11,39 @@
 <meta name="author" content="Dashboard">
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
+<script type="text/javascript">
+     $(document).ready(function(){
+    	$("#categoryDetailNameSearch").on("keyup",function(){
+    		
+    		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
+    		//alert(name);
+    		$.ajax({
+    			url:"/HaveANiceDream//category/readAjax.do",
+				type:"get",
+				data:{"categoryName":name},
+				dataType:"json",
+				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
+					//alert(data.categoryDetailName[0]);//jquery 객체추가
+					str= "<option>"+categoryDetailName[0];
+					$("#categoryDetailName").append(data.categoryDetailName[0]);
+					
+					    //for(i=0 ;i<data.length;i++){ 
+					    
+					    	//data = "<option>"+data[i].categoryDetailName; 
+					    /* 	testnode = document.createTextNode(data);
+					    	destNode = document.getElementById("categoryDetailName");
+					    	destNode.appendChild(testnode); */
+							// $("#categoryDetailName").html(data);//id명 data의i번째 이름..
+					    //}
+					                           
+				}
+    		})
+    		
+    		
+    	});
+    	 
+     });
+</script>
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 
@@ -42,33 +74,33 @@
 						<div class="col-sm-10">
 							<div class="col-sm-5">
 
-								<input type="text"  id="categoryNo" name="categoryNo"class="form-control" value="2
-								">
+								<input type="text"  id="categoryNo" name="categoryNo"class="form-control" value="1">
 								<br /> <select multiple class="form-control"
 									name="categoryName" id="categoryName" size="8"
 									style="width: 100%">
-								 <%
-								/*  ArrayList<CategoryDTO> list =(ArrayList<CategoryDTO>) request.getAttribute("list"); */
+								  <%
+							  ArrayList<CategoryDTO> category_list =(ArrayList<CategoryDTO>) request.getAttribute("category_list");
 								   
-								 
-								
+								 if(category_list.size()!=0){
+								  for(int i =0;i<category_list.size();i++){
 								 %>
-									<option value="2">유아용품
-									<option value="3">핸드폰
-									<option value="4">기타
+								     <% CategoryDTO dto = category_list.get(i) ;%>
+								     
+									<option><%=dto.getCategoryName()%>
+									<%}} %> 
 								</select>
 							</div>
 							<div class="col-sm-5">
 
-								<input type="text" class="form-control" id="categoryDetailNo" name="categoryDetailNo"
+								<input type="text" class="form-control" id="categoryDetailNameSearch" name="categoryDetailNameSearch"
 									value="1"> <br /> <select multiple
 									class="form-control" name="categoryDetailName"
 									id="categoryDetailName" size="8" style="width: 100%">
-
+<!-- 
 									<option value="1">유모차
 									<option value="2">유아용옷
 									<option value="3">장난감
-									<option value="4">신발
+									<option value="4">신발 -->
 								</select>
 							</div>
 

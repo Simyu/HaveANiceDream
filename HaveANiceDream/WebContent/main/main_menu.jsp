@@ -64,7 +64,7 @@
 				</a>
 					<ul class="sub">
 						<li><a
-							href="javascript:setPath('../product/enroll_Sell.jsp')">물품등록</a></li>
+							href="/HaveANiceDream/category/read.do">물품등록</a></li>
 						<li><a href="/HaveANiceDream/product_list.do">물품검색</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
