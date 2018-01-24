@@ -13,19 +13,12 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<<<<<<< HEAD
 <title>DASHGUM - Bootstrap Admin Template</title>
 <script type="text/javascript">
 function windowpopup(){
-	popup = window.open("Answer_list.jsp","a","width=300,height=300,left=100 top=50");
+	popup = window.open("Answer_list.jsp","a","width=1000,height=500,left=100 top=50");
 }
-=======
-<title>DASHGUM - Bootstrap Admin Template</title>
-<script type="text/javascript">
-function windowpopup(){
-	popup = window.open("Answer_list.jsp","a","width=300,height=300,left=100 top=50");
-}
->>>>>>> branch 'master' of https://github.com/Simyu/HaveANiceDream.git
+
 </script>
 </head>
 
@@ -77,7 +70,7 @@ function windowpopup(){
 							<td><%=dept.getBlameType()%></td>
 							<td><%=dept.getUserIdBlamere()%></td>
 							<td><%=dept.getUserIdBlamee()%></td>
-							<td><a href="windowpopup()<%=dept.getBlameTitle()%>"><%=dept.getBlameTitle()%></a></td>
+							<td><a href="javascript:windowpopup()"><%=dept.getBlameTitle()%></a></td>
 						</tr>
 						<%
 							}
