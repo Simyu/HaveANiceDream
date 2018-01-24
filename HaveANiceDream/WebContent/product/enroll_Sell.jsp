@@ -12,11 +12,19 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 <script type="text/javascript">
+      function getName(myform){
+    	 
+    	  index = myform.categoryDetailName.selectedIndex;
+    	  //alert(index);
+    	  $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].value);
+      }
      $(document).ready(function(){
     	$("#categoryDetailNameSearch").on("keyup",function(){
-    		
+    		 
     		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
     		//alert(name);
+    		category =$(this).text();
+    	//	alert(category);
     		$.ajax({
     			url:"/HaveANiceDream//category/readAjax.do",
 				type:"get",
@@ -26,16 +34,17 @@
 					$("#categoryDetailName").empty();
 					for(i=0 ;i<data.categoryDetailName.length;i++){ 
 						var str="<option>"+data.categoryDetailName[i]+"</option>";
-						//alert(str);
-						//$(str).attr("class","name");
-						//alert($(str).attr("class"));//result의 아이디속성값을 출력
-						 name=$(str);
-						name.attr("class","name"+i);
-						alert(name.attr("class"));
-						// $("#attrtest").attr("href","http://www.naver.com");
-						 //name.
-						$("#categoryDetailName").append(name);
-						     
+						
+						 categoryname=$(str);
+						 categoryname.attr("value",data.categoryDetailName[i]);
+						 
+						$("#categoryDetailName").append(categoryname);
+						
+						
+						//alert($("#categoryDetailName").children().length);
+						//     alert(name.text());
+						   
+					 //$("categoryDetailNameSearch").val(categoryname.attr("value"));
 					/* 	str=data.categoryDetailName[i];
 						textnode = document.createTextNode(str);
 						 var createOption=document.createElement("option");
@@ -94,7 +103,7 @@
 								   
 								 if(category_list.size()!=0){
 								  for(int i =0;i<category_list.size();i++){
-								 %>
+								%>
 								     <% CategoryDTO dto = category_list.get(i) ;%>
 								     
 									<option><%=dto.getCategoryName()%>
@@ -106,7 +115,7 @@
 								<input type="text" class="form-control" id="categoryDetailNameSearch" name="categoryDetailNameSearch"
 									value="1"> <br /> <select multiple
 									class="form-control" name="categoryDetailName"
-									id="categoryDetailName" size="8" style="width: 100%">
+									id="categoryDetailName" size="8" style="width: 100%" onclick="getName(this.form)">
 <!-- 
 									<option value="1">유모차
 									<option value="2">유아용옷
