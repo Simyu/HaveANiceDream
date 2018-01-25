@@ -27,14 +27,16 @@ public class UserUpdateServlet extends HttpServlet {
 		String userEmail = request.getParameter("userEmail1") + request.getParameter("userEmail2");
 		String userName = request.getParameter("userName");
 		String userZipcode = request.getParameter("userZipcode");
-		String userAddr = request.getParameter("userAddr1") + " " + request.getParameter("userAddr2");
+		String userAddr = request.getParameter("userAddr1");
+		String userAddrDetail = request.getParameter("userAddr2");
 		String userTel = request.getParameter("userTel1") + "-" + request.getParameter("userTel2") + "-"
 				+ request.getParameter("userTel3");
 
 		HttpSession session = request.getSession(false);
 		MemberDTO dto = (MemberDTO) session.getAttribute("user");
 		String userId = dto.getUserId();
-		MemberDTO user = new MemberDTO(userId, userPw, userEmail, userName, userZipcode, userAddr, userTel);
+		MemberDTO user = new MemberDTO(userId, userPw, userEmail, userName, userZipcode, userAddr, userAddrDetail,
+				userTel);
 		UserService service = new UserServiceImpl();
 		int res = service.userUpdate(user);
 

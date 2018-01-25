@@ -29,6 +29,15 @@
 						MemberDTO user = (MemberDTO) session.getAttribute("user");
 					%>
 					<div class="form-group">
+						<p class="centered">
+							<img src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
+								class="img-circle" width="60">
+						</p>
+						<div style="padding-left: 40%">
+							<input type="file" name="userImage">
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">아이디</label>
 						<div class="col-lg-10">
 							<p class="form-control-static"><%=user.getUserId() %></p>
