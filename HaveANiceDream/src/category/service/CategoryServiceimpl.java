@@ -32,7 +32,7 @@ public class CategoryServiceimpl implements CategoryService {
 	}
 
 	@Override
-	public ArrayList<CategoryDetailDTO> categoryDetailList(String categoryName) {
+	public ArrayList<CategoryDetailDTO> categoryDetailList(int categoryNo, String categoryDetailName) {
 		ArrayList<CategoryDetailDTO> category_list = new ArrayList<CategoryDetailDTO>();
 		Connection connection = null;
 		CategoryDAO dao = new CategoryDAOimpl();
@@ -40,7 +40,7 @@ public class CategoryServiceimpl implements CategoryService {
 		
 		try {
 			connection = DBUtil.getConnect();
-			category_list=dao.categoryDetailList(categoryName, connection);
+			category_list=dao.categoryDetailList(categoryNo, categoryDetailName,connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -50,23 +50,6 @@ public class CategoryServiceimpl implements CategoryService {
 		return category_list;
 	}
 
-	@Override
-	public ArrayList<CategoryDetailDTO> categoryDetailListAjax(String categoryName) {
-		ArrayList<CategoryDetailDTO> category_list = new ArrayList<CategoryDetailDTO>();
-		Connection connection = null;
-		CategoryDAO dao = new CategoryDAOimpl();
-		int result = 0;
-		
-		try {
-			connection = DBUtil.getConnect();
-			category_list=dao.categoryDetailListAjax(categoryName, connection);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(connection);
-		}
-		
-		return category_list;
-	}
+
 
 }

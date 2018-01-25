@@ -11,6 +11,5 @@ import category.CategoryDetailDTO;
 public interface CategoryDAO {
      
        ArrayList<CategoryDTO>  categoryList(String categoryName,Connection connection) throws SQLException;
-       ArrayList<CategoryDetailDTO>  categoryDetailList(String categoryName ,Connection connection) throws SQLException;
-       ArrayList<CategoryDetailDTO>  categoryDetailListAjax(String categoryName ,Connection connection) throws SQLException;
+       ArrayList<CategoryDetailDTO>  categoryDetailList(int categoryNo, String categoryDetailName,Connection connection) throws SQLException;
 }

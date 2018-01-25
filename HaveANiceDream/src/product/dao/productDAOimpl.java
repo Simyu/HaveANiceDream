@@ -70,8 +70,10 @@ PRODUCT_NO                                NOT NULL NUMBER
 		ProductDTO product = null;
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
+		if(productNo!=0){
 		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTPNO);
 		ptmt.setInt(1, productNo);
+		}
 		resultSet = ptmt.executeQuery();
 		if(resultSet.next()){
 		product = new ProductDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),
@@ -85,11 +87,17 @@ PRODUCT_NO                                NOT NULL NUMBER
 	
 	
 	@Override
-	public ArrayList<ProductDTO> product_List(Connection connection) throws SQLException {
+	public ArrayList<ProductDTO> product_List(String title,Connection connection) throws SQLException {
 		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
-		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL);
+		 if(title!=null){
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLE);
+			ptmt.setString(1, "%"+title+"%");
+		}else{
+
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL);
+		}
 		resultSet = ptmt.executeQuery();
 		while (resultSet.next()) {
 			if (product_list == null) {
