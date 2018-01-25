@@ -4,40 +4,36 @@ import java.sql.Date;
 
 public class MemberDTO {
 
-	private String userId;
+    private String userId;
 
-	private String userPw;
+    private String userPw;
 
-	private String userEmail;
+    private String userEmail;
 
-	private String userName;
+    private String userName;
 
-	private String userZipcode;
+    private String userZipcode;
 
-	private String userAddr;
+    private String userAddr;
 
-	private String userAddrDetail;
+    private String userTel;
 
-	private String userTel;
+    private Date userSigdate;
 
-	private Date userSigdate;
+    private String userLogType;
 
-	private String userLogType;
+    private Date userLastLoginTime;
 
-	private Date userLastLoginTime;
+    private Integer pointTotal;
 
-	private String userImage;
-
-	private Integer pointTotal;
-
-	private String userType;
-
-	public MemberDTO() {
+    private String userType;
+    
+    public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
-			String userAddr, String userAddrDetail, String userTel, String userImage) {
+			String userAddr, String userTel) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
@@ -45,19 +41,17 @@ public class MemberDTO {
 		this.userName = userName;
 		this.userZipcode = userZipcode;
 		this.userAddr = userAddr;
-		this.userAddrDetail = userAddrDetail;
 		this.userTel = userTel;
-		this.userImage = userImage;
 		this.userSigdate = null;
-		this.userLogType = "기본";
+		this.userLogType = "±âº»";
 		this.userLastLoginTime = null;
 		this.pointTotal = 5000;
-		this.userType = "일반회원";
+		this.userType = "ÀÏ¹ÝÈ¸¿ø";
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
-			String userAddr, String userAddrDetail, String userTel, Date userSigdate, String userLogType,
-			Date userLastLoginTime, String userImage, Integer pointTotal, String userType) {
+			String userAddr, String userTel, Date userSigdate, String userLogType, Date userLastLoginTime,
+			Integer pointTotal, String userType) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
@@ -65,12 +59,10 @@ public class MemberDTO {
 		this.userName = userName;
 		this.userZipcode = userZipcode;
 		this.userAddr = userAddr;
-		this.userAddrDetail = userAddrDetail;
 		this.userTel = userTel;
 		this.userSigdate = userSigdate;
 		this.userLogType = userLogType;
 		this.userLastLoginTime = userLastLoginTime;
-		this.userImage = userImage;
 		this.pointTotal = pointTotal;
 		this.userType = userType;
 	}
@@ -123,14 +115,6 @@ public class MemberDTO {
 		this.userAddr = userAddr;
 	}
 
-	public String getUserAddrDetail() {
-		return userAddrDetail;
-	}
-
-	public void setUserAddrDetail(String userAddrDetail) {
-		this.userAddrDetail = userAddrDetail;
-	}
-
 	public String getUserTel() {
 		return userTel;
 	}
@@ -163,14 +147,6 @@ public class MemberDTO {
 		this.userLastLoginTime = userLastLoginTime;
 	}
 
-	public String getUserImage() {
-		return userImage;
-	}
-
-	public void setUserImage(String userImage) {
-		this.userImage = userImage;
-	}
-
 	public Integer getPointTotal() {
 		return pointTotal;
 	}
@@ -190,10 +166,10 @@ public class MemberDTO {
 	@Override
 	public String toString() {
 		return "MemberDTO [userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail + ", userName="
-				+ userName + ", userZipcode=" + userZipcode + ", userAddr=" + userAddr + ", userAddrDetail="
-				+ userAddrDetail + ", userTel=" + userTel + ", userSigdate=" + userSigdate + ", userLogType="
-				+ userLogType + ", userLastLoginTime=" + userLastLoginTime + ", userImage=" + userImage
-				+ ", pointTotal=" + pointTotal + ", userType=" + userType + "]";
+				+ userName + ", userZipcode=" + userZipcode + ", userAddr=" + userAddr + ", userTel=" + userTel
+				+ ", userSigdate=" + userSigdate + ", userLogType=" + userLogType + ", userLastLoginTime="
+				+ userLastLoginTime + ", pointTotal=" + pointTotal + ", userType=" + userType + "]";
 	}
-
+    
+	
 }
