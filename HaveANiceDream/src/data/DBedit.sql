@@ -39,11 +39,28 @@ ALTER TABLE product_image MODIFY(IMAGE_SRC VARCHAR2(50));
 ALTER TABLE product add(category_detail_no number);
 insert into category values(category_seq.nextval,'유아용품');
 insert into category values(category_seq.nextval,'핸드폰');
+insert into category values(category_seq.nextval,'가전제품');
+insert into category values(category_seq.nextval,'가구');
+insert into category values(category_seq.nextval,'생활용품');
+
+
+
+
 
 insert into category_detail values(category_detail_seq.nextval,'기저귀',1);
 insert into category_detail values(category_detail_seq.nextval,'유모차',1);
 insert into category_detail values(category_detail_seq.nextval,'유아용옷',1);
 insert into category_detail values(category_detail_seq.nextval,'장난감',1);
+insert into category_detail values(category_detail_seq.nextval,'유아용변기커버',1);
+insert into category_detail values(category_detail_seq.nextval,'유아용신발',1);
+insert into category_detail values(category_detail_seq.nextval,'유아용의자',1);
+insert into category_detail values(category_detail_seq.nextval,'유아용퍼즐',1);
+insert into category_detail values(category_detail_seq.nextval,'유아용이불',1);
+insert into category_detail values(category_detail_seq.nextval,'유아용가방',1);
+insert into category_detail values(category_detail_seq.nextval,'유아로션',1);
+
+
+
 insert into category_detail values(category_detail_seq.nextval,'갤럭시S6',2);
 insert into category_detail values(category_detail_seq.nextval,'갤럭시S7',2);
 insert into category_detail values(category_detail_seq.nextval,'갤럭시S8',2);
@@ -51,6 +68,25 @@ insert into category_detail values(category_detail_seq.nextval,'IPhone5',2);
 insert into category_detail values(category_detail_seq.nextval,'IPhoneX',2);
 insert into category_detail values(category_detail_seq.nextval,'IPhoneSE',2);
 insert into category_detail values(category_detail_seq.nextval,'IPhone8Plus',2);
+
+insert into category_detail values(category_detail_seq.nextval,'냉장고',3);
+insert into category_detail values(category_detail_seq.nextval,'세탁기',3);
+insert into category_detail values(category_detail_seq.nextval,'모니터',3);
+
+
+insert into category_detail values(category_detail_seq.nextval,'식탁',4);
+insert into category_detail values(category_detail_seq.nextval,'의자',4);
+insert into category_detail values(category_detail_seq.nextval,'책상',4);
+
+insert into category_detail values(category_detail_seq.nextval,'섬유유연제',5);
+insert into category_detail values(category_detail_seq.nextval,'롤화장지',5);
+insert into category_detail values(category_detail_seq.nextval,'멀티탭',5);
+insert into category_detail values(category_detail_seq.nextval,'주방세제',5);
+insert into category_detail values(category_detail_seq.nextval,'물티슈',5);
+insert into category_detail values(category_detail_seq.nextval,'건조대',5);
+insert into category_detail values(category_detail_seq.nextval,'슬리퍼',5);
+insert into category_detail values(category_detail_seq.nextval,'물티슈',5);
+
 
 
 select * from BLAME;
