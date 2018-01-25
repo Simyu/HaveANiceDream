@@ -1,4 +1,4 @@
-package blame_reply.controller;
+package manager_blame.controller;
 
 import java.io.IOException;
 
@@ -9,27 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import blame_reply.dto.Blame_ReplyDTO;
-import blame_reply.service.Blame_ReplySerivce;
-import blame_reply.service.Blame_ReplyServiceimpl;
+import manager_blame.dto.Manager_BlameDTO;
+import manager_blame.service.Manager_BlameService;
+import manager_blame.service.Manager_BlameServiceimpl;
 
 
-@WebServlet(name = "blame_reply/insert", urlPatterns = {"/blame_reply/insert.do"})
-public class Blame_ReplyInsertServlet extends HttpServlet {
+@WebServlet(name = "manager_blame/insert", urlPatterns = {"/manager_blame/insert.do"})
+public class Manager_BlameInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+	
+		String answertitle = request.getParameter("answerTitle");
+		String answercontent = request.getParameter("answerContent");
 		
-		String blame_replyType = request.getParameter("blame_replyType");
-		String blame_replyTitle = request.getParameter("blame_replyTitle");
-		String blame_replyContent = request.getParameter("blame_replyContent");
-		
-		Blame_ReplyDTO reply = new Blame_ReplyDTO(blame_replyType, blame_replyTitle, blame_replyContent);
-		Blame_ReplySerivce service = new Blame_ReplyServiceimpl();
-		int result = service.insert(reply);
+		Manager_BlameDTO dto = new Manager_BlameDTO(answertitle, answercontent);
+		Manager_BlameService service = new Manager_BlameServiceimpl();
+		int result = service.insert(dto);
 		
 		if(result>0){
 			response.sendRedirect("/HaveANiceDream/blame/list.do");

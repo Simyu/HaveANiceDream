@@ -1,4 +1,4 @@
-package blame_reply.controller;
+package manager_blame.controller;
 
 import java.io.IOException;
 
@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import blame_reply.dto.Blame_ReplyDTO;
-import blame_reply.service.Blame_ReplySerivce;
-import blame_reply.service.Blame_ReplyServiceimpl;
+import manager_blame.dto.Manager_BlameDTO;
+import manager_blame.service.Manager_BlameService;
+import manager_blame.service.Manager_BlameServiceimpl;
 
-@WebServlet(name = "blame_reply/select", urlPatterns = { "/blame_reply/select.do" })
-public class Blame_ReplySelectServlet extends HttpServlet {
+@WebServlet(name = "manager_blame/select", urlPatterns = { "/manager_blame/select.do" })
+public class Manager_BlameSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -23,12 +23,12 @@ public class Blame_ReplySelectServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		int blame_replyNo = Integer.parseInt(request.getParameter("blame_replyNo"));
+		int answerno = Integer.parseInt(request.getParameter("answerNo"));
 		
-		Blame_ReplySerivce service = new Blame_ReplyServiceimpl();
-		Blame_ReplyDTO dto = service.select(blame_replyNo);
+		Manager_BlameService service = new Manager_BlameServiceimpl();
+		Manager_BlameDTO dto = service.select(answerno);
 		
-		String viewpath = "../blame/reportview_center.jsp";
+		String viewpath = "../blame/report_list_center.jsp";
 		
 		request.setAttribute("viewpath", viewpath);
 		request.setAttribute("blame_reply", dto);

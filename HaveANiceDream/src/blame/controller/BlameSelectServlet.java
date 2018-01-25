@@ -28,7 +28,7 @@ public class BlameSelectServlet extends HttpServlet {
 		BlameService service = new BlameServiceimpl();
 		BlameDTO dto = service.select(blameNo);
 		
-		String viewpath = "../blame/reportview_center.jsp";
+		String viewpath = "../blame/report_list.jsp";
 		
 		request.setAttribute("viewpath", viewpath);
 		request.setAttribute("blame", dto);

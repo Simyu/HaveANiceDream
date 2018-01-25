@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -15,15 +16,18 @@
 </head>
 
 <body>
-
+<!-- 없어져야할 page -->
 	<h3>
-		<i class="fa fa-angle-right"></i> 회원가입
+		<i class="fa fa-angle-right"></i> 내 정보 수정하기
 	</h3>
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
 				<form class="form-horizontal style-form"
-					action="/HaveANiceDream/user/insert.do" method="post">
+					action="/HaveANiceDream/user/update1.do" method="post">
+					<%
+						MemberDTO user = (MemberDTO) session.getAttribute("user");
+					%>
 					<div class="form-group">
 						<p class="centered">
 							<img src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
@@ -35,32 +39,31 @@
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">아이디</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="userId" name="userId"
-								required="required" onkeyup="idVerify()"> <span
-								class="help-block" id="helpId"></span>
+						<div class="col-lg-10">
+							<p class="form-control-static"><%=user.getUserId() %></p>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" placeholder=""
-								name="userPw" id="userPw"> <span class="help-block"
-								id="helpPw"></span>
+								name="userPw" id="userPw" value="<%=user.getUserPw()%>"> <span
+								class="help-block" id="helpPw"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호 확인</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" placeholder=""
-								id="userPwConf" onkeyup="pwConf()"> <span
+								id="userPwConf" onkeyup="pwConf()" value="<%=user.getUserPw()%>"> <span
 								class="help-block" id="helpPwConf"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">이름</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="userName">
+							<input type="text" class="form-control" name="userName" value="<%=user.getUserName()%>">
 						</div>
 					</div>
 					<div class="form-group">
@@ -86,15 +89,19 @@
 								id="userAddr2">
 						</div>
 					</div>
+					<%
+						String mail = user.getUserEmail();
+						String[] strArry = mail.split("@");
+					%>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">이메일</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="userEmail1"
-								id="userEmail1">
+								id="userEmail1" value="<%=strArry[0]%>">
 						</div>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="userEmail2"
-								id="userEmail2">
+								id="userEmail2" value="@<%=strArry[1]%>">
 						</div>
 						<div class="btn-group col-sm-4">
 							<button type="button" class="btn dropdown-toggle"
@@ -108,23 +115,39 @@
 							</ul>
 						</div>
 					</div>
+					
+					<%
+						String tel = user.getUserTel();
+						strArry = tel.split("-");
+					%>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">휴대전화번호</label>
 						<div class="col-sm-3">
 							<select class="form-control" name="userTel1">
 								<option>전화번호 선택</option>
-								<option>010</option>
+								<%
+									if (strArry[0].equals("010")) {
+								%>
+								<option selected="selected">010</option>
 								<option>011</option>
+								<%
+									} else if (strArry[0].equals("010")) {
+								%>
+								<option>010</option>
+								<option selected="selected">011</option>
+								<%
+									}
+								%>
 							</select>
 						</div>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" name="userTel2">
+							<input type="text" class="form-control" name="userTel2" value="<%=strArry[1]%>">
 						</div>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" name="userTel3">
+							<input type="text" class="form-control" name="userTel3" value="<%=strArry[2]%>">
 						</div>
 					</div>
-					<button type="submit" class="btn btn-theme">Sign up</button>
+					<button type="submit" class="btn btn-theme">수정 완료</button>
 					<button type="submit" class="btn btn-theme">이메일 인증하기</button>
 					<button type="submit" class="btn btn-theme">휴대전화 인증하기</button>
 				</form>
@@ -135,46 +158,6 @@
 	<!--main content end-->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
-		function pwConf() {
-			var pw = document.getElementById("userPw").value;
-			var pwConf = document.getElementById("userPwConf").value;
-
-			if (pw != pwConf) {
-				document.getElementById("helpPwConf").innerHTML = "비밀번호가 일치하지 않습니다.";
-			} else {
-				document.getElementById("helpPwConf").innerHTML = "";
-			}
-		}
-
-		function idVerify() {
-			var id = document.getElementById("userId").value;
-			var flag = true;
-			var helpMsg = "";
-			var patten = /^[a-z0-9]*$/;
-
-			if (!patten.test(id)) {
-				document.getElementById("helpId").innerHTML = "ID 는 소문자와 숫자만 사용 할 수 있습니다.";
-				return false;
-			}
-
-			if (id.length < 6) {
-				document.getElementById("helpId").innerHTML = "ID 길이가 짧습니다.";
-				return false;
-			}
-
-			var xhr = new XMLHttpRequest();
-
-			xhr.onreadystatechange = function() {
-				if (xhr.status == 200 && xhr.readyState == 4) {
-					document.getElementById("helpId").innerHTML = xhr.responseText;
-				}
-			}
-
-			xhr.open("GET", "/HaveANiceDream/user/idcheck.do?userId=" + id,
-					true);
-			xhr.send();
-
-		}
 
 		function setEmailAddr(mail) {
 			document.getElementById("userEmail2").value = mail;

@@ -11,7 +11,80 @@
 <meta name="author" content="Dashboard">
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<script type="text/javascript">
+      function getName(myform){
+    	  index = myform.categoryDetailName.selectedIndex;
+    	  //alert(index);category_detail_list
+    	 $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].text);
+    	 // $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].value);
+      }
+     $(document).ready(function(){
+    	 $("#categoryNo").on("keyup",function(){
+     		var name = $(this).val();
+     		$.ajax({
+     			url:"/HaveANiceDream/category/readAjax1.do",
+ 				type:"get",
+ 				data:{"categoryName":name},
+ 				dataType:"json",
+ 				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
+ 					$("#categoryName").empty();
+ 					for(i=0 ;i<data.category.length;i++){ 
+ 						var str="<option>"+data.category[i].categoryName+"</option>";
+ 						 categoryname=$(str);
+ 						 categoryname.attr("value",data.category[i].categoryNo);
+ 						$("#categoryName").append(categoryname);
+ 					}   
+ 				}
+     		})
+	
+     	});
 
+    	$("#categoryDetailNameSearch").on("keyup",function(){
+    		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
+    	//	alert(name);
+    		//category =$(this).text();
+    	//	alert(category);
+    		$.ajax({
+    			url:"/HaveANiceDream/category/readAjax.do",
+				type:"get",
+				data:{"categoryName":name},
+				dataType:"json",
+				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
+					$("#categoryDetailName").empty();
+					for(i=0 ;i<data.category_detail.length;i++){ 
+						var str="<option>"+data.category_detail[i].categoryDetailName+"</option>";
+						//alert(data.category_detail[i].categoryDetailName);
+						 categorydetailname=$(str);
+					//	 categoryname.attr("name",data.category_detail[i].categoryDetailNo);
+						 categorydetailname.attr("value",data.category_detail[i].categoryDetailNo);
+						// categoryname.attr("text",data.category_detail[i].categoryDetailName);
+
+						 
+						$("#categoryDetailName").append(categorydetailname);
+						
+						//alert($("#categoryDetailName").children().length);
+						//     alert(name.text());
+						   
+					 //$("categoryDetailNameSearch").val(categoryname.attr("value"));
+					/* 	str=data.categoryDetailName[i];
+						textnode = document.createTextNode(str);
+						 var createOption=document.createElement("option");
+						 createOption.appendChild(textnode);
+						 parentNode=document.getElementById("categoryDetailName");
+						 parentNode.appendChild(createOption); */
+						 //jquery로 간단하게 할것
+
+					}
+					  
+					                           
+				}
+    		})
+    		
+    		
+    	});
+    	 
+     });
+</script>
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 
@@ -42,33 +115,33 @@
 						<div class="col-sm-10">
 							<div class="col-sm-5">
 
-								<input type="text"  id="categoryNo" name="categoryNo"class="form-control" value="2
-								">
+								<input type="text"  id="categoryNo" name="categoryNo"class="form-control" value="1">
 								<br /> <select multiple class="form-control"
 									name="categoryName" id="categoryName" size="8"
 									style="width: 100%">
-								 <%
-								/*  ArrayList<CategoryDTO> list =(ArrayList<CategoryDTO>) request.getAttribute("list"); */
+								  <%
+							  ArrayList<CategoryDTO> category_list =(ArrayList<CategoryDTO>) request.getAttribute("category_list");
 								   
-								 
-								
-								 %>
-									<option value="2">유아용품
-									<option value="3">핸드폰
-									<option value="4">기타
+								 if(category_list.size()!=0){
+								  for(int i =0;i<category_list.size();i++){
+								%>
+								     <% CategoryDTO dto = category_list.get(i) ;%>
+								     
+									<option><%=dto.getCategoryName()%>
+									<%}} %> 
 								</select>
 							</div>
 							<div class="col-sm-5">
 
-								<input type="text" class="form-control" id="categoryDetailNo" name="categoryDetailNo"
+								<input type="text" class="form-control" id="categoryDetailNameSearch" name="categoryDetailNameSearch"
 									value="1"> <br /> <select multiple
 									class="form-control" name="categoryDetailName"
-									id="categoryDetailName" size="8" style="width: 100%">
-
+									id="categoryDetailName" size="8" style="width: 100%" onclick="getName(this.form)">
+<!-- 
 									<option value="1">유모차
 									<option value="2">유아용옷
 									<option value="3">장난감
-									<option value="4">신발
+									<option value="4">신발 -->
 								</select>
 							</div>
 
