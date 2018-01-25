@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import product.ProductDTO;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
+import user.dto.MemberDTO;
 
 /**
  * Servlet implementation class Product_Search_Servlet
@@ -31,7 +33,23 @@ public class Product_Search_Servlet extends HttpServlet {
 		String fileName =service.productSelect_Image(productNo);
 		
 		
-		String viewpath="../product/product_buy.jsp";
+		HttpSession ses =  request.getSession(false);
+		MemberDTO user =null;
+		 String viewpath="";
+		  viewpath="../product/product_buy.jsp";
+		//프로덕트넘버의 값으로    
+	/*	if(ses!=null){
+			  user = (MemberDTO)ses.getAttribute("user");
+			  String enrollId = product.getUserId();
+			  if(user.equals(enrollId)){
+				  viewpath="../product/product_buy.jsp";
+			  }else{
+				   viewpath="../Trade/trade_popup.jsp";
+			  }
+		};*/
+		
+		
+		//else로그인화면
 		System.out.println(product);
 		request.setAttribute("product", product);
 		request.setAttribute("viewpath", viewpath);

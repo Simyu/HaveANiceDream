@@ -45,8 +45,20 @@ insert into category values(category_seq.nextval,'가전제품');
 insert into category values(category_seq.nextval,'가구');
 insert into category values(category_seq.nextval,'생활용품');
 
+<<<<<<< HEAD
 ALTER TABLE board MODIFY(BOARD_COUNT number);
 
+=======
+
+create table category(category_no number,
+category_name varchar2 (30)
+);
+create table category_detail(category_detail_no number,
+category_detail_name varchar2 (30),
+category_no number
+);
+						
+>>>>>>> branch 'master' of https://github.com/Simyu/HaveANiceDream.git
 
 
 insert into category_detail values(category_detail_seq.nextval,'기저귀',1);
@@ -89,7 +101,12 @@ insert into category_detail values(category_detail_seq.nextval,'건조대',5);
 insert into category_detail values(category_detail_seq.nextval,'슬리퍼',5);
 insert into category_detail values(category_detail_seq.nextval,'물티슈',5);
 
-
+create  SEQUENCE  category_detail_seq;
+create SEQUENCE  category_seq;
+DROP SEQUENCE  category_detail_seq;
+DROP SEQUENCE  category_seq;
+drop table category;
+drop table category_detail;
 
 select * from BLAME;
 select * from ATTENDANCE;

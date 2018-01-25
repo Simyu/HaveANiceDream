@@ -1,3 +1,4 @@
+<%@page import="category.CategoryDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -15,6 +16,33 @@
 <title>DASHGUM - Bootstrap Admin Template</title>
 
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#categoryName").on("click",function(){
+		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
+
+		$.ajax({
+			url:"/HaveANiceDream/category/readAjax.do?state=SEARCH",
+			type:"get",
+			data:{"categoryNo":name},
+			dataType:"json",
+			success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
+				$("#categoryDetailName").empty();
+				for(i=0 ;i<data.category_detail.length;i++){ 
+					var str="<option>"+data.category_detail[i].categoryDetailName+"</option>";
+					 categorydetailname=$(str);
+					 categorydetailname.attr("value",data.category_detail[i].categoryDetailNo);
+					 categorydetailname.attr("name",data.category_detail[i].categoryDetailName);
+ 
+					$("#categoryDetailName").append(categorydetailname);
+				}                           
+			}
+		})
+		
+		
+	});
+	 
+});
+
 	/* 	function setPath(url) {
 
 	 location.href = "/HaveANiceDream/view.html?url=" + url;
@@ -41,46 +69,54 @@
 				<h4>
 					<i class="fa fa-angle-right"></i>물품리스트
 				</h4>
+				<form  class="form-horizontal style-form" method="post" 
+					action="/HaveANiceDream/product_list.do?state=SEARCH">
 				<div class="col-lg-12">
 
 					<div class="col-lg-4">
-						<select class="form-control" name="search_game_text"
-							id="search_game_text" style="width: 100%;">
-							<option value="java">유아용품
-							<option value="하둡">핸드폰
-							<option value="스프링">기타
-							<option value="mean">MEAN
-							<option value="spark">SPARK
+						<select  class="form-control"
+									name="categoryName" id=categoryName  
+									style="width: 100%">
+						<option >선택해주세요
+						 <%
+							  ArrayList<CategoryDTO> category_list =(ArrayList<CategoryDTO>) request.getAttribute("category_list");
+								   
+								 if(category_list!=null){
+								  for(int i =0;i<category_list.size();i++){
+								%>
+								     <% CategoryDTO dto = category_list.get(i) ;%>
+								     
+									<option value="<%=dto.getCategoryNo()%>"><%=dto.getCategoryName()%>
+									<%}} %> 
 						</select>
 					</div>
 
-					<div class="col-lg-3">
-						<select class="form-control" name="search_server_text"
-							id="search_server_text" style="width: 100%;" length="10">
-							<option value="java">유모차
-							<option value="하둡">유아용옷
-							<option value="스프링">장난감
-							<option value="mean">신발
+					<div class="col-lg-3"> <select 
+									class="form-control" name="categoryDetailName"
+									id="categoryDetailName"  style="width: 100%" >
+							<option >선택해주세요
+
 						</select>
 					</div>
 					<div class="col-lg-3">
 						<ul>
 
 
-							<li><input type="text" class="form-control" name="word"
-								value="물품제목" onclick="this.value='';" maxlength="5"
-								style="width: 100%" ;  /></li>
+							<li><input type="text" class="form-control" name="title" id="title"
+								value=""  
+								style="width: 100%"/></li>
 						</ul>
 					</div>
 					<div class="col-lg-2">
 						<ul>
-							<li><input type="image" name="btnSearch"
-								src="http://img2.itemmania.com/images/btn/btn_blue_search.gif"
-								class="g_image" style="width: auto;" /></li>
+							<!-- <li><input type="image" name="btnSearch" value="검색"
+								src="/HaveANiceDream/product_list.do?state=SEARCH"
+								class="g_image" style="width: auto;" /></li> -->
+								<li><button type="submit" class="btn btn-default">검색</button></li>
 						</ul>
 					</div>
 				</div>
-
+				</form>
 				<div class="col-lg-10">
 				</div>
 				<div class="col-lg-2">

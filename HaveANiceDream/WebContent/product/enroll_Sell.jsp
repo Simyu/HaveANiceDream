@@ -17,6 +17,21 @@
     	  //alert(index);category_detail_list
     	 $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].text);
     	 // $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].value);
+    	             
+      }
+      function getName1(myform){
+    	  index = myform.categoryName.selectedIndex;
+    	  //alert(index);category_detail_list
+    	 $("#categoryNo").val(myform.categoryName[index].text);
+    	 // $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].value);
+           categorynum= $("#categoryNo").attr("value",$("#categoryNo").val());
+           alert(categorynum.attr("value"));
+    				//에러케이스정리
+    				//1. 물품선택간 검색을 안하고 바로 선택할 경우 에러발생(대분류에서)
+    				//2. option을 선택하지 않으면 value설정값을 넘길수가 없음...
+    				//개선방안 
+    				//텍스트필드에 적힌 이름이 아닌 고유번호를 넘겨야함.
+    	             
       }
      $(document).ready(function(){
     	 $("#categoryNo").on("keyup",function(){
@@ -29,6 +44,7 @@
  				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
  					$("#categoryName").empty();
  					for(i=0 ;i<data.category.length;i++){ 
+ 						
  						var str="<option>"+data.category[i].categoryName+"</option>";
  						 categoryname=$(str);
  						 categoryname.attr("value",data.category[i].categoryNo);
@@ -45,23 +61,25 @@
     		//category =$(this).text();
     	//	alert(category);
     		$.ajax({
-    			url:"/HaveANiceDream/category/readAjax.do",
+    			url:"/HaveANiceDream/category/readAjax.do?state=ENROLL",
 				type:"get",
 				data:{"categoryName":name},
 				dataType:"json",
 				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
 					$("#categoryDetailName").empty();
+					
 					for(i=0 ;i<data.category_detail.length;i++){ 
+					if(categoryname.attr("value")==data.category_detail[i].categoryNo){
 						var str="<option>"+data.category_detail[i].categoryDetailName+"</option>";
 						//alert(data.category_detail[i].categoryDetailName);
 						 categorydetailname=$(str);
 					//	 categoryname.attr("name",data.category_detail[i].categoryDetailNo);
 						 categorydetailname.attr("value",data.category_detail[i].categoryDetailNo);
-						// categoryname.attr("text",data.category_detail[i].categoryDetailName);
+						 categorydetailname.attr("name",data.category_detail[i].categoryDetailName);
 
 						 
 						$("#categoryDetailName").append(categorydetailname);
-						
+					}
 						//alert($("#categoryDetailName").children().length);
 						//     alert(name.text());
 						   
@@ -115,9 +133,9 @@
 						<div class="col-sm-10">
 							<div class="col-sm-5">
 
-								<input type="text"  id="categoryNo" name="categoryNo"class="form-control" value="1">
+								<input type="text"  id="categoryNo" name="categoryNo"class="form-control" value="">
 								<br /> <select multiple class="form-control"
-									name="categoryName" id="categoryName" size="8"
+									name="categoryName" id=categoryName size="8" onclick="getName1(this.form)"
 									style="width: 100%">
 								  <%
 							  ArrayList<CategoryDTO> category_list =(ArrayList<CategoryDTO>) request.getAttribute("category_list");
@@ -134,14 +152,9 @@
 							<div class="col-sm-5">
 
 								<input type="text" class="form-control" id="categoryDetailNameSearch" name="categoryDetailNameSearch"
-									value="1"> <br /> <select multiple
+									value=""> <br /> <select multiple
 									class="form-control" name="categoryDetailName"
 									id="categoryDetailName" size="8" style="width: 100%" onclick="getName(this.form)">
-<!-- 
-									<option value="1">유모차
-									<option value="2">유아용옷
-									<option value="3">장난감
-									<option value="4">신발 -->
 								</select>
 							</div>
 
