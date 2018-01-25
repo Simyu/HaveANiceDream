@@ -1,6 +1,26 @@
 select * from member;
 
-ALTER TABLE member RENAME COLUMN USER_CHK_BLACK TO USER_TYPE;
+drop table member;
+
+CREATE TABLE member
+(
+    user_id                 VARCHAR2(20)    NOT NULL, 
+    user_pw                 VARCHAR2(20)    NULL, 
+    user_email              VARCHAR2(20)    NULL, 
+    user_name               VARCHAR2(20)    NULL, 
+    user_zipcode            VARCHAR2(5)     NULL, 
+    user_addr               VARCHAR2(90)    NULL, 
+    user_addr_detail        VARCHAR2(20)    NULL, 
+    user_tel                VARCHAR2(20)    NULL, 
+    user_sigdate            DATE            NULL, 
+    user_log_type           VARCHAR2(20)    NULL, 
+    user_last_login_time    DATE            NULL, 
+    user_image              VARCHAR2(20)    NULL, 
+    point_total             NUMBER          NULL, 
+    user_type               VARCHAR2(20)    NULL, 
+    CONSTRAINT MEMBER_PK PRIMARY KEY (user_id)
+);
+
 ALTER TABLE member MODIFY(USER_TYPE VARCHAR2(20));
 ALTER TABLE member MODIFY(USER_ADDR VARCHAR2(200));
 ALTER TABLE member MODIFY(USER_EMAIL VARCHAR2(200));
