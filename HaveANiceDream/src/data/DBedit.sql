@@ -15,7 +15,7 @@ ALTER TABLE product RENAME COLUMN PRODUCT_COUNT TO PRODUCT_GRADE;
 ALTER TABLE product MODIFY(PRODUCT_GRADE VARCHAR2(20));
 ALTER TABLE product MODIFY(trade_type VARCHAR2(20));
 ALTER TABLE product MODIFY(PRODUCT_STATE number);
-ALTER TABLE product_image MODIFY(IMAGE_SRC VARCHAR2(50));0
+ALTER TABLE product_image MODIFY(IMAGE_SRC VARCHAR2(50));
 ALTER TABLE product add(category_detail_no number);
 insert into category values(category_seq.nextval,'유아용품');
 insert into category values(category_seq.nextval,'핸드폰');
@@ -24,6 +24,14 @@ insert into category_detail values(category_detail_seq.nextval,'기저귀',1);
 insert into category_detail values(category_detail_seq.nextval,'유모차',1);
 insert into category_detail values(category_detail_seq.nextval,'유아용옷',1);
 insert into category_detail values(category_detail_seq.nextval,'장난감',1);
+insert into category_detail values(category_detail_seq.nextval,'갤럭시S6',2);
+insert into category_detail values(category_detail_seq.nextval,'갤럭시S7',2);
+insert into category_detail values(category_detail_seq.nextval,'갤럭시S8',2);
+insert into category_detail values(category_detail_seq.nextval,'IPhone5',2);
+insert into category_detail values(category_detail_seq.nextval,'IPhoneX',2);
+insert into category_detail values(category_detail_seq.nextval,'IPhoneSE',2);
+insert into category_detail values(category_detail_seq.nextval,'IPhone8Plus',2);
+
 
 select * from BLAME;
 select * from ATTENDANCE;
