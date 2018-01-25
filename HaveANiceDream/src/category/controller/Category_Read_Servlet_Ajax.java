@@ -27,28 +27,34 @@ public class Category_Read_Servlet_Ajax extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		//
+		
 		PrintWriter pw = response.getWriter();
 		String categoryName=request.getParameter("categoryName");
 		CategoryService service = new CategoryServiceimpl();
-		ArrayList<CategoryDetailDTO> category_detail_list  = service.categoryDetailList(categoryName);
+	//	ArrayList<CategoryDetailDTO> category_detail_list  = service.categoryDetailList(categoryName);
 		//System.out.println(category_detail_list);
 		//이름으로 검색하는데 해당이름으로 시작하는 항목을 검색할 예정.. %
 		ArrayList<CategoryDetailDTO> category_detail_listAjax=service.categoryDetailListAjax(categoryName);
 		//json파싱.
-		JSONObject category_detail = new JSONObject();
+		//System.out.println(categoryName);
+		JSONObject root_category_detail = new JSONObject();
 		JSONArray list = new JSONArray();
 		int size=category_detail_listAjax.size();
 		for (int i = 0; i < size; i++) {
 			CategoryDetailDTO dto =category_detail_listAjax.get(i);
+			JSONObject category_detail = new JSONObject();
+			category_detail.put("categoryDetailNo", dto.getCategoryDetailNo());
+			category_detail.put("categoryDetailName", dto.getCategoryDetailName());
+			category_detail.put("categoryNo", dto.getCategoryNo());
 
-			list.add(dto.getCategoryDetailName());
+			list.add(category_detail);
 			
 		}
-		category_detail.put("categoryDetailName", list);
-		 response.setContentType("application/json;charset=euc-kr");
+		
+		root_category_detail.put("category_detail", list);
+		 response.setContentType("application/json;charset=utf-8");
 	     response.setHeader("cache-control", "no-cache,no-store");
-	     System.out.println(category_detail.toJSONString());
-	     pw.print(category_detail.toJSONString());
+	     pw.print(root_category_detail.toJSONString());
 	}
 
 }

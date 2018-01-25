@@ -13,7 +13,7 @@ import fw.DBUtil;
 public class CategoryServiceimpl implements CategoryService {
 
 	@Override
-	public ArrayList<CategoryDTO> categoryList() {
+	public ArrayList<CategoryDTO> categoryList(String categoryName) {
 		ArrayList<CategoryDTO> category_list = new ArrayList<CategoryDTO>();
 		Connection connection = null;
 		CategoryDAO dao = new CategoryDAOimpl();
@@ -21,7 +21,7 @@ public class CategoryServiceimpl implements CategoryService {
 		
 		try {
 			connection = DBUtil.getConnect();
-			category_list=dao.categoryList(connection);
+			category_list=dao.categoryList( categoryName,connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

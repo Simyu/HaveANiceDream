@@ -38,7 +38,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		String realFolder="";
 		ServletContext context = getServletContext();
 		realFolder = context.getRealPath(saveFolder);
-		System.out.println(realFolder);
+	//	System.out.println(realFolder);
 		MultipartRequest multipart = 
 				new MultipartRequest(request,
 						realFolder, size, encType, 
@@ -58,8 +58,11 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		
 		
 		int productPrice = Integer.parseInt(multipart.getParameter("productPrice"));
-		int categoryNo = Integer.parseInt(multipart.getParameter("categoryNo"));
-		int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailNo"));
+		int categoryNo = Integer.parseInt(multipart.getParameter("categoryName"));
+		System.out.println("인덱스"+categoryNo);
+		int categoryDetailName = Integer.parseInt(multipart.getParameter("categoryDetailName"));
+		System.out.println("인덱스"+categoryDetailName);
+		//int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailName"));
 		String productName = multipart.getParameter("productName");
 		String productTitle = multipart.getParameter("productTitle");
 		String productContent = multipart.getParameter("productContent");
@@ -68,13 +71,13 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		String productGrade = multipart.getParameter("productGrade");
 			//���ŷ� �߰� 	
 		String tradeType = multipart.getParameter("tradeType");
-				
+		
 		//System.out.println(tradeType);
 		//System.out.println(userId);
 		//���δ�Ʈ �ѹ� ��ǰ��  ������ �ʿ���� ���ܿ���  �Ѱ�����
 		//ProductDTO dto = new ProductDTO(productNo, userId, categoryNo, productName, productPrice, productContent, productCount, productTitle, productDate, productState, productExfDate, tradeType)
 		
-		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailNo);
+		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailName);
 		
 		PrintWriter pw = response.getWriter();
 				

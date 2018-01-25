@@ -13,33 +13,54 @@
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 <script type="text/javascript">
       function getName(myform){
-    	 
     	  index = myform.categoryDetailName.selectedIndex;
-    	  //alert(index);
-    	  $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].value);
+    	  //alert(index);category_detail_list
+    	 $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].text);
+    	 // $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].value);
       }
      $(document).ready(function(){
+    	 $("#categoryNo").on("keyup",function(){
+     		var name = $(this).val();
+     		$.ajax({
+     			url:"/HaveANiceDream/category/readAjax1.do",
+ 				type:"get",
+ 				data:{"categoryName":name},
+ 				dataType:"json",
+ 				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
+ 					$("#categoryName").empty();
+ 					for(i=0 ;i<data.category.length;i++){ 
+ 						var str="<option>"+data.category[i].categoryName+"</option>";
+ 						 categoryname=$(str);
+ 						 categoryname.attr("value",data.category[i].categoryNo);
+ 						$("#categoryName").append(categoryname);
+ 					}   
+ 				}
+     		})
+	
+     	});
+
     	$("#categoryDetailNameSearch").on("keyup",function(){
-    		 
     		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
-    		//alert(name);
-    		category =$(this).text();
+    	//	alert(name);
+    		//category =$(this).text();
     	//	alert(category);
     		$.ajax({
-    			url:"/HaveANiceDream//category/readAjax.do",
+    			url:"/HaveANiceDream/category/readAjax.do",
 				type:"get",
 				data:{"categoryName":name},
 				dataType:"json",
 				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
 					$("#categoryDetailName").empty();
-					for(i=0 ;i<data.categoryDetailName.length;i++){ 
-						var str="<option>"+data.categoryDetailName[i]+"</option>";
-						
-						 categoryname=$(str);
-						 categoryname.attr("value",data.categoryDetailName[i]);
+					for(i=0 ;i<data.category_detail.length;i++){ 
+						var str="<option>"+data.category_detail[i].categoryDetailName+"</option>";
+						//alert(data.category_detail[i].categoryDetailName);
+						 categorydetailname=$(str);
+					//	 categoryname.attr("name",data.category_detail[i].categoryDetailNo);
+						 categorydetailname.attr("value",data.category_detail[i].categoryDetailNo);
+						// categoryname.attr("text",data.category_detail[i].categoryDetailName);
+
 						 
-						$("#categoryDetailName").append(categoryname);
-						
+						$("#categoryDetailName").append(categorydetailname);
 						
 						//alert($("#categoryDetailName").children().length);
 						//     alert(name.text());

@@ -14,17 +14,22 @@ import product.ProductQuery;
 public class CategoryDAOimpl implements CategoryDAO {
 
 	@Override
-	public ArrayList<CategoryDTO> categoryList(Connection connection) throws SQLException {
+	public ArrayList<CategoryDTO> categoryList(String categoryName,  Connection connection) throws SQLException {
 		ArrayList<CategoryDTO> category_list  = new ArrayList<CategoryDTO>();
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
+		if(categoryName!=null){
+			ptmt = connection.prepareStatement("select * from category where category_Name like  ?");
+			ptmt.setString(1, categoryName+"%");
+		}else{
 		ptmt = connection.prepareStatement("select * from category");
+		}
 		resultSet = ptmt.executeQuery();
 		while (resultSet.next()) {
 			CategoryDTO  dto = new CategoryDTO(resultSet.getInt(1), resultSet.getString(2));				
 			category_list.add(dto);
 		}
-		System.out.println(category_list);
+		//System.out.println(category_list);
 		
 		return category_list;
 	}

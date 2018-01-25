@@ -39,7 +39,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		  int result=0;
 		  PreparedStatement ptmt=null;
 		  ptmt = connection.prepareStatement(ProductQuery.PRODUCT_IMG_INSERT);
-		  System.out.println(imageSrc);
+		//  System.out.println(imageSrc);
 		     ptmt.setString(1, imageSrc);
 		     result=ptmt.executeUpdate();
 		     
@@ -146,7 +146,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		
 		result = ptmt.executeUpdate();
 		
-	   System.out.println(result);
+	  // System.out.println(result);
         
 		
 

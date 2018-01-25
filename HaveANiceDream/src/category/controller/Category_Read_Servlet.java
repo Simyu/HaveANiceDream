@@ -29,7 +29,7 @@ public class Category_Read_Servlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		CategoryService service = new CategoryServiceimpl();		
-		ArrayList<CategoryDTO> category_list  = service.categoryList();
+		ArrayList<CategoryDTO> category_list  = service.categoryList(null);
 		
      
 	     
