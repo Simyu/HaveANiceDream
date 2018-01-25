@@ -16,7 +16,7 @@
 <!-- Custom styles for this template -->
 <script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <script src="/HaveANiceDream/Theme/assets/js/Filechose.js"></script>
-<script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
 
 </head>
@@ -59,10 +59,11 @@
 							<select class="form-control">
 								<option>분류 2</option>
 								<option>물품</option>
-								<option>기타</option>
 								<option>이용</option>
 								<option>구매</option>
 								<option>판매</option>
+								<option>인증</option>
+								<option>기타</option>
 							</select>
 						</div>
 					</div>

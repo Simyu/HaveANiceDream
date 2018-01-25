@@ -1,4 +1,6 @@
 select * from member;
+select * from tab;
+select * from board;
 
 drop table member;
 
@@ -43,7 +45,7 @@ insert into category values(category_seq.nextval,'가전제품');
 insert into category values(category_seq.nextval,'가구');
 insert into category values(category_seq.nextval,'생활용품');
 
-
+ALTER TABLE board MODIFY(BOARD_COUNT number);
 
 
 

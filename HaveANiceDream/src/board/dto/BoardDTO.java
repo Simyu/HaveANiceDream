@@ -18,7 +18,7 @@ public class BoardDTO {
 
     private String boardState;
 
-    private String boardCount;
+    private Integer boardCount;
 
     private Integer boardParentNo;
 
@@ -26,13 +26,15 @@ public class BoardDTO {
 
     private Integer boradOrder;
     
+    private String borderimageSrc;
+    
     public BoardDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public BoardDTO(Integer boardNo, String userId, Date writeDate, String boardTitle, String boardContent,
-			String boardType, String boardState, String boardCount, Integer boardParentNo, Integer boardLevel,
-			Integer boradOrder) {
+			String boardType, String boardState, Integer boardCount, Integer boardParentNo, Integer boardLevel,
+			Integer boradOrder, String borderimageSrc) {
 		super();
 		this.boardNo = boardNo;
 		this.userId = userId;
@@ -45,6 +47,7 @@ public class BoardDTO {
 		this.boardParentNo = boardParentNo;
 		this.boardLevel = boardLevel;
 		this.boradOrder = boradOrder;
+		this.borderimageSrc = borderimageSrc;
 	}
 
 	public Integer getBoardNo() {
@@ -103,11 +106,11 @@ public class BoardDTO {
 		this.boardState = boardState;
 	}
 
-	public String getBoardCount() {
+	public Integer getBoardCount() {
 		return boardCount;
 	}
 
-	public void setBoardCount(String boardCount) {
+	public void setBoardCount(Integer boardCount) {
 		this.boardCount = boardCount;
 	}
 
@@ -135,13 +138,24 @@ public class BoardDTO {
 		this.boradOrder = boradOrder;
 	}
 
+	public String getBorderimageSrc() {
+		return borderimageSrc;
+	}
+
+	public void setBorderimageSrc(String borderimageSrc) {
+		this.borderimageSrc = borderimageSrc;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardDTO [boardNo=" + boardNo + ", userId=" + userId + ", writeDate=" + writeDate + ", boardTitle="
 				+ boardTitle + ", boardContent=" + boardContent + ", boardType=" + boardType + ", boardState="
 				+ boardState + ", boardCount=" + boardCount + ", boardParentNo=" + boardParentNo + ", boardLevel="
-				+ boardLevel + ", boradOrder=" + boradOrder + "]";
+				+ boardLevel + ", boradOrder=" + boradOrder + ", borderimageSrc=" + borderimageSrc + "]";
 	}
-    
+
+
+
+
     
 }
