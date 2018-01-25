@@ -41,8 +41,7 @@
 											승수부스터가 42개 남앗는데 ip부스터로 교환해주세요 </span>
 									</p>
 									<div class="inner-view">
-										xp 승수부스터가 42개 남앗는데 ip부스터로 교환해주세요 <br /> 이전문의에서 글한번더쓰면
-										교환해주신다하셔서 부탁합니다
+										
 									</div>
 								</div>
 							</td>
@@ -59,15 +58,16 @@
 							<td>
 								<div class="inner-box">
 									<div class="inner-view">
-										<em class="faq-icon type02">A</em> <span class="slidBtn">
-											안녕하세요 소환사님! <br /> 동그라미,세모를 그려내는 도형예술가 [GM]아트록스입니다.
-										</span>
-										<p>
-											보내주신 문의는 잘 읽어보았습니다 <br /> 남은 경험치 부스트 수 만큼 IP부스트로 전환해 드렸습니다 <br />
-											30레벨이 되셔서 필요하신 포인트가 많을텐데 원하시는 상품 구입하시길 바랄게요 <br /> 앞으로도 궁금한
-											사항이 있다면 언제든지 1:1문의를 해주시고, <br /> 전장에서 활약하는 소환사님을 응원하겠습니다
+										<p class="subject">
+											<em class="faq-icon type02">A</em><span class="slideBtn">
+												xp 승수부스터가 42개 남앗는데 ip부스터로 교환해주세요 </span>
 										</p>
+										<textarea name="blameContent" id="mailcontent" rows="60"
+											cols="60" title="평가글" maxlength="4000" class="insert-text"
+											style="height: 120px;" onfocus="onFocusContent()"></textarea>
 									</div>
+								</div>
+								</div>
 								</div>
 							</td>
 							<td class="linebg02">
