@@ -18,7 +18,7 @@ POINT_TOTAL                                        NUMBER
 USER_TYPE                                          VARCHAR2(20)
 */
 public class UserQuery {
-	public static final String USER_INSERT = "insert into member values(?,?,?,?,?,?,?,?,?,sysdate,?,sysdate,?,?)";
+	public static final String USER_INSERT = "insert into member values(?,?,?,?,?,?,?,?,sysdate,?,sysdate,?,?,?)";
 	public static final String USER_LIST = "select * from member";
 	public static final String USER_SELECT = "select * from member where USER_ID = ?";
 	public static final String USER_LOGIN = "select * from member where USER_ID = ? and USER_PW = ?";

@@ -22,7 +22,7 @@
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
-				<form class="form-horizontal style-form"
+				<form class="form-horizontal style-form" enctype="multipart/form-data"
 					action="/HaveANiceDream/user/insert.do" method="post">
 					<div class="form-group">
 						<p class="centered">
