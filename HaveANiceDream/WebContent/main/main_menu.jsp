@@ -40,9 +40,12 @@
 					if (user != null) {
 				%>
 				<p class="centered">
-					<a href="javascript:setPath('../user/user_detail.jsp')"><img
-						src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
-						class="img-circle" width="60"></a>
+					<a
+						href="/HaveANiceDream/point/select.do?userId=<%=user.getUserId()%>">
+						<img
+						src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>"
+						class="img-circle" width="60">
+					</a>
 				</p>
 				<h5 class="centered"><%=user.getUserName()%></h5>
 
@@ -50,9 +53,11 @@
 						class="fa fa-desktop"></i> <span>My page</span>
 				</a>
 					<ul class="sub">
-						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">거래내역 조회</a></li>
+						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">거래내역
+								조회</a></li>
 						<li><a href="/HaveANiceDream/point/list.do">포인트 조회</a></li>
-						<li><a href="javascript:setPath('../attendance/project_calender.jsp')">출석체크</a></li>
+						<li><a
+							href="javascript:setPath('../attendance/project_calender.jsp')">출석체크</a></li>
 
 					</ul></li>
 
@@ -63,8 +68,7 @@
 						class="fa fa-cogs"></i> <span>거래</span>
 				</a>
 					<ul class="sub">
-						<li><a
-							href="/HaveANiceDream/category/read.do">물품등록</a></li>
+						<li><a href="/HaveANiceDream/category/read.do">물품등록</a></li>
 						<li><a href="/HaveANiceDream/product_list.do">물품검색</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
@@ -100,11 +104,9 @@
 						<li><a href="/HaveANiceDream/user/block/list.do">차단유저 조회</a></li>
 						<li><a href="/HaveANiceDream/blame/list.do?state=2">신고접수내역</a></li>
 
-					</ul>
-				<%
-					}
-				%>
-
+					</ul> <%
+ 	}
+ %>
 			</ul>
 			<!-- sidebar menu end-->
 		</div>

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<!-- 없어져야할 page -->
+	<!-- 없어져야할 page -->
 	<h3>
 		<i class="fa fa-angle-right"></i> 내 정보 수정하기
 	</h3>
@@ -24,53 +24,58 @@
 		<div class="col-lg-12">
 			<div class="form-panel">
 				<form class="form-horizontal style-form"
+					enctype="multipart/form-data"
 					action="/HaveANiceDream/user/update1.do" method="post">
 					<%
 						MemberDTO user = (MemberDTO) session.getAttribute("user");
 					%>
 					<div class="form-group">
 						<p class="centered">
-							<img src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
+							<img
+								src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>"
 								class="img-circle" width="60">
 						</p>
 						<div style="padding-left: 40%">
-							<input type="file" name="userImage">
+							<input type="file" name="userImage"
+								onchange="document.getElementById('userImage').src = window.URL.createObjectURL(this.files[0])">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">아이디</label>
 						<div class="col-lg-10">
-							<p class="form-control-static"><%=user.getUserId() %></p>
+							<p class="form-control-static"><%=user.getUserId()%></p>
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" placeholder=""
-								name="userPw" id="userPw" value="<%=user.getUserPw()%>"> <span
-								class="help-block" id="helpPw"></span>
+								name="userPw" id="userPw" value="<%=user.getUserPw()%>">
+							<span class="help-block" id="helpPw"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호 확인</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" placeholder=""
-								id="userPwConf" onkeyup="pwConf()" value="<%=user.getUserPw()%>"> <span
-								class="help-block" id="helpPwConf"></span>
+								id="userPwConf" onkeyup="pwConf()" value="<%=user.getUserPw()%>">
+							<span class="help-block" id="helpPwConf"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">이름</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="userName" value="<%=user.getUserName()%>">
+							<input type="text" class="form-control" name="userName"
+								value="<%=user.getUserName()%>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">주소</label>
 						<div class="col-sm-3">
 							<input type="text" class="form-control" name="userZipcode"
-								id="userZipcode" readonly="readonly">
+								id="userZipcode" readonly="readonly"
+								value="<%=user.getUserZipcode()%>">
 						</div>
 						<div class="col-sm-2">
 							<button type="button"
@@ -82,11 +87,12 @@
 						<label class="col-sm-2 col-sm-2 control-label"></label>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" name="userAddr1"
-								id="userAddr1" readonly="readonly">
+								id="userAddr1" readonly="readonly"
+								value="<%=user.getUserAddr()%>">
 						</div>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" name="userAddr2"
-								id="userAddr2">
+								id="userAddr2" value="<%=user.getUserAddrDetail()%>">
 						</div>
 					</div>
 					<%
@@ -115,7 +121,7 @@
 							</ul>
 						</div>
 					</div>
-					
+
 					<%
 						String tel = user.getUserTel();
 						strArry = tel.split("-");
@@ -141,10 +147,12 @@
 							</select>
 						</div>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" name="userTel2" value="<%=strArry[1]%>">
+							<input type="text" class="form-control" name="userTel2"
+								value="<%=strArry[1]%>">
 						</div>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" name="userTel3" value="<%=strArry[2]%>">
+							<input type="text" class="form-control" name="userTel3"
+								value="<%=strArry[2]%>">
 						</div>
 					</div>
 					<button type="submit" class="btn btn-theme">수정 완료</button>
@@ -158,7 +166,6 @@
 	<!--main content end-->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
-
 		function setEmailAddr(mail) {
 			document.getElementById("userEmail2").value = mail;
 		}
