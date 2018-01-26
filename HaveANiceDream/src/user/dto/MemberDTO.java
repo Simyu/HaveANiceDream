@@ -4,33 +4,35 @@ import java.sql.Date;
 
 public class MemberDTO {
 
-    private String userId;
+	private String userId;
 
-    private String userPw;
+	private String userPw;
 
-    private String userEmail;
+	private String userEmail;
 
-    private String userName;
+	private String userName;
 
-    private String userZipcode;
+	private String userZipcode;
 
-    private String userAddr;
-    private String userAddrDetail;
+	private String userAddr;
 
-    private String userTel;
+	private String userAddrDetail;
 
-    private Date userSigdate;
+	private String userTel;
 
-    private String userLogType;
+	private Date userSigdate;
 
-    private Date userLastLoginTime;
+	private String userLogType;
 
-    private Integer pointTotal;
+	private Date userLastLoginTime;
 
-    private String userType;
-    private String userImage;
-    
-    public MemberDTO() {
+	private String userImage;
+
+	private Integer pointTotal;
+
+	private String userType;
+
+	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -54,7 +56,8 @@ public class MemberDTO {
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
-			String userAddr, String userTel) {
+			String userAddr, String userAddrDetail, String userTel, Date userSigdate, String userLogType,
+			Date userLastLoginTime, String userImage, Integer pointTotal, String userType) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
@@ -62,28 +65,12 @@ public class MemberDTO {
 		this.userName = userName;
 		this.userZipcode = userZipcode;
 		this.userAddr = userAddr;
-		this.userTel = userTel;
-		this.userSigdate = null;
-		this.userLogType = "기본";
-		this.userLastLoginTime = null;
-		this.pointTotal = 5000;
-		this.userType = "일반회원";
-	}
-
-	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
-			String userAddr, String userTel, Date userSigdate, String userLogType, Date userLastLoginTime,
-			Integer pointTotal, String userType) {
-		super();
-		this.userId = userId;
-		this.userPw = userPw;
-		this.userEmail = userEmail;
-		this.userName = userName;
-		this.userZipcode = userZipcode;
-		this.userAddr = userAddr;
+		this.userAddrDetail = userAddrDetail;
 		this.userTel = userTel;
 		this.userSigdate = userSigdate;
 		this.userLogType = userLogType;
 		this.userLastLoginTime = userLastLoginTime;
+		this.userImage = userImage;
 		this.pointTotal = pointTotal;
 		this.userType = userType;
 	}
@@ -136,6 +123,14 @@ public class MemberDTO {
 		this.userAddr = userAddr;
 	}
 
+	public String getUserAddrDetail() {
+		return userAddrDetail;
+	}
+
+	public void setUserAddrDetail(String userAddrDetail) {
+		this.userAddrDetail = userAddrDetail;
+	}
+
 	public String getUserTel() {
 		return userTel;
 	}
@@ -168,6 +163,14 @@ public class MemberDTO {
 		this.userLastLoginTime = userLastLoginTime;
 	}
 
+	public String getUserImage() {
+		return userImage;
+	}
+
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
+	}
+
 	public Integer getPointTotal() {
 		return pointTotal;
 	}
@@ -184,32 +187,13 @@ public class MemberDTO {
 		this.userType = userType;
 	}
 
-	public String getUserAddrDetail() {
-		return userAddrDetail;
-	}
-
-	public void setUserAddrDetail(String userAddrDetail) {
-		this.userAddrDetail = userAddrDetail;
-	}
-
-	public String getUserImage() {
-		return userImage;
-	}
-
-	public void setUserImage(String userImage) {
-		this.userImage = userImage;
-	}
-
 	@Override
 	public String toString() {
 		return "MemberDTO [userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail + ", userName="
 				+ userName + ", userZipcode=" + userZipcode + ", userAddr=" + userAddr + ", userAddrDetail="
 				+ userAddrDetail + ", userTel=" + userTel + ", userSigdate=" + userSigdate + ", userLogType="
-				+ userLogType + ", userLastLoginTime=" + userLastLoginTime + ", pointTotal=" + pointTotal
-				+ ", userType=" + userType + ", userImage=" + userImage + "]";
+				+ userLogType + ", userLastLoginTime=" + userLastLoginTime + ", userImage=" + userImage
+				+ ", pointTotal=" + pointTotal + ", userType=" + userType + "]";
 	}
 
-
-    
-	
 }
