@@ -1,5 +1,6 @@
+<%@page import="category.CategoryDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="category.*"%>
+<%@page import="product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -143,7 +144,12 @@
 </head>
 
 <body>
-
+     <%
+     ProductDTO product = (ProductDTO)request.getAttribute("product");
+     String file1 =(String) request.getAttribute("file1");
+     int productNo= (int) request.getAttribute("productNo");
+     
+     %>
 	<h3>
 		<i class="fa fa-angle-right"></i> 물품등록
 	</h3>
@@ -156,7 +162,7 @@
 					<i class="fa fa-angle-right"></i> 판매 등록
 				</h4>
 				<form class="form-horizontal style-form" method="post" enctype="multipart/form-data"
-					action="/HaveANiceDream/product_enroll.do">
+					action="/HaveANiceDream/product_enroll.do?productNo=<%=productNo%>">
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">카테고리</label>
 						<div class="col-sm-10">
@@ -167,9 +173,10 @@
 									name="categoryName" id=categoryName size="8" onclick="getName1(this.form)"
 									style="width: 100%">
 								  <%
+								 
 							  ArrayList<CategoryDTO> category_list =(ArrayList<CategoryDTO>) request.getAttribute("category_list");
 								   
-								 if(category_list.size()!=0){
+								 if(category_list!=null){
 								  for(int i =0;i<category_list.size();i++){
 								%>
 								     <% CategoryDTO dto = category_list.get(i) ;%>
@@ -193,53 +200,60 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">판매금액</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="productPrice" name="productPrice" required="required"> <span
-								class="help-block" " >A block of help text that breaks onto
-								a new line and may extend beyond one line.</span>
+							<input type="text" class="form-control" id="productPrice" name="productPrice"   
+							
+							value="<%=product.getProductPrice()%>" > 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상품명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="productName" name="productName" required="required" > 
+							<input type="text" class="form-control" id="productName" name="productName"    
+							value="<%=product.getProductName()%>" > 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">거래방식</label>
-						<div class="col-sm-10">
-								   <input type="radio" name="tradeType"  id="trade" value="trade">직거래
-	   							   <input type="radio" name="tradeType"  id="delivery_trade" value="delivery_trade">택배거래
+						<div class="col-sm-10" > <!--  if로 처리... -->
+								   <input type="radio" name="tradeType" value="trade"    <%if(product.getTradeType().equals("trade")){%>checked="checked" <%} %> >직거래
+	   							   <input type="radio" name="tradeType" value="delivery_trade" <%if(product.getTradeType().equals("delivery_trade")){%>checked="checked" <%} %> 
+	   							    >택배거래
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">물품상태</label>
-						<div class="col-sm-10">
-								   <input type="radio" name="productGrade"  id="high" value="high">상
-	   							   <input type="radio" name="productGrade"  id="middle" value="middle">중
-	   							   <input type="radio" name="productGrade"  id="low" value="low">하
+						<div class="col-sm-10" >
+								   <input type="radio" name="productGrade" value="high"  <%if(product.product_Grade().equals("high")){%>checked="checked" <%} %>>상
+	   							   <input type="radio" name="productGrade" value="middle"   <%if(product.product_Grade().equals("middle")){%>checked="checked" <%} %>>중
+	   							   <input type="radio" name="productGrade" value="low"   <%if(product.product_Grade().equals("low")){%>checked="checked" <%} %>>하
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">물품제목</label>
 						<div class="col-sm-10">
-							<input class="form-control" type="text" id="productTitle" name="productTitle" required="required"
-								value="">
+							<input class="form-control" type="text" id="productTitle" name="productTitle" 
+								value= <%=product.getProductTitle()%> maxlength="50">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-							<textarea rows="10" cols="100%" id="productContent" name="productContent" required="required"></textarea>
+						<img src="/HaveANiceDream/upload/<%=file1%>">
+							<textarea rows="10" cols="100%" id="productContent" name="productContent" >
+						 
+						 <%=product.getProductContent() %>
+							</textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">업로드</label>
 						<div class="col-sm-10">
-							<div >
+							
 								<input type="file" name="uploadFile1" required="required" /><br/> 
 								<!-- <textarea rows="3" cols="100%"></textarea>
 								<button type="button" class="btn btn-default">+추가</button>
 								<button type="button" class="btn btn-default">-삭제</button> -->
+						
 							</div>
 						</div>
 					</div>
@@ -264,8 +278,8 @@
 						<div class="col-sm-6">
 							<label class="col-sm-2 col-sm-2 control-label">이름</label>
 							<div class="col-sm-4">
-							<input type="text" class="form-control-static" id="userId" name="userId" readonly="readonly">
-							
+								<input type="text" class="form-control" id="userId" name="userId"    >
+								
 							</div>
 
 						</div>
@@ -276,7 +290,7 @@
 							<label class="col-sm-2 col-sm-2 control-label">연락처</label>
 
 							<div class="col-sm-4">
-								<input type="text" class="form-control-static" id="userPhone" name="userPhone" required="required">
+							<input type="text" class="form-control" id="userId" name="userId">
 							</div>
 						</div>
 					</div>
@@ -284,9 +298,7 @@
 
 
 					<div class="form-group" align="center">
-						<button type="submit" class="btn btn-round btn-default" id="enroll">등록하기</button>
-
-						<button type="reset" class="btn btn-round btn-default">취소하기</button>
+						<button type="submit" class="btn btn-round btn-default">수정하기</button>
 					</div>
 				</form>
 			</div>

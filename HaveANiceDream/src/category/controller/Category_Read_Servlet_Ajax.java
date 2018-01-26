@@ -30,7 +30,7 @@ public class Category_Read_Servlet_Ajax extends HttpServlet {
 		
 		PrintWriter pw = response.getWriter();
 		String categoryName=request.getParameter("categoryName");
-		int categoryNo=Integer.parseInt(request.getParameter("categoryNo"));
+		
 		CategoryService service = new CategoryServiceimpl();
 	//	ArrayList<CategoryDetailDTO> category_detail_list  = service.categoryDetailList(categoryName);
 		//System.out.println(category_detail_list);
@@ -40,6 +40,7 @@ public class Category_Read_Servlet_Ajax extends HttpServlet {
 		if(state.equals("ENROLL")){
 		 category_detail_listAjax=service.categoryDetailList(0,categoryName);
 		}else if (state.equals("SEARCH")){
+			int categoryNo=Integer.parseInt(request.getParameter("categoryNo"));
 			category_detail_listAjax =service.categoryDetailList(categoryNo,null);
 				}
 		//json파싱.

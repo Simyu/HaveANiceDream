@@ -31,8 +31,6 @@ public class Category_Read_Servlet extends HttpServlet {
 		CategoryService service = new CategoryServiceimpl();		
 		ArrayList<CategoryDTO> category_list  = service.categoryList(null);
 		
-     
-	     
 		String viewpath = "../product/enroll_Sell.jsp";
 
 		request.setAttribute("viewpath", viewpath);
