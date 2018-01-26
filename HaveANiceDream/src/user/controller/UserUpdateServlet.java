@@ -51,14 +51,20 @@ public class UserUpdateServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		MemberDTO dto = (MemberDTO) session.getAttribute("user");
 		String userId = dto.getUserId();
-		String fileNeme = dto.getUserImage();
+		String fileNeme = null;
 
 		@SuppressWarnings("unchecked")
 		Enumeration<String> files = multipartRequest.getFileNames();
+		
 		if (files.hasMoreElements()) {
 			String file = files.nextElement();
 			fileNeme = multipartRequest.getFilesystemName(file);
+			if (fileNeme == null){
+				fileNeme = dto.getUserImage();
+			}
 		}
+		
+		System.out.println(fileNeme);
 
 		MemberDTO user = new MemberDTO(userId, userPw, userEmail, userName, userZipcode, userAddr, userAddrDetail,
 				userTel, fileNeme);

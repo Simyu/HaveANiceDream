@@ -49,12 +49,15 @@ public class SignUpServlet extends HttpServlet {
 		String userTel = multipartRequest.getParameter("userTel1") + "-" + multipartRequest.getParameter("userTel2") + "-"
 				+ multipartRequest.getParameter("userTel3");
 
-		String fileNeme = "ui-sam.jpg";
+		String fileNeme = null;
 		@SuppressWarnings("unchecked")
 		Enumeration<String> files = multipartRequest.getFileNames();
 		if (files.hasMoreElements()) {
 			String file = files.nextElement();
 			fileNeme = multipartRequest.getFilesystemName(file);
+			if (fileNeme == null){
+				fileNeme = "ui-sam.jpg";
+			}
 		}
 
 		MemberDTO user = new MemberDTO(userId, userPw, userEmail, userName, userZipcode, userAddr, userAddrDetail,

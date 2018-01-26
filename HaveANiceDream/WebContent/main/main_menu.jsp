@@ -25,6 +25,7 @@
 <body>
 	<%
 		MemberDTO user = (MemberDTO) session.getAttribute("user");
+	System.out.println(user);
 	%>
 
 
