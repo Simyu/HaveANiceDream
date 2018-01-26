@@ -32,7 +32,8 @@
 						</p>
 						<div style="padding-left: 40%">
 							<input type="file" name="userImage"
-								onchange="document.getElementById('userImage').src = window.URL.createObjectURL(this.files[0])">
+								onchange="document.getElementById('userImage').src = window.URL.createObjectURL(this.files[0])"
+								accept="image/*">
 						</div>
 					</div>
 					<div class="form-group">

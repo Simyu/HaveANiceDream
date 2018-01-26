@@ -41,7 +41,7 @@
 				%>
 				<p class="centered">
 					<a
-						href="/HaveANiceDream/point/select.do?userId=<%=user.getUserId()%>">
+						href="/HaveANiceDream/user/select.do?userId=<%=user.getUserId()%>">
 						<img
 						src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>"
 						class="img-circle" width="60">

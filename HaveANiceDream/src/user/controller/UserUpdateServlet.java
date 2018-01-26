@@ -62,7 +62,7 @@ public class UserUpdateServlet extends HttpServlet {
 
 		MemberDTO user = new MemberDTO(userId, userPw, userEmail, userName, userZipcode, userAddr, userAddrDetail,
 				userTel, fileNeme);
-		System.out.println(user);
+		
 		UserService service = new UserServiceImpl();
 		int res = service.userUpdate(user);
 

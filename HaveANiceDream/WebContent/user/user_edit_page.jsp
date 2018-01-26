@@ -33,11 +33,12 @@
 						<p class="centered">
 							<img
 								src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>"
-								class="img-circle" width="60">
+								class="img-circle" width="60" id="userImage">
 						</p>
 						<div style="padding-left: 40%">
 							<input type="file" name="userImage"
-								onchange="document.getElementById('userImage').src = window.URL.createObjectURL(this.files[0])">
+								onchange="document.getElementById('userImage').src = window.URL.createObjectURL(this.files[0])"
+								accept="image/*">
 						</div>
 					</div>
 					<div class="form-group">

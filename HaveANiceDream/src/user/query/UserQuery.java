@@ -35,7 +35,7 @@ public class UserQuery {
 			     + "USER_ZIPCODE = ?, "
 			     + "USER_ADDR = ?, "
 			     + "USER_ADDR_DETAIL = ?, "
-			     + "USER_TEL = ? "
+			     + "USER_TEL = ?, "
 			     + "USER_IMAGE = ? "
 			+ "WHERE USER_ID = ?";
 }
