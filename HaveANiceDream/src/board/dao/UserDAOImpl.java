@@ -1,0 +1,311 @@
+package board.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import fw.DBUtil;
+import user.dto.MemberDTO;
+import user.query.UserQuery;
+
+/*Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+USER_ID                                   NOT NULL VARCHAR2(20)
+USER_PW                                            VARCHAR2(20)
+USER_EMAIL                                         VARCHAR2(20)
+USER_NAME                                          VARCHAR2(20)
+USER_ZIPCODE                                       VARCHAR2(5)
+USER_ADDR                                          VARCHAR2(90)
+USER_TEL                                           VARCHAR2(20)
+USER_SIGDATE                                       DATE
+USER_LOG_TYPE                                      VARCHAR2(20)
+USER_LAST_LOGIN_TIME                               DATE
+POINT_TOTAL                                        NUMBER
+USER_TYPE                                          VARCHAR2(20)
+*/
+
+public class UserDAOImpl implements UserDAO {
+
+	@Override
+	public int userInsert(MemberDTO user, Connection connection) throws SQLException {
+		int rowNum = 0;
+		PreparedStatement preparedStatement = null;
+
+		preparedStatement = connection.prepareStatement(UserQuery.USER_INSERT);
+		// "insert into member values(?,?,?,?,?,?,?,sysdate,?,sysdate,?,?)";
+
+		preparedStatement.setString(1, user.getUserId());
+		preparedStatement.setString(2, user.getUserPw());
+		preparedStatement.setString(3, user.getUserEmail());
+		preparedStatement.setString(4, user.getUserName());
+		preparedStatement.setString(5, user.getUserZipcode());
+		preparedStatement.setString(6, user.getUserAddr());
+		preparedStatement.setString(7, user.getUserTel());
+		preparedStatement.setString(8, user.getUserLogType());
+		preparedStatement.setInt(9, user.getPointTotal());
+		preparedStatement.setString(10, user.getUserType());
+
+		rowNum = preparedStatement.executeUpdate();
+
+		DBUtil.close(preparedStatement);
+
+		return rowNum;
+	}
+
+	@Override
+	public ArrayList<MemberDTO> userList(Connection connection) throws SQLException {
+		ArrayList<MemberDTO> list = null;
+		MemberDTO dto = null;
+
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		preparedStatement = connection.prepareStatement(UserQuery.USER_LIST);
+		//"select * from member";
+
+		resultSet = preparedStatement.executeQuery();
+
+		while (resultSet.next()) {
+			if (list == null) {
+				list = new ArrayList<MemberDTO>();
+			}
+
+			dto = new MemberDTO(
+					resultSet.getString(1), 
+					resultSet.getString(2), 
+					resultSet.getString(3),
+					resultSet.getString(4), 
+					resultSet.getString(5), 
+					resultSet.getString(6), 
+					resultSet.getString(7),
+					resultSet.getDate(8), 
+					resultSet.getString(9), 
+					resultSet.getDate(10), 
+					resultSet.getInt(11),
+					resultSet.getString(12)
+					);
+
+			list.add(dto);
+		}
+
+		DBUtil.close(resultSet);
+		DBUtil.close(preparedStatement);
+
+		return list;
+	}
+
+	@Override
+	public MemberDTO userSelect(String userId, Connection connection) throws SQLException {
+		MemberDTO dto = null;
+
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		preparedStatement = connection.prepareStatement(UserQuery.USER_SELECT);
+		//"select * from member where USER_ID = ?";
+
+		preparedStatement.setString(1, userId);
+
+		resultSet = preparedStatement.executeQuery();
+
+		if (resultSet.next()) {
+			dto = new MemberDTO(
+					resultSet.getString(1), 
+					resultSet.getString(2), 
+					resultSet.getString(3),
+					resultSet.getString(4), 
+					resultSet.getString(5), 
+					resultSet.getString(6), 
+					resultSet.getString(7),
+					resultSet.getDate(8), 
+					resultSet.getString(9), 
+					resultSet.getDate(10), 
+					resultSet.getInt(11),
+					resultSet.getString(12)
+					);
+		}
+
+		DBUtil.close(resultSet);
+		DBUtil.close(preparedStatement);
+
+		return dto;
+	}
+
+	@Override
+	public MemberDTO userLogin(String userId, String userPw, Connection connection) throws SQLException {
+		MemberDTO dto = null;
+
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		preparedStatement = connection.prepareStatement(UserQuery.USER_LOGIN);
+		//"select * from member where USER_ID = ? and USER_PW = ?";
+
+		preparedStatement.setString(1, userId);
+		preparedStatement.setString(2, userPw);
+
+		resultSet = preparedStatement.executeQuery();
+
+		if (resultSet.next()) {
+			dto = new MemberDTO(
+					resultSet.getString(1), 
+					resultSet.getString(2), 
+					resultSet.getString(3),
+					resultSet.getString(4), 
+					resultSet.getString(5), 
+					resultSet.getString(6), 
+					resultSet.getString(7),
+					resultSet.getDate(8), 
+					resultSet.getString(9), 
+					resultSet.getDate(10), 
+					resultSet.getInt(11),
+					resultSet.getString(12)
+					);
+		}
+
+		DBUtil.close(resultSet);
+		DBUtil.close(preparedStatement);
+
+		return dto;
+	}
+
+	@Override
+	public int userDelete(String userId, Connection connection) throws SQLException {
+		int rowNum = 0;
+
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_DELETE);
+		// "delete from member where USER_ID = ?";
+
+		preparedStatement.setString(1, userId);
+
+		rowNum = preparedStatement.executeUpdate();
+
+		DBUtil.close(preparedStatement);
+
+		return rowNum;
+	}
+
+	@Override
+	public int userUpdateType(String userId, String userType, Connection connection) throws SQLException {
+		int rowNum = 0;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_TYPE_UPDATE);
+		//"update member set USER_TYPE = ?  where USER_ID = ?"; 
+		
+		preparedStatement.setString(1, userType);
+		preparedStatement.setString(2, userId);
+		
+		rowNum = preparedStatement.executeUpdate();
+		
+		DBUtil.close(preparedStatement);
+		
+		return rowNum;
+	}
+
+	@Override
+	public int userUpdatePoint(int pointTotal, String userId, Connection connection) throws SQLException {
+		int rowNum = 0;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_POINT_UPDATE);
+		// "update member set POINT_TOTAL = ?  where USER_ID = ?"; 
+		
+		preparedStatement.setInt(1, pointTotal);
+		preparedStatement.setString(2, userId);
+		
+		rowNum = preparedStatement.executeUpdate();
+		
+		DBUtil.close(preparedStatement);
+		
+		return rowNum;
+	}
+
+	@Override
+	public int userGetPoint(String userId, Connection connection) throws SQLException {
+		int pointTotal = 0;
+				
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_GET_POINT);
+		// "select POINT_TOTAL from member where USER_ID = ?";
+		
+		preparedStatement.setString(1, userId);
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if (resultSet.next()){
+			pointTotal = resultSet.getInt(1);
+		}
+		
+		DBUtil.close(resultSet);
+		DBUtil.close(preparedStatement);
+		
+		return pointTotal;
+	}
+
+	@Override
+	public int userUpdateLoginTime(String userId, Connection connection) throws SQLException {
+		int rowNum = 0;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_LOGINTIME_UPDATE);
+		// "update member set USER_LAST_LOGIN_TIME = sysdate where USER_ID = ?";
+		
+		preparedStatement.setString(1, userId);
+		
+		rowNum = preparedStatement.executeUpdate();
+		
+		DBUtil.close(preparedStatement);
+		
+		return rowNum;
+	}
+
+	@Override
+	public boolean idCheck(String userId, Connection connection) throws SQLException {
+		boolean check = false;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_SELECT);
+		
+		preparedStatement.setString(1, userId);
+		
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if (resultSet.next()){
+			check = true;
+		}
+		
+		DBUtil.close(resultSet);
+		DBUtil.close(preparedStatement);
+		
+		return check;
+	}
+
+	@Override
+	public int userUpdate(MemberDTO user, Connection connection) throws SQLException {
+		int rowNum = 0;
+		PreparedStatement preparedStatement = null;
+
+		preparedStatement = connection.prepareStatement(UserQuery.USER_UPDATE);
+//		"UPDATE member "
+//		+ "SET "
+//		     + "USER_PW = ?, "
+//		     + "USER_NAME = ?, "
+//		     + "USER_EMAIL = ?, "
+//		     + "USER_ZIPCODE = ?, "
+//		     + "USER_ADDR = ?, "
+//		     + "USER_TEL = ? "
+//		+ "WHERE USER_ID = ?";
+
+		preparedStatement.setString(1, user.getUserPw());
+		preparedStatement.setString(2, user.getUserName());
+		preparedStatement.setString(3, user.getUserEmail());
+		preparedStatement.setString(4, user.getUserZipcode());
+		preparedStatement.setString(5, user.getUserAddr());
+		preparedStatement.setString(6, user.getUserTel());
+		preparedStatement.setString(7, user.getUserId());
+
+		rowNum = preparedStatement.executeUpdate();
+
+		DBUtil.close(preparedStatement);
+
+		return rowNum;
+	}
+
+}

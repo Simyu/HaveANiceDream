@@ -102,6 +102,7 @@ insert into category_detail values(category_detail_seq.nextval,'슬리퍼',5);
 insert into category_detail values(category_detail_seq.nextval,'물티슈',5);
 
 create  SEQUENCE  category_detail_seq;
+
 create SEQUENCE  category_seq;
 DROP SEQUENCE  category_detail_seq;
 DROP SEQUENCE  category_seq;
@@ -118,4 +119,29 @@ CREATE TABLE block
     user_id         VARCHAR2(20)    NOT NULL, 
     block_reason    VARCHAR2(20)    NULL, 
     block_date      DATE            NULL   
+);
+
+create  SEQUENCE board_no_seq;
+drop
+ALTER TABLE board add(board_type1 varchar2(20));
+ALTER TABLE board add(board_type2 varchar2(20));
+alter table [해당테이블명] drop column [삭제할필드명];
+alter table board drop column board_type;
+
+CREATE TABLE board
+(
+	boardNo;	VARCHAR2(20)    NOT NULL, 
+    userId;		VARCHAR2(20)    NULL, 
+    writeDate;	VARCHAR2(20)    NULL, 
+    boardTitle;	VARCHAR2(200)    NULL, 
+    boardContent;	VARCHAR2(2000)    NULL, 
+    boardType1;		VARCHAR2(20)    NULL, 
+    boardType2;	VARCHAR2(20)    NULL, 
+    boardState;	VARCHAR2(20)    NULL, 
+    boardCount;	VARCHAR2(20)    NULL, 
+    boardParentNo; VARCHAR2(20)    NULL, 
+    boardLevel; N    NULL, 
+    boradOrder; VARCHAR2(20)    NULL, 
+    borderimageSrc; VARCHAR2(20)    NULL, 
+ 	CONSTRAINT board PRIMARY KEY (boardNo)
 );
