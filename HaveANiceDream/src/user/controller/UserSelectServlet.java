@@ -23,12 +23,12 @@ public class UserSelectServlet extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		//*
-		String userId = "leesuj"; 
+
+		String userId = request.getParameter("userId");
 		
 		UserService service = new UserServiceImpl();
-		MemberDTO dto = service.userSelect(userId); //session에서 받아오기
-		//*/
+		MemberDTO dto = service.userSelect(userId);
+
 
 		String viewpath = "../user/user_detail.jsp";
 

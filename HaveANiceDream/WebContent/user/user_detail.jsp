@@ -56,7 +56,7 @@
 					<div class="col-lg-10">
 						<p class="form-control-static">
 							(<%=user.getUserZipcode()%>)
-							<%=user.getUserAddr()%></p>
+							<%=user.getUserAddr()%> <%=user.getUserAddrDetail() %></p>
 					</div>
 				</div>
 				<hr>

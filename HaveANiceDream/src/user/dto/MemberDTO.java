@@ -15,6 +15,7 @@ public class MemberDTO {
     private String userZipcode;
 
     private String userAddr;
+    private String userAddrDetail;
 
     private String userTel;
 
@@ -27,9 +28,29 @@ public class MemberDTO {
     private Integer pointTotal;
 
     private String userType;
+    private String userImage;
     
     public MemberDTO() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
+			String userAddr, String userAddrDetail, String userTel, String userImage) {
+		super();
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userEmail = userEmail;
+		this.userName = userName;
+		this.userZipcode = userZipcode;
+		this.userAddr = userAddr;
+		this.userAddrDetail = userAddrDetail;
+		this.userTel = userTel;
+		this.userImage = userImage;
+		this.userSigdate = null;
+		this.userLogType = "기본";
+		this.userLastLoginTime = null;
+		this.pointTotal = 5000;
+		this.userType = "일반회원";
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
@@ -43,10 +64,10 @@ public class MemberDTO {
 		this.userAddr = userAddr;
 		this.userTel = userTel;
 		this.userSigdate = null;
-		this.userLogType = "±âº»";
+		this.userLogType = "기본";
 		this.userLastLoginTime = null;
 		this.pointTotal = 5000;
-		this.userType = "ÀÏ¹ÝÈ¸¿ø";
+		this.userType = "일반회원";
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
@@ -163,13 +184,32 @@ public class MemberDTO {
 		this.userType = userType;
 	}
 
+	public String getUserAddrDetail() {
+		return userAddrDetail;
+	}
+
+	public void setUserAddrDetail(String userAddrDetail) {
+		this.userAddrDetail = userAddrDetail;
+	}
+
+	public String getUserImage() {
+		return userImage;
+	}
+
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDTO [userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail + ", userName="
-				+ userName + ", userZipcode=" + userZipcode + ", userAddr=" + userAddr + ", userTel=" + userTel
-				+ ", userSigdate=" + userSigdate + ", userLogType=" + userLogType + ", userLastLoginTime="
-				+ userLastLoginTime + ", pointTotal=" + pointTotal + ", userType=" + userType + "]";
+				+ userName + ", userZipcode=" + userZipcode + ", userAddr=" + userAddr + ", userAddrDetail="
+				+ userAddrDetail + ", userTel=" + userTel + ", userSigdate=" + userSigdate + ", userLogType="
+				+ userLogType + ", userLastLoginTime=" + userLastLoginTime + ", pointTotal=" + pointTotal
+				+ ", userType=" + userType + ", userImage=" + userImage + "]";
 	}
+
+
     
 	
 }

@@ -23,14 +23,17 @@
 		<div class="col-lg-12">
 			<div class="form-panel">
 				<form class="form-horizontal style-form"
+					enctype="multipart/form-data"
 					action="/HaveANiceDream/user/insert.do" method="post">
 					<div class="form-group">
 						<p class="centered">
 							<img src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
-								class="img-circle" width="60">
+								class="img-circle" width="60" id="userImage">
 						</p>
 						<div style="padding-left: 40%">
-							<input type="file" name="userImage">
+							<input type="file" name="userImage"
+								onchange="document.getElementById('userImage').src = window.URL.createObjectURL(this.files[0])"
+								accept="image/*">
 						</div>
 					</div>
 					<div class="form-group">
