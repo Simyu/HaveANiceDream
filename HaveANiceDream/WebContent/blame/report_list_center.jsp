@@ -19,9 +19,18 @@
 function windowpopup(i){
 	popup = window.open("Answer_list.jsp","a","width=1000,height=500,left=100 top=50");
 	
-	<%
 	
-	%>
+	$.ajax({
+			url:"/HaveANiceDream/blame/blameajax.do",
+			type:"get",
+			data:{"BlameNo":i},
+			dataType:"ajax",
+			success:function(data){
+				alert(data);
+				
+			}
+		})
+	
 }
 
 </script>
@@ -76,7 +85,7 @@ function windowpopup(i){
 							<td><%=dept.getBlameType()%></td>
 							<td><%=dept.getUserIdBlamere()%></td>
 							<td><%=dept.getUserIdBlamee()%></td>
-							<td><a href="javascript:windowpopup(<%=i%>)"><%=dept.getBlameTitle()%></a></td>
+							<td><a href="javascript:windowpopup(<%=dept.getBlameNo()%>)"><%=dept.getBlameTitle()%></a></td>
 						</tr>
 						<%
 							}

@@ -132,7 +132,7 @@ public class BlameDAOimpl implements BlameDAO {
 		PreparedStatement ptmt = null;
 		ResultSet resultSet = null;
 		ptmt = con.prepareStatement(BlameQuery.BLAME_LIST2);
-		
+		ptmt.setString(1, userIdBlamere);
 		resultSet = ptmt.executeQuery();
 		
 		while(resultSet.next()){
@@ -140,6 +140,7 @@ public class BlameDAOimpl implements BlameDAO {
 				list = new ArrayList<BlameDTO>();
 			}
 			dto = new BlameDTO(
+					
 					resultSet.getInt(1),
 					resultSet.getDate(2),
 					resultSet.getString(3),

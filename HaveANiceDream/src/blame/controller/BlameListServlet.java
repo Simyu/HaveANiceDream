@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import blame.dto.BlameDTO;
 import blame.service.BlameService;
 import blame.service.BlameServiceimpl;
+import user.dto.MemberDTO;
 
 @WebServlet(name = "blame/list", urlPatterns = { "/blame/list.do" })
 public class BlameListServlet extends HttpServlet{
@@ -24,18 +26,22 @@ public class BlameListServlet extends HttpServlet{
 		BlameService service = new BlameServiceimpl();
 		ArrayList<BlameDTO> blamelist = null;
 		ArrayList<BlameDTO> user_list = null;
-		String useridblamere = req.getParameter("userIdBlamere");
 						
 		req.setCharacterEncoding("utf-8");
 		res.setContentType("text/html;charset=utf-8");
 		String state = req.getParameter("state");
-		blamelist = service.list();
-		user_list = service.user_list(useridblamere);
+		
 		String viewpath = "";
 		if(state.equals("1")){
+			HttpSession session = req.getSession(false);
+			MemberDTO user = (MemberDTO) session.getAttribute("user");
+			String useridblamere = user.getUserId();
+			user_list = service.user_list(useridblamere);
 			viewpath = "../blame/report_list.jsp";
 			req.setAttribute("user_list",user_list);
+			System.out.println(useridblamere);
 		}else{
+			blamelist = service.list();
 			viewpath = "../blame/report_list_center.jsp";
 			req.setAttribute("blamelist", blamelist);
 		}

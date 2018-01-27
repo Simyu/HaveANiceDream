@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import blame.service.BlameService;
 import blame.service.BlameServiceimpl;
 
-@WebServlet("/BlameNo")
+@WebServlet(name = "blame/ajax", urlPatterns = {"/blame/blameajax.do"})
 public class BlameNo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,6 @@ public class BlameNo extends HttpServlet {
 			HttpSession session = request.getSession();
 			printWriter.println("성공");
 		}else{
-			HttpSession seesion = request.getSession();
 			printWriter.println("실패");
 		}
 	}
