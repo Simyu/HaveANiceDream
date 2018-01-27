@@ -25,6 +25,7 @@ public class UserQuery {
 	public static final String USER_DELETE = "delete from member where USER_ID = ?";
 	public static final String USER_TYPE_UPDATE = "update member set USER_TYPE = ? where USER_ID = ?"; 
 	public static final String USER_POINT_UPDATE = "update member set POINT_TOTAL = ? where USER_ID = ?"; 
+	public static final String USER_PASS_UPDATE = "update member set USER_PW = ? where USER_ID = ? and USER_PW = ?";
 	public static final String USER_GET_POINT = "select POINT_TOTAL from member where USER_ID = ?";
 	public static final String USER_LOGINTIME_UPDATE = "update member set USER_LAST_LOGIN_TIME = sysdate where USER_ID = ?";
 	public static final String USER_UPDATE = "UPDATE member "

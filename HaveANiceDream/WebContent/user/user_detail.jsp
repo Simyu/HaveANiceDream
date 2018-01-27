@@ -40,7 +40,44 @@
 					</div>
 					<div class="col-sm-2">
 						<button type="button"
-							class="btn btn-round btn-primary form-control">변경하기</button>
+							class="btn btn-round btn-primary form-control"
+							data-toggle="modal" data-target="#myModal">변경하기</button>
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<form action="/HaveANiceDream/user/updatepass.do" method="post">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">&times;</button>
+											<h4 class="modal-title" id="myModalLabel">비밀번호 변경하기</h4>
+										</div>
+										<div class="modal-body">
+											<p>
+												<input type="password" id="oldPass" name="oldPass"
+													placeholder="현재 비밀번호" autocomplete="off"
+													class="form-control placeholder-no-fix">
+											</p>
+											<p>
+												<input type="password" id="newPass" name="newPass"
+													placeholder="새로운 비밀번호" autocomplete="off"
+													class="form-control placeholder-no-fix">
+											</p>
+											<p>
+												<input type="password" id="newPassConf" placeholder="확인하기"
+													autocomplete="off" class="form-control placeholder-no-fix">
+											</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">취소</button>
+											<button type="submit" class="btn btn-primary">완료</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<hr>
@@ -56,7 +93,8 @@
 					<div class="col-lg-10">
 						<p class="form-control-static">
 							(<%=user.getUserZipcode()%>)
-							<%=user.getUserAddr()%> <%=user.getUserAddrDetail() %></p>
+							<%=user.getUserAddr()%>
+							<%=user.getUserAddrDetail()%></p>
 					</div>
 				</div>
 				<hr>

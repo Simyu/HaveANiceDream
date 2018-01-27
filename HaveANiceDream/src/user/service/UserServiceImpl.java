@@ -201,4 +201,22 @@ public class UserServiceImpl implements UserService {
 		return rowNum;
 	}
 
+	@Override
+	public int userUpdatePass(String userId, String oldPass, String newPass) {
+		int rowNum = 0;
+		Connection connection = null;
+		UserDAO dao = new UserDAOImpl();
+		
+		try {
+			connection = DBUtil.getConnect();
+			rowNum = dao.userUpdatePass(userId, oldPass, newPass, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		return rowNum;
+	}
+
 }

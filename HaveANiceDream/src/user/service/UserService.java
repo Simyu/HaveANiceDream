@@ -22,4 +22,6 @@ public interface UserService {
 	boolean idCheck(String userId);
 
 	int userUpdate(MemberDTO user);
+	
+	int userUpdatePass(String userId, String oldPass, String newPass);
 }

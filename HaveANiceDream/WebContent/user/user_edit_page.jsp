@@ -138,7 +138,7 @@
 								<option selected="selected">010</option>
 								<option>011</option>
 								<%
-									} else if (strArry[0].equals("010")) {
+									} else if (strArry[0].equals("011")) {
 								%>
 								<option>010</option>
 								<option selected="selected">011</option>

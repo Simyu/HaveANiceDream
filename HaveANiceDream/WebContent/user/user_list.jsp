@@ -56,7 +56,7 @@
 									String type = user.getUserType();
 						%>
 						<tr>
-							<td><%=Id%></td>
+							<td><a href="javascript:showUserInfo('<%=Id %>')"><%=Id%></a></td>
 							<td><%=type%></td>
 							<td>
 								<%
@@ -105,6 +105,20 @@
 			_type = encodeURIComponent(type);
 			location.href = '/HaveANiceDream/user/updatetype.do?userId=' + id
 					+ '&userType=' + _type;
+		}
+		function showUserInfo(id) {
+			$.ajax({
+				url : "/HaveANiceDream/user/select.do",
+				type : "GET",
+				data : {
+					"userId" : id,
+					"state" : "USERLIST"
+				},
+				dataType : "text",
+				success : function(resp) {
+					alert(text);
+				}
+			});
 		}
 	</script>
 

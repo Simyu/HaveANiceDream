@@ -28,4 +28,6 @@ public interface UserDAO {
 	boolean idCheck(String userId, Connection connection) throws SQLException;
 
 	int userUpdate(MemberDTO user, Connection connection) throws SQLException;
+	
+	int userUpdatePass(String userId, String oldPass, String newPass, Connection connection) throws SQLException;
 }

@@ -186,7 +186,6 @@
 
 		function idVerify() {
 			var id = $("#userId").val();
-			var flag = true;
 			var helpMsg = "";
 			var patten = /^[a-z0-9]*$/;
 
