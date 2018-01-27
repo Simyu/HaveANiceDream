@@ -24,11 +24,9 @@ public class BoardServiceImpl implements BoardService {
 
 		try {
 			connection = DBUtil.getConnect();
-			connection.setAutoCommit(false);
 
 			BoardDAO dao = new BoardDAOImpl();
 			rowNum = dao.boardInsert(boardwrite, connection);
-
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -38,6 +36,27 @@ public class BoardServiceImpl implements BoardService {
 		}
 
 		return rowNum;
+	}
+
+	@Override
+	public ArrayList<BoardDTO> boardList() {
+		Connection connection = null;
+		ArrayList<BoardDTO> boardlist = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			BoardDAO dao = new BoardDAOImpl();
+			boardlist = dao.boardList(connection);
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		return boardlist;
 	}
 
 

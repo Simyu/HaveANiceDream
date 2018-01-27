@@ -57,4 +57,27 @@ public class BoardDAOImpl implements BoardDAO {
 		return rowNum;
 	}
 
+	@Override
+	public ArrayList<BoardDTO> boardList(Connection connection) throws SQLException {
+		ArrayList<BoardDTO> boardlist = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		
+		ptmt = connection.prepareStatement(BoardQuery.BOARD_LIST);
+		
+		rs = ptmt.executeQuery();
+		
+		while (rs.next()){
+			dto = new BoardDTO(rs.getInt(1), rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),
+					rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getString(13));
+			boardlist.add(dto);
+			
+		}
+		DBUtil.close(rs);
+		DBUtil.close(ptmt);
+		
+		return boardlist;
+	}
+
 }

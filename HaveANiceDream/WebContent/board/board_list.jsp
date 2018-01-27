@@ -1,3 +1,6 @@
+<%@page import="java.sql.Date"%>
+<%@page import="board.dto.BoardDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -37,6 +40,8 @@ pageEncoding="utf-8"%>
 					</div>
 				</form>
 			</div>
+			
+			
 			<div class="form-group">
 				<h5 class="col-sm-12">0개의 게시물이 있습니다.</h5>
 			</div>
@@ -52,34 +57,75 @@ pageEncoding="utf-8"%>
 					</tr>
 				</thead>
 				<tbody>
+				<%
+				ArrayList<BoardDTO> boardlist = (ArrayList<BoardDTO>)request.getAttribute("boardlist");
+				System.out.print(boardlist);
+				int size = boardlist.size();
+				BoardDTO board = null;
+				int boardNo = 0;
+				String boardTitle = "";
+				String boardId = "";
+				Date boardDate = null;
+				int boardViCount = 0;
+				String boardType = "";
+				if(boardlist!=null){
+				
+				for(int i=0;i<size;i++){
+					board = boardlist.get(i);
+					boardTitle = board.getBoardTitle();
+					boardId = board.getUserId();
+					boardDate = board.getWriteDate();
+					boardViCount = board.getBoardCount();
+					boardType = board.getBoardType1();
+					
+					
+			
+					if(boardType.equals("공지사항")){
+					%>		
+					
 					<tr>
-						<td>1</td>
-						<td><a href="javascript:setPath('../board/board_list_Read.jsp')">a테그를 붙여서 넘겨보장!</a></td>
-						<td>김동혁</td>
-						<td>2018.01.14</td>
-						<td>50</td>
+						<td><span class="badge bg-important"><i
+								class="fa fa-bullhorn"></i> 공지사항</span></td>
+						<td><a href="javascript:setPath('../board/board_list_Read.jsp')"><%=boardTitle%></a></td>
+						<td><%=boardId%></td>
+						<td><%=boardDate %></td>
+						<td><%=boardViCount%></td>
+					</tr>
+					<%
+						} 
+					}
+				
+				}%>
+			<%if(boardlist!=null){
+				for(int i=0;i<size;i++){
+					board = boardlist.get(i);
+					boardNo = board.getBoardNo();
+					boardTitle = board.getBoardTitle();
+					boardId = board.getUserId();
+					boardDate = board.getWriteDate();
+					boardViCount = board.getBoardCount();
+					boardType = board.getBoardType1();
+					%>
+					<tr>
+						<td><%=boardNo %></td>
+						<td><a href="javascript:setPath('../board/board_list_Read.jsp')"><%=boardTitle%></a></td>
+						<td><%=boardId%></td>
+						<td><%=boardDate %></td>
+						<td><%=boardViCount%></td>
+					</tr>
+			<%}
+			}else{
+				
+			
+			
+			%>
+					<tr>
+						<td colspan="5" style="text-align: center;">게시글된 글이 없습니다.</td>
 					</tr>
 					<tr>
-						<td>2</td>
-						<td>해보자</td>
-						<td>관리자</td>
-						<td>2018.01.14</td>
-						<td>20</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>해보자</td>
-						<td>관리자</td>
-						<td>2018.01.14</td>
-						<td>20</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>해보자</td>
-						<td>관리자</td>
-						<td>2018.01.14</td>
-						<td>20</td>
-					</tr>
+			<%
+			}	
+			%>
 				</tbody>
 			</table>
 			<hr />

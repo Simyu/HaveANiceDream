@@ -19,7 +19,7 @@ import board.service.BoardService;
 import board.service.BoardServiceImpl;
 
 @WebServlet(name = "border/insert", urlPatterns = { "/border/insert.do" })
-public class BoardwriteServlet extends HttpServlet {
+public class BoardWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +34,7 @@ public class BoardwriteServlet extends HttpServlet {
 		
 		ServletContext context = getServletContext();
 		realPath = context.getRealPath(saveFolder);
-		System.out.println("왜안됨?");
+
 		MultipartRequest multipartRequest = new MultipartRequest(request, realPath, size, encType, new DefaultFileRenamePolicy());
 
 		String userId = multipartRequest.getParameter("userId");
@@ -44,7 +44,7 @@ public class BoardwriteServlet extends HttpServlet {
 		String boardType2 = multipartRequest.getParameter("boardType2");
 		
 		String fileName = null;
-		System.out.println("왜안됨?");
+
 		@SuppressWarnings("unchecked")
 		Enumeration<String> files = multipartRequest.getFileNames();
 		if (files.hasMoreElements()) {
@@ -64,12 +64,8 @@ public class BoardwriteServlet extends HttpServlet {
 
 		if (res > 0) {
 			
-			String viewpath = "../board/board_list.jsp";
-
-			request.setAttribute("viewpath", viewpath);
-
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-			requestDispatcher.forward(request, response);
+			response.sendRedirect("/HaveANiceDream/board/list.do");
+			
 		} else {
 
 			String viewpath = "../board/board_write.jsp";

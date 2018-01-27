@@ -17,7 +17,7 @@ USER_TYPE                                          VARCHAR2(20)
 */
 public class BoardQuery {
 	public static final String BOARD_INSERT = "insert into board values(board_seq.nextval,?,sysdate,?,?,?,?,?,?,?,?,?,?)";
-	public static final String USER_LIST = "select * from member";
+	public static final String BOARD_LIST = "select * from board";
 	public static final String USER_SELECT = "select * from member where USER_ID = ?";
 	public static final String USER_LOGIN = "select * from member where USER_ID = ? and USER_PW = ?";
 	public static final String USER_DELETE = "delete from member where USER_ID = ?";

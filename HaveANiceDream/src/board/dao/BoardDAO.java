@@ -9,6 +9,6 @@ import user.dto.MemberDTO;
 
 public interface BoardDAO {
 	int boardInsert(BoardDTO boardwrite, Connection connection) throws SQLException;
-
+	ArrayList<BoardDTO> boardList(Connection connection) throws SQLException;
 
 }
