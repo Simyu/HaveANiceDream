@@ -278,15 +278,18 @@
 				<div class="card hovercard">
 					<div class="cardheader"></div>
 					<div class="avatar">
-						<img alt="" src="/HaveANiceDream/Theme/assets/img/ui-sherman.jpg">
+						<img alt="" src="" id="userImage">
 					</div>
 					<div class="info">
 						<div class="title">
-							<a target="_blank" href="http://scripteden.com/">Script Eden</a>
+							<p id="userName"></p>
 						</div>
-						<div class="desc">Passionate designer</div>
-						<div class="desc">Curious developer</div>
-						<div class="desc">Tech geek</div>
+						<div class="desc" id="userId"></div>
+						<div class="desc" id="userEmail"></div>
+						<div class="desc" id="userAddr"></div>
+						<div class="desc" id="userAddrDetail"></div>
+						<div class="desc" id="userTel"></div>
+						<div class="desc" id="userType"></div>
 					</div>
 					<!-- <div class="bottom">
 						<a class="btn btn-primary btn-twitter btn-sm"
@@ -309,5 +312,42 @@
 
 		</div>
 	</div>
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$
+									.ajax({
+										url : "/HaveANiceDream/user/select.do",
+										type : "GET",
+										data : {
+											"userId" : opener.document.itisform.selUserID.value,
+											"state" : "USERLIST"
+										},
+										dataType : "json",
+										success : function(resp) {
+											$("#userName").text(resp.userName);
+											$("#userImage").attr(
+													"src",
+													"/HaveANiceDream/uploadresources/user/"
+															+ resp.userImage);
+											$("#userId").text(resp.userId);
+											$("#userEmail")
+													.text(resp.userEmail);
+											$("#userZipcode").text(
+													resp.userZipcode);
+											$("#userAddr").text(
+													"(" + resp.userZipcode
+															+ ")"
+															+ resp.userAddr);
+											$("#userAddrDetail").text(
+													resp.userAddrDetail);
+											$("#userTel").text(resp.userTel);
+											$("#userType").text(resp.userType);
+										}
+									});
+						});
+	</script>
 </body>
 </html>
