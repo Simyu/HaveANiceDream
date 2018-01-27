@@ -1,6 +1,7 @@
 package product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,10 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import category.CategoryDTO;
+import category.service.CategoryService;
+import category.service.CategoryServiceimpl;
 import product.ProductDTO;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
+import user.dto.MemberDTO;
 
 /**
  * Servlet implementation class Product_Search_Servlet
@@ -29,10 +35,30 @@ public class Product_Search_Servlet extends HttpServlet {
 		ProductService service = new ProductServiceimpl();
 		ProductDTO product = service.productSelect(productNo);
 		String fileName =service.productSelect_Image(productNo);
+		CategoryService service1 = new CategoryServiceimpl();		
+		ArrayList<CategoryDTO> category_list  = service1.categoryList(null);
+		
+		HttpSession ses =  request.getSession(false);
+		MemberDTO user =null;
+		 String viewpath="";
+		  viewpath="../product/product_edit.jsp?productNo="+productNo;
+		//프로덕트넘버의 값으로    
+	/*	if(ses!=null){
+			  user = (MemberDTO)ses.getAttribute("user");
+			  String enrollId = product.getUserId();
+			  if(user.equals(enrollId)){
+				  viewpath="../product/product_buy.jsp";
+			  }else{
+				   viewpath="../Trade/trade_popup.jsp";
+			  }
+		};*/
 		
 		
-		String viewpath="../product/product_buy.jsp";
+		//else로그인화면
 		System.out.println(product);
+		//세팅... 
+		request.setAttribute("productNo", productNo);
+		request.setAttribute("category_list", category_list);
 		request.setAttribute("product", product);
 		request.setAttribute("viewpath", viewpath);
 

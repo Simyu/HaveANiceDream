@@ -45,9 +45,8 @@ pageEncoding="utf-8"%>
 				<form name="form1" method="post" action="${path}/board/list.do">
 					<div class="col-sm-2">
 						<select class="form-control">
-							<option value="all">제목+이름+제목</option>
-							<option value="writer">이름</option>
-							<option value="content">내용</option>
+							<option value="all">제목+작성자</option>
+							<option value="writer">작성자</option>
 							<option value="title">제목</option>
 						</select>
 					</div>

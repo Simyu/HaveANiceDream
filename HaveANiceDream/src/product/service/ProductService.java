@@ -8,7 +8,7 @@ import product.ProductDTO;
 
 public interface ProductService {
 	int insertProduct(ProductDTO product, String imageSrc);
-	ArrayList<ProductDTO>  product_List();
+	ArrayList<ProductDTO>  product_List(String title);
 	ProductDTO productSelect(int productNo);
 	String productSelect_Image(int productNo);
 }

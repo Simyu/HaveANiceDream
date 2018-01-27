@@ -5,7 +5,7 @@ import java.sql.Date;
 public class BoardDTO {
 
     private Integer boardNo;
-
+    //insert into board values(board_seq.nextval,?,sysdate,?,?,0,0,0,0,0,?,?,?)
     private String userId;
 
     private Date writeDate;
@@ -13,12 +13,10 @@ public class BoardDTO {
     private String boardTitle;
 
     private String boardContent;
-
-    private String boardType;
-
+    
     private String boardState;
 
-    private String boardCount;
+    private Integer boardCount;
 
     private Integer boardParentNo;
 
@@ -26,26 +24,12 @@ public class BoardDTO {
 
     private Integer boradOrder;
     
-    public BoardDTO() {
-		// TODO Auto-generated constructor stub
-	}
+    private String borderimageSrc;
+    
+    private String boardType1;
+    
+    private String boardType2;
 
-	public BoardDTO(Integer boardNo, String userId, Date writeDate, String boardTitle, String boardContent,
-			String boardType, String boardState, String boardCount, Integer boardParentNo, Integer boardLevel,
-			Integer boradOrder) {
-		super();
-		this.boardNo = boardNo;
-		this.userId = userId;
-		this.writeDate = writeDate;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.boardType = boardType;
-		this.boardState = boardState;
-		this.boardCount = boardCount;
-		this.boardParentNo = boardParentNo;
-		this.boardLevel = boardLevel;
-		this.boradOrder = boradOrder;
-	}
 
 	public Integer getBoardNo() {
 		return boardNo;
@@ -87,14 +71,6 @@ public class BoardDTO {
 		this.boardContent = boardContent;
 	}
 
-	public String getBoardType() {
-		return boardType;
-	}
-
-	public void setBoardType(String boardType) {
-		this.boardType = boardType;
-	}
-
 	public String getBoardState() {
 		return boardState;
 	}
@@ -103,11 +79,11 @@ public class BoardDTO {
 		this.boardState = boardState;
 	}
 
-	public String getBoardCount() {
+	public Integer getBoardCount() {
 		return boardCount;
 	}
 
-	public void setBoardCount(String boardCount) {
+	public void setBoardCount(Integer boardCount) {
 		this.boardCount = boardCount;
 	}
 
@@ -135,13 +111,73 @@ public class BoardDTO {
 		this.boradOrder = boradOrder;
 	}
 
+	public String getBorderimageSrc() {
+		return borderimageSrc;
+	}
+
+	public void setBorderimageSrc(String borderimageSrc) {
+		this.borderimageSrc = borderimageSrc;
+	}
+
+	public String getBoardType1() {
+		return boardType1;
+	}
+
+	public void setBoardType1(String boardType1) {
+		this.boardType1 = boardType1;
+	}
+
+	public String getBoardType2() {
+		return boardType2;
+	}
+
+	public void setBoardType2(String boardType2) {
+		this.boardType2 = boardType2;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardDTO [boardNo=" + boardNo + ", userId=" + userId + ", writeDate=" + writeDate + ", boardTitle="
-				+ boardTitle + ", boardContent=" + boardContent + ", boardType=" + boardType + ", boardState="
-				+ boardState + ", boardCount=" + boardCount + ", boardParentNo=" + boardParentNo + ", boardLevel="
-				+ boardLevel + ", boradOrder=" + boradOrder + "]";
+				+ boardTitle + ", boardContent=" + boardContent + ", boardState=" + boardState + ", boardCount="
+				+ boardCount + ", boardParentNo=" + boardParentNo + ", boardLevel=" + boardLevel + ", boradOrder="
+				+ boradOrder + ", borderimageSrc=" + borderimageSrc + ", boardType1=" + boardType1 + ", boardType2="
+				+ boardType2 + "]";
 	}
+
+	public BoardDTO(Integer boardNo, String userId, Date writeDate, String boardTitle, String boardContent,
+			String boardState, Integer boardCount, Integer boardParentNo, Integer boardLevel, Integer boradOrder,
+			String borderimageSrc, String boardType1, String boardType2) {
+		super();
+		this.boardNo = boardNo;
+		this.userId = userId;
+		this.writeDate = writeDate;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardState = boardState;
+		this.boardCount = boardCount;
+		this.boardParentNo = boardParentNo;
+		this.boardLevel = boardLevel;
+		this.boradOrder = boradOrder;
+		this.borderimageSrc = borderimageSrc;
+		this.boardType1 = boardType1;
+		this.boardType2 = boardType2;
+	}
+
+	public BoardDTO(String userId, String boardTitle, String boardContent, String borderimageSrc, String boardType1,
+			String boardType2) {
+		super();
+		this.userId = userId;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.borderimageSrc = borderimageSrc;
+		this.boardType1 = boardType1;
+		this.boardType2 = boardType2;
+	}
+
+
     
+ 
+    
+	
     
 }

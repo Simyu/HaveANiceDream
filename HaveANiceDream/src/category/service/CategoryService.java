@@ -9,6 +9,5 @@ import category.CategoryDetailDTO;
 
 public interface CategoryService {
 	ArrayList<CategoryDTO>  categoryList(String categoryName);
-	ArrayList<CategoryDetailDTO>  categoryDetailList(String categoryName);
-	ArrayList<CategoryDetailDTO>  categoryDetailListAjax(String categoryName);
+	ArrayList<CategoryDetailDTO>  categoryDetailList(int categoryNo,String categoryDetailName );
 }

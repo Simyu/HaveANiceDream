@@ -25,6 +25,7 @@
 <body>
 	<%
 		MemberDTO user = (MemberDTO) session.getAttribute("user");
+	System.out.println(user);
 	%>
 
 
@@ -40,9 +41,12 @@
 					if (user != null) {
 				%>
 				<p class="centered">
-					<a href="javascript:setPath('../user/user_detail.jsp')"><img
-						src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
-						class="img-circle" width="60"></a>
+					<a
+						href="/HaveANiceDream/user/select.do?userId=<%=user.getUserId()%>">
+						<img
+						src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>"
+						class="img-circle" width="60">
+					</a>
 				</p>
 				<h5 class="centered"><%=user.getUserName()%></h5>
 
@@ -50,9 +54,11 @@
 						class="fa fa-desktop"></i> <span>My page</span>
 				</a>
 					<ul class="sub">
-						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">거래내역 조회</a></li>
+						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">거래내역
+								조회</a></li>
 						<li><a href="/HaveANiceDream/point/list.do">포인트 조회</a></li>
-						<li><a href="javascript:setPath('../attendance/project_calender.jsp')">출석체크</a></li>
+						<li><a
+							href="javascript:setPath('../attendance/project_calender.jsp')">출석체크</a></li>
 
 					</ul></li>
 
@@ -62,18 +68,18 @@
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-cogs"></i> <span>거래</span>
 				</a>
-					<ul class="sub">
+					<ul class="sub">  
 						<li><a
 							href="/HaveANiceDream/category/read.do">물품등록</a></li>
-						<li><a href="/HaveANiceDream/product_list.do">물품검색</a></li>
+						<li><a href="/HaveANiceDream/product_list.do?state=ALL">물품검색</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-book"></i> <span>커뮤니티</span>
 				</a>
 					<ul class="sub">
-						<li><a href="javascript:setPath('../board/board_list.jsp')">자유게시판</a></li>
 						<li><a href="login.html">Login</a></li>
-						<li><a href="lock_screen.html">Lock Screen</a></li>
+						<li><a href="lock_screen.html">질문과 답변</a></li>
+						<li><a href="javascript:setPath('../board/board_list.jsp')">자유게시판</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-tasks"></i> <span>Forms</span>

@@ -17,24 +17,42 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int userInsert(MemberDTO user) {
 		Connection connection = null;
-		UserDAO dao = new UserDAOImpl();
 		int rowNum = 0;
-		
+		boolean state = false;
+
 		try {
 			connection = DBUtil.getConnect();
+			connection.setAutoCommit(false);
+
+			UserDAO dao = new UserDAOImpl();
 			rowNum = dao.userInsert(user, connection);
-			
-			if(rowNum > 0) {
-				PointDAO pointDAO = new PointDAOImpl();
-				PointDTO point = new PointDTO(0, user.getUserId(), null, "가입", +5000);
-				rowNum += pointDAO.pointInsert(point, connection);
-			}
+
+			PointDAO pointDAO = new PointDAOImpl();
+			PointDTO point = new PointDTO(0, user.getUserId(), null, "가입", +5000);
+
+			rowNum += pointDAO.pointInsert(point, connection);
+
+			state = true;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+
+			try {
+			
+				if (state) {
+					connection.commit();
+				} else {
+					connection.rollback();
+				}
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 			DBUtil.close(connection);
 		}
-		
+
 		return rowNum;
 	}
 
@@ -43,7 +61,7 @@ public class UserServiceImpl implements UserService {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		ArrayList<MemberDTO> dtos = null;
-		
+
 		try {
 			connection = DBUtil.getConnect();
 			dtos = dao.userList(connection);
@@ -52,7 +70,7 @@ public class UserServiceImpl implements UserService {
 		} finally {
 			DBUtil.close(connection);
 		}
-		
+
 		return dtos;
 	}
 
@@ -61,16 +79,16 @@ public class UserServiceImpl implements UserService {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		MemberDTO dto = null;
-		
+
 		try {
 			connection = DBUtil.getConnect();
-			dto = dao.userSelect(userId,connection);
+			dto = dao.userSelect(userId, connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.close(connection);
 		}
-		
+
 		return dto;
 	}
 
@@ -79,7 +97,7 @@ public class UserServiceImpl implements UserService {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		MemberDTO dto = null;
-		
+
 		try {
 			connection = DBUtil.getConnect();
 			dto = dao.userLogin(userId, userPw, connection);
@@ -88,7 +106,7 @@ public class UserServiceImpl implements UserService {
 		} finally {
 			DBUtil.close(connection);
 		}
-		 
+
 		return dto;
 	}
 
@@ -97,7 +115,7 @@ public class UserServiceImpl implements UserService {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		int rowNum = 0;
-		
+
 		try {
 			connection = DBUtil.getConnect();
 			rowNum = dao.userDelete(userId, connection);
@@ -106,8 +124,7 @@ public class UserServiceImpl implements UserService {
 		} finally {
 			DBUtil.close(connection);
 		}
-		
-		
+
 		return rowNum;
 	}
 
@@ -134,7 +151,7 @@ public class UserServiceImpl implements UserService {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		int rowNum = 0;
-		
+
 		try {
 			connection = DBUtil.getConnect();
 			rowNum = dao.userUpdateLoginTime(userId, connection);
@@ -143,7 +160,7 @@ public class UserServiceImpl implements UserService {
 		} finally {
 			DBUtil.close(connection);
 		}
-		
+
 		return rowNum;
 	}
 
@@ -152,7 +169,7 @@ public class UserServiceImpl implements UserService {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		boolean check = false;
-		
+
 		try {
 			connection = DBUtil.getConnect();
 			check = dao.idCheck(userId, connection);
@@ -161,7 +178,7 @@ public class UserServiceImpl implements UserService {
 		} finally {
 			DBUtil.close(connection);
 		}
-		
+
 		return check;
 	}
 
@@ -170,7 +187,7 @@ public class UserServiceImpl implements UserService {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		int rowNum = 0;
-		
+
 		try {
 			connection = DBUtil.getConnect();
 			rowNum = dao.userUpdate(user, connection);
@@ -180,7 +197,7 @@ public class UserServiceImpl implements UserService {
 		} finally {
 			DBUtil.close(connection);
 		}
-		
+
 		return rowNum;
 	}
 

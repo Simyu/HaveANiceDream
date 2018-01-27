@@ -35,23 +35,38 @@ public class PointServiceImpl implements PointService {
 	@Override
 	public int pointInsert(PointDTO point) {
 		int rowNum = 0;
-
 		Connection connection = null;
-		PointDAO pointDAO = new PointDAOImpl();
-		UserDAO userDAO = new UserDAOImpl();
+		boolean state = false;
 
 		try {
 			connection = DBUtil.getConnect();
+			connection.setAutoCommit(false);
+
+			PointDAO pointDAO = new PointDAOImpl();
 			rowNum = pointDAO.pointInsert(point, connection);
 
-			if (rowNum > 0) {
-				int totalPoint = userDAO.userGetPoint(point.getUserId(), connection);
-				rowNum += userDAO.userUpdatePoint((totalPoint + point.getPoint()), point.getUserId(), connection);
-			}
+			UserDAO userDAO = new UserDAOImpl();
+			int totalPoint = userDAO.userGetPoint(point.getUserId(), connection);
+			rowNum += userDAO.userUpdatePoint((totalPoint + point.getPoint()), point.getUserId(), connection);
+
+			state = true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+
+			try {
+
+				if (state){
+					connection.commit();
+				} else {
+					connection.rollback();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 			DBUtil.close(connection);
 		}
 

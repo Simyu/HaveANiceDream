@@ -58,10 +58,12 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		
 		
 		int productPrice = Integer.parseInt(multipart.getParameter("productPrice"));
-		int categoryNo = Integer.parseInt(multipart.getParameter("categoryName"));
+		//카테고리 넘버
+		int categoryNo = Integer.parseInt(multipart.getParameter("categoryNohidden"));
+		
 		System.out.println("인덱스"+categoryNo);
-		int categoryDetailName = Integer.parseInt(multipart.getParameter("categoryDetailName"));
-		System.out.println("인덱스"+categoryDetailName);
+		int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailNohidden"));
+		System.out.println("인덱스"+categoryDetailNo);
 		//int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailName"));
 		String productName = multipart.getParameter("productName");
 		String productTitle = multipart.getParameter("productTitle");
@@ -77,7 +79,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		//���δ�Ʈ �ѹ� ��ǰ��  ������ �ʿ���� ���ܿ���  �Ѱ�����
 		//ProductDTO dto = new ProductDTO(productNo, userId, categoryNo, productName, productPrice, productContent, productCount, productTitle, productDate, productState, productExfDate, tradeType)
 		
-		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailName);
+		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailNo);
 		
 		PrintWriter pw = response.getWriter();
 				
