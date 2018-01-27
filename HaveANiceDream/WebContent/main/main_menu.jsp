@@ -72,7 +72,7 @@
 						<li><%if(user!=null){ %><a
 							href="/HaveANiceDream/category/read.do">물품등록</a>
 							<%}else{ %><a
-							href="/HaveANiceDream/category/read.do">물품등록</a><%} %></li>
+							href="/HaveANiceDream/user/login.html">물품등록</a><%} %></li>
 						<li><a href="/HaveANiceDream/product_list.do?state=ALL">물품검색</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
