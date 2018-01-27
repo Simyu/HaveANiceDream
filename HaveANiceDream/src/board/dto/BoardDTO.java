@@ -22,14 +22,77 @@ public class BoardDTO {
 
     private Integer boardLevel;
 
-    private Integer boradOrder;
+    private Integer boardOrder;
     
-    private String borderimageSrc;
+    private String boardimageSrc;
     
     private String boardType1;
     
     private String boardType2;
+    
+    
+    public BoardDTO(){
+    	
+    }
+    
 
+	public BoardDTO(String userId, String boardTitle, String boardContent, String boardState, Integer boardCount,
+			Integer boardParentNo, Integer boardLevel, Integer boardOrder, String boardimageSrc, String boardType1,
+			String boardType2) {
+		super();
+		this.userId = userId;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardState = boardState;
+		this.boardCount = boardCount;
+		this.boardParentNo = boardParentNo;
+		this.boardLevel = boardLevel;
+		this.boardOrder = boardOrder;
+		this.boardimageSrc = boardimageSrc;
+		this.boardType1 = boardType1;
+		this.boardType2 = boardType2;
+	}
+
+
+	public BoardDTO(String userId, String boardTitle, String boardContent, String boardimageSrc, String boardType1,
+			String boardType2) {
+		super();
+		this.userId = userId;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardimageSrc = boardimageSrc;
+		this.boardType1 = boardType1;
+		this.boardType2 = boardType2;
+	}
+
+
+	public BoardDTO(Integer boardNo, String userId, Date writeDate, String boardTitle, String boardContent,
+			String boardState, Integer boardCount, Integer boardParentNo, Integer boardLevel, Integer boardOrder,
+			String boardimageSrc, String boardType1, String boardType2) {
+		super();
+		this.boardNo = boardNo;
+		this.userId = userId;
+		this.writeDate = writeDate;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardState = boardState;
+		this.boardCount = boardCount;
+		this.boardParentNo = boardParentNo;
+		this.boardLevel = boardLevel;
+		this.boardOrder = boardOrder;
+		this.boardimageSrc = boardimageSrc;
+		this.boardType1 = boardType1;
+		this.boardType2 = boardType2;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardDTO [boardNo=" + boardNo + ", userId=" + userId + ", writeDate=" + writeDate + ", boardTitle="
+				+ boardTitle + ", boardContent=" + boardContent + ", boardState=" + boardState + ", boardCount="
+				+ boardCount + ", boardParentNo=" + boardParentNo + ", boardLevel=" + boardLevel + ", boardOrder="
+				+ boardOrder + ", boardimageSrc=" + boardimageSrc + ", boardType1=" + boardType1 + ", boardType2="
+				+ boardType2 + "]";
+	}
 
 	public Integer getBoardNo() {
 		return boardNo;
@@ -103,20 +166,20 @@ public class BoardDTO {
 		this.boardLevel = boardLevel;
 	}
 
-	public Integer getBoradOrder() {
-		return boradOrder;
+	public Integer getBoardOrder() {
+		return boardOrder;
 	}
 
-	public void setBoradOrder(Integer boradOrder) {
-		this.boradOrder = boradOrder;
+	public void setBoardOrder(Integer boardOrder) {
+		this.boardOrder = boardOrder;
 	}
 
-	public String getBorderimageSrc() {
-		return borderimageSrc;
+	public String getBoardimageSrc() {
+		return boardimageSrc;
 	}
 
-	public void setBorderimageSrc(String borderimageSrc) {
-		this.borderimageSrc = borderimageSrc;
+	public void setBoardimageSrc(String boardimageSrc) {
+		this.boardimageSrc = boardimageSrc;
 	}
 
 	public String getBoardType1() {
@@ -135,44 +198,7 @@ public class BoardDTO {
 		this.boardType2 = boardType2;
 	}
 
-	@Override
-	public String toString() {
-		return "BoardDTO [boardNo=" + boardNo + ", userId=" + userId + ", writeDate=" + writeDate + ", boardTitle="
-				+ boardTitle + ", boardContent=" + boardContent + ", boardState=" + boardState + ", boardCount="
-				+ boardCount + ", boardParentNo=" + boardParentNo + ", boardLevel=" + boardLevel + ", boradOrder="
-				+ boradOrder + ", borderimageSrc=" + borderimageSrc + ", boardType1=" + boardType1 + ", boardType2="
-				+ boardType2 + "]";
-	}
 
-	public BoardDTO(Integer boardNo, String userId, Date writeDate, String boardTitle, String boardContent,
-			String boardState, Integer boardCount, Integer boardParentNo, Integer boardLevel, Integer boradOrder,
-			String borderimageSrc, String boardType1, String boardType2) {
-		super();
-		this.boardNo = boardNo;
-		this.userId = userId;
-		this.writeDate = writeDate;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.boardState = boardState;
-		this.boardCount = boardCount;
-		this.boardParentNo = boardParentNo;
-		this.boardLevel = boardLevel;
-		this.boradOrder = boradOrder;
-		this.borderimageSrc = borderimageSrc;
-		this.boardType1 = boardType1;
-		this.boardType2 = boardType2;
-	}
-
-	public BoardDTO(String userId, String boardTitle, String boardContent, String borderimageSrc, String boardType1,
-			String boardType2) {
-		super();
-		this.userId = userId;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.borderimageSrc = borderimageSrc;
-		this.boardType1 = boardType1;
-		this.boardType2 = boardType2;
-	}
 
 
     

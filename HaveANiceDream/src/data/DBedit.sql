@@ -3,6 +3,7 @@ select * from tab;
 select * from board;
 
 drop table member;
+drop table board;
 
 CREATE TABLE member
 (
@@ -118,26 +119,28 @@ CREATE TABLE block
 );
 
 create  SEQUENCE board_no_seq;
-drop
+
 ALTER TABLE board add(board_type1 varchar2(20));
 ALTER TABLE board add(board_type2 varchar2(20));
+ALTER TABLE board add(boardImg varchar2(40));
 alter table [해당테이블명] drop column [삭제할필드명];
 alter table board drop column board_type;
+ALTER TABLE board MODIFY(BOARD_STATE VARCHAR2(20));
 
 CREATE TABLE board
 (
-	boardNo;	VARCHAR2(20)    NOT NULL, 
-    userId;		VARCHAR2(20)    NULL, 
-    writeDate;	VARCHAR2(20)    NULL, 
-    boardTitle;	VARCHAR2(200)    NULL, 
-    boardContent;	VARCHAR2(2000)    NULL, 
-    boardType1;		VARCHAR2(20)    NULL, 
-    boardType2;	VARCHAR2(20)    NULL, 
-    boardState;	VARCHAR2(20)    NULL, 
-    boardCount;	VARCHAR2(20)    NULL, 
-    boardParentNo; VARCHAR2(20)    NULL, 
-    boardLevel; N    NULL, 
-    boradOrder; VARCHAR2(20)    NULL, 
-    borderimageSrc; VARCHAR2(20)    NULL, 
- 	CONSTRAINT board PRIMARY KEY (boardNo)
+	board_No 		VARCHAR2(20)    NOT NULL, 
+    user_Id	 		VARCHAR2(20)    NULL, 
+    write_Date 		DATE    		NULL, 
+    board_Title	 	VARCHAR2(200)   NULL, 
+    board_Content 	VARCHAR2(2000)  NULL, 
+    board_State 		VARCHAR2(20)    NULL, 
+    board_Count	 	NUMBER   		NULL, 
+    board_Parent_No  NUMBER    		NULL, 
+    board_Level  	NUMBER   		NULL, 
+    borad_Order  	NUMBER    		NULL, 
+    border_imageSrc  VARCHAR2(60)    NULL, 
+    board_Type1 		VARCHAR2(20)    NULL, 
+    board_Type2	 	VARCHAR2(20)    NULL,
+ 	CONSTRAINT BOARD_PK PRIMARY KEY (board_No)
 );

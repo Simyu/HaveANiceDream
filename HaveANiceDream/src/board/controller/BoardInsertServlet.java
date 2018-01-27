@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.dto.BoardDTO;
+import board.service.BoardService;
+import board.service.BoardServiceImpl;
 import user.dto.MemberDTO;
 import user.service.UserService;
 import user.service.UserServiceImpl;
@@ -26,18 +28,26 @@ public class BoardInsertServlet extends HttpServlet {
 		String boardContent = request.getParameter("boardContent");
 		String boardType1 = request.getParameter("boardType1");
 		String boardType2 = request.getParameter("boardType2");
-		String boardImg = request.getParameter("boardImg");
+		String boardimageSrc = request.getParameter("boardImg");
 		
 		
-		BoardDTO user = new BoardDTO(userId, boardTitle, boardContent, boardImg, boardType1, boardType2);
-		UserService service = new UserServiceImpl();
-		int res = service.userInsert(user);
+		BoardDTO boardwrite = new BoardDTO(userId, boardTitle, boardContent, "답변대기", 0, 0, 0, 0, boardimageSrc, boardType1, boardType2);
+		System.out.println(boardwrite);
+		
+		BoardService service = new BoardServiceImpl();
+		int res = service.boardInsert(boardwrite);
 
 		if (res > 0) {
-			response.sendRedirect("/HaveANiceDream/user/login.html");
+			
+			String viewpath = "../board/board_list.jsp";
+
+			request.setAttribute("viewpath", viewpath);
+
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
+			requestDispatcher.forward(request, response);
 		} else {
 
-			String viewpath = "../user/sig_in_page.jsp";
+			String viewpath = "../board/board_write.jsp";
 
 			request.setAttribute("viewpath", viewpath);
 

@@ -23,7 +23,9 @@
 </head>
 
 <body>
-
+	<%
+						MemberDTO user = (MemberDTO) session.getAttribute("user");
+					%>
 	<h4>
 		<i class="fa fa-angle-right"></i> 게시글 작성하기
 	</h4>
@@ -34,14 +36,12 @@
 				<h4 class="mb">
 					<i class="fa fa-angle-right"></i> 게시판 제목
 				</h4>
-				<form class="form-horizontal style-form" action="/HaveANiceDream/border/insert.do" method="post">
+				<form class="form-horizontal style-form" action="/HaveANiceDream/border/insert.do?userId=<%=user.getUserId()%>" method="post">
 					<div class="form-group" style="border: 1px solid #eff2f7;">
 						<label class="col-sm-2 col-sm-2 control-label">작성자</label>
 						<div class="col-sm-10">
-						<%
-						MemberDTO user = (MemberDTO) session.getAttribute("user");
-					%>
-							<p class="form-control-static" name="userId"><%=user.getUserId() %></p>
+						
+							<p class="form-control-static"><%=user.getUserId() %></p>
 						</div>
 					</div>
 					<div class="form-group">
@@ -81,7 +81,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">내용</label>
 						<div class="col-sm-10">
-							<textarea name="editor1" id="editor1"
+							<textarea id="editor1"
 								style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;"
 								rows=15 name="boardContent">글작성</textarea>
 							<script>

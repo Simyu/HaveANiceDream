@@ -16,7 +16,7 @@ POINT_TOTAL                                        NUMBER
 USER_TYPE                                          VARCHAR2(20)
 */
 public class BoardQuery {
-	public static final String BOARD_INSERT = "insert into board values(board_seq.nextval,?,sysdate,?,?,0,0,0,0,0,?,?,?)";
+	public static final String BOARD_INSERT = "insert into board values(board_seq.nextval,?,sysdate,?,?,?,?,?,?,?,?,?,?)";
 	public static final String USER_LIST = "select * from member";
 	public static final String USER_SELECT = "select * from member where USER_ID = ?";
 	public static final String USER_LOGIN = "select * from member where USER_ID = ? and USER_PW = ?";
