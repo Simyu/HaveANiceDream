@@ -111,17 +111,7 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 				setYear = $('#' + uniqueId).data('setYear');
 			if (setMonth == currentMonth && setYear == currentYear) {
 				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').addClass('monthly-today');
-				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').on("click",function(){
-					alert("test");
-				})
 			}
-			$(".check").on("click",function(){
-				var setMonth = $('#' + uniqueId).data('setMonth'),
-				setYear = $('#' + uniqueId).data('setYear');
-			if (setMonth == currentMonth && setYear == currentYear) {
-				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').addClass('monthly-todayy');
-			}
-			});
 
 			// Reset button
 			if (setMonth == currentMonth && setYear == currentYear) {
@@ -360,17 +350,7 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 				setYear = $('#' + uniqueId).data('setYear');
 
 				// Should days in the past be disabled?
-				if($(this).hasClass('monthly-past-day') && options.disablePast == true) {
-					// If so, don't do anything.
-					e.preventDefault();
-				} else {
-					// Otherwise, select the date ...
-					$(''+options.target+'').val(setMonth+'/'+whichDay+'/'+setYear);
-					// ... and then hide the calendar if it started that way
-					if(options.startHidden == true) {
-						$('#'+uniqueId).hide();
-					}
-				}
+
 			}
 			e.preventDefault();
 		});
