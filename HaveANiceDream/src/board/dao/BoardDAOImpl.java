@@ -9,24 +9,7 @@ import java.util.ArrayList;
 import board.dto.BoardDTO;
 import board.query.BoardQuery;
 import fw.DBUtil;
-import user.dto.MemberDTO;
-import user.query.UserQuery;
 
-/*Name                                      Null?    Type
------------------------------------------ -------- ----------------------------
-USER_ID                                   NOT NULL VARCHAR2(20)
-USER_PW                                            VARCHAR2(20)
-USER_EMAIL                                         VARCHAR2(20)
-USER_NAME                                          VARCHAR2(20)
-USER_ZIPCODE                                       VARCHAR2(5)
-USER_ADDR                                          VARCHAR2(90)
-USER_TEL                                           VARCHAR2(20)
-USER_SIGDATE                                       DATE
-USER_LOG_TYPE                                      VARCHAR2(20)
-USER_LAST_LOGIN_TIME                               DATE
-POINT_TOTAL                                        NUMBER
-USER_TYPE                                          VARCHAR2(20)
-*/
 
 public class BoardDAOImpl implements BoardDAO {
 
@@ -78,6 +61,29 @@ public class BoardDAOImpl implements BoardDAO {
 		DBUtil.close(ptmt);
 		
 		return boardlist;
+	}
+
+	@Override
+	public BoardDTO boardRead(int boardNo, Connection connection) throws SQLException {
+		BoardDTO dto = null;
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		
+		ptmt = connection.prepareStatement(BoardQuery.BOARD_READ);
+		
+		ptmt.setInt(1, boardNo);
+		
+		rs = ptmt.executeQuery();
+		
+		if(rs.next()){
+			dto = new BoardDTO(rs.getInt(1), rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),
+					rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getString(13));
+			
+		}
+		DBUtil.close(rs);
+		DBUtil.close(ptmt);
+		
+		return dto;
 	}
 
 }

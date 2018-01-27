@@ -18,7 +18,7 @@ import board.dto.BoardDTO;
 import board.service.BoardService;
 import board.service.BoardServiceImpl;
 
-@WebServlet(name = "border/insert", urlPatterns = { "/border/insert.do" })
+@WebServlet(name = "boarder/insert", urlPatterns = { "/board/insert.do" })
 public class BoardWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

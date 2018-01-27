@@ -1,3 +1,4 @@
+<%@page import="board.dto.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -5,16 +6,10 @@ pageEncoding="utf-8"%>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="Dashboard">
-<meta name="keyword"
-	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - Bootstrap Admin Template</title>
 
-<link href="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
+<title>게시판</title>
 
-<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <script type="text/javascript">
    	function popup2(){
    		window.open("/HaveANiceDream/blame/report_popup.jsp", "a", "width=700, height=900, left=100, top=50")
@@ -24,7 +19,7 @@ pageEncoding="utf-8"%>
 </head>
 
 <body>
-
+	<%BoardDTO boardRead = (BoardDTO)request.getAttribute("boardRead"); %>
 	<div class="col-md-12">
 		<h4>
 			<i class="fa fa-angle-right"></i>커뮤니티
@@ -37,10 +32,10 @@ pageEncoding="utf-8"%>
 				</h3>
 			</div>
 			<div class="form-group">
-				<div class="col-md-2 border-title">게시글 번호 : 0</div>
-				<div class="col-md-2 border-title">아이디 : id</div>
-				<div class="col-md-6 border-title">작성일자 : 2018-01-05 20:30</div>
-				<div class="col-md-2 border-title">조회수 :2000</div>
+				<div class="col-md-2 border-title">게시글 번호 : <%=boardRead.getBoardNo()%></div>
+				<div class="col-md-2 border-title">아이디 : <%=boardRead.getUserId() %></div>
+				<div class="col-md-6 border-title">작성일자 : <%=boardRead.getWriteDate() %></div>
+				<div class="col-md-2 border-title">조회수 :<%=boardRead.getBoardCount() %></div>
 			</div>
 			<div class="form-group">
 				<h5 class="col-sm-2" style="text-align: center;">[분류]>[종류]</h5>
@@ -50,14 +45,10 @@ pageEncoding="utf-8"%>
 				</h5>
 			</div>
 			<div class="form-group">
-				<h2 class="col-sm-12 border-title-content">이것이 가장 큰 제목일세!!</h2>
+				<h2 class="col-sm-12 border-title-content"><%=boardRead.getBoardTitle() %></h2>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-12 border-content-detail">여기는 내용이 들어갈
-					공간입니다. 어떤 내용이 들어가도 줄바꿈이 가능하며 걱정없습니다. 계속해서 쭉쭉쭉 써주세요 그리고 신고기능을 추가할
-					겁니다. 어떻게 해야할까요? 내용안에 넣어야 겠지요? 그럼 신고기능 연결을 위해 우리 진우와 또 의논을 해봐야 겠네요?
-					자 어때요 css 및 뷰작업은 이제 껌때가리죠? ㅎㅎㅎㅎㅎ 어떤내용을 넣을지 막막할 때는 무조건 구글링 & 밤샘 작업을
-					한다면 문제 없지요 자 그럼 우리 다함께 드림 하시다 드림드림드림 드림 드림~~</div>
+				<div class="col-sm-12 border-content-detail"><%=boardRead.getBoardContent()%></div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-12 mb">
@@ -190,15 +181,6 @@ pageEncoding="utf-8"%>
 			</div>
 		</div>
 	</div>
-
-
-	<script type="text/javascript">
-		//custom select box
-
-		$(function() {
-			$("select.styled").customSelect();
-		});
-	</script>
 
 </body>
 </html>

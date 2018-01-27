@@ -36,7 +36,7 @@
 				<h4 class="mb">
 					<i class="fa fa-angle-right"></i> 게시판 제목
 				</h4>
-				<form class="form-horizontal style-form" enctype="multipart/form-data" action="/HaveANiceDream/border/insert.do?userId=<%=user.getUserId()%>" method="post">
+				<form class="form-horizontal style-form" enctype="multipart/form-data" action="/HaveANiceDream/board/insert.do?userId=<%=user.getUserId()%>" method="post">
 					<div class="form-group" style="border: 1px solid #eff2f7;">
 						<label class="col-sm-2 col-sm-2 control-label">작성자</label>
 						<div class="col-sm-10">

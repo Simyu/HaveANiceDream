@@ -9,4 +9,6 @@ public interface BoardService {
 	int boardInsert(BoardDTO boardwrite);
 	
 	ArrayList<BoardDTO> boardList();
+	
+	BoardDTO boardRead(int boardNo);
 }

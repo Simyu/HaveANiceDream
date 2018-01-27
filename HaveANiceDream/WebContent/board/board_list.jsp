@@ -7,9 +7,13 @@ pageEncoding="utf-8"%>
 <html>
 <head>
     <script type="text/javascript">
-	function setPath(url) {
-
-		location.href = "/HaveANiceDream/view.html?url=" + url;
+	function setPath(url,boardNo) {
+		if(boardNo!=null){
+			location.href = "/HaveANiceDream/board/read.do?url=" + url+"&boardNo="+boardNo;
+		}else{
+			location.href = "/HaveANiceDream/view.html?url=" + url
+		}
+		
 	}
 </script>
 </head>
@@ -72,6 +76,7 @@ pageEncoding="utf-8"%>
 				
 				for(int i=0;i<size;i++){
 					board = boardlist.get(i);
+					boardNo = board.getBoardNo();
 					boardTitle = board.getBoardTitle();
 					boardId = board.getUserId();
 					boardDate = board.getWriteDate();
@@ -86,7 +91,7 @@ pageEncoding="utf-8"%>
 					<tr>
 						<td><span class="badge bg-important"><i
 								class="fa fa-bullhorn"></i> 공지사항</span></td>
-						<td><a href="javascript:setPath('../board/board_list_Read.jsp')"><%=boardTitle%></a></td>
+						<td><a href="javascript:setPath('../board/board_list_Read.jsp',<%=boardNo%>)" ><%=boardTitle%></a></td>
 						<td><%=boardId%></td>
 						<td><%=boardDate %></td>
 						<td><%=boardViCount%></td>
@@ -105,24 +110,26 @@ pageEncoding="utf-8"%>
 					boardDate = board.getWriteDate();
 					boardViCount = board.getBoardCount();
 					boardType = board.getBoardType1();
+					if(!boardType.equals("공지사항")){
 					%>
 					<tr>
 						<td><%=boardNo %></td>
-						<td><a href="javascript:setPath('../board/board_list_Read.jsp')"><%=boardTitle%></a></td>
+						<td><a href="javascript:setPath('../board/board_list_Read.jsp',<%=boardNo%>)"><%=boardTitle%></a></td>
 						<td><%=boardId%></td>
 						<td><%=boardDate %></td>
 						<td><%=boardViCount%></td>
 					</tr>
-			<%}
+			<%	
+					}
+				}
 			}else{
 				
-			
+			String com = "작성된 글이 없습니다";
 			
 			%>
 					<tr>
-						<td colspan="5" style="text-align: center;">게시글된 글이 없습니다.</td>
+						<td colspan="5" style="text-align: center;"><%=com%></td>
 					</tr>
-					<tr>
 			<%
 			}	
 			%>
@@ -144,6 +151,7 @@ pageEncoding="utf-8"%>
 			</div>
 		</div>
 	</div>
+
 
 </body>
 </html>

@@ -59,5 +59,26 @@ public class BoardServiceImpl implements BoardService {
 		return boardlist;
 	}
 
+	@Override
+	public BoardDTO boardRead(int boardNo) {
+		Connection connection = null;
+		BoardDTO dto = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			BoardDAO dao = new BoardDAOImpl();
+			dto = dao.boardRead(boardNo, connection);
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		return dto;
+	}
+
 
 }
