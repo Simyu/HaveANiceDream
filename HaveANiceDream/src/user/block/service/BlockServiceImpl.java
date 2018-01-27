@@ -16,21 +16,37 @@ public class BlockServiceImpl implements BlockService {
 	@Override
 	public int blockInsert(BlockDTO block) {
 		int rowNum = 0;
-
 		Connection connection = null;
-		BlockDAO blockDAO = new BlockDAOImpl();
+		boolean state = false;
 
 		try {
 			connection = DBUtil.getConnect();
+			connection.setAutoCommit(false);
+
+			BlockDAO blockDAO = new BlockDAOImpl();
 			rowNum = blockDAO.blockInsert(block, connection);
 
-			if (rowNum > 0) {
-				UserDAO userDAO = new UserDAOImpl();
-				rowNum += userDAO.userUpdateType(block.getUserId(), "차단회원", connection);
-			}
+			UserDAO userDAO = new UserDAOImpl();
+			rowNum += userDAO.userUpdateType(block.getUserId(), "차단회원", connection);
+
+			state = true;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+
+			try {
+
+				if (state) {
+					connection.commit();
+				} else {
+					connection.rollback();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 			DBUtil.close(connection);
 		}
 
@@ -40,21 +56,37 @@ public class BlockServiceImpl implements BlockService {
 	@Override
 	public int blockDelete(String userId) {
 		int rowNum = 0;
-
 		Connection connection = null;
-		BlockDAO blockDAO = new BlockDAOImpl();
+		boolean state = false;
 
 		try {
 			connection = DBUtil.getConnect();
+			connection.setAutoCommit(false);
+
+			BlockDAO blockDAO = new BlockDAOImpl();
 			rowNum = blockDAO.blockDelete(userId, connection);
 
-			if (rowNum > 0) {
-				UserDAO userDAO = new UserDAOImpl();
-				rowNum += userDAO.userUpdateType(userId, "일반회원", connection);
-			}
+			UserDAO userDAO = new UserDAOImpl();
+			rowNum += userDAO.userUpdateType(userId, "일반회원", connection);
+
+			state = true;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+
+			try {
+
+				if (state) {
+					connection.commit();
+				} else {
+					connection.rollback();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 			DBUtil.close(connection);
 		}
 
@@ -65,9 +97,9 @@ public class BlockServiceImpl implements BlockService {
 	public ArrayList<BlockDTO> blockList() {
 		ArrayList<BlockDTO> list = null;
 		Connection connection = null;
-		
+
 		BlockDAO blockDAO = new BlockDAOImpl();
-		
+
 		try {
 			connection = DBUtil.getConnect();
 			list = blockDAO.blockList(connection);
@@ -76,7 +108,7 @@ public class BlockServiceImpl implements BlockService {
 		} finally {
 			DBUtil.close(connection);
 		}
-		
+
 		return list;
 	}
 

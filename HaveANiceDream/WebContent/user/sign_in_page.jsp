@@ -99,7 +99,7 @@
 							<input type="text" class="form-control" name="userEmail2"
 								id="userEmail2">
 						</div>
-						<div class="btn-group col-sm-4">
+						<div class="btn-group col-sm-2">
 							<button type="button" class="btn dropdown-toggle"
 								data-toggle="dropdown">
 								이메일 선택 <span class="caret"></span>
@@ -110,7 +110,24 @@
 								<li><a href="javascript:setEmailAddr('@hanmail.net')">@hanmail.net</a></li>
 							</ul>
 						</div>
+						<div class="col-sm-2">
+							<button type="button"
+								class="btn btn-round btn-primary form-control">인증하기</button>
+						</div>
 					</div>
+
+					<div class="form-group">
+						<!-- style="display: none;"> -->
+						<label class="col-sm-2 col-sm-2 control-label">인증번호</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control">
+						</div>
+						<div class="col-sm-2">
+							<button type="button"
+								class="btn btn-round btn-primary form-control">입력하기</button>
+						</div>
+					</div>
+
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">휴대전화번호</label>
 						<div class="col-sm-3">
@@ -126,10 +143,25 @@
 						<div class="col-sm-2">
 							<input type="text" class="form-control" name="userTel3">
 						</div>
+						<div class="col-sm-2">
+							<button type="button"
+								class="btn btn-round btn-primary form-control">인증하기</button>
+						</div>
 					</div>
-					<button type="submit" class="btn btn-theme">Sign up</button>
-					<button type="submit" class="btn btn-theme">이메일 인증하기</button>
-					<button type="submit" class="btn btn-theme">휴대전화 인증하기</button>
+
+					<div class="form-group">
+						<!-- style="display: none;"> -->
+						<label class="col-sm-2 col-sm-2 control-label">인증번호</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control">
+						</div>
+						<div class="col-sm-2">
+							<button type="button"
+								class="btn btn-round btn-primary form-control">입력하기</button>
+						</div>
+					</div>
+					<button type="submit"
+						class="btn btn-round btn-primary">가입하기</button>
 				</form>
 			</div>
 		</div>
@@ -138,6 +170,9 @@
 	<!--main content end-->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
+	$(document).ready(function() {
+		//alert("test");
+	});
 		function pwConf() {
 			var pw = document.getElementById("userPw").value;
 			var pwConf = document.getElementById("userPwConf").value;
