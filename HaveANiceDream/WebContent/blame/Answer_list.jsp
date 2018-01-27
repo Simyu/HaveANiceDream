@@ -22,9 +22,9 @@
             },
             dataType : "json",
             success : function(res) {
-               $("#title").test(res.blameTitle);
-               $("#content").test(res.blameContent);
-               $("#date").test(res.blameDate);
+               $("#title").text(res.blameTitle);
+               $("#content").text(res.blameContent);
+               $("#date").text(res.blameDate);
             }
          });
       });
