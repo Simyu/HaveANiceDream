@@ -49,8 +49,7 @@ $(document).ready(function(){
 	 location.href = "/HaveANiceDream/view.html?url=" + url;
 	 } */
 	function popup() {
-		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a",
-				"width=1400, height=800, left=100, top=50")
+		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a", "width=1400, height=800, left=100, top=50")
 
 	}
 </script>
@@ -167,16 +166,7 @@ $(document).ready(function(){
 							<%
 								}
 							%>
-							<tr>
-								<td>아이템</td>
-								<td><img
-									src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"
-									width='100' height='100' alt='실버' /></td>
-								<td class="numeric">
-								<a  href="javascript:popup()">123123 </a></td>
-								<td class="numeric"></td>
-								<td class="numeric"></td>
-							</tr>
+					
 
 						</tbody>
 					</table>

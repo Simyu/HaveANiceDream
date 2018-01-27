@@ -1,3 +1,4 @@
+<%@page import="product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -101,15 +102,18 @@ pageEncoding="utf-8"%>
 							</ul>
 					</div>
 					<div class="col-sm-8 no-pd plus-padding-left">
+					<%
+					    ProductDTO product = (ProductDTO)  request.getAttribute("product");
+					%>
 						<div class="product-trade-title-font">내가 쓰다만 여러가지 각종 잡템을 드림해요!</div>
-						<div class="col-sm-2 product-trade-content-title-font" >아이디</div><div class="col-sm-10 product-trade-content-con-font">드림왕</div>
-						<div class="col-sm-2 product-trade-content-title-font" >물품이름</div><div class="col-sm-10 product-trade-content-con-font">구찌가방</div>
-						<div class="col-sm-2 product-trade-content-title-font" >필요 드림포인트</div><div class="col-sm-10 product-trade-content-con-font" ><label class="pt-font">3,000</label>포인트</div>
-						<div class="col-sm-2 product-trade-content-title-font">거래방법</div><div class="col-sm-10 product-trade-content-con-font" >직거래</div>					
-						<div class="col-sm-2 product-trade-content-title-font">지역</div><div class="col-sm-10 product-trade-content-con-font" >서울</div>
-						<div class="col-sm-2 product-trade-content-title-font">물품상태</div><div class="col-sm-10 product-trade-content-con-font" >양호</div>
-						<div class="col-sm-2 product-trade-content-title-font">사용기간</div><div class="col-sm-10 product-trade-content-con-font" >5개월</div>
-						<div class="col-sm-2 product-trade-content-title-font">등록일자</div><div class="col-sm-10 product-trade-content-con-font" >2018-01-02</div>
+						<div class="col-sm-2 product-trade-content-title-font" >아이디</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getUserId() %></div>
+						<div class="col-sm-2 product-trade-content-title-font" >물품이름</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getProductName() %></div>
+						<div class="col-sm-2 product-trade-content-title-font" >필요 드림포인트</div><div class="col-sm-10 product-trade-content-con-font" ><label class="pt-font"><%=product.getProductPrice() %></label>포인트</div>
+						<div class="col-sm-2 product-trade-content-title-font">거래방법</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getTradeType() %></div>					
+						<div class="col-sm-2 product-trade-content-title-font">지역</div><div class="col-sm-10 product-trade-content-con-font" >서울(미상의 추후구현?)</div>
+						<div class="col-sm-2 product-trade-content-title-font">물품상태</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getProduct_Grade() %></div>
+						<div class="col-sm-2 product-trade-content-title-font">사용기간</div><div class="col-sm-10 product-trade-content-con-font" >5개월(미상의 추후구현? 등급이랑 같은거아님?)</div>
+						<div class="col-sm-2 product-trade-content-title-font">등록일자</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getProductDate() %></div>
 						<div class="col-sm-12 next-line-hr">
 						
 						</div>

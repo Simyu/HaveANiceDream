@@ -51,7 +51,9 @@ public class Product_Search_Servlet extends HttpServlet {
 			if (user.getUserId().equals(enrollId)) {
 				viewpath = "../product/product_edit.jsp";
 			} else {
-				viewpath = "../Trade/trade_popup.jsp";
+				viewpath = "../Trade/trade_popup.jsp";// 팝업이 아닌 경로를 변경... 거기서 다시 변경하는게 나을듯.. 굳이 팝업이 필요없고 
+				//jsp화면에  지금정보를 그대로 넘겨서 뿌려주는작업을해야함.
+				//팝업으로 하면 안되는이유..? 
 			}
 		}else{
 			   viewpath="../user/login.html";
