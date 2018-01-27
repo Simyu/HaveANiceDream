@@ -39,7 +39,7 @@ public class BlameListServlet extends HttpServlet{
 			user_list = service.user_list(useridblamere);
 			viewpath = "../blame/report_list.jsp";
 			req.setAttribute("user_list",user_list);
-			System.out.println(useridblamere);
+			
 		}else{
 			blamelist = service.list();
 			viewpath = "../blame/report_list_center.jsp";

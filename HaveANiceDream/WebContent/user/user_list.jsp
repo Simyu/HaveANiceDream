@@ -100,25 +100,20 @@
 		</div>
 		<!-- /col-md-12 -->
 	</div>
+	<form action="" name="itisform">
+		<input type="hidden" name="selUserID" id="selUserID">
+	</form>
 	<script type="text/javascript">
 		function urserTypeUpdate(id, type) {
 			_type = encodeURIComponent(type);
 			location.href = '/HaveANiceDream/user/updatetype.do?userId=' + id
 					+ '&userType=' + _type;
 		}
+		num = 1;
 		function showUserInfo(id) {
-			$.ajax({
-				url : "/HaveANiceDream/user/select.do",
-				type : "GET",
-				data : {
-					"userId" : id,
-					"state" : "USERLIST"
-				},
-				dataType : "text",
-				success : function(resp) {
-					alert(text);
-				}
-			});
+			$("#selUserID").val(id);
+			popup = window.open("user_profile.jsp",num,"width=300,height=500,left=100 top=50");
+			num++;
 		}
 	</script>
 

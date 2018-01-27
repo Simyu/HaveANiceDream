@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@page import="category.CategoryDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="product.ProductDTO"%>
@@ -48,15 +49,17 @@ $(document).ready(function(){
 	 location.href = "/HaveANiceDream/view.html?url=" + url;
 	 } */
 	function popup() {
-		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a",
-				"width=1400, height=800, left=100, top=50")
+		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a", "width=1400, height=800, left=100, top=50")
 
 	}
 </script>
 </head>
 
 <body>
-
+<%
+		MemberDTO user = (MemberDTO) session.getAttribute("user");
+	//System.out.println(user);
+	%>
 	<h3>
 		<i class="fa fa-angle-right"></i> 나눔공간
 	</h3>
@@ -153,8 +156,8 @@ $(document).ready(function(){
 								<td><img
 									src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"
 									width='100' height='100' alt='실버' /></td>
-								<td class="numeric"><a
-									href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>">
+								<td class="numeric">
+								<a	href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>" >
 									 <%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
 
 								<td class="numeric"><%=dto.getProductPrice()%></td>
@@ -163,16 +166,7 @@ $(document).ready(function(){
 							<%
 								}
 							%>
-							<tr>
-								<td>아이템</td>
-								<td><img
-									src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"
-									width='100' height='100' alt='실버' /></td>
-								<td class="numeric">
-								<a  href="javascript:popup()">123123 </a></td>
-								<td class="numeric"></td>
-								<td class="numeric"></td>
-							</tr>
+					
 
 						</tbody>
 					</table>

@@ -43,7 +43,7 @@ public class Product_List_Servlet extends HttpServlet {
 			 System.out.println(title);
 			  viewpath  = "../product/product_list.jsp";
 
-				 System.out.println(productlist);
+				// System.out.println(productlist);
 			 }
 
 			request.setAttribute("viewpath", viewpath);
