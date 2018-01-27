@@ -1,13 +1,14 @@
 package blame.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
 
 import blame.dto.BlameDTO;
 import blame.service.BlameService;
@@ -22,19 +23,19 @@ public class BlameSelectServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		
 		int blameNo = Integer.parseInt(request.getParameter("blameNo"));
 		
 		BlameService service = new BlameServiceimpl();
 		BlameDTO dto = service.select(blameNo);
 		
-		String viewpath = "../blame/report_list.jsp";
+		JSONObject json = new JSONObject();
+		json.put("blameTitle", dto.getBlameTitle());
+		json.put("blameContent", dto.getBlameContent());
+		json.put("blameDate", dto.getBlameDate().toString());
 		
-		request.setAttribute("viewpath", viewpath);
-		request.setAttribute("blame", dto);
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-		requestDispatcher.forward(request, response);
+		  PrintWriter pw = response.getWriter();
+	         pw.println(json.toJSONString());
+	         //System.out.println("test");
 	}
 
 }

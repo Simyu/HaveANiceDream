@@ -1,3 +1,4 @@
+<%@page import="manager_blame.dto.Manager_BlameDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -9,15 +10,31 @@
 <meta name="author" content="Dashboard">
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+            url : "/HaveANiceDream/blame/select.do",
+            type : "GET",
+            data : {
+               "blameNo" : opener.document.form.center.value,
+            },
+            dataType : "json",
+            success : function(res) {
+               $("#title").test(res.blameTitle);
+               $("#content").test(res.blameContent);
+               $("#date").test(res.blameDate);
+            }
+         });
+      });
+</script>
 </head>
 <body>
 	<h3>
 		<i class="fa fa-angle-right"></i>신고내역
 	</h3>
-	<%
-		
-	%>
+
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
@@ -41,21 +58,19 @@
 							<td>
 								<div class="inner-box">
 									<p class="subject">
-										<em class="faq-icon">Q</em> <span class="slideBtn"> xp
-											승수부스터가 42개 남앗는데 ip부스터로 교환해주세요 </span>
+										<em class="faq-icon">Q</em> <span class="slideBtn" id="title">  </span>
 									</p>
-									<div class="inner-view">
+									<div class="inner-view" id="content">
 										
 									</div>
 								</div>
 							</td>
 							<td class="linebg">
-								<div class="inner-box02">
-									2018-01-23 <br /> 00:05
+								<div class="inner-box02" id="date">
 								</div>
 							</td>
 							<td class="linebg">
-								<div class="inner-box02">답변완료</div>
+								<div class="inner-box02" id="answer">답변완료</div>
 							</td>
 						</tr>
 						<tr>

@@ -17,21 +17,12 @@
 <title>DASHGUM - Bootstrap Admin Template</title>
 <script type="text/javascript">
 function windowpopup(i){
-	popup = window.open("Answer_list.jsp","a","width=1000,height=500,left=100 top=50");
-	
-	
-	$.ajax({
-			url:"/HaveANiceDream/blame/blameajax.do",
-			type:"get",
-			data:{"BlameNo":i},
-			dataType:"ajax",
-			success:function(data){
-				alert(data);
-				
-			}
-		})
-	
+	num =1;
+	$("#center").val(i);
+	popup = window.open("Answer_list.jsp","num","width=1000,height=500,left=100 top=50");
+	num++;
 }
+
 
 </script>
 </head>
@@ -49,12 +40,13 @@ function windowpopup(i){
 
 		<div class="col-md-12">
 			<div class="content-panel">
-				<form class="form-horizontal style-form" method="get">
+				<form class="form-horizontal style-form" method="get" name="form">
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">신고자 ID</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control">
 						</div>
+						<input type="hidden" name="list" id="center">
 						<div class="col-sm-2">
 							<button type="button"
 								class="btn btn-round btn-primary form-control">검색</button>

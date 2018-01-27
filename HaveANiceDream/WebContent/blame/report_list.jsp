@@ -25,7 +25,6 @@ function windowpopup(){
 <body>
 <%
 	ArrayList<BlameDTO> user_list = (ArrayList)request.getAttribute("user_list");
-System.out.println(user_list);
 	int size = user_list.size();
 %>
 
