@@ -26,48 +26,52 @@ import user.dto.MemberDTO;
 public class Product_Search_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		request.setCharacterEncoding("euc-kr");
 		response.setContentType("text/html; charset=euc-kr");
-		int  productNo = Integer.parseInt(request.getParameter("productNo"));
-		
+		int productNo = Integer.parseInt(request.getParameter("productNo"));
+
 		ProductService service = new ProductServiceimpl();
 		ProductDTO product = service.productSelect(productNo);
-		String fileName =service.productSelect_Image(productNo);
-		CategoryService service1 = new CategoryServiceimpl();		
-		ArrayList<CategoryDTO> category_list  = service1.categoryList(null);
-		
-		HttpSession ses =  request.getSession(false);
-		MemberDTO user =null;
-		 String viewpath="";
-		  viewpath="../product/product_edit.jsp?productNo="+productNo;
-		//프로덕트넘버의 값으로    
-	/*	if(ses!=null){
-			  user = (MemberDTO)ses.getAttribute("user");
-			  String enrollId = product.getUserId();
-			  if(user.equals(enrollId)){
-				  viewpath="../product/product_buy.jsp";
-			  }else{
-				   viewpath="../Trade/trade_popup.jsp";
-			  }
-		};*/
-		
-		
-		//else로그인화면
-		System.out.println(product);
-		//세팅... 
+		String fileName = service.productSelect_Image(productNo);
+		CategoryService service1 = new CategoryServiceimpl();
+		ArrayList<CategoryDTO> category_list = service1.categoryList(null);
+
+		HttpSession ses = request.getSession(false);
+		MemberDTO user = null;
+		String viewpath = "";
+		viewpath = "../product/product_edit.jsp?productNo=" + productNo;
+		// 프로덕트넘버의 값으로
+		if (ses != null) {
+			user = (MemberDTO) ses.getAttribute("user");
+			String enrollId = product.getUserId();
+			System.out.println(user);
+			if (user.getUserId().equals(enrollId)) {
+				viewpath = "../product/product_edit.jsp";
+			} else {
+				viewpath = "../Trade/trade_popup.jsp";// 팝업이 아닌 경로를 변경... 거기서 다시 변경하는게 나을듯.. 굳이 팝업이 필요없고 
+				//jsp화면에  지금정보를 그대로 넘겨서 뿌려주는작업을해야함.
+				//팝업으로 하면 안되는이유..? 
+			}
+		}else{
+			   viewpath="../user/login.html";
+		  }
+
+		// else로그인화면
+		// System.out.println(product);
+		// 세팅...
 		request.setAttribute("productNo", productNo);
 		request.setAttribute("category_list", category_list);
 		request.setAttribute("product", product);
 		request.setAttribute("viewpath", viewpath);
 
 		request.setAttribute("file1", fileName);
-		
-		 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-			requestDispatcher.forward(request, response);
-		
-		
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
+		requestDispatcher.forward(request, response);
+
 	}
 
 }

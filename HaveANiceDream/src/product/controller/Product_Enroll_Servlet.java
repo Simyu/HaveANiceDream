@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -20,6 +21,7 @@ import product.ProductDTO;
 import product.ProductState;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
+import user.dto.MemberDTO;
 
 /**
  * Servlet implementation class Product_Enroll_Servlet
@@ -32,12 +34,15 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		//ó���� ���� �⺻�۾�-�ѱۼ���,���䰴ü�� ���� ��Ʈ�� ���, ����Ÿ�� ����  
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+
+		
 		String saveFolder="/upload";
 		String encType = "utf-8";
 		int size = 5*1024*1024;
 		String realFolder="";
 		ServletContext context = getServletContext();
 		realFolder = context.getRealPath(saveFolder);
+	
 	//	System.out.println(realFolder);
 		MultipartRequest multipart = 
 				new MultipartRequest(request,
@@ -49,26 +54,19 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		String fileName = "";
 		while(files.hasMoreElements()){
 			String file = files.nextElement();
-			//System.out.println(file);
 			fileName = multipart.getFilesystemName(file);
-			//System.out.println(multipart.getFilesystemName(file));
-			//System.out.println(multipart.getOriginalFileName(file));
-			//System.out.println(fileName);
 		}
-		
-		
+		HttpSession ses = request.getSession(false);
+		MemberDTO user = (MemberDTO) ses.getAttribute("user");
 		int productPrice = Integer.parseInt(multipart.getParameter("productPrice"));
-		//카테고리 넘버
 		int categoryNo = Integer.parseInt(multipart.getParameter("categoryNohidden"));
-		
-		System.out.println("인덱스"+categoryNo);
 		int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailNohidden"));
-		System.out.println("인덱스"+categoryDetailNo);
 		//int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailName"));
 		String productName = multipart.getParameter("productName");
 		String productTitle = multipart.getParameter("productTitle");
 		String productContent = multipart.getParameter("productContent");
-		String userId = multipart.getParameter("userId");
+		String userId =  user.getUserId();
+	//	System.out.println(userId);
 		int productState =ProductState.TRADE_CURRENT;
 		String productGrade = multipart.getParameter("productGrade");
 			//���ŷ� �߰� 	
@@ -80,8 +78,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		//ProductDTO dto = new ProductDTO(productNo, userId, categoryNo, productName, productPrice, productContent, productCount, productTitle, productDate, productState, productExfDate, tradeType)
 		
 		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailNo);
-		
-		PrintWriter pw = response.getWriter();
+
 				
 			ProductService service = new ProductServiceimpl();
 			int result = service.insertProduct(product,fileName);
