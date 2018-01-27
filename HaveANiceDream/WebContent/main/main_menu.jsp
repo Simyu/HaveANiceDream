@@ -25,7 +25,7 @@
 <body>
 	<%
 		MemberDTO user = (MemberDTO) session.getAttribute("user");
-	System.out.println(user);
+	//System.out.println(user);
 	%>
 
 
@@ -69,8 +69,10 @@
 						class="fa fa-cogs"></i> <span>거래</span>
 				</a>
 					<ul class="sub">  
-						<li><a
-							href="/HaveANiceDream/category/read.do">물품등록</a></li>
+						<li><%if(user!=null){ %><a
+							href="/HaveANiceDream/category/read.do">물품등록</a>
+							<%}else{ %><a
+							href="/HaveANiceDream/category/read.do">물품등록</a><%} %></li>
 						<li><a href="/HaveANiceDream/product_list.do?state=ALL">물품검색</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
