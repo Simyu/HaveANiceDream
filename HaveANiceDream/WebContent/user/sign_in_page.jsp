@@ -40,8 +40,8 @@
 						<label class="col-sm-2 col-sm-2 control-label">아이디</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userId" name="userId"
-								required="required" onkeyup="idVerify()"> <span
-								class="help-block" id="helpId"></span>
+								required="required"> <span class="help-block"
+								id="helpId"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -56,8 +56,8 @@
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호 확인</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" placeholder=""
-								id="userPwConf" onkeyup="pwConf()"> <span
-								class="help-block" id="helpPwConf"></span>
+								id="userPwConf"> <span class="help-block"
+								id="helpPwConf"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -132,7 +132,6 @@
 						<label class="col-sm-2 col-sm-2 control-label">휴대전화번호</label>
 						<div class="col-sm-3">
 							<select class="form-control" name="userTel1">
-								<option>전화번호 선택</option>
 								<option>010</option>
 								<option>011</option>
 							</select>
@@ -160,8 +159,7 @@
 								class="btn btn-round btn-primary form-control">입력하기</button>
 						</div>
 					</div>
-					<button type="submit"
-						class="btn btn-round btn-primary">가입하기</button>
+					<button type="submit" class="btn btn-round btn-primary">가입하기</button>
 				</form>
 			</div>
 		</div>
@@ -170,48 +168,49 @@
 	<!--main content end-->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function() {
-		//alert("test");
-	});
+		$(document).ready(function() {
+			$("#userId").on("keyup", idVerify);
+			$("#userPwConf").on("keyup", pwConf);
+		});
+
 		function pwConf() {
-			var pw = document.getElementById("userPw").value;
-			var pwConf = document.getElementById("userPwConf").value;
+			var pw = $("#userPw").val();
+			var pwConf = $("#userPwConf").val();
 
 			if (pw != pwConf) {
-				document.getElementById("helpPwConf").innerHTML = "비밀번호가 일치하지 않습니다.";
+				$("#helpPwConf").html("비밀번호가 일치하지 않습니다.");
 			} else {
-				document.getElementById("helpPwConf").innerHTML = "";
+				$("#helpPwConf").html("");
 			}
 		}
 
 		function idVerify() {
-			var id = document.getElementById("userId").value;
+			var id = $("#userId").val();
 			var flag = true;
 			var helpMsg = "";
 			var patten = /^[a-z0-9]*$/;
 
 			if (!patten.test(id)) {
-				document.getElementById("helpId").innerHTML = "ID 는 소문자와 숫자만 사용 할 수 있습니다.";
+				$("#helpId").html("ID 는 소문자와 숫자만 사용 할 수 있습니다.");
 				return false;
 			}
 
 			if (id.length < 6) {
-				document.getElementById("helpId").innerHTML = "ID 길이가 짧습니다.";
+				$("#helpId").html("ID 길이가 짧습니다.");
 				return false;
 			}
 
-			var xhr = new XMLHttpRequest();
-
-			xhr.onreadystatechange = function() {
-				if (xhr.status == 200 && xhr.readyState == 4) {
-					document.getElementById("helpId").innerHTML = xhr.responseText;
+			$.ajax({
+				url : "/HaveANiceDream/user/idcheck.do",
+				type : "GET",
+				data : {
+					"userId" : id
+				},
+				dataType : "text",
+				success : function(resp) {
+					$("#helpId").html(resp);
 				}
-			}
-
-			xhr.open("GET", "/HaveANiceDream/user/idcheck.do?userId=" + id,
-					true);
-			xhr.send();
-
+			});
 		}
 
 		function setEmailAddr(mail) {
