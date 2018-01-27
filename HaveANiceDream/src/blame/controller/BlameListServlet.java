@@ -23,21 +23,25 @@ public class BlameListServlet extends HttpServlet{
 		throws ServletException, IOException{
 		BlameService service = new BlameServiceimpl();
 		ArrayList<BlameDTO> blamelist = null;
-		
+		ArrayList<BlameDTO> user_list = null;
+		String useridblamere = req.getParameter("userIdBlamere");
+						
 		req.setCharacterEncoding("utf-8");
 		res.setContentType("text/html;charset=utf-8");
 		String state = req.getParameter("state");
 		blamelist = service.list();
+		user_list = service.user_list(useridblamere);
 		String viewpath = "";
 		if(state.equals("1")){
 			viewpath = "../blame/report_list.jsp";
+			req.setAttribute("user_list",user_list);
 		}else{
 			viewpath = "../blame/report_list_center.jsp";
+			req.setAttribute("blamelist", blamelist);
 		}
 		
-		
 		req.setAttribute("viewpath", viewpath);
-		req.setAttribute("blamelist", blamelist);
+		
 		
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(req, res);

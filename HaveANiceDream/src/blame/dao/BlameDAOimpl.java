@@ -124,4 +124,35 @@ public class BlameDAOimpl implements BlameDAO {
 		return result;
 	}
 
+
+	@Override
+	public ArrayList<BlameDTO> user_list(String userIdBlamere, Connection con) throws SQLException {
+		ArrayList<BlameDTO> list = null;
+		BlameDTO dto = null;
+		PreparedStatement ptmt = null;
+		ResultSet resultSet = null;
+		ptmt = con.prepareStatement(BlameQuery.BLAME_LIST2);
+		
+		resultSet = ptmt.executeQuery();
+		
+		while(resultSet.next()){
+			if(list==null){
+				list = new ArrayList<BlameDTO>();
+			}
+			dto = new BlameDTO(
+					resultSet.getInt(1),
+					resultSet.getDate(2),
+					resultSet.getString(3),
+					resultSet.getString(4),
+					resultSet.getString(5),
+					resultSet.getInt(6),
+					resultSet.getString(7),
+					resultSet.getString(8),
+					resultSet.getString(9)
+					);
+			list.add(dto);
+		}
+
+		return list;
+	}
 }

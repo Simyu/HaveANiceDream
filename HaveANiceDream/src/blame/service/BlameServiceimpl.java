@@ -76,4 +76,20 @@ public class BlameServiceimpl implements BlameService {
 		return result;
 	}
 
+	@Override
+	public ArrayList<BlameDTO> user_list(String userIdBlamere) {
+		ArrayList<BlameDTO> result = null;
+		Connection con =null;
+		BlameDAO dao = new BlameDAOimpl();
+		
+		try{
+			con = getConnect();
+			result = dao.user_list(userIdBlamere, con);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(con);
+		}
+		return result;
+	}
 }

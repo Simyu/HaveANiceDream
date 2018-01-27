@@ -24,9 +24,9 @@ function windowpopup(){
 
 <body>
 <%
-	ArrayList<BlameDTO> list = (ArrayList)request.getAttribute("blamelist");
-	MemberDTO dto = (MemberDTO)session.getAttribute("user");
-	int size = list.size();
+	ArrayList<BlameDTO> user_list = (ArrayList)request.getAttribute("user_list");
+	
+	int size = user_list.size();
 %>
 
 	<h3>
@@ -54,7 +54,7 @@ function windowpopup(){
 					<tbody>
 					<%
 						for(int i=0;i<size;i++){
-							BlameDTO dept = list.get(i);
+							BlameDTO dept = user_list.get(i);
 						
 					%>
 						
@@ -62,7 +62,7 @@ function windowpopup(){
 							<td><%=dept.getBlameNo() %></td>
 							<td><%=dept.getBlameDate() %></td>
 							<td><%=dept.getBlameType() %></td>
-							<td><%=dto.getUserId() %></td>
+							<td><%=dept.getUserIdBlamere() %></td>
 							<td><%=dept.getUserIdBlamee() %></td>
 							<td><a href="javascript:windowpopup()"><%=dept.getBlameTitle() %></a></td>
 						</tr>

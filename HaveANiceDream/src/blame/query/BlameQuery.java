@@ -16,6 +16,7 @@ BLAME_CONTENT                                      VARCHAR2(20)*/
 public class BlameQuery {
 	public static final String BLAME_INSERT = "insert into blame values(BLAME_SEQ.nextval,sysdate,?,?,?,?,?,?,?)";
 	public static final String BLAME_LIST = "select * from blame";
+	public static final String BLAME_LIST2 = "select * from blame where USER_ID_BLAMERE = ?";
 	public static final String BLAME_SELECT = "select * from blame where BLAME_NO = ?";
 	public static final String BLAME_UPDATE = "update blame set BLAME_TYPE, ATTACHED_FILE =?,"
 			+ "BLAME_TITLE = ?, BLAME_CONTENT = ? where BLAME_NO = ?";
