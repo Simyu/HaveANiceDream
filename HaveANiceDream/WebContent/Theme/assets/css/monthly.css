@@ -181,6 +181,9 @@
 	line-height: 18px;
 	text-align: center;
 }
+.monthly-todayy{
+	background: blue;
+}
 .monthly-day-pick.monthly-today .monthly-day-number {
 	padding:0;
 	margin:22%;

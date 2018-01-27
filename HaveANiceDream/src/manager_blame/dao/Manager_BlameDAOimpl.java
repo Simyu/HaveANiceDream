@@ -15,10 +15,10 @@ public class Manager_BlameDAOimpl implements Manager_BlameDAO {
 		PreparedStatement ptmt = null;
 		ptmt = con.prepareStatement(Manager_BlameQuery.BLAME_INSERT);
 		
-		ptmt.setInt(1, dto.getAnswerNo());
-		ptmt.setString(2, dto.getAnswerTitle());
-		ptmt.setString(3, dto.getAnswerContent());
-		ptmt.setDate(4, dto.getAnswerDate());
+		ptmt.setInt(1, dto.getBlameNo());
+		ptmt.setString(2, dto.getUserId());
+		ptmt.setString(3, dto.getAnswerTitle());
+		ptmt.setString(4, dto.getAnswerContent());
 		
 		result = ptmt.executeUpdate();
 		return result;
@@ -35,9 +35,11 @@ public class Manager_BlameDAOimpl implements Manager_BlameDAO {
 		if(rs.next()){
 			dto = new Manager_BlameDTO(
 					rs.getInt(1),
-					rs.getString(2),
+					rs.getInt(2),
 					rs.getString(3),
-					rs.getDate(4)
+					rs.getString(4),
+					rs.getString(5),
+					rs.getDate(6)
 					);
 		}
 		DBUtil.close(rs);

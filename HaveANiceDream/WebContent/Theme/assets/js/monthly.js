@@ -111,7 +111,17 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 				setYear = $('#' + uniqueId).data('setYear');
 			if (setMonth == currentMonth && setYear == currentYear) {
 				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').addClass('monthly-today');
+				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').on("click",function(){
+					alert("test");
+				})
 			}
+			$(".check").on("click",function(){
+				var setMonth = $('#' + uniqueId).data('setMonth'),
+				setYear = $('#' + uniqueId).data('setYear');
+			if (setMonth == currentMonth && setYear == currentYear) {
+				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').addClass('monthly-todayy');
+			}
+			});
 
 			// Reset button
 			if (setMonth == currentMonth && setYear == currentYear) {

@@ -55,7 +55,7 @@ insert into category_detail values(category_detail_seq.nextval,'IPhone8Plus',2);
 
 select * from BLAME;
 select * from ATTENDANCE;
-
+select * from ANSWER_BLAME;
 
 
 CREATE TABLE block

@@ -3,6 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+	function setPath(){
+		alert("출석체크완료");
+		location.href="/HaveANiceDream/attendance/insert.do";
+	}
+	
+</script>
 </head>
 <body>
 	<h3>
@@ -19,7 +26,7 @@
 				</div>
 				<div class="col-lg-12">
 					<br /> <br /> <br /> <br />
-					<button class="btn btn-theme02" type="button" onclick="location.href='/HaveANiceDream/attendance/insert.do'">출석체크</button>
+					<button class="btn btn-theme02" type="button" onclick="setPath()"id="check">출석체크</button>
 				</div>
 			</div>
 		</div>

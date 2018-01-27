@@ -5,6 +5,10 @@ import java.sql.Date;
 public class Manager_BlameDTO {
 
 	private Integer answerNo;
+	
+	private Integer blameNo;
+	
+	private String userId;
 
     private String answerTitle;
 
@@ -18,6 +22,22 @@ public class Manager_BlameDTO {
 
 	public void setAnswerNo(Integer answerNo) {
 		this.answerNo = answerNo;
+	}
+
+	public Integer getBlameNo() {
+		return blameNo;
+	}
+
+	public void setBlameNo(Integer blameNo) {
+		this.blameNo = blameNo;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getAnswerTitle() {
@@ -46,24 +66,30 @@ public class Manager_BlameDTO {
 
 	@Override
 	public String toString() {
-		return "Blame_ReplyDTO [answerNo=" + answerNo + ", answerTitle=" + answerTitle + ", answerContent="
-				+ answerContent + ", answerDate=" + answerDate + "]";
+		return "Manager_BlameDTO [answerNo=" + answerNo + ", blameNo=" + blameNo + ", userId=" + userId
+				+ ", answerTitle=" + answerTitle + ", answerContent=" + answerContent + ", answerDate=" + answerDate
+				+ "]";
 	}
 
-	public Manager_BlameDTO(Integer answerNo, String answerTitle, String answerContent, Date answerDate) {
+	public Manager_BlameDTO(Integer answerNo, Integer blameNo, String userId, String answerTitle, String answerContent,
+			Date answerDate) {
 		super();
 		this.answerNo = answerNo;
+		this.blameNo = blameNo;
+		this.userId = userId;
 		this.answerTitle = answerTitle;
 		this.answerContent = answerContent;
 		this.answerDate = answerDate;
 	}
-	public Manager_BlameDTO(String answerTitle, String answerContent) {
+	public Manager_BlameDTO(Integer blameNo, String userId, String answerTitle, String answerContent) {
 		super();
-		
+		this.blameNo = blameNo;
+		this.userId = userId;
 		this.answerTitle = answerTitle;
 		this.answerContent = answerContent;
 		
 	}
 
- 
+
+	
 }

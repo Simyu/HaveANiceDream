@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import blame.dto.BlameDTO;
 import blame.service.BlameService;
 import blame.service.BlameServiceimpl;
+import user.dto.MemberDTO;
 
 
 @WebServlet(name = "blame/insert", urlPatterns = {"/blame/insert.do"})
@@ -24,8 +26,10 @@ public class BlameInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
+		HttpSession session = request.getSession(false);
+		MemberDTO user = (MemberDTO) session.getAttribute("user");
 		String blameType = request.getParameter("blameType");
-		String userIdBlamere = request.getParameter("userIdBlamere");
+		String userIdBlamere = user.getUserId();
 		String userIdBlamee = request.getParameter("userIdBlamee");
 		int productNo = Integer.parseInt(request.getParameter("productNo"));  
 		String attachedFile = request.getParameter("attachedFile");

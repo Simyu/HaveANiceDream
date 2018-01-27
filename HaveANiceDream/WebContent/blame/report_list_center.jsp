@@ -1,4 +1,5 @@
 
+<%@page import="user.dto.MemberDTO"%>
 <%@page import="blame.dto.BlameDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -15,8 +16,12 @@
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 <script type="text/javascript">
-function windowpopup(){
+function windowpopup(i){
 	popup = window.open("Answer_list.jsp","a","width=1000,height=500,left=100 top=50");
+	
+	<%
+	
+	%>
 }
 
 </script>
@@ -64,13 +69,14 @@ function windowpopup(){
 							<%
 								for (int i = 0; i < size; i++) {
 									BlameDTO dept = list.get(i);
+									
 							%>
 							<td><%=dept.getBlameNo()%></td>
 							<td><%=dept.getBlameDate()%></td>
 							<td><%=dept.getBlameType()%></td>
 							<td><%=dept.getUserIdBlamere()%></td>
 							<td><%=dept.getUserIdBlamee()%></td>
-							<td><a href="javascript:windowpopup()"><%=dept.getBlameTitle()%></a></td>
+							<td><a href="javascript:windowpopup(<%=i%>)"><%=dept.getBlameTitle()%></a></td>
 						</tr>
 						<%
 							}

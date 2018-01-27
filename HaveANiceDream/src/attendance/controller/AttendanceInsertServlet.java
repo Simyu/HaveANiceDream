@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import attendance.dto.AttendanceDTO;
 import attendance.service.AttendanceService;
@@ -16,6 +17,7 @@ import javafx.scene.control.Alert;
 import point.dto.PointDTO;
 import point.service.PointService;
 import point.service.PointServiceImpl;
+import user.dto.MemberDTO;
 
 
 @WebServlet(name = "attendance/insert", urlPatterns = {"/attendance/insert.do"})
@@ -28,7 +30,9 @@ public class AttendanceInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		String userId = "atree";
+		HttpSession session = request.getSession(false);
+		MemberDTO dto = (MemberDTO) session.getAttribute("user");
+		String userId = dto.getUserId();
 		int attpoint = 100;
 		
 		AttendanceDTO attendance = new AttendanceDTO(userId,attpoint);

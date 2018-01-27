@@ -103,8 +103,18 @@
 						$(window).load(function() {
 
 							$('#mycalendar').monthly({
-								mode : 'event',
-								xmlUrl : 'events.xml'
+						
+										weekStart: 'Sun',
+										mode: '',
+										xmlUrl: '',
+										target: '',
+										eventList: true,
+										maxWidth: false,
+										startHidden: false,
+										showTrigger: '',
+										stylePast: false,
+										disablePast: false
+									
 							});
 
 							$('#mycalendar2').monthly({

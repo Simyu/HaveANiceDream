@@ -15,9 +15,13 @@
 	<h3>
 		<i class="fa fa-angle-right"></i>신고내역
 	</h3>
+	<%
+		
+	%>
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
+			<form action="/HaveANiceDream/manager_blame/insert.do" method="get">
 				<table class="request-view" cellspacing="0" cellpadding="0"
 					summary="표" border="1">
 					<colgroup>
@@ -80,9 +84,20 @@
 							</td>
 						</tr>
 					</tbody>
-
 				</table>
+				<div class="request-bottom">
+						<div class="btnbox tright">
+							<span class="btn-border"><input type="Submit" 
+								class="orangebtn" value="답변등록" title="답변등록"
+								/></span> <span
+								class="btn-border type02"><input type="Submit"
+								class="bluebtn" value="취소" title="취소"
+								 /></span>
+						</div>
+					</div>
+					</form>
 			</div>
+			
 		</div>
 	</div>
 

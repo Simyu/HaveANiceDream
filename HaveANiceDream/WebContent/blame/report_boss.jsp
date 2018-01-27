@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -22,13 +23,16 @@
 </head>
 
 <body>
-
+<%
+	MemberDTO user = (MemberDTO)session.getAttribute("user");
+%>
 	<h3>
 		<i class="fa fa-angle-right"></i>신고하기
 	</h3>
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
+			
 				<form action="/HaveANiceDream/blame/insert.do" method="get">
 					<table summary="신고정보" height="600" border="1">
 						<colgroup>
@@ -53,9 +57,7 @@
 								<td>
 									<dl>
 										<dt>
-											<label>신고자ID</label> <span class="input-box"><input
-												name="userIdBlamere" type="text" id="auctionno2" class="txt"
-												maxlength="15" style="width: 133px;" /></span> <label>상대방ID</label>
+											<label>신고자ID: </label> <%=user.getUserId() %> <label>상대방ID</label>
 											<span class="input-box"><input name="userIdBlamee"
 												type="text" id="auctionno2" class="txt" maxlength="15"
 												style="width: 133px;" /></span> <label>물건번호</label> <span
