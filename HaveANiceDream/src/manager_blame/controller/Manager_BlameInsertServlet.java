@@ -24,15 +24,11 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		HttpSession session = request.getSession(false);
-		MemberDTO user = (MemberDTO) session.getAttribute("user");
 		
-		int blameno = Integer.parseInt(request.getParameter("blameNo"));
-		String userid = user.getUserId();
 		String answertitle = request.getParameter("answerTitle");
 		String answercontent = request.getParameter("answerContent");
 		
-		Manager_BlameDTO dto = new Manager_BlameDTO(blameno,userid,answertitle, answercontent);
+		Manager_BlameDTO dto = new Manager_BlameDTO(answertitle, answercontent);
 		Manager_BlameService service = new Manager_BlameServiceimpl();
 		int result = service.insert(dto);
 		

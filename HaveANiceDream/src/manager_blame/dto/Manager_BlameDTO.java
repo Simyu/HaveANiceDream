@@ -81,10 +81,10 @@ public class Manager_BlameDTO {
 		this.answerContent = answerContent;
 		this.answerDate = answerDate;
 	}
-	public Manager_BlameDTO(Integer blameNo, String userId, String answerTitle, String answerContent) {
+	public Manager_BlameDTO(String answerTitle, String answerContent) {
 		super();
-		this.blameNo = blameNo;
-		this.userId = userId;
+		
+		
 		this.answerTitle = answerTitle;
 		this.answerContent = answerContent;
 		

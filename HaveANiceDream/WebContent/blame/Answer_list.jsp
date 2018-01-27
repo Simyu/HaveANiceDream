@@ -10,24 +10,24 @@
 <meta name="author" content="Dashboard">
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		$.ajax({
-            url : "/HaveANiceDream/blame/select.do",
-            type : "GET",
-            data : {
-               "blameNo" : opener.document.form.center.value,
-            },
-            dataType : "json",
-            success : function(res) {
-               $("#title").text(res.blameTitle);
-               $("#content").text(res.blameContent);
-               $("#date").text(res.blameDate);
-            }
-         });
-      });
+			url : "/HaveANiceDream/blame/select.do",
+			type : "GET",
+			data : {
+				"blameNo" : opener.document.form.center.value,
+			},
+			dataType : "json",
+			success : function(res) {
+				$("#title").text(res.blameTitle);
+				$("#content").text(res.blameContent);
+				$("#date").text(res.blameDate);
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -38,81 +38,76 @@
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
-			<form action="/HaveANiceDream/manager_blame/insert.do" method="get">
-				<table class="request-view" cellspacing="0" cellpadding="0"
-					summary="표" border="1">
-					<colgroup>
-						<col style="" />
-						<col style="width: 103px;" />
-						<col style="width: 95px;" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th class="first" scope="col">제목</th>
-							<th scope="col">문의일시</th>
-							<th scope="col">답변여부</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="bg-type">
-							<td>
-								<div class="inner-box">
-									<p class="subject">
-										<em class="faq-icon">Q</em> <span class="slideBtn" id="title">  </span>
-									</p>
-									<div class="inner-view" id="content">
-										
-									</div>
-								</div>
-							</td>
-							<td class="linebg">
-								<div class="inner-box02" id="date">
-								</div>
-							</td>
-							<td class="linebg">
-								<div class="inner-box02" id="answer">답변완료</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div class="inner-box">
-									<div class="inner-view">
+				<form action="/HaveANiceDream/manager_blame/insert.do" method="get">
+					<table class="request-view" cellspacing="0" cellpadding="0"
+						summary="표" border="1">
+						<colgroup>
+							<col style="" />
+							<col style="width: 103px;" />
+							<col style="width: 95px;" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th class="first" scope="col">제목</th>
+								<th scope="col">문의일시</th>
+								<th scope="col">답변여부</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="bg-type">
+								<td>
+									<div class="inner-box">
 										<p class="subject">
-											<em class="faq-icon type02">A</em><span class="slideBtn">
-												xp 승수부스터가 42개 남앗는데 ip부스터로 교환해주세요 </span>
+											<em class="faq-icon">제목: </em> <span class="slideBtn" id="title">
+											</span>
 										</p>
-										<textarea name="blameContent" id="mailcontent" rows="60"
-											cols="60" title="평가글" maxlength="4000" class="insert-text"
-											style="height: 120px;" onfocus="onFocusContent()"></textarea>
+										<div class="inner-view" id="content">내용: </div>
 									</div>
-								</div>
-								</div>
-								</div>
-							</td>
-							<td class="linebg02">
-								<div class="inner-box02">
-									2018-01-23 <br /> 00:08
-								</div>
-							</td>
-							<td class="linebg02">
-								<div class="inner-box02"></div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="request-bottom">
+								</td>
+								<td class="linebg">
+									<div class="inner-box02" id="date"></div>
+								</td>
+								<td class="linebg">
+									<div class="inner-box02" id="answer">답변완료</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="inner-box">
+										<div class="inner-view">
+											<p class="subject">
+												<em class="faq-icon type02">제목: </em><span class="input-box"><input
+													name="answerTitle" type="text" class="txt"
+													style="width: 440px;" />  </span>
+											</p>
+											<div class="inner-view" >내용: </div>
+											<textarea name="answerContent"rows="60"	cols="60" title="평가글" maxlength="4000" class="insert-text"
+												style="height: 120px;"></textarea>
+										</div>
+									</div>
+									</div>
+									</div>
+								</td>
+								<td class="linebg02">
+									<div class="inner-box02" name="answerDate"></div>
+								</td>
+								<td class="linebg02">
+									<div class="inner-box02"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="request-bottom">
 						<div class="btnbox tright">
-							<span class="btn-border"><input type="Submit" 
-								class="orangebtn" value="답변등록" title="답변등록"
-								/></span> <span
+							<span class="btn-border"><input type="Submit"
+								class="orangebtn" value="답변등록" title="답변등록" /></span> <span
 								class="btn-border type02"><input type="Submit"
-								class="bluebtn" value="취소" title="취소"
-								 /></span>
+								class="bluebtn" value="취소" title="취소" /></span>
 						</div>
 					</div>
-					</form>
+				</form>
 			</div>
-			
+
 		</div>
 	</div>
 
