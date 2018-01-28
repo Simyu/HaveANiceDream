@@ -16,8 +16,15 @@ pageEncoding="utf-8"%>
    		window.open("/HaveANiceDream/blame/report_popup.jsp", "a", "width=700, height=900, left=100, top=50")
    		
    	}
-	function boardListPath() {
+/* 	function boardListPath() {
 		location.href = "/HaveANiceDream/board/list.do";
+	} */
+	function setPath(url,boardNo) {
+		if(boardNo!=null){
+			location.href = "/HaveANiceDream/board/list.do?url=" + url+"&boardNo="+boardNo;
+		}else{
+			location.href = "/HaveANiceDream/board/list.do?url=" + url;
+		}
 	}
    </script>
 </head>
@@ -69,10 +76,11 @@ pageEncoding="utf-8"%>
 				<div class="col-md-12 border-foot mb">
 				<%if(boardRead.getUserId().equals(user.getUserId())){%>
 				
-					<button type="button" class="btn btn-round btn-default mr">삭제하기</button>
-					<button type="button" class="btn btn-round btn-default mr">수정하기</button>
+					<button type="button" class="btn btn-round btn-default mr">삭제</button>
+					<button type="button" class="btn btn-round btn-default mr">수정</button>
 				<%} %>
-					<button type="button" class="btn btn-round btn-default mr" onclick="boardListPath()">목록</button>
+					<button type="button" class="btn btn-round btn-default mr">답글</button>
+					<button type="button" class="btn btn-round btn-default mr" onclick="javascript:setPath('../board/board_list.jsp')">목록</button>
 				</div>
 			</div>
 			<!-- 답글 폼 스타트!! -->

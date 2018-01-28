@@ -81,7 +81,7 @@
 					<ul class="sub">
 						<li><a href="login.html">Login</a></li>
 						<li><a href="lock_screen.html">질문과 답변</a></li>
-						<li><a href="/HaveANiceDream/board/list.do">자유게시판</a></li>
+						<li><a href="/HaveANiceDream/board/list.do?url=../board/board_list.jsp">자유게시판</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-tasks"></i> <span>Forms</span>

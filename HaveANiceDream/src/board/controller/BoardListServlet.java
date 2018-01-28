@@ -27,12 +27,11 @@ public class BoardListServlet extends HttpServlet {
 		response.setContentType("text/html/charset-utf-8");
 
 		
-	
+		String viewpath = request.getParameter("url");
 		
 		
 		boardlist = service.boardList();
 		request.setAttribute("boardlist", boardlist);
-		String viewpath = "../board/board_list.jsp";
 		
 		
 		
