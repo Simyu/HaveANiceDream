@@ -16,8 +16,11 @@
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 <script type="text/javascript">
-function windowpopup(){
-	popup = window.open("Answer_list.jsp","a","width=1000,height=500,left=100 top=50");
+function windowpopup(i){
+	num =1;
+	$("#back").val(i);
+	popup = window.open("Answer_list_user.jsp","num","width=1000,height=500,left=100 top=50");
+	num++;
 }
 </script>
 </head>
@@ -35,8 +38,8 @@ function windowpopup(){
 
 		<div class="col-md-12">
 			<div class="content-panel">
-				<form class="form-horizontal style-form" method="get">
-					
+				<form class="form-horizontal style-form" method="get" name="formlist">
+					<input type="hidden" name="list" id="back">
 				</form>
 				<table class="table table-striped table-advance table-hover">
 					<thead>

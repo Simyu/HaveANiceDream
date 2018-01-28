@@ -13,7 +13,7 @@ public class Manager_BlameDAOimpl implements Manager_BlameDAO {
 	public int insert(Manager_BlameDTO dto, Connection con) throws SQLException {
 		int result = 0;
 		PreparedStatement ptmt = null;
-		ptmt = con.prepareStatement(Manager_BlameQuery.BLAME_INSERT);
+		ptmt = con.prepareStatement(Manager_BlameQuery.ANSWER_INSERT);
 		
 		
 		ptmt.setString(1, dto.getAnswerTitle());
@@ -28,7 +28,7 @@ public class Manager_BlameDAOimpl implements Manager_BlameDAO {
 		Manager_BlameDTO dto = null;
 		PreparedStatement ptmt=null;
 		ResultSet rs = null;
-		ptmt = con.prepareStatement(Manager_BlameQuery.BLAME_SELECT);
+		ptmt = con.prepareStatement(Manager_BlameQuery.ANSWER_SELECT);
 		ptmt.setInt(1, answerNo);
 		
 		rs = ptmt.executeQuery();

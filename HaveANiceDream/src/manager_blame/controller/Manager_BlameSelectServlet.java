@@ -1,6 +1,7 @@
 package manager_blame.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
 
 import manager_blame.dto.Manager_BlameDTO;
 import manager_blame.service.Manager_BlameService;
@@ -28,13 +31,15 @@ public class Manager_BlameSelectServlet extends HttpServlet {
 		Manager_BlameService service = new Manager_BlameServiceimpl();
 		Manager_BlameDTO dto = service.select(answerno);
 		
-		String viewpath = "../blame/report_list_center.jsp";
 		
-		request.setAttribute("viewpath", viewpath);
-		request.setAttribute("blame_reply", dto);
+		JSONObject json = new JSONObject();
+		json.put("answerTitle", dto.getAnswerTitle());
+		json.put("answerContent", dto.getAnswerContent());
+		json.put("answerDate", dto.getAnswerDate());
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-		requestDispatcher.forward(request, response);
+		  PrintWriter pw = response.getWriter();
+	         pw.println(json.toJSONString());
+	         System.out.println(answerno);
 	}
 
 }
