@@ -81,7 +81,7 @@ public class Manager_BlameDTO {
 		this.answerContent = answerContent;
 		this.answerDate = answerDate;
 	}
-	public Manager_BlameDTO(Integer blameNo, String userId, String answerTitle, String answerContent
+	public Manager_BlameDTO(int blameNo,String userId,String answerTitle, String answerContent
 		) {
 		super();
 		this.blameNo = blameNo;

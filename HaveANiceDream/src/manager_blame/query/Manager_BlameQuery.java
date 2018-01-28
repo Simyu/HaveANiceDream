@@ -11,6 +11,6 @@ ANSWER_CONTENT                                     VARCHAR2(20)
 ANSWER_DATE                                        DATE*/
 
 public class Manager_BlameQuery {
-	public static final String ANSWER_INSERT = "insert into blame values(ANSWER_SEQ.nextval,?,?,sysdate)";
-	public static final String ANSWER_SELECT = "select * from blame where ANSWER_NO = ?";
+	public static final String ANSWER_INSERT = "insert into manager_blame values(ANSWER_SEQ.nextval,?,?,?,?,sysdate)";
+	public static final String ANSWER_SELECT = "select * from manager_blame where ANSWER_NO = ?";
 }

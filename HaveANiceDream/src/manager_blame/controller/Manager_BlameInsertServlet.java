@@ -26,10 +26,10 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession(false);
-		MemberDTO user = (MemberDTO) session.getAttribute("user");
-		
+		MemberDTO user = (MemberDTO) session.getAttribute("userId");
 		
 		int blameno = Integer.parseInt(request.getParameter("blameNo"));
+		//System.out.println(blameno);
 		String userid = user.getUserId();
 		String answertitle = request.getParameter("answerTitle");
 		String answercontent = request.getParameter("answerContent");
@@ -39,7 +39,8 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 		int result = service.insert(dto);
 		
 		if(result>0){
-			response.sendRedirect("/HaveANiceDream/blame/list.do");
+			response.sendRedirect("/HaveANiceDream/blame/list.do?state=2");
+			//System.out.println(result);
 		}else{
 			String viewpath = "../blame/Answer_list.jsp";
 			request.setAttribute("viewpath", viewpath);
@@ -47,6 +48,7 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 			requestDispatcher.forward(request, response);
 		}
+		//System.out.println("test");
 
 	}
 
