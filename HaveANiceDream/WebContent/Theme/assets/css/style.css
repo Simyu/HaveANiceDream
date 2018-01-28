@@ -2696,4 +2696,36 @@ body {margin: 10px;}
     -webkit-border-radius: 4px;
     margin-left: 50px;
 }
+.reply-icon{
+	height:15px; 
+	width:15px; 
+	display:block; 
+	position:relative;
+	float: left;
+	
+} 
 
+.reply-icon:before{
+	content:''; 
+	height:0; 
+	width:0; 
+	display:block; 
+	border:5px transparent solid; 
+	border-right-width:0; 
+	border-left-color:#8b929e; 
+	position:absolute; 
+	bottom:0; 
+	right:0
+	}
+
+.reply-icon:after{
+	content:''; 
+	height:12px; 
+	width:8px; 
+	display:block; 
+	border-bottom:1px #8b929e solid; 
+	border-left:1px #8b929e solid; 
+	position:absolute; 
+	bottom:4px; 
+	right:5px;
+	}

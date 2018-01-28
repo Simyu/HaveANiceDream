@@ -26,6 +26,10 @@ pageEncoding="utf-8"%>
 			location.href = "/HaveANiceDream/board/list.do?url=" + url;
 		}
 	}
+	function reBoardPath(url,parentBoardNo) {
+		location.href = "/HaveANiceDream/view.html?url=" + url+"&parentBoardNo="+parentBoardNo;
+
+	}
    </script>
 </head>
 
@@ -79,7 +83,7 @@ pageEncoding="utf-8"%>
 					<button type="button" class="btn btn-round btn-default mr">삭제</button>
 					<button type="button" class="btn btn-round btn-default mr">수정</button>
 				<%} %>
-					<button type="button" class="btn btn-round btn-default mr">답글</button>
+					<button type="button" class="btn btn-round btn-default mr" onclick="javascript:reBoardPath('../board/board_write.jsp',<%=boardRead.getBoardNo()%>)">답글</button>
 					<button type="button" class="btn btn-round btn-default mr" onclick="javascript:setPath('../board/board_list.jsp')">목록</button>
 				</div>
 			</div>

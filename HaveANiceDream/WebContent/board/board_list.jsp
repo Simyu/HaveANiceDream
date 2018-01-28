@@ -65,7 +65,7 @@ pageEncoding="utf-8"%>
 				<tbody>
 				<%
 				ArrayList<BoardDTO> boardlist = (ArrayList<BoardDTO>)request.getAttribute("boardlist");
-				System.out.print(boardlist);
+
 				int size = boardlist.size();
 				BoardDTO board = null;
 				int boardNo = 0;
@@ -116,7 +116,10 @@ pageEncoding="utf-8"%>
 					%>
 					<tr>
 						<td><%=boardNo %></td>
-						<td><a href="javascript:setPath('../board/board_list_Read.jsp',<%=boardNo%>)"><%=boardTitle%></a></td>
+						<td><span class="reply-icon"></span>
+						<a style=" margin-left: 5px;rfloat: left; color: black;" href="javascript:setPath('../board/board_list_Read.jsp',<%=boardNo%>)">
+						<%=boardTitle%></a>
+						</td>
 						<td><%=boardId%></td>
 						<td><%=boardDate %></td>
 						<td><%=boardViCount%></td>

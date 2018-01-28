@@ -33,7 +33,6 @@ public class BoardReadservlet extends HttpServlet {
 
 		String viewpath = request.getParameter("url");
 		String boardNo = request.getParameter("boardNo");
-		System.out.println(boardNo);
 		BoardService service = new BoardServiceImpl();
 		BoardDTO dto = service.boardRead(Integer.parseInt(boardNo));
 		
