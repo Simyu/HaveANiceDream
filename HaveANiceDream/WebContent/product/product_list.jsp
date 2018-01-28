@@ -21,7 +21,7 @@
         	index = myform.categoryDetailNo.selectedIndex;
         	//alert(index);
         	detailNo = myform.categoryDetailNo[index];
-        	detailNoval    =     $(detailNo).attr("value");
+        	detailNoval= $(detailNo).attr("value");
         	$("#categoryDetailNohidden").attr("value",detailNoval);
         	
         };

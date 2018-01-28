@@ -1,3 +1,4 @@
+<%@page import="product.dao.productDAO"%>
 <%@page import="product.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
@@ -84,6 +85,21 @@ pageEncoding="utf-8"%>
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
+    				  <%
+					    ProductDTO product = (ProductDTO)  request.getAttribute("product");
+    				    String file1 =(String) request.getAttribute("file1");
+    				    String grade="";
+    				    if(product.getProduct_Grade().equals("high")){
+    				    	grade="상";
+    				    	
+    				    }else if(product.getProduct_Grade().equals("middle")){
+    				    	grade="중";
+    				    	
+    				    }else if(product.getProduct_Grade().equals("low")){
+    				    	grade="하";
+    				    	
+    				    }
+					%>
 		<section id="popup-size" >
 				<h3>
 					<i class="fa fa-angle-right"></i> 거래하기
@@ -92,9 +108,9 @@ pageEncoding="utf-8"%>
 				<!-- Product Panel -->
 				<div class="row" style="margin-top: 30px;" >
 					<div class="col-lg-4 no-pd plus-padding-left">
-							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-								<li data-thumb="/HaveANiceDream/Theme/assets/img/portfolio/port04.jpg"><img
-									class="self-img-full-cont" src="/HaveANiceDream/Theme/assets/img/portfolio/port04.jpg" /></li>
+						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=file1%>" width='300' height='300'/> </div> 
+							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">  
+								
 								<li data-thumb="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"><img
 									class="self-img-full-cont" src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg" /></li>
 								<li data-thumb="/HaveANiceDream/Theme/assets/img/portfolio/port06.jpg"><img
@@ -102,17 +118,15 @@ pageEncoding="utf-8"%>
 							</ul>
 					</div>
 					<div class="col-sm-8 no-pd plus-padding-left">
-					<%
-					    ProductDTO product = (ProductDTO)  request.getAttribute("product");
-					%>
-						<div class="product-trade-title-font">내가 쓰다만 여러가지 각종 잡템을 드림해요!</div>
+					
+						<div class="product-trade-title-font"><%=product.getProductTitle() %></div>
 						<div class="col-sm-2 product-trade-content-title-font" >아이디</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getUserId() %></div>
 						<div class="col-sm-2 product-trade-content-title-font" >물품이름</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getProductName() %></div>
 						<div class="col-sm-2 product-trade-content-title-font" >필요 드림포인트</div><div class="col-sm-10 product-trade-content-con-font" ><label class="pt-font"><%=product.getProductPrice() %></label>포인트</div>
 						<div class="col-sm-2 product-trade-content-title-font">거래방법</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getTradeType() %></div>					
-						<div class="col-sm-2 product-trade-content-title-font">지역</div><div class="col-sm-10 product-trade-content-con-font" >서울(미상의 추후구현?)</div>
-						<div class="col-sm-2 product-trade-content-title-font">물품상태</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getProduct_Grade() %></div>
-						<div class="col-sm-2 product-trade-content-title-font">사용기간</div><div class="col-sm-10 product-trade-content-con-font" >5개월(미상의 추후구현? 등급이랑 같은거아님?)</div>
+						<div class="col-sm-2 product-trade-content-title-font">지역</div><div class="col-sm-10 product-trade-content-con-font" >서울(차후에 구현예정)</div>
+						<div class="col-sm-2 product-trade-content-title-font">물품상태</div><div class="col-sm-10 product-trade-content-con-font" ><%=grade %></div>
+						<div class="col-sm-2 product-trade-content-title-font">사용기간</div><div class="col-sm-10 product-trade-content-con-font" >5개월(차후에 구현예정))</div>
 						<div class="col-sm-2 product-trade-content-title-font">등록일자</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getProductDate() %></div>
 						<div class="col-sm-12 next-line-hr">
 						
@@ -122,11 +136,7 @@ pageEncoding="utf-8"%>
 				<div class="col-lg-12 " style="border: 2px solid black;">
 					<h5><i class="fa fa-angle-right"></i> 상세내용 </h5>
 						<div class="col-sm-12 product-trade-content-title-font trade-popup-content" >
-							여기는 내용이 들어갈 공간입니다. 어떤 내용이 들어가도 줄바꿈이 가능하며 걱정없습니다. 
-							계속해서 쭉쭉쭉 써주세요 그리고 신고기능을 추가할 겁니다. 어떻게 해야할까요? 내용안에 넣어야 겠지요? 
-							그럼 신고기능 연결을 위해 우리 진우와 또 의논을 해봐야 겠네요? 자 어때요 css 및 뷰작업은 이제 껌때가리죠? 
-							ㅎㅎㅎㅎㅎ 어떤내용을 넣을지 막막할 때는 무조건 구글링 & 밤샘 작업을 한다면 문제 없지요 자 그럼 우리 다함께 드림 하시다 드림드림드림 드림 드림~~
-							
+						<%=product.getProductContent() %>
 						</div>
 				</div>
 				<div class="col-lg-12 trade-popup-btn">
