@@ -18,6 +18,7 @@ $(document).ready(function() {
 		url : "/HaveANiceDream/blame/select.do",
 		type : "GET",
 		data : {
+			//이부분 뷰와 hidden태그의 이름이 맞지 않음
 			"blameNo" : opener.document.form.center.value,
 		},
 		dataType : "json",
@@ -31,6 +32,7 @@ $(document).ready(function() {
 		url : "/HaveANiceDream/manager_blame/select.do",
 		type : "GET",
 		data : {
+			//이부분 뷰와 hidden태그의 이름이 맞지 않음..역시 마찬가지
 			"blameNo" : opener.document.formlist.back.value,
 		},
 		dataType : "json",
