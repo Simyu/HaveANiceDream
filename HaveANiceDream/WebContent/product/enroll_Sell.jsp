@@ -21,7 +21,7 @@
     	 selectDNumObj = myform.categoryDetailName[index];
     	 selectDNum = $(selectDNumObj).attr("value");
     	 $("#categoryDetailNohidden").attr("value",selectDNum);
-    	 alert(selectDNum);
+    	// alert(selectDNum);
     	             
       }
       function getName1(myform){
@@ -33,7 +33,7 @@
     	   //옵션태그의 속성을 selectNum에 저장
     	   selectNum  =  $(selectNumObj).attr("value"); //생성된 객체의 속성(인덱스 : 즉 categoryNo)을 저장
     	   $("#categoryNohidden").attr("value",selectNum);//히든태그에 categoryNo을 저장함  submit할떄 함께 전해짐
-    	   alert(selectNum);
+    	//   alert(selectNum);
     				//에러케이스정리
     				//1. 물품선택간 검색을 안하고 바로 선택할 경우 에러발생(대분류에서)
     				//2. option을 선택하지 않으면 value설정값을 넘길수가 없음...
@@ -254,26 +254,6 @@
 									</div> 
 								</div> -->
 
-					<div class="form-group">
-						<div class="col-sm-6">
-							<label class="col-sm-2 col-sm-2 control-label">이름</label>
-							<div class="col-sm-4">
-							<input type="text" class="form-control-static" id="userId" name="userId" readonly="readonly">
-							
-							</div>
-
-						</div>
-
-
-
-						<div class="col-sm-6">
-							<label class="col-sm-2 col-sm-2 control-label">연락처</label>
-
-							<div class="col-sm-4">
-								<input type="text" class="form-control-static" id="userPhone" name="userPhone" required="required">
-							</div>
-						</div>
-					</div>
 
 
 

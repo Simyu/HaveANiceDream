@@ -274,34 +274,11 @@
 									</div> 
 								</div> -->
 
-					<div class="form-group">
-						<div class="col-sm-6">
-							<label class="col-sm-2 col-sm-2 control-label">이름</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="userId" name="userId"    >
-								
-							</div>
-
-						</div>
-
-
-
-						<div class="col-sm-6">
-							<label class="col-sm-2 col-sm-2 control-label">연락처</label>
-
-							<div class="col-sm-4">
-							<input type="text" class="form-control" id="userId" name="userId">
-							</div>
-						</div>
-					</div>
 
 
 
 					<div class="form-group" align="center">
 						<button type="submit" class="btn btn-round btn-default">수정하기</button>
-					</div>
-					<div class="form-group" align="center">
-						<button type="submit" class="btn btn-round btn-default">삭제하기</button>
 					</div>
 				</form>
 			</div>

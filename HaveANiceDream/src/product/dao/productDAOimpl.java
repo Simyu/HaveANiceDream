@@ -87,15 +87,22 @@ PRODUCT_NO                                NOT NULL NUMBER
 	
 	
 	@Override
-	public ArrayList<ProductDTO> product_List(String title,Connection connection) throws SQLException {
+	public ArrayList<ProductDTO> product_List(String title,int categoryNo,int  categoryDetailNo,Connection connection) throws SQLException {
 		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
-		 if(title!=null){
+		 if(categoryNo!=0 & categoryDetailNo==0){  //첫번째 것만 선택했을떄
+				ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLENO);
+				ptmt.setString(1, "%"+title+"%");
+				ptmt.setInt(2, categoryNo);
+		}else if(categoryNo!=0 ){
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLE);
 			ptmt.setString(1, "%"+title+"%");
-		}else{
-
+			ptmt.setInt(2, categoryNo);
+			ptmt.setInt(3, categoryDetailNo);
+		}
+		else if(categoryNo==0 & categoryDetailNo==0 ){
+                
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL);
 		}
 		resultSet = ptmt.executeQuery();

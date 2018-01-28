@@ -31,7 +31,7 @@ public class ProductServiceimpl implements ProductService {
 	}
 
 	@Override
-	public ArrayList<ProductDTO> product_List(String title) {
+	public ArrayList<ProductDTO> product_List(String title, int categoryNo,int  categoryDetailNo) {
 		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
 		Connection connection = null;
 		productDAO dao = new productDAOimpl();
@@ -40,7 +40,7 @@ public class ProductServiceimpl implements ProductService {
 		
 		try {
 			connection = DBUtil.getConnect();
-			product_list = dao.product_List( title, connection);
+			product_list = dao.product_List( title, categoryNo,categoryDetailNo,connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

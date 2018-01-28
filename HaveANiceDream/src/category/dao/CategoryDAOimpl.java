@@ -29,8 +29,6 @@ public class CategoryDAOimpl implements CategoryDAO {
 			CategoryDTO  dto = new CategoryDTO(resultSet.getInt(1), resultSet.getString(2));				
 			category_list.add(dto);
 		}
-		//System.out.println(category_list);
-		
 		return category_list;
 	}
 
@@ -51,7 +49,7 @@ public class CategoryDAOimpl implements CategoryDAO {
 			CategoryDetailDTO  dto = new CategoryDetailDTO(resultSet.getInt(1), resultSet.getString(2),resultSet.getInt(3));				
 			category_detail_list.add(dto);
 		}
-		System.out.println(category_detail_list);
+		//System.out.println(category_detail_list);
 		return category_detail_list;
 	}
 

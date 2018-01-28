@@ -38,36 +38,38 @@ public class Product_Search_Servlet extends HttpServlet {
 		String fileName = service.productSelect_Image(productNo);
 		CategoryService service1 = new CategoryServiceimpl();
 		ArrayList<CategoryDTO> category_list = service1.categoryList(null);
-
+		String state = request.getParameter("state");
 		HttpSession ses = request.getSession(false);
 		MemberDTO user = null;
 		String viewpath = "";
-		viewpath = "../product/product_edit.jsp?productNo=" + productNo;
 		// 프로덕트넘버의 값으로
-		if (ses != null) {
-			user = (MemberDTO) ses.getAttribute("user");
+
+		user = (MemberDTO) ses.getAttribute("user");
+		if (ses != null & user != null) {
 			String enrollId = product.getUserId();
-			if(user==null){
-				viewpath ="../user/login.html";
-			}else{
-			if (user.getUserId().equals(enrollId)) {
+			if(state.equals("SEARCH")){
+				request.setAttribute("category_list", category_list);
+			}
+			else if (user.getUserId().equals(enrollId) & state.equals("BUY")) {
+				request.setAttribute("productNo", productNo);
+				request.setAttribute("category_list", category_list);
+				request.setAttribute("product", product);
 				viewpath = "../product/product_edit.jsp";
-			} else {
-				viewpath = "../Trade/trade_popup.jsp";// 팝업이 아닌 경로를 변경... 거기서 다시 변경하는게 나을듯.. 굳이 팝업이 필요없고 
-				//jsp화면에  지금정보를 그대로 넘겨서 뿌려주는작업을해야함.
-				//팝업으로 하면 안되는이유..? 
+			} else if (state.equals("BUY")) {
+				viewpath = "../Trade/trade_popup.jsp";// 팝업이 아닌 경로를 변경... 거기서 다시
+				request.setAttribute("productNo", productNo);
+				request.setAttribute("category_list", category_list);
+				request.setAttribute("product", product);
 			}
-			}
-		}else{
-			   viewpath="../user/login.html";
-		  }
+
+		} else {
+			viewpath = "../user/login.html";
+		}
 
 		// else로그인화면
 		// System.out.println(product);
 		// 세팅...
-		request.setAttribute("productNo", productNo);
-		request.setAttribute("category_list", category_list);
-		request.setAttribute("product", product);
+		
 		request.setAttribute("viewpath", viewpath);
 
 		request.setAttribute("file1", fileName);
