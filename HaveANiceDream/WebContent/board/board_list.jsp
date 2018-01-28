@@ -65,7 +65,7 @@ pageEncoding="utf-8"%>
 				<tbody>
 				<%
 				ArrayList<BoardDTO> boardlist = (ArrayList<BoardDTO>)request.getAttribute("boardlist");
-
+				
 				int size = boardlist.size();
 				BoardDTO board = null;
 				int boardNo = 0;
@@ -74,6 +74,17 @@ pageEncoding="utf-8"%>
 				Date boardDate = null;
 				int boardViCount = 0;
 				String boardType = "";
+				int parentBoardNo = 0;
+				
+				BoardDTO board2 = null;
+				int boardNo2 = 0;
+				String boardTitle2 = "";
+				String boardId2 = "";
+				Date boardDate2 = null;
+				int boardViCount2 = 0;
+				String boardType2 = "";
+				int parentBoardNo2 = 0;
+				
 				if(boardlist!=null){
 				
 				for(int i=0;i<size;i++){
@@ -112,19 +123,51 @@ pageEncoding="utf-8"%>
 					boardDate = board.getWriteDate();
 					boardViCount = board.getBoardCount();
 					boardType = board.getBoardType1();
+					parentBoardNo = board.getBoardParentNo();
 					if(!boardType.equals("공지사항")){
+
+
+						
 					%>
-					<tr>
-						<td><%=boardNo %></td>
-						<td><span class="reply-icon"></span>
-						<a style=" margin-left: 5px;rfloat: left; color: black;" href="javascript:setPath('../board/board_list_Read.jsp',<%=boardNo%>)">
-						<%=boardTitle%></a>
-						</td>
-						<td><%=boardId%></td>
-						<td><%=boardDate %></td>
-						<td><%=boardViCount%></td>
-					</tr>
-			<%	
+									<tr>
+										<td><%=boardNo %></td>
+										<td>
+										<a style=" margin-left: 5px;rfloat: left; color: black;" href="javascript:setPath('../board/board_list_Read.jsp',<%=boardNo%>)">
+										<%=boardTitle%></a>
+										</td>
+										<td><%=boardId%></td>
+										<td><%=boardDate %></td>
+										<td><%=boardViCount%></td>
+									</tr>
+			<%			
+							for(int j=0;j<size;j++){
+								board2 = boardlist.get(j);
+								boardNo2 = board2.getBoardNo();
+								boardTitle2 = board2.getBoardTitle();
+								boardId2 = board2.getUserId();
+								boardDate2 = board2.getWriteDate();
+								boardViCount2 = board2.getBoardCount();
+								boardType2 = board2.getBoardType1();
+								parentBoardNo2 = board2.getBoardParentNo();
+								
+								if(boardNo==parentBoardNo2){
+			%>
+		
+									<tr>
+										<td></td>
+										<td><span class="reply-icon"></span>
+										<a style=" margin-left: 5px;rfloat: left; color: black;" href="javascript:setPath('../board/board_list_Read.jsp',<%=boardNo2%>)">
+										<%=boardTitle2%></a>
+										</td>
+										<td><%=boardId2%></td>
+										<td><%=boardDate2 %></td>
+										<td><%=boardViCount2%></td>
+									</tr>
+											
+			<%
+							 	}
+							}
+						
 					}
 				}
 			}else{
