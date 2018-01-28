@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SMSsend extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	// ÇÊ¿äÇÑ ¸Å°³º¯¼ö´Â rphone°ú ,sphone
+	// í•„ìš”í•œ ë§¤ê°œë³€ìˆ˜ëŠ” rphoneê³¼ ,sphone
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -41,11 +41,11 @@ public class SMSsend extends HttpServlet {
 		if (action.equals("go")) {
 
 			String sms_url = "";
-			// ÄÚµåºĞ¼® sms_urlÀº /·Î ±¸ºĞÇÒ ¿¹Á¤
-			sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS Àü¼Û¿äÃ»
+			// ì½”ë“œë¶„ì„ sms_urlì€ /ë¡œ êµ¬ë¶„í•  ì˜ˆì •
+			sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS ì „ì†¡ìš”ì²­
 																	// URL
-			String user_id = SMSService.base64Encode("akros"); // SMS¾ÆÀÌµğ
-			String secure = SMSService.base64Encode("5492e6e676d488f648e38150c11e2919");// ÀÎÁõÅ°
+			String user_id = SMSService.base64Encode("akros"); // SMSì•„ì´ë””
+			String secure = SMSService.base64Encode("5492e6e676d488f648e38150c11e2919");// ì¸ì¦í‚¤
 			String msg = "";
 			String rphone = "";
 			String sphone1 = "010";
@@ -100,13 +100,13 @@ public class SMSsend extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			// ½ºÇÃ¸´...
+			// ìŠ¤í”Œë¦¿...
 			String[] host_info = sms_url.split("/");// https:
 			String host = host_info[2];// host=/sslsms.cafe24.com
 			String path = "/" + host_info[3];// path=/sms_sender.php
 			int port = 80;
 
-			// µ¥ÀÌÅÍ ¸ÊÇÎ º¯¼ö Á¤ÀÇ
+			// ë°ì´í„° ë§µí•‘ ë³€ìˆ˜ ì •ì˜
 			String arrKey[] = new String[] { "user_id", "secure", "msg", "rphone", "sphone1", "sphone2", "sphone3",
 					"rdate", "rtime", "mode", "testflag", "destination", "repeatFlag", "repeatNum", "repeatTime",
 					"smsType", "subject" };
@@ -147,7 +147,7 @@ public class SMSsend extends HttpServlet {
 			}
 			boundary = "---------------------" + boundary.substring(0, 11);
 
-			// º»¹® »ı¼º
+			// ë³¸ë¬¸ ìƒì„±
 			String data = "";
 			String index = "";
 			String value = "";
@@ -161,26 +161,26 @@ public class SMSsend extends HttpServlet {
 			}
 
 			// out.println(data);
-			// À¯È¿¼ºÃ¼Å©
+			// ìœ íš¨ì„±ì²´í¬
 			if (request.getParameter("rphone").replaceAll("-", "").length() < 8
 					|| request.getParameter("rphone").replaceAll("-", "").length() > 11
 					|| request.getParameter("rphone").charAt(0) != '0') {
-				System.out.print("<script>alert('ÇÚµåÆù¹øÈ£¸¦ ¹Ù¸£°Ô ÀÔ·ÂÇÏ¼¼¿ä')</script>");
+				System.out.print("<script>alert('í•¸ë“œí°ë²ˆí˜¸ë¥¼ ë°”ë¥´ê²Œ ì…ë ¥í•˜ì„¸ìš”')</script>");
 			} else {
 				InetAddress addr = InetAddress.getByName(host);
 				Socket socket = new Socket(host, port);
-				// Çì´õ Àü¼Û
+				// í—¤ë” ì „ì†¡
 				BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
 				wr.write("POST " + path + " HTTP/1.0\r\n");
 				wr.write("Content-Length: " + data.length() + "\r\n");
 				wr.write("Content-type: multipart/form-data, boundary=" + boundary + "\r\n");
 				wr.write("\r\n");
 
-				// µ¥ÀÌÅÍ Àü¼Û
+				// ë°ì´í„° ì „ì†¡
 				wr.write(data);
 				wr.flush();
 
-				// °á°ú°ª ¾ò±â
+				// ê²°ê³¼ê°’ ì–»ê¸°
 				BufferedReader rd = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 				String line;
 				String alert = "";
@@ -193,21 +193,21 @@ public class SMSsend extends HttpServlet {
 
 				String tmpMsg = (String) tmpArr.get(tmpArr.size() - 1);
 				String[] rMsg = tmpMsg.split(",");
-				String Result = rMsg[0]; // ¹ß¼Û°á°ú
-				String Count = ""; // ÀÜ¿©°Ç¼ö
+				String Result = rMsg[0]; // ë°œì†¡ê²°ê³¼
+				String Count = ""; // ì”ì—¬ê±´ìˆ˜
 				if (rMsg.length > 1) {
 					Count = rMsg[1];
 				}
 
-				// ¹ß¼Û°á°ú ¾Ë¸²
+				// ë°œì†¡ê²°ê³¼ ì•Œë¦¼
 				if (Result.equals("success")) {
-					alert = "¼º°øÀûÀ¸·Î ¹ß¼ÛÇÏ¿´½À´Ï´Ù.";
-					alert += " ÀÜ¿©°Ç¼ö´Â " + Count + "°Ç ÀÔ´Ï´Ù.";
+					alert = "ì„±ê³µì ìœ¼ë¡œ ë°œì†¡í•˜ì˜€ìŠµë‹ˆë‹¤.";
+					alert += " ì”ì—¬ê±´ìˆ˜ëŠ” " + Count + "ê±´ ì…ë‹ˆë‹¤.";
 				} else if (Result.equals("reserved")) {
-					alert = "¼º°øÀûÀ¸·Î ¿¹¾àµÇ¾ú½À´Ï´Ù";
-					alert += " ÀÜ¿©°Ç¼ö´Â " + Count + "°Ç ÀÔ´Ï´Ù.";
+					alert = "ì„±ê³µì ìœ¼ë¡œ ì˜ˆì•½ë˜ì—ˆìŠµë‹ˆë‹¤";
+					alert += " ì”ì—¬ê±´ìˆ˜ëŠ” " + Count + "ê±´ ì…ë‹ˆë‹¤.";
 				} else if (Result.equals("3205")) {
-					alert = "Àß¸øµÈ ¹øÈ£Çü½ÄÀÔ´Ï´Ù.";
+					alert = "ì˜ëª»ëœ ë²ˆí˜¸í˜•ì‹ì…ë‹ˆë‹¤.";
 				} else {
 					alert = "[Error]" + Result;
 				}
