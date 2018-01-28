@@ -11,4 +11,5 @@ public interface ProductService {
 	ArrayList<ProductDTO>  product_List(String title);
 	ProductDTO productSelect(int productNo);
 	String productSelect_Image(int productNo);
+	int updateProduct(ProductDTO product, String imageSrc);
 }

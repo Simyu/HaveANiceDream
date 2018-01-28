@@ -162,7 +162,7 @@
 					<i class="fa fa-angle-right"></i> 판매 등록
 				</h4>
 				<form class="form-horizontal style-form" method="post" enctype="multipart/form-data"
-					action="/HaveANiceDream/product_enroll.do?productNo=<%=productNo%>">
+					action="/HaveANiceDream//product_update.do?productNo=<%=productNo%>&state=EDIT">
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">카테고리</label>
 						<div class="col-sm-10">
@@ -299,6 +299,9 @@
 
 					<div class="form-group" align="center">
 						<button type="submit" class="btn btn-round btn-default">수정하기</button>
+					</div>
+					<div class="form-group" align="center">
+						<button type="submit" class="btn btn-round btn-default">삭제하기</button>
 					</div>
 				</form>
 			</div>

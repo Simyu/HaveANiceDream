@@ -26,8 +26,8 @@ import user.dto.MemberDTO;
 /**
  * Servlet implementation class Product_Enroll_Servlet
  */
-@WebServlet(name = "product_enroll", urlPatterns = { "/product_enroll.do" })
-public class Product_Enroll_Servlet extends HttpServlet {
+@WebServlet(name = "product_update", urlPatterns = { "/product_update.do" })
+public class Product_Update_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -58,6 +58,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		}
 		HttpSession ses = request.getSession(false);
 		MemberDTO user = (MemberDTO) ses.getAttribute("user");
+		String userId =  user.getUserId();
 		int productPrice = Integer.parseInt(multipart.getParameter("productPrice"));
 		int categoryNo = Integer.parseInt(multipart.getParameter("categoryNohidden"));
 		int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailNohidden"));
@@ -65,29 +66,27 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		String productName = multipart.getParameter("productName");
 		String productTitle = multipart.getParameter("productTitle");
 		String productContent = multipart.getParameter("productContent");
-		String userId =  user.getUserId();
+		
 	//	System.out.println(userId);
 		int productState =ProductState.TRADE_CURRENT;
 		String productGrade = multipart.getParameter("productGrade");
 			//���ŷ� �߰� 	
 		String tradeType = multipart.getParameter("tradeType");
-		
+		int productNo= Integer.parseInt(multipart.getParameter("productNo"));
 		//System.out.println(tradeType);
 		//System.out.println(userId);
 		//���δ�Ʈ �ѹ� ��ǰ��  ������ �ʿ���� ���ܿ���  �Ѱ�����
 		//ProductDTO dto = new ProductDTO(productNo, userId, categoryNo, productName, productPrice, productContent, productCount, productTitle, productDate, productState, productExfDate, tradeType)
-		
-		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailNo);
-
-int result=0;
+	
+		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailNo,productNo);
+		String state=multipart.getParameter("state");
+		int result=0;
 		ProductService service = new ProductServiceimpl();
-			 result = service.insertProduct(product,fileName);
-		
-		System.out.println(result);
-		String url="";
-		String viewpath = request.getParameter("url");
-
-		request.setAttribute("viewpath", viewpath);
+		if(state.equals("EDIT")){
+			 result = service.updateProduct(product,fileName);				
+		}
+		String viewpath = "temp_main_con.jsp";//메인화면
+				request.setAttribute("viewpath",viewpath);				
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(request, response);

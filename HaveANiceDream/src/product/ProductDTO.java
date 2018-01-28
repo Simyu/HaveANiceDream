@@ -28,6 +28,21 @@ public class ProductDTO {
 		this.tradeType = tradeType;
 		this.categoryDetailNo = categoryDetailNo;
 	}
+	public ProductDTO(String userId, int categoryNo, String productName, Integer productPrice, String productContent, String productGrade,
+			String productTitle, int productState, String tradeType , Integer categoryDetailNo, int productNo) {
+		super();
+		this.userId = userId;
+		this.categoryNo = categoryNo;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productContent = productContent;
+		this.product_Grade = productGrade;
+		this.productTitle = productTitle;
+		this.productState = productState;
+		this.tradeType = tradeType;
+		this.categoryDetailNo = categoryDetailNo;
+		this.productNo = productNo;
+	}
 
 	private String userId;
 

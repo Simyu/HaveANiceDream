@@ -17,7 +17,7 @@ import category.CategoryDetailDTO;
 import category.service.CategoryService;
 import category.service.CategoryServiceimpl;
 
-
+//category_detail에 대한 내용을 AJAX 통신을 사용하여 DB에 접근해서 받아옴
 @WebServlet(name = "category/readAjax", urlPatterns = { "/category/readAjax.do" })
 public class Category_Read_Servlet_Ajax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,25 +26,18 @@ public class Category_Read_Servlet_Ajax extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		//
-		
 		PrintWriter pw = response.getWriter();
-		String categoryName=request.getParameter("categoryName");
+		String categoryName=request.getParameter("categoryName");  //카테고리이름을 받아옴
 		
 		CategoryService service = new CategoryServiceimpl();
-	//	ArrayList<CategoryDetailDTO> category_detail_list  = service.categoryDetailList(categoryName);
-		//System.out.println(category_detail_list);
-		//이름으로 검색하는데 해당이름으로 시작하는 항목을 검색할 예정.. %
 		ArrayList<CategoryDetailDTO> category_detail_listAjax =  null; 
 		String state=request.getParameter("state");
-		if(state.equals("ENROLL")){
-		 category_detail_listAjax=service.categoryDetailList(0,categoryName);
-		}else if (state.equals("SEARCH")){
+		if(state.equals("ENROLL")){//물품등록할때
+		 category_detail_listAjax=service.categoryDetailList(0,categoryName);//이름으로 검색할때 해당이름으로 시작하는것들은 전부가져오기 위해 이름으로 검색
+		}else if (state.equals("SEARCH")){//product_list.jsp화면에서 대분류를 선택했을때 실행되는 코드.
 			int categoryNo=Integer.parseInt(request.getParameter("categoryNo"));
-			category_detail_listAjax =service.categoryDetailList(categoryNo,null);
+			category_detail_listAjax =service.categoryDetailList(categoryNo,null);//카테고리 No로 검색 2번째는 이름으로검색. 리턴은 카테고리디테일리스트
 				}
-		//json파싱.
-		//System.out.println(categoryName);
 		JSONObject root_category_detail = new JSONObject();
 		JSONArray list = new JSONArray();
 		int size=0;
