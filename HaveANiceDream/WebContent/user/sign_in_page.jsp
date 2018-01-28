@@ -221,7 +221,7 @@
 			});
 			$("#makeTelRandNum").on("click", function() {
 				telRandNum = Math.floor(Math.random() * 1000000);
-				alert(telRandNum);
+				//alert(telRandNum);
 				$.ajax({
 					url : "/HaveANiceDream/sms/sendrand.do",
 					type : "POST",

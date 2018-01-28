@@ -41,6 +41,7 @@
 					<thead>
 						<tr>
 							<th>ID</th>
+							<th>마지막 접속 날짜</th>
 							<th>회원종류</th>
 							<th></th>
 						</tr>
@@ -57,6 +58,7 @@
 						%>
 						<tr>
 							<td><a href="javascript:showUserInfo('<%=Id %>')"><%=Id%></a></td>
+							<td><%=user.getUserLastLoginTime()%></td>
 							<td><%=type%></td>
 							<td>
 								<%
