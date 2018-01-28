@@ -13,22 +13,35 @@
 <script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$.ajax({
-			url : "/HaveANiceDream/manager_blame/select.do",
-			type : "GET",
-			data : {
-				"answerNo" : opener.document.formlist.back.value,
-			},
-			dataType : "json",
-			success : function(res) {
-				$("#answertitle").text(res.answerTitle);
-				$("#answercontent").text(res.answerContent);
-				$("#answerdate").text(res.answerDate);
-			}
-		});
+$(document).ready(function() {
+	$.ajax({
+		url : "/HaveANiceDream/blame/select.do",
+		type : "GET",
+		data : {
+			"blameNo" : opener.document.form.center.value,
+		},
+		dataType : "json",
+		success : function(res) {
+			$("#title").text(res.blameTitle);
+			$("#content").text(res.blameContent);
+			$("#date").text(res.blameDate);
+		}
 	});
-	
+	$.ajax({
+		url : "/HaveANiceDream/manager_blame/select.do",
+		type : "GET",
+		data : {
+			"blameNo" : opener.document.formlist.back.value,
+		},
+		dataType : "json",
+		success : function(res) {
+			$("#answertitle").text(res.answerTitle);
+			$("#answercontent").text(res.answerContent);
+			$("#answerdate").text(res.answerDate);
+		}
+	}); 
+});
+
 </script>
 </head>
 <body>
@@ -76,25 +89,19 @@
 							<tr>
 								<td>
 									<div class="inner-box">
-										<div class="inner-view">
+										
 											<p class="subject">
-												<em class="faq-icon type02">제목: </em><span class="input-box" ><input
-													name="answerTitle" type="text" class="txt"
-													style="width: 440px;" />  </span>
+												<em class="faq-icon type02">제목: </em><span class="input-box" id="answertitle"></span>
 											</p>
-											<div class="inner-view" >내용: </div>
-											<textarea name="answerContent"rows="60"	cols="60" title="평가글" maxlength="4000" class="insert-text"
-												style="height: 120px;" ></textarea>
-										</div>
-									</div>
-									</div>
+											<div class="inner-view" id="answercontent">내용: </div>
+										
 									</div>
 								</td>
 								<td class="linebg02">
-									<div class="inner-box02" name="answerdate"></div>
+									<div class="inner-box02" name="answerdate" id="answerdate"></div>
 								</td>
 								<td class="linebg02">
-									<div class="inner-box02"></div>
+									<div class="inner-box02" id="answer_user"></div>
 								</td>
 							</tr>
 						</tbody>
