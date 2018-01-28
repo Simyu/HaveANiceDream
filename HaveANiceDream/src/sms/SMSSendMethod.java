@@ -16,35 +16,39 @@ import java.util.Random;
 public class SMSSendMethod {
 	public void SMSSend(String rphone, String msg) {
 		String action = "go";
-//System.out.println(rphone);
+		// System.out.println(rphone);
 		if (action.equals("go")) {
 
 			String sms_url = "";
-			// ÄÚµåºĞ¼® sms_urlÀº /·Î ±¸ºĞÇÒ ¿¹Á¤
-			sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS Àü¼Û¿äÃ»	ÆÄ½ÌÇÒ¿¹Á¤.. 				// URL
-			String user_id="akros"; //¾ÆÀÌµğ
-			String secure ="5492e6e676d488f648e38150c11e2919";//ÀÎÁõÅ° (º¯°æÇÏ°Å³ª °è¼Ó º¸³»Áö¸»°Í ÀÜ¿©¹®ÀÚÈ½¼ö°¡ Â÷°¨µÊ.)
+			// ì½”ë“œë¶„ì„ sms_urlì€ /ë¡œ êµ¬ë¶„í•  ì˜ˆì •
+			sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS ì „ì†¡ìš”ì²­
+																	// íŒŒì‹±í• ì˜ˆì •..
+																	// // URL
+			String user_id = "akros"; // ì•„ì´ë””
+			String secure = "5492e6e676d488f648e38150c11e2919";// ì¸ì¦í‚¤ (ë³€ê²½í•˜ê±°ë‚˜ ê³„ì†
+																// ë³´ë‚´ì§€ë§ê²ƒ ì”ì—¬ë¬¸ìíšŸìˆ˜ê°€
+																// ì°¨ê°ë¨.)
 			System.out.println(user_id);
 			System.out.println(secure);
 			try {
 				user_id = SMSService.base64Encode(user_id);
-				secure = SMSService.base64Encode(secure);// ÀÎÁõÅ°
+				secure = SMSService.base64Encode(secure);// ì¸ì¦í‚¤
 			} catch (IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
-			} // SMS¾ÆÀÌµğ
-			
-			// String msg = "Å×½ºÆ®¹®ÀÚ";
+			} // SMSì•„ì´ë””
+
+			// String msg = "í…ŒìŠ¤íŠ¸ë¬¸ì";
 			// String rphone="010-4487-1321"
-			//msg = "Å×½ºÆ®¹®ÀÚ";
-			//rphone = "010-4487-1321";
+			// msg = "í…ŒìŠ¤íŠ¸ë¬¸ì";
+			// rphone = "010-4487-1321";
 			String sphone1 = "010";
 			String sphone2 = "8553";
 			String sphone3 = "7314";
 			String rdate = "";
 			String rtime = "";
 			String mode = "";
-			
+
 			System.out.println(msg);
 			System.out.println(sms_url);
 			System.out.println(rphone);
@@ -57,9 +61,9 @@ public class SMSSendMethod {
 				sphone1 = SMSService.base64Encode(sphone1);
 				sphone2 = SMSService.base64Encode(sphone2);
 				sphone3 = SMSService.base64Encode(sphone3);
-				 rdate = SMSService.base64Encode(rdate);
-			        rtime = SMSService.base64Encode(rtime);
-			         mode = SMSService.base64Encode("1");
+				rdate = SMSService.base64Encode(rdate);
+				rtime = SMSService.base64Encode(rtime);
+				mode = SMSService.base64Encode("1");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -75,13 +79,13 @@ public class SMSSendMethod {
 			String nointeractive = "";
 			String smsType = "";
 
-			// ½ºÇÃ¸´...
+			// ìŠ¤í”Œë¦¿...
 			String[] host_info = sms_url.split("/");// https:
-			String host = host_info[2];// host=/sslsms.cafe24.com 
+			String host = host_info[2];// host=/sslsms.cafe24.com
 			String path = "/" + host_info[3];// path=/sms_sender.php
 			int port = 80;
 
-			// µ¥ÀÌÅÍ ¸ÊÇÎ º¯¼ö Á¤ÀÇ
+			// ë°ì´í„° ë§µí•‘ ë³€ìˆ˜ ì •ì˜
 			String arrKey[] = new String[] { "user_id", "secure", "msg", "rphone", "sphone1", "sphone2", "sphone3",
 					"rdate", "rtime", "mode", "testflag", "destination", "repeatFlag", "repeatNum", "repeatTime",
 					"smsType", "subject" };
@@ -92,8 +96,8 @@ public class SMSSendMethod {
 			valKey[3] = rphone;
 			valKey[4] = sphone1;
 			valKey[5] = sphone2;
-			valKey[6] = sphone3;  //¿©±â±îÁö´Â ÇÊ¼ö¹øÈ£
-			valKey[7] = rdate;//ÇÊ¼ö¾Æ´Ô.. ±×·¡¼­»ç¿ë¾ÈÇÔ
+			valKey[6] = sphone3; // ì—¬ê¸°ê¹Œì§€ëŠ” í•„ìˆ˜ë²ˆí˜¸
+			valKey[7] = rdate;// í•„ìˆ˜ì•„ë‹˜.. ê·¸ë˜ì„œì‚¬ìš©ì•ˆí•¨
 			valKey[8] = rtime;
 			valKey[9] = mode;
 			valKey[10] = testflag;
@@ -103,7 +107,7 @@ public class SMSSendMethod {
 			valKey[14] = repeatTime;
 			valKey[15] = smsType;
 			valKey[16] = subject;
-			
+
 			String boundary = "";
 			Random rnd = new Random();
 			String rndKey = Integer.toString(rnd.nextInt(32000));
@@ -122,7 +126,7 @@ public class SMSSendMethod {
 			}
 			boundary = "---------------------" + boundary.substring(0, 11);
 
-			// º»¹® »ı¼º
+			// ë³¸ë¬¸ ìƒì„±
 			String data = "";
 			String index = "";
 			String value = "";
@@ -136,75 +140,77 @@ public class SMSSendMethod {
 			}
 
 			// out.println(data);
-			// À¯È¿¼ºÃ¼Å©
-			/*if (rphone.replaceAll("-", "").length() < 8 || rphone.replaceAll("-", "").length() > 11
-					|| rphone.charAt(0) != '0') {
-				System.out.print("<script>alert('ÇÚµåÆù¹øÈ£¸¦ ¹Ù¸£°Ô ÀÔ·ÂÇÏ¼¼¿ä')</script>");
-			} else {*/
-				try {
-					System.out.println("¼º°øÀûÀÎ¹®ÀÚÀü¼Û");
-					InetAddress addr = InetAddress.getByName(host);
-					Socket socket = new Socket(host, port);  // host=/sslsms.cafe24.com  port 80 
-					// Çì´õ Àü¼Û
-					BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
-					wr.write("POST " + path + " HTTP/1.0\r\n"); // path=/sms_sender.php
-					wr.write("Content-Length: " + data.length() + "\r\n");
-					wr.write("Content-type: multipart/form-data, boundary=" + boundary + "\r\n");
-					wr.write("\r\n");
+			// ìœ íš¨ì„±ì²´í¬
+			/*
+			 * if (rphone.replaceAll("-", "").length() < 8 ||
+			 * rphone.replaceAll("-", "").length() > 11 || rphone.charAt(0) !=
+			 * '0') { System.out.print(
+			 * "<script>alert('í•¸ë“œí°ë²ˆí˜¸ë¥¼ ë°”ë¥´ê²Œ ì…ë ¥í•˜ì„¸ìš”')</script>"); } else {
+			 */
+			try {
+				System.out.println("ì„±ê³µì ì¸ë¬¸ìì „ì†¡");
+				InetAddress addr = InetAddress.getByName(host);
+				Socket socket = new Socket(host, port); // host=/sslsms.cafe24.com
+														// port 80
+				// í—¤ë” ì „ì†¡
+				BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+				wr.write("POST " + path + " HTTP/1.0\r\n"); // path=/sms_sender.php
+				wr.write("Content-Length: " + data.length() + "\r\n");
+				wr.write("Content-type: multipart/form-data, boundary=" + boundary + "\r\n");
+				wr.write("\r\n");
 
-					// µ¥ÀÌÅÍ Àü¼Û
-					wr.write(data);
-					wr.flush();
+				// ë°ì´í„° ì „ì†¡
+				wr.write(data);
+				wr.flush();
 
-					// °á°ú°ª ¾ò±â
-					BufferedReader rd = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
-					String line;
-					String alert = "";
-					ArrayList tmpArr = new ArrayList();
-					while ((line = rd.readLine()) != null) {
-						tmpArr.add(line);
-					}
-					wr.close();
-					rd.close();
-					String tmpMsg = (String) tmpArr.get(tmpArr.size() - 1);
-					String[] rMsg = tmpMsg.split(",");
-					String Result = rMsg[0]; // ¹ß¼Û°á°ú
-					String Count = ""; // ÀÜ¿©°Ç¼ö
-					if (rMsg.length > 1) {
-						Count = rMsg[1];
-					}
-
-					// ¹ß¼Û°á°ú ¾Ë¸²
-					if (Result.equals("success")) {
-						alert = "¼º°øÀûÀ¸·Î ¹ß¼ÛÇÏ¿´½À´Ï´Ù.";
-						alert += " ÀÜ¿©°Ç¼ö´Â " + Count + "°Ç ÀÔ´Ï´Ù.";
-					} else if (Result.equals("reserved")) {
-						alert = "¼º°øÀûÀ¸·Î ¿¹¾àµÇ¾ú½À´Ï´Ù";
-						alert += " ÀÜ¿©°Ç¼ö´Â " + Count + "°Ç ÀÔ´Ï´Ù.";
-					} else if (Result.equals("3205")) {
-						alert = "Àß¸øµÈ ¹øÈ£Çü½ÄÀÔ´Ï´Ù.";
-					} else {
-						alert = "[Error]" + Result;
-					}
-					System.out.println(nointeractive);
-
-					if (nointeractive.equals("1") && !(Result.equals("Test Success!")) && !(Result.equals("success"))
-							&& !(Result.equals("reserved"))) {
-						System.out.println("<script>alert('" + alert + "')</script>");
-					} else if (!(nointeractive.equals("1"))) {
-						System.out.println("<script>alert('" + alert + "')</script>");
-					}
-
-					System.out.println("<script>location.href='" + returnurl + "';</script>");
-				} catch (UnknownHostException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				// ê²°ê³¼ê°’ ì–»ê¸°
+				BufferedReader rd = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
+				String line;
+				String alert = "";
+				ArrayList tmpArr = new ArrayList();
+				while ((line = rd.readLine()) != null) {
+					tmpArr.add(line);
+				}
+				wr.close();
+				rd.close();
+				String tmpMsg = (String) tmpArr.get(tmpArr.size() - 1);
+				String[] rMsg = tmpMsg.split(",");
+				String Result = rMsg[0]; // ë°œì†¡ê²°ê³¼
+				String Count = ""; // ì”ì—¬ê±´ìˆ˜
+				if (rMsg.length > 1) {
+					Count = rMsg[1];
 				}
 
-			
+				// ë°œì†¡ê²°ê³¼ ì•Œë¦¼
+				if (Result.equals("success")) {
+					alert = "ì„±ê³µì ìœ¼ë¡œ ë°œì†¡í•˜ì˜€ìŠµë‹ˆë‹¤.";
+					alert += " ì”ì—¬ê±´ìˆ˜ëŠ” " + Count + "ê±´ ì…ë‹ˆë‹¤.";
+				} else if (Result.equals("reserved")) {
+					alert = "ì„±ê³µì ìœ¼ë¡œ ì˜ˆì•½ë˜ì—ˆìŠµë‹ˆë‹¤";
+					alert += " ì”ì—¬ê±´ìˆ˜ëŠ” " + Count + "ê±´ ì…ë‹ˆë‹¤.";
+				} else if (Result.equals("3205")) {
+					alert = "ì˜ëª»ëœ ë²ˆí˜¸í˜•ì‹ì…ë‹ˆë‹¤.";
+				} else {
+					alert = "[Error]" + Result;
+				}
+				System.out.println(nointeractive);
+
+				if (nointeractive.equals("1") && !(Result.equals("Test Success!")) && !(Result.equals("success"))
+						&& !(Result.equals("reserved"))) {
+					System.out.println("<script>alert('" + alert + "')</script>");
+				} else if (!(nointeractive.equals("1"))) {
+					System.out.println("<script>alert('" + alert + "')</script>");
+				}
+
+				System.out.println("<script>location.href='" + returnurl + "';</script>");
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 

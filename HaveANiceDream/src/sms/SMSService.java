@@ -1,53 +1,44 @@
 package sms;
 
-
-
 public class SMSService {
-	public static String nullcheck(String str,  String Defaultvalue ) throws Exception
-	{
-	     String ReturnDefault = "" ;
-	     if (str == null)
-	     {
-	         ReturnDefault =  Defaultvalue ;
-	     }
-	     else if (str == "" )
-	    {
-	         ReturnDefault =  Defaultvalue ;
-	     }
-	     else
-	     {
-	                 ReturnDefault = str ;
-	     }
-	      return ReturnDefault ;
-	}
-	/**
-	* BASE64 Encoder
-	* @param str
-	* @return
-	*/
-	public static String base64Encode(String str)  throws java.io.IOException { //ÀÎÄÚµùÇÏ´ÂÀÛ¾÷(ÇØµ¶ÇÒ¼ö¾ø°Ô..)
-		//¿©±â¿¡ ¾ÏÈ£È­ ÇÒ°í¸®Áò Àû¿ë
-	   sun.misc.BASE64Encoder encoder = new sun.misc.BASE64Encoder();  
-	   byte[] strByte = str.getBytes();
-	   String result = encoder.encode(strByte);
-	   return result ;
+	public static String nullcheck(String str, String Defaultvalue) throws Exception {
+		String ReturnDefault = "";
+		if (str == null) {
+			ReturnDefault = Defaultvalue;
+		} else if (str == "") {
+			ReturnDefault = Defaultvalue;
+		} else {
+			ReturnDefault = str;
+		}
+		return ReturnDefault;
 	}
 
 	/**
-	* BASE64 Decoder
-	* @param str
-	* @return
-	*/
-	public static String base64Decode(String str)  throws java.io.IOException {//µğÄÚµùÇÏ´ÂÀÛ¾÷(ÇØµ¶)
-		//¿©±â¿¡ º¹È£È­ ÇÒ°í¸®Áò Àû¿ë
-	   sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
-	   byte[] strByte = decoder.decodeBuffer(str);
-	   String result = new String(strByte);
-	   return result ;
+	 * BASE64 Encoder
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static String base64Encode(String str) throws java.io.IOException { // ì¸ì½”ë”©í•˜ëŠ”ì‘ì—…(í•´ë…í• ìˆ˜ì—†ê²Œ..)
+		// ì—¬ê¸°ì— ì•”í˜¸í™” í• ê³ ë¦¬ì¦˜ ì ìš©
+		sun.misc.BASE64Encoder encoder = new sun.misc.BASE64Encoder();
+		byte[] strByte = str.getBytes();
+		String result = encoder.encode(strByte);
+		return result;
 	}
-	
-	
-	
-	
-	
+
+	/**
+	 * BASE64 Decoder
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static String base64Decode(String str) throws java.io.IOException {// ë””ì½”ë”©í•˜ëŠ”ì‘ì—…(í•´ë…)
+		// ì—¬ê¸°ì— ë³µí˜¸í™” í• ê³ ë¦¬ì¦˜ ì ìš©
+		sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
+		byte[] strByte = decoder.decodeBuffer(str);
+		String result = new String(strByte);
+		return result;
+	}
+
 }
