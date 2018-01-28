@@ -31,7 +31,7 @@ pageEncoding="utf-8"%>
 
 	}
 	function DelPath(url,boardNo){
-		
+		location.href = "/HaveANiceDream/board/delete.do?url=" + url+"&boardNo="+boardNo;
 	}
    </script>
 </head>

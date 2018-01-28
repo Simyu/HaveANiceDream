@@ -19,8 +19,7 @@ public class BoardQuery {
 	public static final String BOARD_INSERT = "insert into board values(board_seq.nextval,?,sysdate,?,?,?,?,?,?,?,?,?,?)";
 	public static final String BOARD_LIST = "select * from board";
 	public static final String BOARD_READ = "select * from board where BOARD_NO = ?";
-	public static final String USER_LOGIN = "select * from member where USER_ID = ? and USER_PW = ?";
-	public static final String USER_DELETE = "delete from member where USER_ID = ?";
+	public static final String BOARD_DELETE = "delete from board where BOARD_NO = ?";
 	public static final String USER_TYPE_UPDATE = "update member set USER_TYPE = ? where USER_ID = ?"; 
 	public static final String USER_POINT_UPDATE = "update member set POINT_TOTAL = ? where USER_ID = ?"; 
 	public static final String USER_GET_POINT = "select POINT_TOTAL from member where USER_ID = ?";
