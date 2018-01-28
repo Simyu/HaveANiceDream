@@ -41,6 +41,7 @@ public class BoardWriteServlet extends HttpServlet {
 		String boardTitle = multipartRequest.getParameter("boardTitle");
 		String boardContent = multipartRequest.getParameter("boardContent");
 		String boardType1 = multipartRequest.getParameter("boardType1");
+		System.out.println(boardType1);
 		String boardType2 = multipartRequest.getParameter("boardType2");
 		String parentBoardNo = request.getParameter("parentBoardNo");
 		

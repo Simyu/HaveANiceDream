@@ -20,9 +20,11 @@ public class ViewTempletServlet extends HttpServlet {
 		response.setContentType("text/html;charset=euc-kr");
 
 		String viewpath = request.getParameter("url");
-		String parentBoardNo = request.getParameter("parentBoardNo");
+
+		
 		request.setAttribute("viewpath", viewpath);
-		request.setAttribute("parentBoardNo", parentBoardNo);
+
+
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(request, response);
