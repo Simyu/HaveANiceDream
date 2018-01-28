@@ -11,10 +11,12 @@ pageEncoding="utf-8"%>
 		if(boardNo!=null){
 			location.href = "/HaveANiceDream/board/read.do?url=" + url+"&boardNo="+boardNo;
 		}else{
-			location.href = "/HaveANiceDream/view.html?url=" + url
+			location.href = "/HaveANiceDream/view.html?url=" + url;
 		}
-		
 	}
+
+		
+	
 </script>
 </head>
 

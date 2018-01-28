@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@page import="board.dto.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
@@ -15,11 +16,16 @@ pageEncoding="utf-8"%>
    		window.open("/HaveANiceDream/blame/report_popup.jsp", "a", "width=700, height=900, left=100, top=50")
    		
    	}
+	function boardListPath() {
+		location.href = "/HaveANiceDream/board/list.do";
+	}
    </script>
 </head>
 
 <body>
-	<%BoardDTO boardRead = (BoardDTO)request.getAttribute("boardRead"); %>
+	<%BoardDTO boardRead = (BoardDTO)request.getAttribute("boardRead"); 
+	  MemberDTO user = (MemberDTO) session.getAttribute("user");
+	%>
 	<div class="col-md-12">
 		<h4>
 			<i class="fa fa-angle-right"></i>커뮤니티
@@ -38,7 +44,7 @@ pageEncoding="utf-8"%>
 				<div class="col-md-2 border-title">조회수 :<%=boardRead.getBoardCount() %></div>
 			</div>
 			<div class="form-group">
-				<h5 class="col-sm-2" style="text-align: center;">[분류]>[종류]</h5>
+				<h5 class="col-sm-2" style="text-align: center;"><%=boardRead.getBoardType1() %>><%=boardRead.getBoardType2() %></h5>
 				<div class="col-sm-8"></div>
 				<h5 class="col-sm-2" style="text-align: center;">
 					목록 | 댓글(<a>10</a>)
@@ -48,18 +54,25 @@ pageEncoding="utf-8"%>
 				<h2 class="col-sm-12 border-title-content"><%=boardRead.getBoardTitle() %></h2>
 			</div>
 			<div class="form-group">
+				
 				<div class="col-sm-12 border-content-detail"><%=boardRead.getBoardContent()%></div>
+				<div> 첨부된 이미지</div>
+				<div class="no-mg-no-pd"> <img alt="" src="/HaveANiceDream/uploadresources/board/<%=boardRead.getBoardimageSrc()%>" > </div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-12 mb">
 					<button type="button" class="btn btn-danger pull-right" onclick="popup()">신고하기</button>
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<div class="col-md-12 border-foot mb mt">
+				<div class="col-md-12 border-foot mb">
+				<%if(boardRead.getUserId().equals(user.getUserId())){%>
+				
 					<button type="button" class="btn btn-round btn-default mr">삭제하기</button>
 					<button type="button" class="btn btn-round btn-default mr">수정하기</button>
-					<button type="button" class="btn btn-round btn-default mr">목록</button>
+				<%} %>
+					<button type="button" class="btn btn-round btn-default mr" onclick="boardListPath()">목록</button>
 				</div>
 			</div>
 			<!-- 답글 폼 스타트!! -->
@@ -87,7 +100,9 @@ pageEncoding="utf-8"%>
 							겁니다. 어떻게 해야할까요? 내용안에 넣어야 겠지요? 그럼 신고기능 연결을 위해 신고기능을 맡고 있는 우리 진우와 또
 							의논을 해봐야 겠네요? 자 어때요 css 및 뷰작업은 이제 껌때가리죠? ㅎㅎㅎㅎㅎ 어떤내용을 넣을지 막막할 때는
 							무조건 구글링 & 밤샘 작업을 한다면 문제 없지요 자 그럼 우리 다함께 드림 합시다 드림드림드림 드림
-							드림~ㅇㅀㅇㅀㄹㅇㅎ~</div>
+							드림~ㅇㅀㅇㅀㄹㅇㅎ~
+							
+						</div>
 						<button type="button" class="btn btn-round btn-xs btn-default ml">삭제하기</button>
 						<button type="button" class="btn btn-round btn-xs btn-default ml">수정하기</button>
 					</div>
