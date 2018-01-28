@@ -107,7 +107,7 @@ pageEncoding="utf-8"%>
 				<! -- 3RD ROW OF PANELS -->
 				<!-- Product Panel -->
 				<div class="row" style="margin-top: 30px;" >
-					<div class="col-lg-4 no-pd plus-padding-left">
+					<div class="col-md-4 col-sm-4 col-xs-4 no-pd plus-padding-left">
 						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=file1%>" width='300' height='300'/> </div> 
 							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">  
 								
@@ -117,29 +117,29 @@ pageEncoding="utf-8"%>
 									class="self-img-full-cont" src="/HaveANiceDream/Theme/assets/img/portfolio/port06.jpg" /></li>
 							</ul>
 					</div>
-					<div class="col-sm-8 no-pd plus-padding-left">
+					<div class="col-md-8 col-sm-8 col-xs-8 no-pd plus-padding-left">
 					
 						<div class="product-trade-title-font"><%=product.getProductTitle() %></div>
-						<div class="col-sm-2 product-trade-content-title-font" >아이디</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getUserId() %></div>
-						<div class="col-sm-2 product-trade-content-title-font" >물품이름</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getProductName() %></div>
-						<div class="col-sm-2 product-trade-content-title-font" >필요 드림포인트</div><div class="col-sm-10 product-trade-content-con-font" ><label class="pt-font"><%=product.getProductPrice() %></label>포인트</div>
-						<div class="col-sm-2 product-trade-content-title-font">거래방법</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getTradeType() %></div>					
-						<div class="col-sm-2 product-trade-content-title-font">지역</div><div class="col-sm-10 product-trade-content-con-font" >서울(차후에 구현예정)</div>
-						<div class="col-sm-2 product-trade-content-title-font">물품상태</div><div class="col-sm-10 product-trade-content-con-font" ><%=grade %></div>
-						<div class="col-sm-2 product-trade-content-title-font">사용기간</div><div class="col-sm-10 product-trade-content-con-font" >5개월(차후에 구현예정))</div>
-						<div class="col-sm-2 product-trade-content-title-font">등록일자</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getProductDate() %></div>
-						<div class="col-sm-12 next-line-hr">
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >아이디</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getUserId() %></div>
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >물품이름</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getProductName() %></div>
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >필요 드림포인트</div><div class="col-sm-10 product-trade-content-con-font" ><label class="pt-font"><%=product.getProductPrice() %></label>포인트</div>
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">거래방법</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getTradeType() %></div>					
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">지역</div><div class="col-sm-10 product-trade-content-con-font" >서울(차후에 구현예정)</div>
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">물품상태</div><div class="col-sm-10 product-trade-content-con-font" ><%=grade %></div>
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">사용기간</div><div class="col-sm-10 product-trade-content-con-font" >5개월(차후에 구현예정))</div>
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">등록일자</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getProductDate() %></div>
+						<div class="col-md-2 col-sm-2 col-xs-2 next-line-hr">
 						
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-12 " style="border: 2px solid black;">
+				<div class="col-md-12 col-sm-12 col-xs-12 " style="border: 2px solid black;">
 					<h5><i class="fa fa-angle-right"></i> 상세내용 </h5>
-						<div class="col-sm-12 product-trade-content-title-font trade-popup-content" >
+						<div class="col-md-12 col-sm-12 col-xs-12 product-trade-content-title-font trade-popup-content" >
 						<%=product.getProductContent() %>
 						</div>
 				</div>
-				<div class="col-lg-12 trade-popup-btn">
+				<div class="col-md-12 col-sm-12 col-xs-12 trade-popup-btn">
 					<button class="btn btn-default btn-lg btn-style-line mr">거래신청</button>
 					<button class="btn btn-default btn-lg btn-style-line mr ml">1:1채팅</button>
 				</div>
