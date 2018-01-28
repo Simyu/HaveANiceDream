@@ -1,3 +1,4 @@
+<%@page import="board.dto.BoardDTO"%>
 <%@page import="user.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -24,8 +25,10 @@
 
 <body>
 	<%
+	BoardDTO parentBoardDTO = (BoardDTO)request.getAttribute("parentBoardDTO"); 
 	MemberDTO user = (MemberDTO) session.getAttribute("user");
 	String parentBoardNo = (String)request.getAttribute("parentBoardNo"); 
+	String state = (String)request.getAttribute("state"); 
 	%>
 
 	<h4>
@@ -55,24 +58,35 @@
 							<p class="form-control-static"><%=user.getUserId() %></p>
 						</div>
 					</div>
+				
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">게시글 유형</label>
+					
 						<div class="col-sm-10">
+					<%if(state.equals("1")){ %>	
+							 <select class="form-control" name="boardType1">
+								<option><%=parentBoardDTO.getBoardType1()%></option>
+							</select>
+					<%}else{ %>
 							<select class="form-control" name="boardType1">
-								<option>분류 1</option>
 								<option>공지사항</option>
 								<option>구매후기</option>
 								<option>1:1맞춤상담</option>
 								<option>질문과 답변</option>
 								<option>자유게시판</option>
 							</select>
+					<%} %>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">게시글 종류</label>
 						<div class="col-sm-10">
+					<%if(state.equals("1")){ %>	
+							 <select class="form-control" name="boardType1">
+								<option>답글</option>
+							</select>
+					<%}else{ %>
 							<select class="form-control" name="boardType2">
-								<option>분류 2</option>
 								<option>물품</option>
 								<option>이용</option>
 								<option>구매</option>
@@ -80,6 +94,7 @@
 								<option>인증</option>
 								<option>기타</option>
 							</select>
+					<%}%>
 						</div>
 					</div>
 					<div class="form-group">

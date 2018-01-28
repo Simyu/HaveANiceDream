@@ -26,9 +26,12 @@ pageEncoding="utf-8"%>
 			location.href = "/HaveANiceDream/board/list.do?url=" + url;
 		}
 	}
-	function reBoardPath(url,parentBoardNo) {
-		location.href = "/HaveANiceDream/view.html?url=" + url+"&parentBoardNo="+parentBoardNo;
+	function reBoardPath(url,parentBoardNo,state) {
+		location.href = "/HaveANiceDream/board/replywrite.do?url=" + url+"&parentBoardNo="+parentBoardNo+"&state="+state;
 
+	}
+	function DelPath(url,boardNo){
+		
 	}
    </script>
 </head>
@@ -77,10 +80,10 @@ pageEncoding="utf-8"%>
 				<div class="col-md-12 border-foot mb">
 				<%if(boardRead.getUserId().equals(user.getUserId())){%>
 				
-					<button type="button" class="btn btn-round btn-default mr">삭제</button>
-					<button type="button" class="btn btn-round btn-default mr">수정</button>
+					<button type="button" class="btn btn-round btn-default mr" onclick="javascript:DelPath('../board/board_list.jsp',<%=boardRead.getBoardNo()%>)">삭제</button>
+					<button type="button" class="btn btn-round btn-default mr" >수정</button>
 				<%} %>
-					<button type="button" class="btn btn-round btn-default mr" onclick="javascript:reBoardPath('../board/board_write.jsp',<%=boardRead.getBoardNo()%>)">답글</button>
+					<button type="button" class="btn btn-round btn-default mr" onclick="javascript:reBoardPath('../board/board_write.jsp',<%=boardRead.getBoardNo()%>,'1','<%=boardRead.getBoardType1()%>')">답글</button>
 					<button type="button" class="btn btn-round btn-default mr" onclick="javascript:setPath('../board/board_list.jsp')">목록</button>
 				</div>
 			</div>
@@ -96,7 +99,7 @@ pageEncoding="utf-8"%>
 					</h5>
 					<div class="col-sm-8"></div>
 					<h5 class="col-sm-2" style="text-align: center;">
-						새로고침(<a>®</a>)
+						새로고침(<a>▩</a>)
 					</h5>
 					<div class="col-xs-12 border-reply-mid">
 						<!-- 답글! -->

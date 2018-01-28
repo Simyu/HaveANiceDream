@@ -11,10 +11,12 @@ pageEncoding="utf-8"%>
 		if(boardNo!=null){
 			location.href = "/HaveANiceDream/board/read.do?url=" + url+"&boardNo="+boardNo;
 		}else{
-			location.href = "/HaveANiceDream/view.html?url=" + url;
+			location.href = "/HaveANiceDream/board/replywrite.do?url=" + url;
 		}
 	}
-
+	function boardWritePath(url,state){
+		location.href = "/HaveANiceDream/board/replywrite.do?url=" + url+"&state="+state;
+	}
 		
 	
 </script>
@@ -125,9 +127,7 @@ pageEncoding="utf-8"%>
 					boardType = board.getBoardType1();
 					parentBoardNo = board.getBoardParentNo();
 					if(!boardType.equals("공지사항")){
-
-
-						
+						if(parentBoardNo==0){
 					%>
 									<tr>
 										<td><%=boardNo %></td>
@@ -139,7 +139,7 @@ pageEncoding="utf-8"%>
 										<td><%=boardDate %></td>
 										<td><%=boardViCount%></td>
 									</tr>
-			<%			
+			<%			}
 							for(int j=0;j<size;j++){
 								board2 = boardlist.get(j);
 								boardNo2 = board2.getBoardNo();
@@ -184,7 +184,7 @@ pageEncoding="utf-8"%>
 				</tbody>
 			</table>
 			<hr />
-			<a class="btn btn-default pull-right" href="javascript:setPath('../board/board_write.jsp')"><i
+			<a class="btn btn-default pull-right" href="javascript:boardWritePath('../board/board_write.jsp',0)"><i
 				class=" fa fa-edit"></i>글쓰기</a>
 			<div class="text-center">
 				<ul class="pagination">
