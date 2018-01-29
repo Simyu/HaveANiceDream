@@ -27,10 +27,10 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession(false);
 		MemberDTO user = (MemberDTO) session.getAttribute("userId");
-		
+		//System.out.println(request.getParameter("blameNo"));
 		int blameno = Integer.parseInt(request.getParameter("blameNo"));
-		//System.out.println(blameno);
-		String userid = user.getUserId();
+		System.out.println(user);
+		String userid = request.getParameter("userId");
 		String answertitle = request.getParameter("answerTitle");
 		String answercontent = request.getParameter("answerContent");
 		

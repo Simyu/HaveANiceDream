@@ -26,10 +26,10 @@ public class Manager_BlameSelectServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		int answerno = Integer.parseInt(request.getParameter("answerNo"));
+		int blameno = Integer.parseInt(request.getParameter("blameNo"));
 		
 		Manager_BlameService service = new Manager_BlameServiceimpl();
-		Manager_BlameDTO dto = service.select(answerno);
+		Manager_BlameDTO dto = service.select(blameno);
 		
 		
 		JSONObject json = new JSONObject();
@@ -39,7 +39,7 @@ public class Manager_BlameSelectServlet extends HttpServlet {
 		
 		  PrintWriter pw = response.getWriter();
 	         pw.println(json.toJSONString());
-	         System.out.println(answerno);
+	         
 	}
 
 }
