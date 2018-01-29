@@ -16,15 +16,32 @@ public class ProductServiceimpl implements ProductService {
 		productDAO dao = new productDAOimpl();
 		
 		int result = 0;
-		
+		boolean state=false;
 		try {
 			connection = DBUtil.getConnect();
+			connection.setAutoCommit(false);
 			result = dao.insertProduct(product, connection);
 			dao.insertProduct_Image(imageSrc, connection);
+			state=true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(connection);
+			
+				try {
+					if(state){
+					connection.commit();
+					DBUtil.close(connection);
+					}else{
+						connection.rollback();
+						DBUtil.close(connection);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+		
+			
 		}
 		
 		return result;
@@ -92,14 +109,32 @@ public class ProductServiceimpl implements ProductService {
 		int result = 0;
 		Connection connection = null;
 		productDAO dao = new productDAOimpl();
+		boolean  state =false;
 		try {
 			connection = DBUtil.getConnect();
+			//오토커밋해제..
+			connection.setAutoCommit(false);
 			result = dao.updateProduct(product, connection);
 			dao.updateProduct_Image(imageSrc, product.getProductNo(), connection);
+			state=true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(connection);
+			
+				try {
+					if(state){
+					connection.commit();
+					DBUtil.close(connection);
+					}else{
+						connection.rollback();
+						DBUtil.close(connection);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			
 		}
 		return 0;
 	}

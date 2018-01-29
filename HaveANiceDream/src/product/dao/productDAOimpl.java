@@ -60,7 +60,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 			result=resultSet.getString(1);
 		}
 		
-		//System.out.println(result);
+		 DBUtil.close(ptmt);
 		return result;
 	}
 	
@@ -81,7 +81,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 						resultSet.getDate(9), resultSet.getInt(10), resultSet.getInt(11), resultSet.getString(12),resultSet.getInt(13));
 		}
 		
-		//System.out.println(product);
+		 DBUtil.close(ptmt);
 		return product;
 	}
 	
@@ -91,18 +91,17 @@ PRODUCT_NO                                NOT NULL NUMBER
 		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
-		 if(categoryNo!=0 & categoryDetailNo==0){  //첫번째 것만 선택했을떄
+		 if(categoryNo!=0 & categoryDetailNo==0){  //대분류로만 검색
 				ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLENO);
 				ptmt.setString(1, "%"+title+"%");
 				ptmt.setInt(2, categoryNo);
-		}else if(categoryNo!=0 ){
+		}else if(categoryNo!=0 ){ //대,소분류를 통한 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLE);
 			ptmt.setString(1, "%"+title+"%");
 			ptmt.setInt(2, categoryNo);
 			ptmt.setInt(3, categoryDetailNo);
 		}
-		else if(categoryNo==0 & categoryDetailNo==0 ){
-                
+		else if(categoryNo==0 & categoryDetailNo==0 ){  //전체리스트 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL);
 		}
 		resultSet = ptmt.executeQuery();
@@ -110,7 +109,6 @@ PRODUCT_NO                                NOT NULL NUMBER
 			if (product_list == null) {
 				product_list = new ArrayList<ProductDTO>();
 			}
-
 			ProductDTO  dto = new ProductDTO(
 					resultSet.getInt(1),
 					resultSet.getString(2),
@@ -128,13 +126,9 @@ PRODUCT_NO                                NOT NULL NUMBER
 					resultSet.getString(14),
 					resultSet.getString(15)
 					);
-
 			product_list.add(dto);
 		}
-		
-		
-		
-		
+		 DBUtil.close(ptmt);
 		
 		return product_list;
 	}
