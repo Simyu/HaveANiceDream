@@ -33,6 +33,9 @@ ALTER TABLE blame MODIFY(ATTACHED_FILE VARCHAR2(100));
 ALTER TABLE blame MODIFY(BLAME_TYPE VARCHAR2(100));
 ALTER TABLE blame MODIFY(BLAME_TITLE VARCHAR2(100));
 ALTER TABLE blame MODIFY(BLAME_CONTENT VARCHAR2(1000));
+ALTER TABLE manager_blame MODIFY(ANSWER_TITLE VARCHAR2(100));
+ALTER TABLE manager_blame MODIFY(ANSWER_CONTENT VARCHAR2(1000));
+
 
 ALTER TABLE product MODIFY(trade_type VARCHAR2(20));
 ALTER TABLE product RENAME COLUMN PRODUCT_COUNT TO PRODUCT_GRADE;
@@ -122,9 +125,6 @@ CREATE TABLE block
 
 create  SEQUENCE board_no_seq;
 
-ALTER TABLE board add(board_type1 varchar2(20));
-ALTER TABLE board add(board_type2 varchar2(20));
-ALTER TABLE board add(boardImg varchar2(40));
 alter table [해당테이블명] drop column [삭제할필드명];
 alter table board drop column board_type;
 ALTER TABLE board MODIFY(BOARD_STATE VARCHAR2(20));
