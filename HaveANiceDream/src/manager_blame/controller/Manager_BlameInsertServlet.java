@@ -38,12 +38,12 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 		Manager_BlameService service = new Manager_BlameServiceimpl();
 		int result = service.insert(dto);
 		
-		if(result>0){
-			response.sendRedirect("/HaveANiceDream/blame/list.do?state=2");
+		/*if(result>0){
+			//response.sendRedirect("/HaveANiceDream/blame/list.do?state=2");
 			//System.out.println(result);
 		}else{
 			String viewpath = "../blame/Answer_list.jsp";
-			request.setAttribute("viewpath", viewpath);
+			request.setAttribute("viewpath", viewpath);*/
 			
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 			requestDispatcher.forward(request, response);
@@ -52,4 +52,4 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 
 	}
 
-}
+

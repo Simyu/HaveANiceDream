@@ -125,9 +125,6 @@ CREATE TABLE block
 
 create  SEQUENCE board_no_seq;
 
-ALTER TABLE board add(board_type1 varchar2(20));
-ALTER TABLE board add(board_type2 varchar2(20));
-ALTER TABLE board add(boardImg varchar2(40));
 alter table [해당테이블명] drop column [삭제할필드명];
 alter table board drop column board_type;
 ALTER TABLE board MODIFY(BOARD_STATE VARCHAR2(20));
@@ -149,3 +146,7 @@ CREATE TABLE board
     board_Type2	 	VARCHAR2(20)    NULL,
  	CONSTRAINT BOARD_PK PRIMARY KEY (board_No)
 );
+
+select b.blame_no, b.blame_date, b.blame_title, b.blame_content, a.answer_title, a.answer_content, a.answer_date
+from blame b, manager_blame a
+where b.blame_no=a.blame_no;

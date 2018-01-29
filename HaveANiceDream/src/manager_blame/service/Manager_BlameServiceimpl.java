@@ -2,6 +2,8 @@ package manager_blame.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import static fw.DBUtil.*;
 
 import manager_blame.dao.Manager_BlameDAO;
@@ -25,8 +27,8 @@ public class Manager_BlameServiceimpl implements Manager_BlameService {
 		return result;
 	}
 
-	public Manager_BlameDTO select(int answerNo){
-		Manager_BlameDTO result = null;
+	public ArrayList<String> select(int answerNo){
+		ArrayList<String> result = null;
 		Connection con = null;
 		Manager_BlameDAO dao = new Manager_BlameDAOimpl();
 		try {

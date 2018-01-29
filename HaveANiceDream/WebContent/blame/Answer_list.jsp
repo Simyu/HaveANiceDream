@@ -27,7 +27,7 @@
 				$("#content").text(res.blameContent);
 				$("#date").text(res.blameDate);
 				$("#blameNo").val(res.blameNo);
-				alert(res.blameNo);
+				//alert(res.blameNo);
 			}
 		});
 	});
