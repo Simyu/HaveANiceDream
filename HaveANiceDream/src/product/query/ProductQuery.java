@@ -1,4 +1,4 @@
-package product;
+package product.query;
 
 public class ProductQuery {
 	//카테고리 시퀀스로 구분해서  핸드폰인지 유야용품인지 구분하는작업이 필요함

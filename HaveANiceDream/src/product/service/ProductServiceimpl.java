@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fw.DBUtil;
-import product.ProductDTO;
 import product.dao.productDAO;
 import product.dao.productDAOimpl;
+import product.dto.ProductDTO;
 
 public class ProductServiceimpl implements ProductService {
 	@Override

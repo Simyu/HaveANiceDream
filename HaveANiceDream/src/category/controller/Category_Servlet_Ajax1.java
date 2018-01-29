@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import category.CategoryDTO;
+import category.dto.CategoryDTO;
 import category.service.CategoryService;
 import category.service.CategoryServiceimpl;
 

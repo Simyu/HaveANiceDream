@@ -15,8 +15,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import category.service.CategoryServiceimpl;
-import category.CategoryDTO;
-import category.CategoryDetailDTO;
+import category.dto.CategoryDTO;
+import category.dto.CategoryDetailDTO;
 import category.service.CategoryService;
 
 

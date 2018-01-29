@@ -1,4 +1,4 @@
-package product;
+package point.query;
 
 public class ProductState {
 	 public static int  TRADE_WAIT = 1;

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fw.DBUtil;
-import product.ProductDTO;
-import product.ProductQuery;
+import product.dto.ProductDTO;
+import product.query.ProductQuery;
 import user.dto.MemberDTO;
 
 public class productDAOimpl implements productDAO {

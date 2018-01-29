@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import category.CategoryDTO;
-import category.CategoryDetailDTO;
+import category.dto.CategoryDTO;
+import category.dto.CategoryDetailDTO;
 import category.query.*;
 import fw.DBUtil;
 

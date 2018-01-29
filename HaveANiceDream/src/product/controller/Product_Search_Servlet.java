@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import category.CategoryDTO;
+import category.dto.CategoryDTO;
 import category.service.CategoryService;
 import category.service.CategoryServiceimpl;
-import product.ProductDTO;
+import product.dto.ProductDTO;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
 import user.dto.MemberDTO;
