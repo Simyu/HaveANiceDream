@@ -15,7 +15,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
-		url : "/HaveANiceDreame/manager_blame/select1.do",
+		url : "/HaveANiceDreame/manager_blame/select.do",
 		type : "GET",
 		data : {
 			"blameNo" : opener.document.formlist.list.value

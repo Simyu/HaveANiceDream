@@ -29,7 +29,7 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 		MemberDTO user = (MemberDTO) session.getAttribute("userId");
 		//System.out.println(request.getParameter("blameNo"));
 		int blameno = Integer.parseInt(request.getParameter("blameNo"));
-		System.out.println(user);
+		//System.out.println(user);
 		String userid = request.getParameter("userId");
 		String answertitle = request.getParameter("answerTitle");
 		String answercontent = request.getParameter("answerContent");

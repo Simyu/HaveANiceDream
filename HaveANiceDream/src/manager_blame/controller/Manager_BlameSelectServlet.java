@@ -17,7 +17,7 @@ import manager_blame.dto.Manager_BlameDTO;
 import manager_blame.service.Manager_BlameService;
 import manager_blame.service.Manager_BlameServiceimpl;
 
-@WebServlet(name = "manager_blame/select1", urlPatterns = { "/manager_blame/select1.do" })
+@WebServlet(name = "manager_blame/select", urlPatterns = { "/manager_blame/select.do" })
 public class Manager_BlameSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,7 +28,7 @@ public class Manager_BlameSelectServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		System.out.println("test");
 		int blameno = Integer.parseInt(request.getParameter("blameNo"));
-		
+		System.out.println(blameno);
 		Manager_BlameService service = new Manager_BlameServiceimpl();
 		ArrayList<String> dto = service.select(blameno);
 		

@@ -19,7 +19,7 @@
 			url : "/HaveANiceDream/blame/select.do",
 			type : "GET",
 			data : {
-				"blameNo" : opener.document.form.list.value,
+				"blameNo" : opener.document.form.list.value
 			},
 			dataType : "json",
 			success : function(res) {
