@@ -124,7 +124,9 @@ PRODUCT_NO                                NOT NULL NUMBER
 					resultSet.getInt(10),
 					resultSet.getInt(11),
 					resultSet.getString(12),
-					resultSet.getInt(13)
+					resultSet.getInt(13),
+					resultSet.getString(14),
+					resultSet.getString(15)
 					);
 
 			product_list.add(dto);
