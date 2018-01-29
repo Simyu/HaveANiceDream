@@ -157,7 +157,7 @@ $(document).ready(function(){
 						<thead>
 							<tr class="trade-ing-line pd-con">
 								<th>종류</th>
-								<th>등급</th>
+								<th>이미지</th>
 								<th class="numeric">물품제목</th>
 								<th class="numeric">거래금액</th>
 								<th class="numeric">등록시간</th>
@@ -173,14 +173,14 @@ $(document).ready(function(){
 									//검색간...   해당물품 검색 DB접근해서 서블릿요청
 									//이미지 실버 물품이미지넣을거고... 거레상태는 표시할예정
 							%>
-							<tr>
+							<tr> <!--  종류 부분 수정 ( 대분류 .. 내용 (이름 받아와야함.category_no로 name받아서) -->
 								<td>아이템</td>
 								<td><img
 									src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"
 									width='100' height='100' alt='실버' /></td>
-								<td class="numeric">
+								<td class="numeric"><!-- 이미지 추가...... -->
 								<a	href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>&state=BUY" >
-									 <%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
+									 <%=dto.getProductTitle()%></a></td>
 
 								<td class="numeric"><%=dto.getProductPrice()%></td>
 								<td class="numeric"><%=dto.getProductDate()%></td>
