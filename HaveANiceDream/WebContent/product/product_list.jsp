@@ -23,7 +23,7 @@
         	detailNo = myform.categoryDetailNo[index];
         	detailNoval= $(detailNo).attr("value");
         	$("#categoryDetailNohidden").attr("value",detailNoval);
-        	alert($("#categoryDetailNohidden").attr("value"));
+        //	alert($("#categoryDetailNohidden").attr("value"));
         	
         };
 $(document).ready(function(){
