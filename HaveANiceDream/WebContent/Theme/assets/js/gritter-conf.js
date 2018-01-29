@@ -5,9 +5,9 @@ var Gritter = function () {
 
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
-            title: '장물에 대한 안내!! 필독!!!',
+            title: '�λЪ�� ���� ����!! ����!!!',
             // (string | mandatory) the text inside the notification
-            text: '지금 사시는 물건이 장물인지 아닌지 확인을 먼저 하기 바랍니다! 다른조에서 드림물품이 장물일수도 있다는 의견을 배제하지 않고 이러게 신중하게 만들어 봤습니다. 자세한 내용은 오른쪽을 클릭해주세요 <a href="http://sooein.tistory.com/302" style="color:#FFD777">click</a>.',
+            text: '吏�湲� �ъ���� 臾쇨굔�� �λЪ�몄� ����吏� ���몄�� 癒쇱�� ��湲� 諛�������! �ㅻⅨ議곗���� ��由쇰Ъ���� �λЪ�쇱���� ���ㅻ�� ��寃ъ�� 諛곗����吏� ��怨� �대�ш� ��以���寃� 留��ㅼ�� 遊ㅼ�듬����. ���명�� �댁�⑹�� �ㅻⅨ履쎌�� �대┃�댁＜�몄�� <a href="http://sooein.tistory.com/302" style="color:#FFD777">click</a>.',
             // (string | optional) the image to display on the left
             image: 'assets/img/ui-sam.jpg',
             // (bool | optional) if you want it to fade out on its own or just sit there
@@ -38,11 +38,11 @@ var Gritter = function () {
 
         $.gritter.add({
             // (string | mandatory) the heading of the notification
-            title: '장물에 대한 안내!! 필독!!!',
+            title: '�λЪ�� ���� ����!! ����!!!',
             // (string | mandatory) the text inside the notification
-            text: '이 물건이 장물인지 아닌지 확인해주세요! 다른 조의 태글로 인해 만듬. 자세한 내용은 오른쪽을 클릭해주세요 <a href="http://sooein.tistory.com/302" style="color:#FFD777">click</a>.',
+            text: '�� 臾쇨굔�� �λЪ�몄� ����吏� ���명�댁＜�몄��! �ㅻⅨ 議곗�� ��湲�濡� �명�� 留���. ���명�� �댁�⑹�� �ㅻⅨ履쎌�� �대┃�댁＜�몄�� <a href="http://sooein.tistory.com/302" style="color:#FFD777">click</a>.',
             // (string | optional) the image to display on the left
-            image: 'assets/img/ui-sam.jpg',
+            image: '/HaveANiceDream/Theme/assets/portfolio/port05.jpg',
             // (bool | optional) if you want it to fade out on its own or just sit there
             sticky: false,
             // (int | optional) the time you want it to be alive for before fading out
@@ -59,7 +59,7 @@ var Gritter = function () {
             // (string | mandatory) the heading of the notification
             title: 'This is a notice with a max of 3 on screen at one time!',
             // (string | mandatory) the text inside the notification
-            text: '한글 다이럼? Thank you so much to try Dashgum. Developed by <a href="#" style="color:#FFD777">Alvarez.is</a>.',
+            text: '��湲� �ㅼ�대��? Thank you so much to try Dashgum. Developed by <a href="#" style="color:#FFD777">Alvarez.is</a>.',
             // (string | optional) the image to display on the left
             image: 'assets/img/ui-sam.jpg',
             // (bool | optional) if you want it to fade out on its own or just sit there
