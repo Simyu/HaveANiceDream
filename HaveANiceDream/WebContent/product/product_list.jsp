@@ -17,28 +17,47 @@
 <title>DASHGUM - Bootstrap Admin Template</title>
 
 <script type="text/javascript">
+        function myform(myform){
+        	index = myform.categoryDetailNo.selectedIndex;
+        	//alert(index);
+        	detailNo = myform.categoryDetailNo[index];
+        	detailNoval= $(detailNo).attr("value");
+        	$("#categoryDetailNohidden").attr("value",detailNoval);
+        	
+        };
 $(document).ready(function(){
-	$("#categoryName").on("click",function(){
-		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
-
+	$("#search1").on("clcick",function(){ //왜 동작안할까.. 고민
+		var no = $("#categoryDetailNo").val();
+		//alert("셀렉트탴그 값:"+ no);
+		alert("히든값"+detailNoval);
+		if(no==null)
+			{
+			alert("리스트를 선택해주세요.")
+			return false;
+			}
+		
+	});
+	$("#categoryNo").on("click",function(){
+		var name = $(this).val();//.val() 텍스트상자(옵션태그의) 속성값
+		//alert(name);
+		selectNum=	$("#categoryNohidden").attr("value",name);
+   //  alert(selectNum.attr("value"));
 		$.ajax({
 			url:"/HaveANiceDream/category/readAjax.do?state=SEARCH",
 			type:"get",
 			data:{"categoryNo":name},
 			dataType:"json",
 			success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
-				$("#categoryDetailName").empty();
+				$("#categoryDetailNo").empty();
 				for(i=0 ;i<data.category_detail.length;i++){ 
-					var str="<option>"+data.category_detail[i].categoryDetailName+"</option>";
+					var str="<option value='" + data.category_detail[i].categoryDetailNo+"'>"+data.category_detail[i].categoryDetailName+"</option>";
 					 categorydetailname=$(str);
-					 categorydetailname.attr("value",data.category_detail[i].categoryDetailNo);
-					 categorydetailname.attr("name",data.category_detail[i].categoryDetailName);
- 
-					$("#categoryDetailName").append(categorydetailname);
+					$("#categoryDetailNo").append(categorydetailname);
 				}                           
 			}
 		})
-		
+		$("#categoryDetailNohidden").attr("value",$("#categoryDetailNo").val());
+	    //   alert($("#categoryDetailNohidden").val());
 		
 	});
 	 
@@ -77,8 +96,9 @@ $(document).ready(function(){
 				<div class="col-lg-12">
 
 					<div class="col-lg-4">
+					<input type="hidden" id="categoryNohidden" name="categoryNohidden"    />
 						<select  class="form-control"
-									name="categoryName" id=categoryName  
+									name="categoryNo" id=categoryNo  required="required" 
 									style="width: 100%">
 						<option >선택해주세요
 						 <%
@@ -94,10 +114,12 @@ $(document).ready(function(){
 						</select>
 					</div>
 
-					<div class="col-lg-3"> <select 
-									class="form-control" name="categoryDetailName"
-									id="categoryDetailName"  style="width: 100%" >
-							<option >선택해주세요
+					<div class="col-lg-3">
+					<input type="hidden" id="categoryDetailNohidden" name="categoryDetailNohidden"     /><!-- 히든태그선언 이름을 넘기면 등록할떄 제한사항이 생기므로 hidden 태그에서해결 -->
+					 <select 
+									class="form-control" name="categoryDetailNo" onchange="myform(this.form)" required="required"
+									id="categoryDetailNo"  style="width: 100%" >
+								<option >선택해주세요
 
 						</select>
 					</div>
@@ -115,7 +137,7 @@ $(document).ready(function(){
 							<!-- <li><input type="image" name="btnSearch" value="검색"
 								src="/HaveANiceDream/product_list.do?state=SEARCH"
 								class="g_image" style="width: auto;" /></li> -->
-								<li><button type="submit" class="btn btn-default">검색</button></li>
+								<li><button type="submit" class="btn btn-default" id="search1">검색</button></li>
 						</ul>
 					</div>
 				</div>
@@ -157,7 +179,7 @@ $(document).ready(function(){
 									src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"
 									width='100' height='100' alt='실버' /></td>
 								<td class="numeric">
-								<a	href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>" >
+								<a	href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>&state=BUY" >
 									 <%=dto.getProductState()%><%=dto.getProductTitle()%></a></td>
 
 								<td class="numeric"><%=dto.getProductPrice()%></td>

@@ -41,8 +41,11 @@ public class BoardWriteServlet extends HttpServlet {
 		String boardTitle = multipartRequest.getParameter("boardTitle");
 		String boardContent = multipartRequest.getParameter("boardContent");
 		String boardType1 = multipartRequest.getParameter("boardType1");
+		System.out.println(boardType1);
 		String boardType2 = multipartRequest.getParameter("boardType2");
+		String parentBoardNo = request.getParameter("parentBoardNo");
 		
+
 		String fileName = null;
 
 		@SuppressWarnings("unchecked")
@@ -54,10 +57,14 @@ public class BoardWriteServlet extends HttpServlet {
 				fileName = "board-no-img.png";
 			}
 		}
+		BoardDTO boardwrite = null;
+		if(parentBoardNo==null){
+			boardwrite = new BoardDTO(userId, boardTitle, boardContent, "답변대기", 0, 0, 0, 0, fileName, boardType1, boardType2);
+		}else{
+			boardwrite = new BoardDTO(userId,"RE : "+boardTitle, boardContent, "답변완료", 0, Integer.parseInt(parentBoardNo), 0, 0, fileName, boardType1, boardType2);
+		}
 		
-		System.out.println(fileName);
-		BoardDTO boardwrite = new BoardDTO(userId, boardTitle, boardContent, "답변대기", 0, 0, 0, 0, fileName, boardType1, boardType2);
-		System.out.println(boardwrite);
+
 		
 		BoardService service = new BoardServiceImpl();
 		int res = service.boardInsert(boardwrite);

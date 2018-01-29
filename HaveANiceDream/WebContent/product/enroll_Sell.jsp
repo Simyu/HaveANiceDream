@@ -21,26 +21,24 @@
     	 selectDNumObj = myform.categoryDetailName[index];
     	 selectDNum = $(selectDNumObj).attr("value");
     	 $("#categoryDetailNohidden").attr("value",selectDNum);
-    	 alert(selectDNum);
+    	// alert(selectDNum);
     	             
       }
       function getName1(myform){
-    	  index = myform.categoryName.selectedIndex;
-    	  //categoryNo는 select 태그이고... 
-    	  // myform.categoryName[index]는 옵션태그 
-    	 $("#categoryNameSearch").val(myform.categoryName[index].text);
+    	  index = myform.categoryName.selectedIndex;//select태그내에서 선택된 옵션의 인덱스가 몇번인지 구하는 코드 
+    	 $("#categoryNameSearch").val(myform.categoryName[index].text);//해당 옵션태그의 텍스트를 텍스트필드에 세팅
     	  // 옵션태그를 객체로 받아서
-    	   selectNumObj  =	myform.categoryName[index];
+    	   selectNumObj  =	myform.categoryName[index];//셀렉트태그  하위의 옵션태그를 selectNumObj객체로 생성.
     	   //alert(selectNumObj);
     	   //옵션태그의 속성을 selectNum에 저장
-    	   selectNum  =  $(selectNumObj).attr("value");
-    	   $("#categoryNohidden").attr("value",selectNum);
-    	   alert(selectNum);
+    	   selectNum  =  $(selectNumObj).attr("value"); //생성된 객체의 속성(인덱스 : 즉 categoryNo)을 저장
+    	   $("#categoryNohidden").attr("value",selectNum);//히든태그에 categoryNo을 저장함  submit할떄 함께 전해짐
+    	//   alert(selectNum);
     				//에러케이스정리
     				//1. 물품선택간 검색을 안하고 바로 선택할 경우 에러발생(대분류에서)
     				//2. option을 선택하지 않으면 value설정값을 넘길수가 없음...
     				//개선방안 
-    				//텍스트필드에 적힌 이름이 아닌 고유번호를 넘겨야함.
+    				//텍스트필드에 적힌 이름이 아닌 고유번호를 넘겨야함. [완료]
     	             
       }
      $(document).ready(function(){
@@ -77,12 +75,10 @@
  				dataType:"json",
  				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
  					$("#categoryName").empty();
- 					for(i=0 ;i<data.category.length;i++){ 
- 						
+ 					for(i=0 ;i<data.category.length;i++){ 					
  						var str="<option value='"+data.category[i].categoryNo+"'>"+data.category[i].categoryName+"</option>";
+ 						//옵션태그에서 카테고리 넘버를 value로 설정한 것을 객체로 생성해서  셀렉트태그에 붙이는 과정. 
  						 categoryname=$(str);
- 						
- 						
  						$("#categoryName").append(categoryname);
  					}   
  				}
@@ -90,11 +86,9 @@
 	
      	});
 
-    	$("#categoryDetailNameSearch").on("keyup",function(){
+    	$("#categoryDetailNameSearch").on("keyup",function(){  //카테고리디테일부분 검색. 
     		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
-    	//	alert(name);
-    		//category =$(this).text();
-    	//	alert(category);
+ 				
     		$.ajax({
     			url:"/HaveANiceDream/category/readAjax.do?state=ENROLL",
 				type:"get",
@@ -156,7 +150,7 @@
 					<i class="fa fa-angle-right"></i> 판매 등록
 				</h4>
 				<form class="form-horizontal style-form" method="post" enctype="multipart/form-data"
-					action="/HaveANiceDream/product_enroll.do">
+					action="/HaveANiceDream/product_enroll.do?state=ENROLL">
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">카테고리</label>
 						<div class="col-sm-10">
@@ -179,7 +173,7 @@
 								</select>
 							</div>
 							<div class="col-sm-5">
-						<input type="hidden" id="categoryDetailNohidden" name="categoryDetailNohidden"     />
+						<input type="hidden" id="categoryDetailNohidden" name="categoryDetailNohidden"     /><!-- 히든태그선언 이름을 넘기면 등록할떄 제한사항이 생기므로 hidden 태그에서해결 -->
 								<input type="text" class="form-control" id="categoryDetailNameSearch" name="categoryDetailNameSearch" required="required"
 									value=""> <br /> <select multiple
 									class="form-control" name="categoryDetailName" required="required"
@@ -260,26 +254,6 @@
 									</div> 
 								</div> -->
 
-					<div class="form-group">
-						<div class="col-sm-6">
-							<label class="col-sm-2 col-sm-2 control-label">이름</label>
-							<div class="col-sm-4">
-							<input type="text" class="form-control-static" id="userId" name="userId" readonly="readonly">
-							
-							</div>
-
-						</div>
-
-
-
-						<div class="col-sm-6">
-							<label class="col-sm-2 col-sm-2 control-label">연락처</label>
-
-							<div class="col-sm-4">
-								<input type="text" class="form-control-static" id="userPhone" name="userPhone" required="required">
-							</div>
-						</div>
-					</div>
 
 
 

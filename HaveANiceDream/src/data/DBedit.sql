@@ -4,6 +4,7 @@ select * from board;
 
 drop table member;
 drop table board;
+Delete from board where board_no = 29;
 
 CREATE TABLE member
 (

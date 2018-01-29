@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import board.dto.BoardDTO;
 import board.query.BoardQuery;
 import fw.DBUtil;
+import user.query.UserQuery;
 
 
 public class BoardDAOImpl implements BoardDAO {
@@ -84,6 +85,22 @@ public class BoardDAOImpl implements BoardDAO {
 		DBUtil.close(ptmt);
 		
 		return dto;
+	}
+
+	@Override
+	public int boardDelete(int boardNo, Connection connection) throws SQLException {
+		int rowNum = 0;
+
+		PreparedStatement preparedStatement = connection.prepareStatement(BoardQuery.BOARD_DELETE);
+
+
+		preparedStatement.setInt(1, boardNo);
+
+		rowNum = preparedStatement.executeUpdate();
+
+		DBUtil.close(preparedStatement);
+
+		return rowNum;
 	}
 
 }

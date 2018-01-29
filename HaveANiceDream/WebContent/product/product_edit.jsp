@@ -162,7 +162,7 @@
 					<i class="fa fa-angle-right"></i> 판매 등록
 				</h4>
 				<form class="form-horizontal style-form" method="post" enctype="multipart/form-data"
-					action="/HaveANiceDream/product_enroll.do?productNo=<%=productNo%>">
+					action="/HaveANiceDream//product_update.do?productNo=<%=productNo%>&state=EDIT">
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">카테고리</label>
 						<div class="col-sm-10">
@@ -238,7 +238,8 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-						<img src="/HaveANiceDream/upload/<%=file1%>">
+						<div class="no-mg-no-pd"> <img  src="/HaveANiceDream/upload/<%=file1%>"/> </div>
+						
 							<textarea rows="10" cols="100%" id="productContent" name="productContent" >
 						 
 						 <%=product.getProductContent() %>
@@ -274,26 +275,6 @@
 									</div> 
 								</div> -->
 
-					<div class="form-group">
-						<div class="col-sm-6">
-							<label class="col-sm-2 col-sm-2 control-label">이름</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="userId" name="userId"    >
-								
-							</div>
-
-						</div>
-
-
-
-						<div class="col-sm-6">
-							<label class="col-sm-2 col-sm-2 control-label">연락처</label>
-
-							<div class="col-sm-4">
-							<input type="text" class="form-control" id="userId" name="userId">
-							</div>
-						</div>
-					</div>
 
 
 

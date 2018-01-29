@@ -24,6 +24,9 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     
+    <!-- 카카오 SDK -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    
     
 <script type="text/javascript">
 	function setPath(url) {
@@ -61,6 +64,25 @@
 		            <p>or you can sign in via your social network</p>
 		                <button class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</button>
 		                <button class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</button>
+		                    <a id="kakao-login-btn"></a>
+    <a href="http://developers.kakao.com/logout"></a>
+    <script type='text/javascript'>
+      //<![CDATA[
+        // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('78cecbcfa10a98bcb341599df55a3441');
+        // 카카오 로그인 버튼을 생성합니다.
+        Kakao.Auth.createLoginButton({
+          container: '#kakao-login-btn',
+          success: function(authObj) {
+            alert(JSON.stringify(authObj));
+          },
+          fail: function(err) {
+             alert(JSON.stringify(err));
+          }
+        });
+      //]]>
+        </script>
+      
 		            </div>
 		            <div class="registration">
 		                Don't have an account yet?<br/>

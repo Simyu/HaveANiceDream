@@ -26,8 +26,6 @@ public class Category_Servlet_Ajax1 extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		//
-
 		PrintWriter pw = response.getWriter();
 		String categoryName = request.getParameter("categoryName");
 		CategoryService service = new CategoryServiceimpl();
@@ -52,7 +50,6 @@ public class Category_Servlet_Ajax1 extends HttpServlet {
 		}
 
 		root_category.put("category", list);
-		System.out.println(root_category.toJSONString());
 		response.setContentType("application/json;charset=utf-8");
 		response.setHeader("cache-control", "no-cache,no-store");
 		pw.print(root_category.toJSONString());

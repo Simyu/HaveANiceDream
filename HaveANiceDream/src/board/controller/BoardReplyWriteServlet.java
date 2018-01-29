@@ -9,40 +9,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-
 import board.dto.BoardDTO;
 import board.service.BoardService;
 import board.service.BoardServiceImpl;
 
-/**
- * Servlet implementation class BoardReadservlet
- */
-@WebServlet(name = "board/read", urlPatterns = { "/board/read.do" })
-public class BoardReadservlet extends HttpServlet {
+@WebServlet(name = "board/replywrite", urlPatterns = { "/board/replywrite.do" })
+public class BoardReplyWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("euc-kr");
 		response.setContentType("text/html;charset=euc-kr");
-		
-		
-		
 
 		String viewpath = request.getParameter("url");
-		String boardNo = request.getParameter("boardNo");
-		BoardService service = new BoardServiceImpl();
-		BoardDTO dto = service.boardRead(Integer.parseInt(boardNo));
-		
-		
-		
-		request.setAttribute("boardRead", dto);
-		request.setAttribute("viewpath", viewpath);
+		String parentBoardNo = request.getParameter("parentBoardNo");
+		String state = request.getParameter("state");
 
+		
+		if (parentBoardNo!=null) {
+			BoardService service = new BoardServiceImpl();
+			BoardDTO parentBoardDTO = service.boardRead(Integer.parseInt(parentBoardNo));
+			request.setAttribute("parentBoardNo", parentBoardNo);
+			request.setAttribute("parentBoardDTO", parentBoardDTO);
+		}
+		request.setAttribute("viewpath", viewpath);
+		request.setAttribute("state", state);
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(request, response);
 	}
+
+
 
 }

@@ -80,5 +80,23 @@ public class BoardServiceImpl implements BoardService {
 		return dto;
 	}
 
+	@Override
+	public int boardDelete(int boardNo) {
+		Connection connection = null;
+		BoardDAO dao = new BoardDAOImpl();
+		int rowNum = 0;
+
+		try {
+			connection = DBUtil.getConnect();
+			rowNum = dao.boardDelete(boardNo, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+
+		return rowNum;
+	}
+
 
 }

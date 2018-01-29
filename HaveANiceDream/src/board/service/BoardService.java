@@ -11,4 +11,6 @@ public interface BoardService {
 	ArrayList<BoardDTO> boardList();
 	
 	BoardDTO boardRead(int boardNo);
+	
+	int boardDelete(int boardNo);
 }
