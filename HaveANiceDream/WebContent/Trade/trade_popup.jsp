@@ -1,5 +1,5 @@
 <%@page import="product.dao.productDAO"%>
-<%@page import="product.ProductDTO"%>
+<%@page import="product.dto.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -107,11 +107,14 @@ pageEncoding="utf-8"%>
     				    }
 					%>
 		<section id="popup-size" >
+		
 				<h3>
 					<i class="fa fa-angle-right"></i> 거래하기
 				</h3>
 				<! -- 3RD ROW OF PANELS -->
 				<!-- Product Panel -->
+				<form class="form-horizontal style-form" method="post" enctype="multipart/form-data"
+					action="/HaveANiceDream/trade.do">
 				<div class="row" style="margin-top: 30px;" >
 					<div class="col-md-4 col-sm-4 col-xs-4 no-pd plus-padding-left">
 						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=file1%>" width='250' height='250'/> </div> 
@@ -142,13 +145,14 @@ pageEncoding="utf-8"%>
 				<div class="col-md-12 col-sm-12 col-xs-12 " style="border: 2px solid black;">
 					<h5><i class="fa fa-angle-right"></i> 상세내용 </h5>
 						<div class="col-md-12 col-sm-12 col-xs-12 product-trade-content-title-font trade-popup-content" >
-						<%=product.getProductContent() %>
+						<%=product.getProductContent()%>
 						</div>
 				</div>
 				<div class="col-md-12 col-sm-12 col-xs-12 trade-popup-btn">
 					<button class="btn btn-default btn-lg btn-style-line mr">거래신청</button>
 					<button class="btn btn-default btn-lg btn-style-line mr ml">1:1채팅</button>
 				</div>
+				</form>
 		</section>
 		<!-- /MAIN CONTENT -->
 

@@ -1,6 +1,6 @@
-<%@page import="category.CategoryDTO"%>
+<%@page import="category.dto.*"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="product.ProductDTO"%>
+<%@page import="product.dto.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>

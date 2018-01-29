@@ -1,4 +1,4 @@
-package product;
+package product.dto;
 public class ProductImageDTO {
 
     private Integer imageNo;
