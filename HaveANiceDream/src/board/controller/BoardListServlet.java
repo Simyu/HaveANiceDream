@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.dto.BoardDTO;
 import board.service.BoardService;
 import board.service.BoardServiceImpl;
+import user.dto.MemberDTO;
 
 
 @WebServlet(name = "board/list", urlPatterns = { "/board/list.do" })
@@ -27,12 +29,19 @@ public class BoardListServlet extends HttpServlet {
 		response.setContentType("text/html/charset-utf-8");
 
 		boardlist = service.boardList();
+		String viewpath="";
 		
-		String viewpath = "../board/board_list.jsp";
+		HttpSession ses = request.getSession(false);
+		MemberDTO user=(MemberDTO) ses.getAttribute("user");
+		if(user!=null){
+		
+		 viewpath = "../board/board_list.jsp";
+		
+		}else{
+			 viewpath ="../user/login.html";
+		}
 		request.setAttribute("boardlist", boardlist);
 		request.setAttribute("viewpath", viewpath);
-		
-		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(request, response);
 		

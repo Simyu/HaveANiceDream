@@ -31,7 +31,7 @@ public class UserPassUpdateServlet extends HttpServlet {
 		UserService service = new UserServiceImpl();
 		int res = service.userUpdatePass(userId, oldPass, newPass);
 		
-		response.sendRedirect("/HaveANiceDream/user/select.do?userId="+userId);
+		response.sendRedirect("/HaveANiceDream/user/select.do?state=SHOWMYPAGE&userId="+userId);
 	}
 
 }
