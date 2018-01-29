@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="category.*"%>
+<%@page import="category.dto.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
