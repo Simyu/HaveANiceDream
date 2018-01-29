@@ -89,6 +89,12 @@ pageEncoding="utf-8"%>
 					    ProductDTO product = (ProductDTO)  request.getAttribute("product");
     				    String file1 =(String) request.getAttribute("file1");
     				    String grade="";
+    				    String trade="";
+    				    if(product.getTradeType().equals("delivery_trade")){
+    				    	trade="택배거래";
+    				    }else if(product.getTradeType().equals("trade")){
+    				    	trade="직거래";
+    				    }
     				    if(product.getProduct_Grade().equals("high")){
     				    	grade="상";
     				    	
@@ -108,7 +114,7 @@ pageEncoding="utf-8"%>
 				<!-- Product Panel -->
 				<div class="row" style="margin-top: 30px;" >
 					<div class="col-md-4 col-sm-4 col-xs-4 no-pd plus-padding-left">
-						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=file1%>" width='300' height='300'/> </div> 
+						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=file1%>" width='250' height='250'/> </div> 
 							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">  
 								
 								<li data-thumb="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"><img
@@ -123,7 +129,7 @@ pageEncoding="utf-8"%>
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >아이디</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getUserId() %></div>
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >물품이름</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getProductName() %></div>
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >필요 드림포인트</div><div class="col-sm-10 product-trade-content-con-font" ><label class="pt-font"><%=product.getProductPrice() %></label>포인트</div>
-						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">거래방법</div><div class="col-sm-10 product-trade-content-con-font" ><%=product.getTradeType() %></div>					
+						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">거래방법</div><div class="col-sm-10 product-trade-content-con-font" ><%=trade %></div>					
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">지역</div><div class="col-sm-10 product-trade-content-con-font" >서울(차후에 구현예정)</div>
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">물품상태</div><div class="col-sm-10 product-trade-content-con-font" ><%=grade %></div>
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font">사용기간</div><div class="col-sm-10 product-trade-content-con-font" >5개월(차후에 구현예정))</div>

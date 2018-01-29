@@ -18,8 +18,7 @@ $(document).ready(function() {
 		url : "/HaveANiceDream/blame/select.do",
 		type : "GET",
 		data : {
-			//이부분 뷰와 hidden태그의 이름이 맞지 않음
-			"blameNo" : opener.document.form.center.value,
+			"blameNo" : opener.document.formlist.list.value,
 		},
 		dataType : "json",
 		success : function(res) {
@@ -29,11 +28,10 @@ $(document).ready(function() {
 		}
 	});
 	$.ajax({
-		url : "/HaveANiceDream/manager_blame/select.do",
+		url : "/HaveANiceDreame/manager_blame/select.do",
 		type : "GET",
 		data : {
-			//이부분 뷰와 hidden태그의 이름이 맞지 않음..역시 마찬가지
-			"blameNo" : opener.document.formlist.back.value,
+			"blameNo" : opener.document.formlist.list.value,
 		},
 		dataType : "json",
 		success : function(res) {
@@ -54,7 +52,7 @@ $(document).ready(function() {
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
-				<form action="/HaveANiceDream/manager_blame/insert.do" method="get">
+				<form>
 				
 					<table class="request-view" cellspacing="0" cellpadding="0"
 						summary="표" border="1">
@@ -108,14 +106,7 @@ $(document).ready(function() {
 							</tr>
 						</tbody>
 					</table>
-					<div class="request-bottom">
-						<div class="btnbox tright">
-							<span class="btn-border"><input type="Submit"
-								class="orangebtn" value="답변등록" title="답변등록" /></span> <span
-								class="btn-border type02"><input type="Submit"
-								class="bluebtn" value="취소" title="취소" /></span>
-						</div>
-					</div>
+					
 				</form>
 			</div>
 

@@ -29,6 +29,7 @@ public class BlameSelectServlet extends HttpServlet {
 		BlameDTO dto = service.select(blameNo);
 		
 		JSONObject json = new JSONObject();
+		json.put("blameNo", dto.getBlameNo());
 		json.put("blameTitle", dto.getBlameTitle());
 		json.put("blameContent", dto.getBlameContent());
 		json.put("blameDate", dto.getBlameDate().toString());

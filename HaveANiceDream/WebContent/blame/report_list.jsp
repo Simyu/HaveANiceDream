@@ -66,8 +66,8 @@ function windowpopup(i){
 							<td><%=dept.getBlameType() %></td>
 							<td><%=dept.getUserIdBlamere() %></td>
 							<td><%=dept.getUserIdBlamee() %></td>
-							<!-- 이부분에 신고번호 안넘겨줌 -->
-							<td><a href="javascript:windowpopup()"><%=dept.getBlameTitle() %></a></td>
+							
+							<td><a href="javascript:windowpopup(<%=dept.getBlameNo()%>)"><%=dept.getBlameTitle() %></a></td>
 						</tr>
 						<%} %>
 					</tbody>

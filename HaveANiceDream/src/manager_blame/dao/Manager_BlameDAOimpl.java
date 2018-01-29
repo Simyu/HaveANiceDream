@@ -15,9 +15,10 @@ public class Manager_BlameDAOimpl implements Manager_BlameDAO {
 		PreparedStatement ptmt = null;
 		ptmt = con.prepareStatement(Manager_BlameQuery.ANSWER_INSERT);
 		
-		
-		ptmt.setString(1, dto.getAnswerTitle());
-		ptmt.setString(2, dto.getAnswerContent());
+		ptmt.setInt(1, dto.getBlameNo());
+		ptmt.setString(2, dto.getUserId());
+		ptmt.setString(3, dto.getAnswerTitle());
+		ptmt.setString(4, dto.getAnswerContent());
 		
 		result = ptmt.executeUpdate();
 		

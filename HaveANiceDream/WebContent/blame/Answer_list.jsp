@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@page import="manager_blame.dto.Manager_BlameDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -18,13 +19,15 @@
 			url : "/HaveANiceDream/blame/select.do",
 			type : "GET",
 			data : {
-				"blameNo" : opener.document.form.center.value,
+				"blameNo" : opener.document.form.list.value,
 			},
 			dataType : "json",
 			success : function(res) {
 				$("#title").text(res.blameTitle);
 				$("#content").text(res.blameContent);
 				$("#date").text(res.blameDate);
+				$("#blameNo").val(res.blameNo);
+				alert(res.blameNo);
 			}
 		});
 	});
@@ -35,12 +38,13 @@
 	<h3>
 		<i class="fa fa-angle-right"></i>신고내역
 	</h3>
-
+<% MemberDTO user = (MemberDTO)session.getAttribute("user");%>
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
 				<form action="/HaveANiceDream/manager_blame/insert.do" method="get">
-				
+				<input type="hidden" name="blameNo" value="" id="blameNo">
+				<input type="hidden" name="userId" value="<%=user.getUserId() %>" id="userId">
 					<table class="request-view" cellspacing="0" cellpadding="0"
 						summary="표" border="1">
 						<colgroup>
