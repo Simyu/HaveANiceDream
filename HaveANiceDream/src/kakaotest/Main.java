@@ -1,7 +1,15 @@
 package kakaotest;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
 
 
 
@@ -17,6 +25,19 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         new Main().test();
+        
+        try {
+			URL url = new URL("http://th-p.talk.kakao.co.kr/th/talkp/wknN2epS8X/k1TCXLamYApq3YO8q7UJGK/2q8h8g_640x640_s.jpg");
+			BufferedImage bufferedImage = ImageIO.read(url);
+			File file = new File("test.jpg");
+			ImageIO.write(bufferedImage, "jpg", file);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -24,7 +45,7 @@ public class Main {
      */
     public void test() {
         // access token 지정
-        apiHelper.setAccessToken("6vfQsukJmQTua-8FCdRFBVeCb0HIAlca6gMWqAo8BVUAAAFhRUKLiA");
+        apiHelper.setAccessToken("Of9qq4i2JG9f_2xPDod0X0zgnuhH_R7ezO2nGQo8BRIAAAFhRsyTjg");
 
         // 푸시 알림이나 유저 아이디 리스트가 필요할 때 설정 합니다. 
         // (디벨로퍼스 내에 앱설정 메뉴를 가시면 있습니다)

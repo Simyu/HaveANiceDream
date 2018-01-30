@@ -22,7 +22,7 @@
           container: '#kakao-login-btn',
           success: function(authObj) {
             alert(JSON.stringify(authObj));
-            $("#t").val(JSON.stringify(authObj));
+            $("#t").val(authObj.access_token);
           },
           fail: function(err) {
              alert(JSON.stringify(err));
