@@ -1,3 +1,5 @@
+<%@page import="javafx.scene.control.Alert"%>
+<%@page import="trade.dto.TradeDTO"%>
 <%@page import="product.dto.ProductDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="user.dto.MemberDTO"%>
@@ -54,7 +56,11 @@
 </head>
 
 <body>
-	<%MemberDTO user = (MemberDTO) session.getAttribute("user"); %>
+	<%MemberDTO user = (MemberDTO) session.getAttribute("user");
+	ArrayList<TradeDTO> tradelist =(ArrayList<TradeDTO>) request.getAttribute("tradelist");
+	int size = tradelist.size();
+	TradeDTO tradedto = null;
+	%>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff">
 		<h4>
 			<i class="fa fa-angle-right"></i> 거래 | <span
@@ -107,9 +113,13 @@
 				<div class="col-md-3 col-sm-3 col-xs-3">상태</div>
 				<div class="col-md-2 col-sm-2 col-xs-2">취소 및 신고</div>
 			</div>
+			<%for(int i=0;i<size;i++){
+				tradedto = tradelist.get(i);
+			
+			%>
 			<div class="col-md-12 col-sm-12 col-xs-12 pd-con" style="border-bottom: 1px solid black;">
 				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
-					<p>2018-01-21</p>
+					<p><%=tradedto.getTradeStartDate() %></p>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<button class="label label-default trade-btn-height" onclick="popup()">거래상세보기</button>
 					</div>
@@ -124,7 +134,7 @@
 							<ul class="no-mg-no-pd">
 								<li id="header_inbox_bar" class="dropdown"><i
 									class="fa fa-user mr" style="color: #1f85e2"></i><a
-									data-toggle="dropdown" href="index.html#">드림왕</a>
+									data-toggle="dropdown" href="index.html#"><%=tradedto.getUserIdSell()%></a>
 								<button class="label label-default trade-btn-height2">문의하기</button>
 									<ul class="dropdown-menu dropdown-kk inbox">
 										<li><a href="javascript:showUserInfo()">프로필 보기</a></li>
@@ -137,7 +147,7 @@
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							글제목 : <a>내가 쓰다만 여러가지 각종 잡템을 드림해요!</a>
 						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">거래번호: 20212154</div>
+						<div class="col-md-12 col-sm-12 col-xs-12">거래번호: <%=tradedto.getTradeNo()%></div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							거래 포인트 : <label class="text-price-point-state">3000</label> 포인트
 						</div>
@@ -145,8 +155,7 @@
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-3 centered height-sort">
 					<div class="col-md-12 col-sm-12 col-xs-12">
-						<label class="text-price-point-state" style="margin-bottom: 10px;">거래
-							진행 중 </label>
+						<label class="text-price-point-state" style="margin-bottom: 10px;"><%=tradedto.getTradeState()%> </label>
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<a id="add-regular" class="btn btn-default btn-sm" href="javascript:;">필수확인</a>
@@ -176,7 +185,7 @@
 						</div>
 					</div>
 				</div>
-
+				
 				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<button type="button" class="btn btn-warning btn-sm"
@@ -187,6 +196,7 @@
 					</div>
 				</div>
 			</div>
+			<% }%>
 			<div class="col-md-12 col-sm-12 col-xs-12" style="border-bottom: 1px solid black;">
 				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
 					<p>2018-01-21</p>
