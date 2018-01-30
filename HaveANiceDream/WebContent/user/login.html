@@ -76,8 +76,8 @@
 						<button class="btn btn-twitter">
 							<i class="fa fa-twitter"></i> Twitter
 						</button>
-						<!--   <a id="kakao-login-btn"></a>
-    <a href="http://developers.kakao.com/logout"></a> -->
+						<a id="kakao-login-btn"></a> <a
+							href="http://developers.kakao.com/logout"></a>
 
 
 					</div>
@@ -129,24 +129,26 @@
 	<script type="text/javascript"
 		src="/HaveANiceDream/Theme/assets/js/jquery.backstretch.min.js"></script>
 	<script>
-        $.backstretch("/HaveANiceDream/Theme/assets/img/login-bg.jpg", {speed: 500});
-    </script>
+		$.backstretch("/HaveANiceDream/Theme/assets/img/login-bg.jpg", {
+			speed : 500
+		});
+	</script>
 	<script type='text/javascript'>
-      //<![CDATA[
-        // 사용할 앱의 JavaScript 키를 설정해 주세요.
-        Kakao.init('78cecbcfa10a98bcb341599df55a3441');
-        // 카카오 로그인 버튼을 생성합니다.
-        Kakao.Auth.createLoginButton({
-          container: '#kakao-login-btn',
-          success: function(authObj) {
-            alert(JSON.stringify(authObj));
-          },
-          fail: function(err) {
-             alert(JSON.stringify(err));
-          }
-        });
-      //]]>
-        </script>
+		//<![CDATA[
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		Kakao.init('78cecbcfa10a98bcb341599df55a3441');
+		// 카카오 로그인 버튼을 생성합니다.
+		Kakao.Auth.createLoginButton({
+			container : '#kakao-login-btn',
+			success : function(authObj) {
+				alert(JSON.stringify(authObj));
+			},
+			fail : function(err) {
+				alert(JSON.stringify(err));
+			}
+		});
+		//]]>
+	</script>
 
 </body>
 </html>

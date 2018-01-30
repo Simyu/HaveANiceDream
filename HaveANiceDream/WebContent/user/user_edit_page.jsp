@@ -116,7 +116,7 @@
 								이메일 선택 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:setEmailAddr('@google.com')">@google.com</a></li>
+								<li><a href="javascript:setEmailAddr('@gmail.com')">@gmail.com</a></li>
 								<li><a href="javascript:setEmailAddr('@naver.com')">@naver.com</a></li>
 								<li><a href="javascript:setEmailAddr('@hanmail.net')">@hanmail.net</a></li>
 							</ul>

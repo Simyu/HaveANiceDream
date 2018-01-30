@@ -11,6 +11,8 @@
     <body>
     <a id="kakao-login-btn"></a>
     <a href="http://developers.kakao.com/logout"></a>
+    <input type="text" id="t">
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
     <script type='text/javascript'>
       //<![CDATA[
         // 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -20,6 +22,7 @@
           container: '#kakao-login-btn',
           success: function(authObj) {
             alert(JSON.stringify(authObj));
+            $("#t").val(JSON.stringify(authObj));
           },
           fail: function(err) {
              alert(JSON.stringify(err));
