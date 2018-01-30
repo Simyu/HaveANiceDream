@@ -2,10 +2,9 @@ package trade.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,21 +12,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import product.dto.ProductDTO;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
+import trade.dto.TradeDTO;
+import trade.service.TradeService;
+import trade.service.TradeServiceImpl;
 import user.dto.MemberDTO;
 
 
-@WebServlet(name = "trade", urlPatterns = { "/trade.do" })
-public class TradeServlet extends HttpServlet {
+@WebServlet(name = "trade/insert", urlPatterns = { "/trade/insert.do" })
+public class TradeInsertServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("연결 성공");
+
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
@@ -40,24 +40,32 @@ public class TradeServlet extends HttpServlet {
 	 거래상태를 변경시키는 업데이트 메소드
 		 * */
 		
-		ProductService service = new ProductServiceimpl();
+		ProductService proservice = new ProductServiceimpl();
 		HttpSession ses = request.getSession(false);
+		String thisProduct=request.getParameter("productNo");
+
 		String viewpath="";
-		ArrayList<ProductDTO> productlist= new ArrayList<ProductDTO>();
+		
+
 		if(ses!=null){
+			TradeService tradeservice = new TradeServiceImpl();
+			ProductDTO productdto = new ProductDTO();
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
 			String userId= user.getUserId();
-			//System.out.println(userId);
+			productdto = proservice.productSelect(Integer.parseInt(thisProduct));
 			
-			 productlist=service.product_List(null, 100, 100, userId); //100,100의미없는수
-			//유저가 등록한 물품리스트 출력
-			viewpath="../Trade/trade_list.jsp";
+			 
+			 
+			 TradeDTO tradedto = new TradeDTO(null, null, null, userId, productdto.getUserId(), productdto.getProductNo(), "거래대기");
+			 int rowNum = tradeservice.tradeInsert(tradedto);
+			 
+			 
+			 
+	
 		}else{
 			viewpath="../user/login.html";
 		}
 		
-		
-		request.setAttribute("productlist", productlist);
 		
 		//System.out.println("서블릿... ^^"+productlist);
 		

@@ -54,9 +54,7 @@
 </head>
 
 <body>
-	<%MemberDTO user = (MemberDTO) session.getAttribute("user"); 
-	   ArrayList<ProductDTO> productlist = (   ArrayList<ProductDTO> ) request.getAttribute("productlist");
-	%>
+	<%MemberDTO user = (MemberDTO) session.getAttribute("user"); %>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff">
 		<h4>
 			<i class="fa fa-angle-right"></i> 거래 | <span
@@ -103,9 +101,7 @@
 			style="border-left: none;"></div>
 		<div class="content-panel">
 			<div class="col-md-12 col-sm-12 col-xs-12 trade-ing-line pd-con">
-			<%for(int i =0;i<productlist.size();i++){
-				%>
-			
+
 				<div class="col-md-2 col-sm-2 col-xs-2">거래 날짜</div>
 				<div class="col-md-5 col-sm-5 col-xs-5">드림 정보</div>
 				<div class="col-md-3 col-sm-3 col-xs-3">상태</div>
@@ -131,7 +127,7 @@
 									data-toggle="dropdown" href="index.html#">드림왕</a>
 								<button class="label label-default trade-btn-height2">문의하기</button>
 									<ul class="dropdown-menu dropdown-kk inbox">
-										<li><a href="javascript:showUserInfo(<%=user.getUserId()%>)">프로필 보기</a></li>
+										<li><a href="javascript:showUserInfo()">프로필 보기</a></li>
 										<li><a href="index.html#">쪽지</a></li>
 										<li><a href="index.html#">1:1채팅</a></li>
 										<li><a href="index.html#">평가보기</a></li>
@@ -166,7 +162,7 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">&times;</button>
+											aria-hidden="true"></button>
 										<h4 class="modal-title" id="myModalLabel">인수 완료</h4>
 									</div>
 									<div class="modal-body">정말 물품을 인수 받았나요?</div>
@@ -180,7 +176,7 @@
 						</div>
 					</div>
 				</div>
-				<% }%>
+
 				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<button type="button" class="btn btn-warning btn-sm"

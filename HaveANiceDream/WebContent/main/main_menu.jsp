@@ -54,7 +54,7 @@
 						class="fa fa-desktop"></i> <span>My page</span>
 				</a>
 					<ul class="sub">
-						<li><a href="javascript:setPath('../Trade/trade_list.jsp')">거래내역
+						<li><a href="/HaveANiceDream/trade/list.do">거래내역
 								조회</a></li>
 						<li><a href="/HaveANiceDream/point/list.do">포인트 조회</a></li>
 						<li><a
