@@ -1,4 +1,4 @@
-package trade;
+package trade.dto;
 
 import java.sql.Date;
 
@@ -17,14 +17,25 @@ public class TradeDTO {
     private Integer productNo;
 
     private String tradeState;
-
-    private String tradeMemo;
     
-    public TradeDTO() {
+	public TradeDTO(Date tradeEndDate, String userIdBuy, String userIdSell, Integer productNo, String tradeState) {
+		super();
+		this.tradeEndDate = tradeEndDate;
+		this.userIdBuy = userIdBuy;
+		this.userIdSell = userIdSell;
+		this.productNo = productNo;
+		this.tradeState = tradeState;
+	}
+
+	@Override
+	public String toString() {
+		return "TradeDTO [tradeNo=" + tradeNo + ", tradeStartDate=" + tradeStartDate + ", tradeEndDate=" + tradeEndDate
+				+ ", userIdBuy=" + userIdBuy + ", userIdSell=" + userIdSell + ", productNo=" + productNo
+				+ ", tradeState=" + tradeState + "]";
 	}
 
 	public TradeDTO(Integer tradeNo, Date tradeStartDate, Date tradeEndDate, String userIdBuy, String userIdSell,
-			Integer productNo, String tradeState, String tradeMemo) {
+			Integer productNo, String tradeState) {
 		super();
 		this.tradeNo = tradeNo;
 		this.tradeStartDate = tradeStartDate;
@@ -33,7 +44,10 @@ public class TradeDTO {
 		this.userIdSell = userIdSell;
 		this.productNo = productNo;
 		this.tradeState = tradeState;
-		this.tradeMemo = tradeMemo;
+	}
+
+	public TradeDTO(int i, String userId, String userId2, Integer productNo2, String tradeState2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getTradeNo() {
@@ -92,20 +106,5 @@ public class TradeDTO {
 		this.tradeState = tradeState;
 	}
 
-	public String getTradeMemo() {
-		return tradeMemo;
-	}
-
-	public void setTradeMemo(String tradeMemo) {
-		this.tradeMemo = tradeMemo;
-	}
-
-	@Override
-	public String toString() {
-		return "TradeDTO [tradeNo=" + tradeNo + ", tradeStartDate=" + tradeStartDate + ", tradeEndDate=" + tradeEndDate
-				+ ", userIdBuy=" + userIdBuy + ", userIdSell=" + userIdSell + ", productNo=" + productNo
-				+ ", tradeState=" + tradeState + ", tradeMemo=" + tradeMemo + "]";
-	}
-    
     
 }

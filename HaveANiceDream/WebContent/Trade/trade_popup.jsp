@@ -114,7 +114,7 @@ pageEncoding="utf-8"%>
 				<! -- 3RD ROW OF PANELS -->
 				<!-- Product Panel -->
 				<form class="form-horizontal style-form" method="post" enctype="multipart/form-data"
-					action="/HaveANiceDream/trade.do">
+					action="/HaveANiceDream/trade/insert.do?productNo=<%=product.getProductNo()%>">
 				<div class="row" style="margin-top: 30px;" >
 					<div class="col-md-4 col-sm-4 col-xs-4 no-pd plus-padding-left">
 						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=product.getImageSrc()%>" width='250' height='250'/> </div> 
