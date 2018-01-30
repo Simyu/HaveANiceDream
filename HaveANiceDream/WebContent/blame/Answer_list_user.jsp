@@ -15,7 +15,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
-		url : "/HaveANiceDreame/manager_blame/select.do",
+		url : "/HaveANiceDream/manager_blame/select1.do",
 		type : "GET",
 		data : {
 			"blameNo" : opener.document.formlist.list.value
@@ -28,6 +28,9 @@ $(document).ready(function() {
 			$("#answertitle").text(res.answerTitle);
 			$("#answercontent").text(res.answerContent);
 			$("#answerdate").text(res.answerDate);
+		},
+		error:function(b,bb,bbb){
+			alert(b+","+bb+","+bbb);
 		}
 	});
 

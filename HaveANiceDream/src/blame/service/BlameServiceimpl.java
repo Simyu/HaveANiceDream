@@ -46,13 +46,13 @@ public class BlameServiceimpl implements BlameService {
 	}
 
 
-	public int update(String blameType,String attachedFile,String blameTitle,String blameContent) {
+	public int update(int blameNo) {
 		int result = 0;
 		Connection con = null;
 		BlameDAO dao = new BlameDAOimpl();
 		try{
 			con = getConnect();
-			result = dao.update(blameType,attachedFile,blameTitle,blameContent, con);
+			result = dao.update(blameNo,con);
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally {

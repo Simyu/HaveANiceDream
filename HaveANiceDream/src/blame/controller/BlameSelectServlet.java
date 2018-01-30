@@ -24,7 +24,7 @@ public class BlameSelectServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		int blameNo = Integer.parseInt(request.getParameter("blameNo"));
-		
+		System.out.println(blameNo);
 		BlameService service = new BlameServiceimpl();
 		BlameDTO dto = service.select(blameNo);
 		

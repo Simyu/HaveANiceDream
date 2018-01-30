@@ -4,52 +4,28 @@ import java.sql.Date;
 
 public class BlameDTO {
 
-    private Integer blameNo;
+	private Integer blameNo;
 
-    private Date blameDate;
+	private Date blameDate;
 
-    private String userIdBlamere;
+	private String userIdBlamere;
 
-    private String userIdBlamee;
+	private String userIdBlamee;
 
-    private String blameType;
+	private String blameType;
 
-    private Integer productNo;
+	private Integer productNo;
 
-    private String attachedFile;
+	private String attachedFile;
 
-    private String blameTitle;
+	private String blameTitle;
 
-    private String blameContent;
-    
-    public BlameDTO() {
+	private String blameContent;
+
+	private String blameanswer;
+
+	public BlameDTO() {
 		// TODO Auto-generated constructor stub
-	}
-    public BlameDTO(String userIdBlamere, String userIdBlamee,String blameType,Integer productNo, String attachedFile, String blameTitle, String blameContent) {
-		super();
-		this.blameNo = null;
-		this.blameDate = null;
-		this.userIdBlamere = userIdBlamere;
-		this.userIdBlamee = userIdBlamee;
-		this.blameType = blameType;
-		this.productNo = productNo;
-		this.attachedFile = attachedFile;
-		this.blameTitle = blameTitle;
-		this.blameContent = blameContent;
-	}
-
-	public BlameDTO(Integer blameNo, Date blameDate,String userIdBlamere, String userIdBlamee,String blameType,
-			Integer productNo, String attachedFile, String blameTitle, String blameContent) {
-		super();
-		this.blameNo = blameNo;
-		this.blameDate = blameDate;
-		this.userIdBlamere = userIdBlamere;
-		this.userIdBlamee = userIdBlamee;
-		this.blameType = blameType;
-		this.productNo = productNo;
-		this.attachedFile = attachedFile;
-		this.blameTitle = blameTitle;
-		this.blameContent = blameContent;
 	}
 
 	public Integer getBlameNo() {
@@ -124,12 +100,49 @@ public class BlameDTO {
 		this.blameContent = blameContent;
 	}
 
+	public String getBlameanswer() {
+		return blameanswer;
+	}
+
+	public void setBlameanswer(String blameanswer) {
+		this.blameanswer = blameanswer;
+	}
+
 	@Override
 	public String toString() {
 		return "BlameDTO [blameNo=" + blameNo + ", blameDate=" + blameDate + ", userIdBlamere=" + userIdBlamere
 				+ ", userIdBlamee=" + userIdBlamee + ", blameType=" + blameType + ", productNo=" + productNo
 				+ ", attachedFile=" + attachedFile + ", blameTitle=" + blameTitle + ", blameContent=" + blameContent
-				+ "]";
+				+ ", blameanswer=" + blameanswer + "]";
 	}
-    
+
+	public BlameDTO(Integer blameNo, Date blameDate, String userIdBlamere, String userIdBlamee, String blameType,
+			Integer productNo, String attachedFile, String blameTitle, String blameContent, String blameanswer) {
+		super();
+		this.blameNo = blameNo;
+		this.blameDate = blameDate;
+		this.userIdBlamere = userIdBlamere;
+		this.userIdBlamee = userIdBlamee;
+		this.blameType = blameType;
+		this.productNo = productNo;
+		this.attachedFile = attachedFile;
+		this.blameTitle = blameTitle;
+		this.blameContent = blameContent;
+		this.blameanswer = blameanswer;
+	}
+
+	public BlameDTO(String userIdBlamere, String userIdBlamee, String blameType, Integer productNo, String attachedFile,
+			String blameTitle, String blameContent) {
+		super();
+		this.blameNo = null;
+		this.blameDate = null;
+		this.userIdBlamere = userIdBlamere;
+		this.userIdBlamee = userIdBlamee;
+		this.blameType = blameType;
+		this.productNo = productNo;
+		this.attachedFile = attachedFile;
+		this.blameTitle = blameTitle;
+		this.blameContent = blameContent;
+	}
+
 }

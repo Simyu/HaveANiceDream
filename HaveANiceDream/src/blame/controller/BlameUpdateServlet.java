@@ -21,14 +21,10 @@ public class BlameUpdateServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		
-		String blameType = request.getParameter("blameType");
-		String attachedFile = request.getParameter("attachedFile");
-		String blameTitle = request.getParameter("blameTitle");
-		String blameContent = request.getParameter("blameContent");
+		int blameno = Integer.parseInt(request.getParameter("blameNo"));
 		
 		BlameService service = new BlameServiceimpl();
-		service.update(blameType,attachedFile,blameTitle,blameContent);
+		service.update(blameno);
 		
 		response.sendRedirect("/HaveANiceDream/blame/list.do");
 	}

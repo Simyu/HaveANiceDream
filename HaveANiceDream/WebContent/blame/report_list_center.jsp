@@ -16,18 +16,22 @@
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 <script type="text/javascript">
-	function windowpopup(i) {
-		num = 1;
-		$("#center").val(i);
-		popup = window.open("Answer_list.jsp", "num",
-				"width=1000,height=500,left=100 top=50");
-		num++;
-	}
+function windowpopup(i){
+	num =1;
+	$("#center").val(i);
+	popup = window.open("Answer_list.jsp","num","width=1000,height=500,left=100 top=50");
+	num++;
+}
+
+
 </script>
 </head>
 
 <body>
-
+	<%
+		ArrayList<BlameDTO> list = (ArrayList) request.getAttribute("blamelist");
+		int size = list.size();
+	%>
 
 	<h3>
 		<i class="fa fa-angle-right"></i> 신고 접수내역
@@ -62,16 +66,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%
-							ArrayList<BlameDTO> list = (ArrayList) request.getAttribute("blamelist");
-							int size = list.size();
-						%>
-
-						<%
-							for (int i = 0; i < size; i++) {
-								BlameDTO dept = list.get(i);
-						%>
 						<tr>
+							<%
+								for (int i = 0; i < size; i++) {
+									BlameDTO dept = list.get(i);
+									
+							%>
 							<td><%=dept.getBlameNo()%></td>
 							<td><%=dept.getBlameDate()%></td>
 							<td><%=dept.getBlameType()%></td>

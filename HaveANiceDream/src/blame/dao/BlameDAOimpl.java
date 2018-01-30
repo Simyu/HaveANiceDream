@@ -39,7 +39,9 @@ public class BlameDAOimpl implements BlameDAO {
 		ptmt.setString(6, dto.getBlameTitle());
 		ptmt.setString(7, dto.getBlameContent());
 		
+		
 		result = ptmt.executeUpdate();
+		DBUtil.close(ptmt);
 		return result;
 	}
 
@@ -66,11 +68,13 @@ public class BlameDAOimpl implements BlameDAO {
 					resultSet.getInt(6),
 					resultSet.getString(7),
 					resultSet.getString(8),
-					resultSet.getString(9)
+					resultSet.getString(9),
+					resultSet.getString(10)
 					);
 			list.add(dto);
 		}
-
+		DBUtil.close(ptmt);
+		DBUtil.close(resultSet);
 		return list;
 	}
 
@@ -96,7 +100,8 @@ public class BlameDAOimpl implements BlameDAO {
 						resultSet.getInt(6),
 						resultSet.getString(7),
 						resultSet.getString(8),
-						resultSet.getString(9)
+						resultSet.getString(9),
+						resultSet.getString(10)
 					);
 		}
 		DBUtil.close(resultSet);
@@ -107,16 +112,13 @@ public class BlameDAOimpl implements BlameDAO {
 
 
 	
-	public int update(String blameType, String attachedFile, String blameTitle, String blameContent, Connection con)
+	public int update(int blameNo,Connection con)
 			throws SQLException {
 		int result = 0;
 		
 		PreparedStatement ptmt = con.prepareStatement(BlameQuery.BLAME_UPDATE);
 		
-		ptmt.setString(1, blameType);
-		ptmt.setString(2, attachedFile);
-		ptmt.setString(3, blameTitle);
-		ptmt.setString(4, blameContent);
+		ptmt.setInt(1, blameNo);
 		
 		result = ptmt.executeUpdate();
 		
@@ -149,11 +151,13 @@ public class BlameDAOimpl implements BlameDAO {
 					resultSet.getInt(6),
 					resultSet.getString(7),
 					resultSet.getString(8),
-					resultSet.getString(9)
+					resultSet.getString(9),
+					resultSet.getString(10)
 					);
 			list.add(dto);
 		}
-
+		DBUtil.close(ptmt);
+		DBUtil.close(resultSet);
 		return list;
 	}
 }

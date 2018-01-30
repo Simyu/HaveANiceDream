@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import blame.dto.BlameDTO;
+import blame.service.BlameService;
+import blame.service.BlameServiceimpl;
 import manager_blame.dto.Manager_BlameDTO;
 import manager_blame.service.Manager_BlameService;
 import manager_blame.service.Manager_BlameServiceimpl;
@@ -37,6 +39,9 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 		Manager_BlameDTO dto = new Manager_BlameDTO(blameno,userid,answertitle, answercontent);
 		Manager_BlameService service = new Manager_BlameServiceimpl();
 		int result = service.insert(dto);
+		
+		/*BlameService blame = new BlameServiceimpl();
+		blame.update(blameno);*/
 		
 		/*if(result>0){
 			//response.sendRedirect("/HaveANiceDream/blame/list.do?state=2");
