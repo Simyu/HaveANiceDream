@@ -6,6 +6,7 @@ import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,13 +33,13 @@ public class SignUpServlet extends HttpServlet {
 		String encType = "utf-8";
 		int size = 5 * 1024 * 1024;// (5mb)
 		String realPath = "";
-		
+
 		ServletContext context = getServletContext();
 		realPath = context.getRealPath(saveFolder);
-		
+
 		MultipartRequest multipartRequest = new MultipartRequest(request, realPath, size, encType,
 				new DefaultFileRenamePolicy());
-		
+
 		String userId = multipartRequest.getParameter("userId");
 		String userPw = multipartRequest.getParameter("userPw");
 		String userEmail = multipartRequest.getParameter("userEmail1") + multipartRequest.getParameter("userEmail2");
@@ -46,23 +47,32 @@ public class SignUpServlet extends HttpServlet {
 		String userZipcode = multipartRequest.getParameter("userZipcode");
 		String userAddr = multipartRequest.getParameter("userAddr1");
 		String userAddrDetail = multipartRequest.getParameter("userAddr2");
-		String userTel = multipartRequest.getParameter("userTel1") + "-" + multipartRequest.getParameter("userTel2") + "-"
-				+ multipartRequest.getParameter("userTel3");
+		String userTel = multipartRequest.getParameter("userTel1") + "-" + multipartRequest.getParameter("userTel2")
+				+ "-" + multipartRequest.getParameter("userTel3");
 
+		String type = multipartRequest.getParameter("type");
+		System.out.println(type);
 		String fileNeme = null;
-		@SuppressWarnings("unchecked")
-		Enumeration<String> files = multipartRequest.getFileNames();
-		if (files.hasMoreElements()) {
-			String file = files.nextElement();
-			fileNeme = multipartRequest.getFilesystemName(file);
-			if (fileNeme == null){
-				fileNeme = "ui-sam.jpg";
+		if (type.equals("Kakao")) {
+			fileNeme = multipartRequest.getParameter("img");
+		} else {
+			@SuppressWarnings("unchecked")
+			Enumeration<String> files = multipartRequest.getFileNames();
+			if (files.hasMoreElements()) {
+				String file = files.nextElement();
+				fileNeme = multipartRequest.getFilesystemName(file);
+				if (fileNeme == null) {
+					fileNeme = "ui-sam.jpg";
+				}
 			}
 		}
 
 		MemberDTO user = new MemberDTO(userId, userPw, userEmail, userName, userZipcode, userAddr, userAddrDetail,
 				userTel, fileNeme);
+		user.setUserLogType(type);
 		
+		System.out.println(user);
+
 		UserService service = new UserServiceImpl();
 		int res = service.userInsert(user);
 

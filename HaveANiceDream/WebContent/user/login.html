@@ -52,18 +52,19 @@
 
 			<form class="form-login" action="/HaveANiceDream/user/login.do"
 				method="post">
+				<input type="hidden" id="logtype" name="logtype" value="기본">
 				<h2 class="form-login-heading">sign in now</h2>
 				<div class="login-wrap">
 					<input type="text" class="form-control" placeholder="User ID"
-						name="id" required autofocus> <br> <input
+						name="id" id="id" required autofocus> <br> <input
 						type="password" class="form-control" placeholder="Password"
-						name="pass" required> <label class="checkbox"> <span
-						class="pull-right"> <a data-toggle="modal"
+						name="pass" id="pass" required> <label class="checkbox">
+						<span class="pull-right"> <a data-toggle="modal"
 							href="login.html#myModal"> Forgot Password?</a>
 
 					</span>
 					</label>
-					<button class="btn btn-theme btn-block" type="submit">
+					<button class="btn btn-theme btn-block" type="submit" id="signin">
 						<i class="fa fa-lock"></i> SIGN IN
 					</button>
 					<hr>
@@ -114,7 +115,11 @@
 					</div>
 				</div>
 				<!-- modal -->
-
+				<!-- 카카오 로그인을 위한 숨겨진 input -->
+				<input type="hidden" id="kakaoid" name="kakaoid"> <input
+					type="hidden" id="kakaoemail" name="kakaoemail"> <input
+					type="hidden" id="kakaoimg" name="kakaoimg"> <input
+					type="hidden" id="kakaoname" name="kakaoname">
 			</form>
 
 		</div>
@@ -141,7 +146,24 @@
 		Kakao.Auth.createLoginButton({
 			container : '#kakao-login-btn',
 			success : function(authObj) {
-				alert(JSON.stringify(authObj));
+				//alert(JSON.stringify(authObj));
+				Kakao.API.request({
+					url : '/v1/user/me',
+					success : function(res) {
+						//alert(JSON.stringify(res));
+						$("#kakaoid").val(res.id);
+						$("#kakaoemail").val(res.kaccount_email);
+						$("#kakaoimg").val(res.properties.thumbnail_image);
+						$("#kakaoname").val(res.properties.nickname);
+						$("#logtype").val("Kakao");
+						$("#id").removeAttr("required");
+						$("#pass").removeAttr("required");
+						$("#signin").trigger("click");
+					},
+					fail : function(error) {
+						alert(JSON.stringify(error));
+					}
+				});
 			},
 			fail : function(err) {
 				alert(JSON.stringify(err));

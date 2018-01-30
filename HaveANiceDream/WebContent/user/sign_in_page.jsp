@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="utf-8"%>
@@ -64,7 +65,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">이름</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="userName">
+							<input type="text" class="form-control" name="userName" id="userName">
 						</div>
 					</div>
 					<div class="form-group">
@@ -144,10 +145,12 @@
 							</select>
 						</div>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" name="userTel2" id="userTel2">
+							<input type="text" class="form-control" name="userTel2"
+								id="userTel2">
 						</div>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" name="userTel3" id="userTel3">
+							<input type="text" class="form-control" name="userTel3"
+								id="userTel3">
 						</div>
 						<div class="col-sm-2">
 							<button type="button"
@@ -173,7 +176,9 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-round btn-primary">가입하기</button>
-				</form>
+					<input type="hidden" id="type" name="type" value="기본">
+					<input type="hidden" id="img" name="img">
+				</form> 
 			</div>
 		</div>
 	</div>
@@ -183,69 +188,94 @@
 	<script type="text/javascript">
 		var emailRandNum = 0;
 		var telRandNum = 0;
-		$(document).ready(function() {
-			$("#userId").on("keyup", idVerify);
-			$("#userPwConf").on("keyup", pwConf);
-			$("#emailVerify").on("click", function() {
-				$("#emailVerifyForm").css("display", "block");
-			});
-			$("#telVerify").on("click", function() {
-				$("#telVerifyForm").css("display", "block");
-			});
-			$("#makeEmailRandNum").on("click", function() {
-				emailRandNum = Math.floor(Math.random() * 1000000);
-				//alert(emailRandNum);
-				$.ajax({
-					url : "/HaveANiceDream/mail/sendrand.do",
-					type : "POST",
-					data : {
-						"rand" : emailRandNum,
-						"mail" : $("#userEmail1").val()+$("#userEmail2").val()
-					},
-					dataType : "text",
-					success : function(resp) {
-						$("#helpEmailRandNum").html(resp);
-					}
-				});
-			});
-			$("#enterEmailRandNum").on("click", function() {
-				var msg = "";
-				if ($("#txtEmailRandNum").val() != emailRandNum){
-					msg = "인증번호가 다릅니다.";
-				} else {
-					$("#userEmail1").attr("readonly", "readonly");
-					$("#userEmail2").attr("readonly", "readonly");
-					$("#btnUserEmail").attr("disabled", "disabled");
-				}
-				$("#helpEmailRandNum").text(msg);
-			});
-			$("#makeTelRandNum").on("click", function() {
-				telRandNum = Math.floor(Math.random() * 1000000);
-				//alert(telRandNum);
-				$.ajax({
-					url : "/HaveANiceDream/sms/sendrand.do",
-					type : "POST",
-					data : {
-						"rand" : telRandNum,
-						"tel" : $("#userTel1").val()+"-"+$("#userTel2").val()+"-"+$("#userTel3").val()
-					},
-					dataType : "text",
-					success : function(resp) {
-						$("#helpTelRandNum").html(resp);
-					}
-				});
-			});
-			$("#enterTelRandNum").on("click", function() {
-				var msg = "";
-				if ($("#txtTelRandNum").val() != telRandNum){
-					msg = "인증번호가 다릅니다.";
-				} else {
-					$("#userTel1").attr("readonly", "readonly");
-					$("#userTel2").attr("readonly", "readonly");
-					$("#userTel3").attr("readonly", "readonly");
-				}
-				$("#helpTelRandNum").text(msg);
-			});
+		$(document).ready(
+				function() {
+					$("#userId").on("keyup", idVerify);
+					$("#userPwConf").on("keyup", pwConf);
+					$("#emailVerify").on("click", function() {
+						$("#emailVerifyForm").css("display", "block");
+					});
+					$("#telVerify").on("click", function() {
+						$("#telVerifyForm").css("display", "block");
+					});
+					$("#makeEmailRandNum").on(
+							"click",
+							function() {
+								emailRandNum = Math
+										.floor(Math.random() * 1000000);
+								//alert(emailRandNum);
+								$.ajax({
+									url : "/HaveANiceDream/mail/sendrand.do",
+									type : "POST",
+									data : {
+										"rand" : emailRandNum,
+										"mail" : $("#userEmail1").val()
+												+ $("#userEmail2").val()
+									},
+									dataType : "text",
+									success : function(resp) {
+										$("#helpEmailRandNum").html(resp);
+									}
+								});
+							});
+					$("#enterEmailRandNum").on("click", function() {
+						var msg = "";
+						if ($("#txtEmailRandNum").val() != emailRandNum) {
+							msg = "인증번호가 다릅니다.";
+						} else {
+							$("#userEmail1").attr("readonly", "readonly");
+							$("#userEmail2").attr("readonly", "readonly");
+							$("#btnUserEmail").attr("disabled", "disabled");
+						}
+						$("#helpEmailRandNum").text(msg);
+					});
+					$("#makeTelRandNum").on(
+							"click",
+							function() {
+								telRandNum = Math
+										.floor(Math.random() * 1000000);
+								//alert(telRandNum);
+								$.ajax({
+									url : "/HaveANiceDream/sms/sendrand.do",
+									type : "POST",
+									data : {
+										"rand" : telRandNum,
+										"tel" : $("#userTel1").val() + "-"
+												+ $("#userTel2").val() + "-"
+												+ $("#userTel3").val()
+									},
+									dataType : "text",
+									success : function(resp) {
+										$("#helpTelRandNum").html(resp);
+									}
+								});
+							});
+					$("#enterTelRandNum").on("click", function() {
+						var msg = "";
+						if ($("#txtTelRandNum").val() != telRandNum) {
+							msg = "인증번호가 다릅니다.";
+						} else {
+							$("#userTel1").attr("readonly", "readonly");
+							$("#userTel2").attr("readonly", "readonly");
+							$("#userTel3").attr("readonly", "readonly");
+						}
+						$("#helpTelRandNum").text(msg);
+					});
+
+		
+	<%MemberDTO kakaoSignUser = (MemberDTO) request.getAttribute("kakaosignup");
+			if (kakaoSignUser != null) {
+				String[] array = kakaoSignUser.getUserEmail().split("@");%>
+				
+		$("#userImage").attr("src","/HaveANiceDream/uploadresources/user/<%=kakaoSignUser.getUserImage()%>");
+		$("#userId").val("<%=kakaoSignUser.getUserId()%>");
+		$("#userId").attr("readonly", "readonly");
+		$("#userName").val("<%=kakaoSignUser.getUserName()%>");
+		$("#userEmail1").val("<%=array[0]%>");
+		$("#userEmail2").val("@<%=array[1]%>");
+		$("#img").val("<%=kakaoSignUser.getUserImage()%>");
+		$("#type").val("<%=kakaoSignUser.getUserLogType()%>");
+	<%}%>
 		});
 
 		function pwConf() {

@@ -27,7 +27,8 @@
 				data-original-title="Toggle Navigation"></div>
 		</div>
 		<!--logo start-->
-		<a href="/HaveANiceDream/index.html" class="logo"><b>HAVE A NICE DREAM</b></a>
+		<a href="/HaveANiceDream/index.html" class="logo"><b>HAVE A
+				NICE DREAM</b></a>
 		<!--logo end-->
 		<div class="nav notify-row" id="top_menu">
 			<!--  notification start -->
@@ -149,7 +150,7 @@
 				<%
 					} else {
 				%>
-				<li><a class="logout" href="/HaveANiceDream/user/logout.do">Logout</a></li>
+				<li><a class="logout" href="javascript:logout()">Logout</a></li>
 				<%
 					}
 				%>
@@ -157,10 +158,35 @@
 		</div>
 	</header>
 	<!--header end-->
+	<!-- 카카오 SDK -->
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript">
 		function setPath(url) {
 
 			location.href = "/HaveANiceDream/view.html?url=" + url;
+		}
+
+		function logout() {
+	<%if (user.getUserLogType().equals("Kakao")) {%>
+	Kakao.API.request({
+		url : '/v1/user/logout',
+		success : function(res) {
+			location.href = "/HaveANiceDream/user/logout.do";
+		},
+		fail : function(error) {
+			//alert(JSON.stringify(error));
+		}
+	});
+/* 		Kakao.Auth.logout(function() {
+				setTimeout(function() {
+					location.href = "/HaveANiceDream/user/logout.do";
+
+				}, 1000);
+
+			}); */
+	<%} else {%>
+		location.href = "/HaveANiceDream/user/logout.do";
+	<%}%>
 		}
 	</script>
 
