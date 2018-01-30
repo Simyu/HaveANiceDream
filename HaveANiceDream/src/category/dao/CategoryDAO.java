@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import category.CategoryDTO;
-import category.CategoryDetailDTO;
+import category.dto.CategoryDTO;
+import category.dto.CategoryDetailDTO;
 
 
 public interface CategoryDAO {

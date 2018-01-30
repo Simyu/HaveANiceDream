@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import product.ProductDTO;
-import product.ProductState;
+import product.dto.ProductDTO;
+import product.query.ProductState;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
 import user.dto.MemberDTO;

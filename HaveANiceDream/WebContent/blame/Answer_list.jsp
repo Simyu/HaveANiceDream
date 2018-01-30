@@ -19,7 +19,7 @@
 			url : "/HaveANiceDream/blame/select.do",
 			type : "GET",
 			data : {
-				"blameNo" : opener.document.form.list.value,
+				"blameNo" : opener.document.form.list.value
 			},
 			dataType : "json",
 			success : function(res) {
@@ -27,7 +27,7 @@
 				$("#content").text(res.blameContent);
 				$("#date").text(res.blameDate);
 				$("#blameNo").val(res.blameNo);
-				alert(res.blameNo);
+				//alert(res.blameNo);
 			}
 		});
 	});

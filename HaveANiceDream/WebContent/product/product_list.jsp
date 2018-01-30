@@ -1,7 +1,7 @@
 <%@page import="user.dto.MemberDTO"%>
-<%@page import="category.CategoryDTO"%>
+<%@page import="category.dto.*"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="product.ProductDTO"%>
+<%@page import="product.dto.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -175,9 +175,9 @@ $(document).ready(function(){
 									//이미지 실버 물품이미지넣을거고... 거레상태는 표시할예정
 							%>
 							<tr> <!--  종류 부분 수정 ( 대분류 .. 내용 (이름 받아와야함.category_no로 name받아서) -->
-								<td>아이템</td>
+								<td><%=dto.getCategoryName() %></td>
 								<td><img
-									src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"
+									src="/HaveANiceDream/upload/<%=dto.getImageSrc()%>"
 									width='100' height='100' alt='실버' /></td>
 								<td class="numeric"><!-- 이미지 추가...... -->
 								<a	href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>&state=BUY" >

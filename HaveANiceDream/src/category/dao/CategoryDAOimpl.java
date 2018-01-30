@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import category.CategoryDTO;
-import category.CategoryDetailDTO;
-import product.ProductDTO;
-import product.ProductQuery;
+import category.dto.CategoryDTO;
+import category.dto.CategoryDetailDTO;
+import category.query.*;
+import fw.DBUtil;
 
 public class CategoryDAOimpl implements CategoryDAO {
 
@@ -19,16 +19,17 @@ public class CategoryDAOimpl implements CategoryDAO {
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
 		if(categoryName!=null){
-			ptmt = connection.prepareStatement("select * from category where category_Name like  ?");
+			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYSEARCHNAME);
 			ptmt.setString(1, categoryName+"%");
 		}else{
-		ptmt = connection.prepareStatement("select * from category");
+		ptmt = connection.prepareStatement(CategoryQuery.CATEGORYSEARCHALL);
 		}
 		resultSet = ptmt.executeQuery();
 		while (resultSet.next()) {
 			CategoryDTO  dto = new CategoryDTO(resultSet.getInt(1), resultSet.getString(2));				
 			category_list.add(dto);
 		}
+		 DBUtil.close(ptmt);
 		return category_list;
 	}
 
@@ -38,10 +39,10 @@ public class CategoryDAOimpl implements CategoryDAO {
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
 		if(categoryNo!=0){
-			ptmt = connection.prepareStatement("select * from category_detail where category_no = ?");
+			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYDETAILSEARCHNO);
 			 ptmt.setInt(1, categoryNo);
 		}else if(categoryDetailName!=null){
-			ptmt = connection.prepareStatement("select * from category_detail where category_detail_name like ? ");
+			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYDETAILSEARCHNAME);
 			 ptmt.setString(1, categoryDetailName+"%");
 		}
 		resultSet = ptmt.executeQuery();
@@ -49,7 +50,7 @@ public class CategoryDAOimpl implements CategoryDAO {
 			CategoryDetailDTO  dto = new CategoryDetailDTO(resultSet.getInt(1), resultSet.getString(2),resultSet.getInt(3));				
 			category_detail_list.add(dto);
 		}
-		//System.out.println(category_detail_list);
+		 DBUtil.close(ptmt);
 		return category_detail_list;
 	}
 

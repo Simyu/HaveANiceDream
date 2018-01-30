@@ -15,31 +15,22 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
-		url : "/HaveANiceDream/blame/select.do",
+		url : "/HaveANiceDreame/manager_blame/select.do",
 		type : "GET",
 		data : {
-			"blameNo" : opener.document.formlist.list.value,
+			"blameNo" : opener.document.formlist.list.value
 		},
 		dataType : "json",
 		success : function(res) {
 			$("#title").text(res.blameTitle);
 			$("#content").text(res.blameContent);
 			$("#date").text(res.blameDate);
-		}
-	});
-	$.ajax({
-		url : "/HaveANiceDreame/manager_blame/select.do",
-		type : "GET",
-		data : {
-			"blameNo" : opener.document.formlist.list.value,
-		},
-		dataType : "json",
-		success : function(res) {
 			$("#answertitle").text(res.answerTitle);
 			$("#answercontent").text(res.answerContent);
 			$("#answerdate").text(res.answerDate);
 		}
-	}); 
+	});
+
 });
 
 </script>

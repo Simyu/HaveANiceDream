@@ -1,4 +1,4 @@
-package product;
+package product.dto;
 
 import java.sql.Date;
 
@@ -68,6 +68,47 @@ public class ProductDTO {
 
     private String tradeType;
     
+    private String categoryName;
+    
+    private String imageSrc;
+    
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public String getImageSrc() {
+		return imageSrc;
+	}
+
+	public void setImageSrc(String imageSrc) {
+		this.imageSrc = imageSrc;
+	}
+
+	public ProductDTO(Integer productNo, String userId, Integer categoryNo, String productName ,
+			 Integer productPrice, String productContent, String product_Grade, String productTitle,
+			Date productDate, int productState, Integer productExfDate, String tradeType, Integer categoryDetailNo, String categoryName,
+			String imageSrc) {
+		super();
+		this.productNo = productNo;
+		this.userId = userId;
+		this.categoryNo = categoryNo;
+		this.categoryDetailNo = categoryDetailNo;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productContent = productContent;
+		this.product_Grade = product_Grade;
+		this.productTitle = productTitle;
+		this.productDate = productDate;
+		this.productState = productState;
+		this.productExfDate = productExfDate;
+		this.tradeType = tradeType;
+		this.categoryName = categoryName;
+		this.imageSrc = imageSrc;
+	}
     public ProductDTO() {
 		// TODO Auto-generated constructor stub
 	}

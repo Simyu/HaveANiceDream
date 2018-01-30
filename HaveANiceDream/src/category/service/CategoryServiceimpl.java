@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import category.CategoryDTO;
-import category.CategoryDetailDTO;
 import category.dao.CategoryDAO;
 import category.dao.CategoryDAOimpl;
+import category.dto.CategoryDTO;
+import category.dto.CategoryDetailDTO;
 import fw.DBUtil;
 
 public class CategoryServiceimpl implements CategoryService {

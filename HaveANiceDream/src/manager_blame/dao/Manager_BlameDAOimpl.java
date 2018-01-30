@@ -3,7 +3,10 @@ package manager_blame.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;import blame.query.BlameQuery;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import blame.query.BlameQuery;
 import fw.DBUtil;
 import manager_blame.dto.Manager_BlameDTO;
 import manager_blame.query.Manager_BlameQuery;
@@ -25,8 +28,8 @@ public class Manager_BlameDAOimpl implements Manager_BlameDAO {
 		return result;
 	}
 
-	public Manager_BlameDTO select(int answerNo, Connection con) throws SQLException {
-		Manager_BlameDTO dto = null;
+	public ArrayList<String> select(int answerNo, Connection con) throws SQLException {
+		ArrayList<String> dto = null;
 		PreparedStatement ptmt=null;
 		ResultSet rs = null;
 		ptmt = con.prepareStatement(Manager_BlameQuery.ANSWER_SELECT);
@@ -34,14 +37,15 @@ public class Manager_BlameDAOimpl implements Manager_BlameDAO {
 		
 		rs = ptmt.executeQuery();
 		if(rs.next()){
-			dto = new Manager_BlameDTO(
-					rs.getInt(1),
-					rs.getInt(2),
-					rs.getString(3),
-					rs.getString(4),
-					rs.getString(5),
-					rs.getDate(6)
-					);
+			dto = new ArrayList<String>();
+			dto.add(rs.getInt(1)+"");
+			dto.add(rs.getDate(2).toString());
+			dto.add(rs.getString(3));
+			dto.add(rs.getString(4));
+			dto.add(rs.getString(5));
+			dto.add(rs.getString(6));
+			dto.add(rs.getDate(7).toString());
+			
 		}
 		DBUtil.close(rs);
 		DBUtil.close(ptmt);
