@@ -34,4 +34,30 @@ public class TradeDAOImpl implements TradedDAO {
 
 		return rowNum;
 	}
+
+	@Override
+	public ArrayList<TradeDTO> tradeSelect(String userId, Connection connection) throws SQLException {
+		ArrayList<TradeDTO> tradelist = new ArrayList<TradeDTO>();
+		TradeDTO dto = null;
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		
+		ptmt = connection.prepareStatement(TradeQuery.TRADE_SELECT);
+
+		ptmt.setString(1, userId);
+		ptmt.setString(2, userId);
+		
+		rs = ptmt.executeQuery();
+		
+		
+		while (rs.next()){
+			dto = new TradeDTO(rs.getInt(1), rs.getDate(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
+			tradelist.add(dto);
+			
+		}
+		DBUtil.close(rs);
+		DBUtil.close(ptmt);
+		
+		return tradelist;
+	}
 }

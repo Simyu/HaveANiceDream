@@ -10,4 +10,5 @@ import user.dto.MemberDTO;
 
 public interface TradedDAO {
 	int tradeInsert(TradeDTO tradelist, Connection connection) throws SQLException;
+	ArrayList<TradeDTO> tradeSelect(String userId, Connection connection) throws SQLException;
 }

@@ -45,10 +45,11 @@ public class TradeInsertServlet extends HttpServlet {
 		String thisProduct=request.getParameter("productNo");
 
 		String viewpath="";
-		TradeService tradeservice = new TradeServiceImpl();
-		ProductDTO productdto = new ProductDTO();
+		
 
 		if(ses!=null){
+			TradeService tradeservice = new TradeServiceImpl();
+			ProductDTO productdto = new ProductDTO();
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
 			String userId= user.getUserId();
 			productdto = proservice.productSelect(Integer.parseInt(thisProduct));

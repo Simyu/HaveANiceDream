@@ -8,6 +8,7 @@ create SEQUENCE trade_seq;
 alter table trade drop column trade_memo;
 
 
+select * from trade where USER_ID_BUY='person' or USER_ID_SELL='person';
 
 
 

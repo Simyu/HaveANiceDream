@@ -41,5 +41,26 @@ public class TradeServiceImpl implements TradeService {
 		return rowNum;
 	}
 
+	@Override
+	public ArrayList<TradeDTO> tradeSelect(String userId) {
+		Connection connection = null;
+		ArrayList<TradeDTO> tradeList = null;
+		try {
+			connection = DBUtil.getConnect();
+			TradedDAO dao = new TradeDAOImpl();
+			tradeList = dao.tradeSelect(userId, connection);
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		
+		return tradeList;
+	}
+
 
 }
