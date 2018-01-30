@@ -88,22 +88,27 @@ PRODUCT_NO                                NOT NULL NUMBER
 	
 	
 	@Override
-	public ArrayList<ProductDTO> product_List(String title,int categoryNo,int  categoryDetailNo,Connection connection) throws SQLException {
+	public ArrayList<ProductDTO> product_List(String title,int categoryNo,int  categoryDetailNo,String userId ,Connection connection) throws SQLException {
 		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
-		 if(categoryNo!=0 & categoryDetailNo==0){  //대분류로만 검색
+		
+		if(categoryNo!=0 & categoryDetailNo==0 & userId==null){  //대분류로만 검색
 				ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLENO);
 				ptmt.setString(1, "%"+title+"%");
 				ptmt.setInt(2, categoryNo);
-		}else if(categoryNo!=0 ){ //대,소분류를 통한 검색
+		}else if(categoryNo!=0 & userId==null ){ //대,소분류를 통한 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLE);
 			ptmt.setString(1, "%"+title+"%");
 			ptmt.setInt(2, categoryNo);
 			ptmt.setInt(3, categoryDetailNo);
 		}
-		else if(categoryNo==0 & categoryDetailNo==0 ){  //전체리스트 검색
+		else if(categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL);
+		}else if(userId!=null){
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL1);
+			ptmt.setString(1, userId);
+			// System.out.println("진:입성공:");
 		}
 		resultSet = ptmt.executeQuery();
 		while (resultSet.next()) {
@@ -125,12 +130,15 @@ PRODUCT_NO                                NOT NULL NUMBER
 					resultSet.getString(12),
 					resultSet.getInt(13),
 					resultSet.getString(14),
-					resultSet.getString(15)
+					resultSet.getString(15),
+					resultSet.getString(16),
+					resultSet.getString(17),
+					resultSet.getString(18)
 					);
 			product_list.add(dto);
 		}
 		 DBUtil.close(ptmt);
-		
+		//System.out.println("DAO"+product_list);
 		return product_list;
 	}
 	

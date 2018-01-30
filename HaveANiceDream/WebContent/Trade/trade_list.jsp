@@ -1,3 +1,5 @@
+<%@page import="product.dto.ProductDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="user.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -52,7 +54,9 @@
 </head>
 
 <body>
-	<%MemberDTO user = (MemberDTO) session.getAttribute("user"); %>
+	<%MemberDTO user = (MemberDTO) session.getAttribute("user"); 
+	   ArrayList<ProductDTO> productlist = (   ArrayList<ProductDTO> ) request.getAttribute("productlist");
+	%>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff">
 		<h4>
 			<i class="fa fa-angle-right"></i> 거래 | <span
@@ -99,6 +103,9 @@
 			style="border-left: none;"></div>
 		<div class="content-panel">
 			<div class="col-md-12 col-sm-12 col-xs-12 trade-ing-line pd-con">
+			<%for(int i =0;i<productlist.size();i++){
+				%>
+			
 				<div class="col-md-2 col-sm-2 col-xs-2">거래 날짜</div>
 				<div class="col-md-5 col-sm-5 col-xs-5">드림 정보</div>
 				<div class="col-md-3 col-sm-3 col-xs-3">상태</div>
@@ -173,6 +180,7 @@
 						</div>
 					</div>
 				</div>
+				<% }%>
 				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<button type="button" class="btn btn-warning btn-sm"

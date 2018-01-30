@@ -1,6 +1,7 @@
 package trade.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import product.dto.ProductDTO;
+import product.service.ProductService;
+import product.service.ProductServiceimpl;
 import user.dto.MemberDTO;
 
 
@@ -35,11 +39,17 @@ public class TradeServlet extends HttpServlet {
 	 public static int  TRADE_END = 2;//거래종료   인 경우 마이페이지에서 확인이 가능해야함...  따라서 거래가 신청이 들어오면 현재상태를 변경하여 마이페이지에서 거래 상태 화면이 떠야함..
 	 거래상태를 변경시키는 업데이트 메소드
 		 * */
+		
+		ProductService service = new ProductServiceimpl();
 		HttpSession ses = request.getSession(false);
 		String viewpath="";
+		ArrayList<ProductDTO> productlist= new ArrayList<ProductDTO>();
 		if(ses!=null){
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
 			String userId= user.getUserId();
+			//System.out.println(userId);
+			
+			 productlist=service.product_List(null, 100, 100, userId); //100,100의미없는수
 			//유저가 등록한 물품리스트 출력
 			viewpath="../Trade/trade_list.jsp";
 		}else{
@@ -47,10 +57,9 @@ public class TradeServlet extends HttpServlet {
 		}
 		
 		
+		request.setAttribute("productlist", productlist);
 		
-		
-		
-		
+		//System.out.println("서블릿... ^^"+productlist);
 		
 		
 		request.setAttribute("viewpath", viewpath);
