@@ -247,5 +247,66 @@ public class ProductDTO {
 				+ productExfDate + ", tradeType=" + tradeType + "]";
 	}
     
+	
+	private String userEmail;
+
+	private String userName;
+	
+	private String userTel;
+	
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserTel() {
+		return userTel;
+	}
+
+	public void setUserTel(String userTel) {
+		this.userTel = userTel;
+	}
+
+	public ProductDTO(Integer productNo, String userId, Integer categoryNo, String productName ,
+			 Integer productPrice, String productContent, String product_Grade, String productTitle,
+			Date productDate, int productState, Integer productExfDate, String tradeType, Integer categoryDetailNo, String categoryName,
+			String imageSrc, String userName,String userTel ,String userEmail) {
+		super();
+		this.productNo = productNo;
+		this.userId = userId;
+		this.categoryNo = categoryNo;
+		this.categoryDetailNo = categoryDetailNo;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productContent = productContent;
+		this.product_Grade = product_Grade;
+		this.productTitle = productTitle;
+		this.productDate = productDate;
+		this.productState = productState;
+		this.productExfDate = productExfDate;
+		this.tradeType = tradeType;
+		this.categoryName = categoryName;
+		this.imageSrc = imageSrc;
+		this.userName = userName;
+		this.userTel = userTel;
+		this.userEmail = userEmail;
+	}
+	
+	
+	
+	
+	
+	
     
 }

@@ -29,8 +29,8 @@ public class Product_Search_Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("euc-kr");
-		response.setContentType("text/html; charset=euc-kr");
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		int productNo = Integer.parseInt(request.getParameter("productNo"));
 
 		ProductService service = new ProductServiceimpl();
@@ -56,6 +56,7 @@ public class Product_Search_Servlet extends HttpServlet {
 				request.setAttribute("product", product);
 				viewpath = "../product/product_edit.jsp";
 			} else if (state.equals("BUY")) {
+				System.out.println("서블릿"+product);
 				viewpath = "../Trade/trade_popup.jsp";// 팝업이 아닌 경로를 변경... 거기서 다시
 				request.setAttribute("productNo", productNo);
 				request.setAttribute("category_list", category_list);

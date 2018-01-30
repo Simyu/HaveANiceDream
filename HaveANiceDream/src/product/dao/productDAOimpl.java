@@ -78,7 +78,8 @@ PRODUCT_NO                                NOT NULL NUMBER
 		if(resultSet.next()){
 		product = new ProductDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),
 					resultSet.getInt(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8),
-						resultSet.getDate(9), resultSet.getInt(10), resultSet.getInt(11), resultSet.getString(12),resultSet.getInt(13));
+						resultSet.getDate(9), resultSet.getInt(10), resultSet.getInt(11), resultSet.getString(12),resultSet.getInt(13)
+						,resultSet.getString(14),resultSet.getString(15),resultSet.getString(16),resultSet.getString(17),resultSet.getString(18) );
 		}
 		
 		 DBUtil.close(ptmt);

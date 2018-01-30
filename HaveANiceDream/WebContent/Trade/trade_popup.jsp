@@ -117,8 +117,8 @@ pageEncoding="utf-8"%>
 					action="/HaveANiceDream/trade.do">
 				<div class="row" style="margin-top: 30px;" >
 					<div class="col-md-4 col-sm-4 col-xs-4 no-pd plus-padding-left">
-						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=file1%>" width='250' height='250'/> </div> 
-							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">  
+						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=product.getImageSrc()%>" width='250' height='250'/> </div> 
+							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">  <%=product.getUserName()%>
 								
 								<li data-thumb="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"><img
 									class="self-img-full-cont" src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg" /></li>
@@ -128,7 +128,7 @@ pageEncoding="utf-8"%>
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-8 no-pd plus-padding-left">
 					
-						<div class="product-trade-title-font"><%=product.getProductTitle() %></div>
+						<div class="product-trade-title-font"></div>
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >아이디</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getUserId() %></div>
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >물품이름</div><div class="col-sm-10 product-trade-content-con-font"><%=product.getProductName() %></div>
 						<div class="col-md-2 col-sm-2 col-xs-2 product-trade-content-title-font" >필요 드림포인트</div><div class="col-sm-10 product-trade-content-con-font" ><label class="pt-font"><%=product.getProductPrice() %></label>포인트</div>
