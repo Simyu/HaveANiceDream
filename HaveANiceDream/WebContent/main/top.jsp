@@ -167,27 +167,29 @@
 		}
 
 		function logout() {
-<%-- 	<%if (user.getUserLogType().equals("Kakao")) {%>
-	Kakao.API.request({
-		url : '/v1/user/logout',
-		success : function(res) {
-			location.href = "/HaveANiceDream/user/logout.do";
-		},
-		fail : function(error) {
-			//alert(JSON.stringify(error));
-		}
-	}); 
-/* 		Kakao.Auth.logout(function() {
-				setTimeout(function() {
+<%if (user != null) {
+				if (user.getUserLogType().equals("Kakao")) {%>
+		Kakao.API.request({
+				url : '/v1/user/logout',
+				success : function(res) {
 					location.href = "/HaveANiceDream/user/logout.do";
+				},
+				fail : function(error) {
+					//alert(JSON.stringify(error));
+				}
+			});
+			/* 		Kakao.Auth.logout(function() {
+			 setTimeout(function() {
+			 location.href = "/HaveANiceDream/user/logout.do";
 
-				}, 1000);
+			 }, 1000);
 
-			}); */
-	<%} else {%>
+			 }); */
+	<%}
+			} else {%>
 		location.href = "/HaveANiceDream/user/logout.do";
 	<%}%>
-		} --%>
+		} 
 	</script>
 
 </body>
