@@ -77,7 +77,7 @@ $(document).ready(function() {
 									<div class="inner-box02" id="date"></div>
 								</td>
 								<td class="linebg">
-									<div class="inner-box02" id="answer">답변완료</div>
+									<div class="inner-box02" id="answer"></div>
 								</td>
 							</tr>
 							<tr>

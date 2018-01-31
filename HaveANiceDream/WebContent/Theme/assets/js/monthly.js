@@ -363,6 +363,16 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 				e.preventDefault();
 			}
 		});
+		$(document.body).ready(function(){
+			$("#click").click(function(){
+				alert("tet");
+				
+				
+
+
+				
+			});
+		});
 
 		}
 	});
