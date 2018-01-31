@@ -29,77 +29,67 @@ public class UserLoginServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 
 		String logtype = request.getParameter("logtype");
+		String id = null;
+		String url = null;
 
+		UserService service = new UserServiceImpl();
+		MemberDTO user = null;
+		
 		if (logtype.equals("기본")) {
-			String id = request.getParameter("id");
+			id = request.getParameter("id");
 			String pass = request.getParameter("pass");
-
-			UserService service = new UserServiceImpl();
-			MemberDTO user = service.userLogin(id, pass);
-
-			String url = null;
-			if (user != null) {
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
-				String viewpath = "temp_main_con.jsp";
-
-				new UserServiceImpl().userUpdateLoginTime(user.getUserId());
-
-				request.setAttribute("viewpath", viewpath);
-				url = "/main/main_layout.jsp";
-			} else {
-				url = "/user/login.html";
-			}
-
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
-			requestDispatcher.forward(request, response);
+			user = service.userLogin(id, pass);
+			
 		} else if (logtype.equals("Kakao")) {
-			String kakaoid = request.getParameter("kakaoid");
-
-			UserService service = new UserServiceImpl();
-			MemberDTO user = service.userSelect(kakaoid);
-			String url = null;
-			if (user != null) {
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
-				String viewpath = "temp_main_con.jsp";
-
-				new UserServiceImpl().userUpdateLoginTime(user.getUserId());
-
-				request.setAttribute("viewpath", viewpath);
-
-			} else {
-				user = new MemberDTO();
-
-				String kakaoemail = request.getParameter("kakaoemail");
-				String kakaoimg = request.getParameter("kakaoimg");
-				String kakaoname = request.getParameter("kakaoname");
-
-				user.setUserId(kakaoid);
-				user.setUserEmail(kakaoemail);
-				user.setUserName(kakaoname);
-				user.setUserLogType(logtype);
-
-				URL imgurl = new URL(kakaoimg);
-				BufferedImage bufferedImage = ImageIO.read(imgurl);
-				// 업로드 경로 구해오기
-				String uploadpath = request.getSession().getServletContext().getRealPath("/uploadresources/user/");
-				File file = new File(uploadpath + kakaoid + ".jpg");
-				ImageIO.write(bufferedImage, "jpg", file);
-
-				user.setUserImage(kakaoid + ".jpg");
-
-				String viewpath = "../user/sign_in_page.jsp";
-
-				request.setAttribute("kakaosignup", user);
-				request.setAttribute("viewpath", viewpath);
-
-			}
-			url = "/main/main_layout.jsp";
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
-			requestDispatcher.forward(request, response);
-
+			id = request.getParameter("kakaoid");
+			user = service.userSelect(id);
 		}
+
+		if (user != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+			String viewpath = "temp_main_con.jsp";
+
+			new UserServiceImpl().userUpdateLoginTime(user.getUserId());
+
+			request.setAttribute("viewpath", viewpath);
+			url = "/main/main_layout.jsp";
+
+		} else if (logtype.equals("Kakao")) {
+			user = new MemberDTO();
+
+			String kakaoemail = request.getParameter("kakaoemail");
+			String kakaoimg = request.getParameter("kakaoimg");
+			String kakaoname = request.getParameter("kakaoname");
+
+			user.setUserId(id);
+			user.setUserEmail(kakaoemail);
+			user.setUserName(kakaoname);
+			user.setUserLogType(logtype);
+
+			URL imgurl = new URL(kakaoimg);
+			BufferedImage bufferedImage = ImageIO.read(imgurl);
+			// 업로드 경로 구해오기
+			String uploadpath = request.getSession().getServletContext().getRealPath("/uploadresources/user/");
+			File file = new File(uploadpath + id + ".jpg");
+			ImageIO.write(bufferedImage, "jpg", file);
+
+			user.setUserImage(id + ".jpg");
+
+			String viewpath = "../user/sign_in_page.jsp";
+
+			request.setAttribute("kakaosignup", user);
+			request.setAttribute("viewpath", viewpath);
+
+			url = "/main/main_layout.jsp";
+		} else {
+			url = "/user/login.html";
+		}
+
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
+		requestDispatcher.forward(request, response);
+
 	}
 
 }
