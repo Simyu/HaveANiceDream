@@ -162,34 +162,26 @@
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript">
 		function setPath(url) {
-
 			location.href = "/HaveANiceDream/view.html?url=" + url;
 		}
 
 		function logout() {
-<%if (user != null) {
+	<%if (user != null) {
 				if (user.getUserLogType().equals("Kakao")) {%>
-		Kakao.API.request({
-				url : '/v1/user/logout',
-				success : function(res) {
+		Kakao.init('78cecbcfa10a98bcb341599df55a3441');
+
+			Kakao.Auth.logout(function() {
+				setTimeout(function() {
 					location.href = "/HaveANiceDream/user/logout.do";
-				},
-				fail : function(error) {
-					//alert(JSON.stringify(error));
-				}
+
+				}, 1000);
+
 			});
-			/* 		Kakao.Auth.logout(function() {
-			 setTimeout(function() {
-			 location.href = "/HaveANiceDream/user/logout.do";
-
-			 }, 1000);
-
-			 }); */
 	<%}
 			} else {%>
 		location.href = "/HaveANiceDream/user/logout.do";
 	<%}%>
-		} 
+		}
 	</script>
 
 </body>
