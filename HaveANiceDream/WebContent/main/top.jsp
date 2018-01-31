@@ -167,7 +167,7 @@
 		}
 
 		function logout() {
-	<%if (user.getUserLogType().equals("Kakao")) {%>
+<%-- 	<%if (user.getUserLogType().equals("Kakao")) {%>
 	Kakao.API.request({
 		url : '/v1/user/logout',
 		success : function(res) {
@@ -176,7 +176,7 @@
 		fail : function(error) {
 			//alert(JSON.stringify(error));
 		}
-	});
+	}); 
 /* 		Kakao.Auth.logout(function() {
 				setTimeout(function() {
 					location.href = "/HaveANiceDream/user/logout.do";
@@ -187,7 +187,7 @@
 	<%} else {%>
 		location.href = "/HaveANiceDream/user/logout.do";
 	<%}%>
-		}
+		} --%>
 	</script>
 
 </body>
