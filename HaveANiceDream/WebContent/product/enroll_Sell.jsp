@@ -168,7 +168,7 @@
 								%>
 								     <% CategoryDTO dto = category_list.get(i) ;%>
 								     
-									<option><%=dto.getCategoryName()%>
+									<option value="<%=dto.getCategoryNo()%>"><%=dto.getCategoryName()%>
 									<%}} %> 
 								</select>
 							</div>
