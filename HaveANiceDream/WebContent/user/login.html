@@ -30,8 +30,6 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<!-- 카카오 SDK -->
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 
 <script type="text/javascript">
@@ -136,6 +134,9 @@
 			speed : 500
 		});
 	</script>
+	<!-- 카카오 연동 -->
+	<!-- 카카오 SDK -->
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type='text/javascript'>
 		//<![CDATA[
 		// 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -174,14 +175,13 @@
 		//]]>
 	</script>
 	<!-- 네이버 연동 코드 -->
+	<!-- 네이버SDK -->
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 	<!-- 네이버아디디로로그인 초기화 Script -->
 	<script type="text/javascript">
 		var naverLogin = new naver.LoginWithNaverId({
 			clientId: "JaM3SgETDGwc6FCEo9Mw",
 			callbackUrl: "http://localhost:8088/HaveANiceDream/user/naver_callback.html",
-			callbackHandle: true,
-			/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
 			loginButton: {color: "green", type: 3, height: 49} /* 로그인 버튼의 타입을 지정 */
 		});
