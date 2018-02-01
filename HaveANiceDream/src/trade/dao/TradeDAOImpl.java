@@ -14,7 +14,7 @@ import trade.query.TradeQuery;
 import user.query.UserQuery;
 
 
-public class TradeDAOImpl implements TradedDAO {
+public class TradeDAOImpl implements TradeDAO {
 
 	@Override
 	public int tradeInsert(TradeDTO tradelist, Connection connection) throws SQLException {
@@ -59,5 +59,27 @@ public class TradeDAOImpl implements TradedDAO {
 		DBUtil.close(ptmt);
 		
 		return tradelist;
+	}
+
+	@Override
+	public TradeDTO tradenoSelect(int tradeNo, Connection connection) throws SQLException {
+		TradeDTO dto = null;
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		
+		ptmt = connection.prepareStatement(TradeQuery.TRADE_SELECTTRNO);
+		
+		ptmt.setInt(1, tradeNo);
+		
+		rs = ptmt.executeQuery();
+		
+		if(rs.next()){
+			dto = new TradeDTO(rs.getInt(1), rs.getDate(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
+			
+		}
+		DBUtil.close(rs);
+		DBUtil.close(ptmt);
+		
+		return dto;
 	}
 }

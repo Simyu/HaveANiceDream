@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -53,7 +54,7 @@ public class SignUpServlet extends HttpServlet {
 		String type = multipartRequest.getParameter("type");
 		System.out.println(type);
 		String fileNeme = null;
-		if (type.equals("Kakao")) {
+		if (type.equals("Kakao") || type.equals("Naver")) {
 			fileNeme = multipartRequest.getParameter("img");
 		} else {
 			@SuppressWarnings("unchecked")
@@ -77,7 +78,14 @@ public class SignUpServlet extends HttpServlet {
 		int res = service.userInsert(user);
 
 		if (res > 0) {
-			response.sendRedirect("/HaveANiceDream/user/login.html");
+			if(type.equals("Kakao") || type.equals("Naver")){
+				HttpSession session = request.getSession();
+				user = service.userSelect(userId);
+				session.setAttribute("user", user);
+				response.sendRedirect("/HaveANiceDream/index.html");
+			} else {
+				response.sendRedirect("/HaveANiceDream/user/login.html");
+			}
 		} else {
 
 			String viewpath = "../user/sig_in_page.jsp";

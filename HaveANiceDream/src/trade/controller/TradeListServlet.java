@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import product.dto.ProductDTO;
+import product.service.ProductService;
+import product.service.ProductServiceimpl;
 import trade.dto.TradeDTO;
 import trade.service.TradeService;
 import trade.service.TradeServiceImpl;
@@ -33,14 +35,31 @@ public class TradeListServlet extends HttpServlet {
 		
 		if(ses!=null){
 			TradeService tradeservice = new TradeServiceImpl();
-			ProductDTO productdto = new ProductDTO();
+			TradeDTO tradedto = null;
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
 			String userId= user.getUserId();
 			ArrayList<TradeDTO> tradelist = tradeservice.tradeSelect(userId);
-			System.out.println(tradelist);
+
+			
+			if(tradelist!=null){//트레이드에 해당되는 물품번호를 가지고 product를 받아서 list에 담는 작업!!!
+				ArrayList<ProductDTO> productlist = new ArrayList<ProductDTO>();
+				ProductDTO productdto = null;
+				ProductService proservice = new ProductServiceimpl();
+				for (int i = 0; i < tradelist.size(); i++) {
+					tradedto = tradelist.get(i);
+					productdto=proservice.productSelect(tradedto.getProductNo());
+					
+					productlist.add(productdto);
+					
+				}
+				request.setAttribute("productlist", productlist);
+				request.setAttribute("tradelist", tradelist);
+			}
+			
 			
 			viewpath="../Trade/trade_list.jsp";
-			request.setAttribute("tradelist", tradelist);
+			
+			
 		}else{
 			
 			viewpath="../user/login.html";

@@ -18,7 +18,7 @@ USER_TYPE                                          VARCHAR2(20)
 public class TradeQuery {
 	public static final String TRADE_INSERT = "insert into trade values(trade_seq.nextval,sysdate,?,?,?,?,?)";
 	public static final String TRADE_SELECT = "select * from trade where USER_ID_BUY=? or USER_ID_SELL=?";
-	public static final String BOARD_READ = "select * from board where BOARD_NO = ?";
+	public static final String TRADE_SELECTTRNO = "select * from trade where TRADE_NO=?";
 	public static final String BOARD_DELETE = "delete from board where BOARD_NO = ?";
 	public static final String USER_TYPE_UPDATE = "update member set USER_TYPE = ? where USER_ID = ?"; 
 	public static final String USER_POINT_UPDATE = "update member set POINT_TOTAL = ? where USER_ID = ?"; 

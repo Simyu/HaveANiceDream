@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
@@ -35,11 +36,12 @@ public class UserSelectServlet extends HttpServlet {
 		String state = request.getParameter("state");
 
 		if (state.equals("SHOWMYPAGE")) {
+			HttpSession session = request.getSession(false);
 
 			String viewpath = "../user/user_detail.jsp";
 
 			request.setAttribute("viewpath", viewpath);
-			request.setAttribute("user", dto);
+			session.setAttribute("user", dto);
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 			requestDispatcher.forward(request, response);

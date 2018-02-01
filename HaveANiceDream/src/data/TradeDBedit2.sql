@@ -2,6 +2,7 @@ select * from member;
 select * from tab;
 select * from board;
 select * from trade;
+select * from product;
 
 select * from trade_seq;
 create SEQUENCE trade_seq;

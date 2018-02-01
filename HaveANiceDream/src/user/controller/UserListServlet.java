@@ -14,12 +14,12 @@ import user.dto.MemberDTO;
 import user.service.UserService;
 import user.service.UserServiceImpl;
 
-
 @WebServlet(name = "user/list", urlPatterns = { "/user/list.do" })
 public class UserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		UserService service = new UserServiceImpl();
 		ArrayList<MemberDTO> userlist = null;
 
@@ -35,7 +35,7 @@ public class UserListServlet extends HttpServlet {
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(request, response);
-			
+
 	}
 
 }
