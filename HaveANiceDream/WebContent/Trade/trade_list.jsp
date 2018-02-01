@@ -52,14 +52,19 @@
 		popup = window.open("user_profile.jsp",num,"width=300,height=500,left=100 top=50");
 		num++;
 	}
+	function detailview(){
+		location.href = "/HaveANiceDream/board/list.do?url=" + url+"&boardNo="+boardNo;
+	}
 </script>
 </head>
 
 <body>
 	<%MemberDTO user = (MemberDTO) session.getAttribute("user");
 	ArrayList<TradeDTO> tradelist =(ArrayList<TradeDTO>) request.getAttribute("tradelist");
+	ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>)request.getAttribute("productlist");
 	int size = tradelist.size();
 	TradeDTO tradedto = null;
+	ProductDTO productdto = null;
 	%>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff">
 		<h4>
@@ -115,19 +120,19 @@
 			</div>
 			<%for(int i=0;i<size;i++){
 				tradedto = tradelist.get(i);
-			
+				productdto = productlist.get(i);
 			%>
 			<div class="col-md-12 col-sm-12 col-xs-12 pd-con" style="border-bottom: 1px solid black;">
 				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
 					<p><%=tradedto.getTradeStartDate() %></p>
 					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button class="label label-default trade-btn-height" onclick="popup()">거래상세보기</button>
+						<button class="label label-default trade-btn-height" onclick="javascript:detailview('../board/board_list.jsp')">거래상세보기</button>
 					</div>
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-5">
 					<div class="col-md-3 col-sm-3 col-xs-3">
 						<img class="self-img-full-cont2"
-							src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg">
+							src="/HaveANiceDream/upload/<%=productdto.getImageSrc()%>">
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-9">
 						<div class="col-md-12 col-sm-12 col-xs-12">
@@ -145,11 +150,11 @@
 							</ul>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							글제목 : <a>내가 쓰다만 여러가지 각종 잡템을 드림해요!</a>
+							글제목 : <a><%=productdto.getProductTitle() %></a>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12">거래번호: <%=tradedto.getTradeNo()%></div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							거래 포인트 : <label class="text-price-point-state">3000</label> 포인트
+							거래 포인트 : <label class="text-price-point-state"><%=productdto.getProductPrice()%></label> 포인트
 						</div>
 					</div>
 				</div>

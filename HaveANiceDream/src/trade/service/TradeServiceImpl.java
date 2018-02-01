@@ -11,6 +11,7 @@ import fw.DBUtil;
 import point.dao.PointDAO;
 import point.dao.PointDAOImpl;
 import point.dto.PointDTO;
+import product.dto.ProductDTO;
 import trade.dao.TradeDAOImpl;
 import trade.dao.TradedDAO;
 import trade.dto.TradeDTO;
@@ -45,11 +46,12 @@ public class TradeServiceImpl implements TradeService {
 	public ArrayList<TradeDTO> tradeSelect(String userId) {
 		Connection connection = null;
 		ArrayList<TradeDTO> tradeList = null;
+		
+		
 		try {
 			connection = DBUtil.getConnect();
 			TradedDAO dao = new TradeDAOImpl();
 			tradeList = dao.tradeSelect(userId, connection);
-			
 			
 		} catch (SQLException e) {
 
