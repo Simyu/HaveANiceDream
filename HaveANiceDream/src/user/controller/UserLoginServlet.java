@@ -40,8 +40,8 @@ public class UserLoginServlet extends HttpServlet {
 			String pass = request.getParameter("pass");
 			user = service.userLogin(id, pass);
 			
-		} else if (logtype.equals("Kakao")) {
-			id = request.getParameter("kakaoid");
+		} else if (logtype.equals("Kakao") || logtype.equals("Naver")) {
+			id = request.getParameter("kakaoNnaverid");
 			user = service.userSelect(id);
 		}
 
@@ -55,19 +55,19 @@ public class UserLoginServlet extends HttpServlet {
 			request.setAttribute("viewpath", viewpath);
 			url = "/main/main_layout.jsp";
 
-		} else if (logtype.equals("Kakao")) {
+		} else if (logtype.equals("Kakao") || logtype.equals("Naver")) {
 			user = new MemberDTO();
 
-			String kakaoemail = request.getParameter("kakaoemail");
-			String kakaoimg = request.getParameter("kakaoimg");
-			String kakaoname = request.getParameter("kakaoname");
+			String kakaoNnaveremail = request.getParameter("kakaoNnaveremail");
+			String kakaoNnaverimg = request.getParameter("kakaoNnaverimg");
+			String kakaoNnavername = request.getParameter("kakaoNnavername");
 
 			user.setUserId(id);
-			user.setUserEmail(kakaoemail);
-			user.setUserName(kakaoname);
+			user.setUserEmail(kakaoNnaveremail);
+			user.setUserName(kakaoNnavername);
 			user.setUserLogType(logtype);
 
-			URL imgurl = new URL(kakaoimg);
+			URL imgurl = new URL(kakaoNnaverimg);
 			BufferedImage bufferedImage = ImageIO.read(imgurl);
 			// 업로드 경로 구해오기
 			String uploadpath = request.getSession().getServletContext().getRealPath("/uploadresources/user/");
@@ -78,7 +78,7 @@ public class UserLoginServlet extends HttpServlet {
 
 			String viewpath = "../user/sign_in_page.jsp";
 
-			request.setAttribute("kakaosignup", user);
+			request.setAttribute("kakaoNnaversignup", user);
 			request.setAttribute("viewpath", viewpath);
 
 			url = "/main/main_layout.jsp";

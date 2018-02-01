@@ -10,8 +10,17 @@
 
 <body>
 
-	callback 처리중입니다. 이 페이지에서는 callback을 처리하고 바로 main으로 redirect하기때문에 이 메시지가 보이면 안됩니다.
 
+	<form class="form-login" action="/HaveANiceDream/user/login.do" id="Nlogform"
+		method="post">
+		<input type="hidden" id="logtype" name="logtype" value="기본"> <input
+			type="hidden" id="kakaoNnaverid" name="kakaoNnaverid"> <input
+			type="hidden" id="kakaoNnaveremail" name="kakaoNnaveremail"> <input
+			type="hidden" id="kakaoNnaverimg" name="kakaoNnaverimg"> <input
+			type="hidden" id="kakaoNnavername" name="kakaoNnavername">
+	</form>
+
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 	<!-- (1) LoginWithNaverId Javscript SDK -->
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 
@@ -46,10 +55,15 @@
 					var name = naverLogin.user.getNickName();
 					var profileImage = naverLogin.user.getProfileImage();
 					var uniqId = naverLogin.user.getId();
-					
-					alert(email + " "+name+" "+profileImage+" "+uniqId);
 
-					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/HaveANiceDream/index.html");
+					$("#kakaoNnaverid").val(uniqId);
+					$("#kakaoNnaveremail").val(email);
+					$("#kakaoNnaverimg").val(profileImage);
+					$("#kakaoNnavername").val(name);
+					$("#logtype").val("Naver");
+					
+					document.getElementById("Nlogform").submit();
+
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
 				}
