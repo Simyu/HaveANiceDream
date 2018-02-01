@@ -13,7 +13,7 @@ import point.dao.PointDAOImpl;
 import point.dto.PointDTO;
 import product.dto.ProductDTO;
 import trade.dao.TradeDAOImpl;
-import trade.dao.TradedDAO;
+import trade.dao.TradeDAO;
 import trade.dto.TradeDTO;
 import user.dao.UserDAO;
 import user.dao.UserDAOImpl;
@@ -29,7 +29,7 @@ public class TradeServiceImpl implements TradeService {
 		try {
 			connection = DBUtil.getConnect();
 
-			TradedDAO dao = new TradeDAOImpl();
+			TradeDAO dao = new TradeDAOImpl();
 			rowNum = dao.tradeInsert(tradelist, connection);
 
 		} catch (SQLException e) {
@@ -50,7 +50,7 @@ public class TradeServiceImpl implements TradeService {
 		
 		try {
 			connection = DBUtil.getConnect();
-			TradedDAO dao = new TradeDAOImpl();
+			TradeDAO dao = new TradeDAOImpl();
 			tradeList = dao.tradeSelect(userId, connection);
 			
 		} catch (SQLException e) {
@@ -62,6 +62,27 @@ public class TradeServiceImpl implements TradeService {
 		
 		
 		return tradeList;
+	}
+
+	@Override
+	public TradeDTO tradenoSelect(int tradeNo) {
+		Connection connection = null;
+		TradeDTO dto = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			TradeDAO dao = new TradeDAOImpl();
+			dto = dao.tradenoSelect(tradeNo, connection);
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		return dto;
 	}
 
 

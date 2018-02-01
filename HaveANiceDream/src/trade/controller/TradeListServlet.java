@@ -48,7 +48,6 @@ public class TradeListServlet extends HttpServlet {
 				for (int i = 0; i < tradelist.size(); i++) {
 					tradedto = tradelist.get(i);
 					productdto=proservice.productSelect(tradedto.getProductNo());
-					System.out.println(productdto.getImageSrc());
 					
 					productlist.add(productdto);
 					

@@ -52,9 +52,14 @@
 		popup = window.open("user_profile.jsp",num,"width=300,height=500,left=100 top=50");
 		num++;
 	}
-	function detailview(){
-		location.href = "/HaveANiceDream/board/list.do?url=" + url+"&boardNo="+boardNo;
+	num2 = 1;
+	function detailview(tradeNo,productNo){
+		$("#tradeNo").val(tradeNo);
+		$("#productNo").val(productNo);
+		popup =	window.open("/HaveANiceDream/Trade/trade_ing-detail.jsp", num2, "width=1000, height=600, left=100, top=50");
+		num2++;
 	}
+	
 </script>
 </head>
 
@@ -126,7 +131,7 @@
 				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
 					<p><%=tradedto.getTradeStartDate() %></p>
 					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button class="label label-default trade-btn-height" onclick="javascript:detailview('../board/board_list.jsp')">거래상세보기</button>
+						<button class="label label-default trade-btn-height" onclick="javascript:detailview(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>)">거래상세보기</button>
 					</div>
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-5">
@@ -296,6 +301,12 @@
 	</div>
 	<form action="" name="itisform">
 		<input type="hidden" name="selUserID" id="selUserID">
+	</form>
+	<form action="" name="itisform2">
+		<input type="hidden" name="tradeNo" id="tradeNo">
+	</form>
+	<form action="" name="itisform3">
+		<input type="hidden" name="productNo" id="productNo">
 	</form>
 </body>
 </html>

@@ -1,162 +1,193 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<!DOCTYPE html>
 <html>
 <head>
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {alert("ë“¤ì–´ëŠ”ì˜¤ëƒ");
+				$.ajax({
+							url : "/HaveANiceDream/trade/detail.do",
+							type : "GET",
+							data : {
+								"tradeNo" : opener.document.itisform2.tradeNo.value,
+								"productNo" : opener.document.itisform3.productNo.value
+							},
+							dataType : "json",
+							success : function(res) {
+								$("#CategoryName").text(res.CategoryName);
+								$("#productImg").attr(
+										"src",
+										"/HaveANiceDream/uploadresources/"
+												+ res.productImg);
+								$("#ProductTitle").text(res.ProductTitle);
+								$("#ProductPrice").text(res.ProductPrice);
+								$("#userZipcode").text(res.userZipcode);
+								$("#ProductDate").text(res.ProductDate);
+								$("#ProductName").text(res.ProductName);
+								$("#ProductNo").text(res.ProductNo);
+								$("#TradeType").text(res.TradeType);
+								$("#sellUserId").text(res.sellUserId);
+								$("#sellUserTel").text(res.sellUserTel);
+								$("#sellUserEmail").text(res.sellUserEmail);
+								$("#buyUserId").text(res.buyUserId);
+								$("#buyUserTel").text(res.buyUserTel);
+								$("#buyUserEmail").text(res.buyUserEmail);
+							}
+						});
+			});
+	</script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°Å·¡»ó¼¼page</title>
+	
+<title>ê±°ë˜ìƒì„¸page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="/HaveANiceDream/Theme/assets/css/style.css" rel="stylesheet">
     <link href="/HaveANiceDream/Theme/assets/css/style-responsive.css" rel="stylesheet">
 
-    <script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
   </head>
 
   <body>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff">
 		<h4>
-			<i class="fa fa-angle-right"></i> °Å·¡ | <span style="color: black; font-weight: 900; font-size: 16pt;"> °Å·¡»ó¼¼º¸±â</span>
+			<i class="fa fa-angle-right"></i> ê±°ë˜ | <span style="color: black; font-weight: 900; font-size: 16pt;"> ê±°ë˜ìƒì„¸ë³´ê¸°</span>
 		</h4>
 		<hr>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3" style="margin-bottom: 15px;">
 			<div class="col-md-8 col-sm-8 col-xs-8">
 				<div class="col-md-4 col-sm-4 col-xs-4">
-					<img class="self-img-full-cont2"
+					<img class="self-img-full-cont2" id="productImg"
 						src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg">
 				</div>
 				<div class="col-md-8 col-sm-8 col-xs-8" style="height: 85px; padding-top: 12px">
-					<p class="p-font-sty1">Ä«Å×°í¸® ºĞ·ù 1 > Ä«Å×°í¸® ºĞ·ù 2</p>
-					<p>¹°Ç° µî·ÏÇÑ Á¦¸ñÀ» ÀÔ·ÂÇÕ´Ï´Ù.</p>
+					<p class="p-font-sty1" id="CategoryName">ì¹´í…Œê³ ë¦¬ ë¶„ë¥˜ 1 > ì¹´í…Œê³ ë¦¬ ë¶„ë¥˜ 2</p>
+					<p id="ProductTitle">ë¬¼í’ˆ ë“±ë¡í•œ ì œëª©ì„ ì…ë ¥í•©ë‹ˆë‹¤.</p>
 				</div>
 			</div>
 		</div>
 		<h4>
 			<i class="fa fa-angle-right icon-sty"></i> <span
 				style="color: black; font-weight: 900; font-size: 12pt;">
-				¹°Ç°Á¤º¸</span>
+				ë¬¼í’ˆì •ë³´</span>
 		</h4>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
 			style="border: none; background-color: white; margin-bottom: 10px;">
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>ÇÊ¿ä µå¸² Æ÷ÀÎÆ®</p>
+				<p>í•„ìš” ë“œë¦¼ í¬ì¸íŠ¸</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100; color: red;">
-				<p>3,000Æ÷ÀÎÆ®</p>
+				<p id="ProductPrice">3,000í¬ì¸íŠ¸</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>µî·ÏÀÏ½Ã</p>
+				<p>ë“±ë¡ì¼ì‹œ</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100;">
-				<p>2018-01-22</p>
+				<p id="ProductDate">2018-01-22</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>¹°Ç°ÀÌ¸§</p>
+				<p>ë¬¼í’ˆì´ë¦„</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100;">
-				<p>±¸Âî°¡¹æ</p>
+				<p id="ProductName">êµ¬ì°Œê°€ë°©</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>¹°Ç°¹øÈ£</p>
+				<p>ë¬¼í’ˆë²ˆí˜¸</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100;">
-				<p>1110</p>
+				<p id="ProductNo">1110</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>°Å·¡¹æ¹ı</p>
+				<p>ê±°ë˜ë°©ë²•</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100;">
-				<p>Á÷°Å·¡</p>
+				<p id="TradeType">ì§ê±°ë˜</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>°Å·¡Áö¿ª</p>
+				<p>ê±°ë˜ì§€ì—­</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100; margin-bottom: 30px;">
-				<p>¼­¿ï ±¸·Î±¸</p>
+				<p>ì„œìš¸ êµ¬ë¡œêµ¬</p>
 			</div>
 		</div>
 
 		<h4>
 			<i class="fa fa-angle-right icon-sty"></i> <span
-				style="color: black; font-weight: 900; font-size: 12pt;">ÆÇ¸ÅÀÚ
-				Á¤º¸</span> <span style="margin-left: 20px;"><button
-					class="label label-default trade-btn-height">1:1Ã¤ÆÃ</button>
-				<button class="label label-default trade-btn-height">ÂÊÁöº¸³»±â</button></span>
+				style="color: black; font-weight: 900; font-size: 12pt;">íŒë§¤ì
+				ì •ë³´</span> <span style="margin-left: 20px;"><button
+					class="label label-default trade-btn-height">1:1ì±„íŒ…</button>
+				<button class="label label-default trade-btn-height">ìª½ì§€ë³´ë‚´ê¸°</button></span>
 		</h4>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
 			style="border: none; background-color: white; margin-bottom: 10px;">
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>ÆÇ¸ÅÀÚ ¾ÆÀÌµğ</p>
+				<p>íŒë§¤ì ì•„ì´ë””</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100;">
-				<p>µå¸²¿Õ</p>
+				<p id="sellUserId">ë“œë¦¼ì™•</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>ÆÇ¸ÅÀÚ ¿¬¶ôÃ³</p>
+				<p>íŒë§¤ì ì—°ë½ì²˜</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100;">
-				<p>010-2222-4444</p>
+				<p id="sellUserTel">010-2222-4444</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>ÆÇ¸ÅÀÚ ÀÌ¸ŞÀÏ</p>
+				<p>íŒë§¤ì ì´ë©”ì¼</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100; margin-bottom: 30px;">
-				<p>campion@google.com</p>
+				<p id="sellUserEmail">campion@google.com</p>
 			</div>
 		</div>
 
 		<h4>
 			<i class="fa fa-angle-right icon-sty"></i> <span
-				style="color: black; font-weight: 900; font-size: 12pt;">±¸¸ÅÀÚ
-				Á¤º¸</span> <span style="margin-left: 20px;"><button
-					class="label label-default trade-btn-height">1:1Ã¤ÆÃ</button>
-				<button class="label label-default trade-btn-height">ÂÊÁöº¸³»±â</button></span>
+				style="color: black; font-weight: 900; font-size: 12pt;">êµ¬ë§¤ì
+				ì •ë³´</span> <span style="margin-left: 20px;"><button
+					class="label label-default trade-btn-height">1:1ì±„íŒ…</button>
+				<button class="label label-default trade-btn-height">ìª½ì§€ë³´ë‚´ê¸°</button></span>
 		</h4>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
 			style="border: none; background-color: white; margin-bottom: 10px;">
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>±¸¸ÅÀÚ ¾ÆÀÌµğ</p>
+				<p>êµ¬ë§¤ì ì•„ì´ë””</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100;">
-				<p>³ª´®¿Õ</p>
+				<p id="buyUserId">ë‚˜ëˆ”ì™•</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>±¸¸ÅÀÚ ¿¬¶ôÃ³</p>
+				<p>êµ¬ë§¤ì ì—°ë½ì²˜</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100;">
-				<p>010-3543-7844</p>
+				<p id="buyUserTel">010-3543-7844</p>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con4">
-				<p>±¸¸ÅÀÚ ÀÌ¸ŞÀÏ</p>
+				<p>êµ¬ë§¤ì ì´ë©”ì¼</p>
 			</div>
 			<div class="col-md-10 col-sm-10 col-xs-10 trade-lookup-con4"
 				style="background-color: white; font-weight: 100; margin-bottom: 30px;">
-				<p>dream@google.com</p>
+				<p id="buyUserEmail">dream@google.com</p>
 			</div>
 		</div>
 
 	</div>
 
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.js"></script>    
+	<!-- js placed at the end of the document so the pages load faster --> 
     <script src="/HaveANiceDream/Theme/assets/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="/HaveANiceDream/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="/HaveANiceDream/Theme/assets/js/jquery.scrollTo.min.js"></script>
     <script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
