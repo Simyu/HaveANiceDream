@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="product.dao.productDAO"%>
 <%@page import="product.dto.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -87,7 +88,7 @@ pageEncoding="utf-8"%>
       <!--main content start-->
     				  <%
 					    ProductDTO product = (ProductDTO)  request.getAttribute("product");
-    				    String file1 =(String) request.getAttribute("file1");
+    				   ArrayList<String> file1 =(ArrayList<String>) request.getAttribute("file1");
     				    String grade="";
     				    String trade="";
     				    if(product.getTradeType().equals("delivery_trade")){
@@ -117,7 +118,9 @@ pageEncoding="utf-8"%>
 					action="/HaveANiceDream/trade/insert.do?productNo=<%=product.getProductNo()%>">
 				<div class="row" style="margin-top: 30px;" >
 					<div class="col-md-4 col-sm-4 col-xs-4 no-pd plus-padding-left">
-						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=product.getImageSrc()%>" width='250' height='250'/> </div> 
+					<%for(int i=0 ;i<file1.size();i++){ %>
+						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=file1.get(i)%>" width='250' height='250'/> </div> 
+						 <%} %>
 							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">  <%=product.getUserName()%>
 								
 								<li data-thumb="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"><img

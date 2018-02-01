@@ -239,8 +239,10 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-						<div class="no-mg-no-pd"> <img  src="/HaveANiceDream/upload/<%=file1.get(0)%>"/> </div>
-						
+						<div class="no-mg-no-pd">
+						<%for(int i=0;i<file1.size();i++){ %>
+						 <img  src="/HaveANiceDream/upload/<%=file1.get(i)%>"/> </div>
+						<%} %>
 							<textarea rows="10" cols="100%" id="productContent" name="productContent" >
 						 
 						 <%=product.getProductContent() %>
@@ -252,6 +254,9 @@
 						<div class="col-sm-10">
 							
 								<input type="file" name="uploadFile1" required="required" /><br/> 
+								<input type="file" name="uploadFile2"  /><br/> 
+								<input type="file" name="uploadFile3"  /><br/> 
+								
 								<!-- <textarea rows="3" cols="100%"></textarea>
 								<button type="button" class="btn btn-default">+추가</button>
 								<button type="button" class="btn btn-default">-삭제</button> -->
