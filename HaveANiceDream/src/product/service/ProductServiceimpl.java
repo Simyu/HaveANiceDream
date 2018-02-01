@@ -11,7 +11,7 @@ import product.dto.ProductDTO;
 
 public class ProductServiceimpl implements ProductService {
 	@Override
-	public int insertProduct(ProductDTO product,String imageSrc) {
+	public int insertProduct(ProductDTO product,ArrayList<String> imageSrc) {
 		Connection connection = null;
 		productDAO dao = new productDAOimpl();
 		
@@ -86,22 +86,22 @@ public class ProductServiceimpl implements ProductService {
 	}
 
 	@Override
-	public String productSelect_Image(int productNo) {
-		String result="";
+	public ArrayList<String> productSelect_Image(int productNo) {
+		ArrayList<String> imageList=new ArrayList<String>();
 		Connection connection = null;
 		productDAO dao = new productDAOimpl();
 		
 		
 		try {
 			connection = DBUtil.getConnect();
-			result = dao.productSelect_Image(productNo, connection);
+			imageList = dao.productSelect_Image(productNo, connection);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.close(connection);
 		}
-		return result;
+		return imageList;
 	}
 
 	@Override
@@ -138,6 +138,8 @@ public class ProductServiceimpl implements ProductService {
 		}
 		return 0;
 	}
+
+	
 
 
 
