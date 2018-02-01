@@ -107,7 +107,7 @@
 								이메일 선택 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:setEmailAddr('@google.com')">@google.com</a></li>
+								<li><a href="javascript:setEmailAddr('@gmail.com')">@gmail.com</a></li>
 								<li><a href="javascript:setEmailAddr('@naver.com')">@naver.com</a></li>
 								<li><a href="javascript:setEmailAddr('@hanmail.net')">@hanmail.net</a></li>
 							</ul>
@@ -263,18 +263,18 @@
 					});
 
 		
-	<%MemberDTO kakaoSignUser = (MemberDTO) request.getAttribute("kakaosignup");
-			if (kakaoSignUser != null) {
-				String[] array = kakaoSignUser.getUserEmail().split("@");%>
+	<%MemberDTO kakaoNnaverSignUser = (MemberDTO) request.getAttribute("kakaoNnaversignup");
+			if (kakaoNnaverSignUser != null) {
+				String[] array = kakaoNnaverSignUser.getUserEmail().split("@");%>
 				
-		$("#userImage").attr("src","/HaveANiceDream/uploadresources/user/<%=kakaoSignUser.getUserImage()%>");
-		$("#userId").val("<%=kakaoSignUser.getUserId()%>");
+		$("#userImage").attr("src","/HaveANiceDream/uploadresources/user/<%=kakaoNnaverSignUser.getUserImage()%>");
+		$("#userId").val("<%=kakaoNnaverSignUser.getUserId()%>");
 		$("#userId").attr("readonly", "readonly");
-		$("#userName").val("<%=kakaoSignUser.getUserName()%>");
+		$("#userName").val("<%=kakaoNnaverSignUser.getUserName()%>");
 		$("#userEmail1").val("<%=array[0]%>");
 		$("#userEmail2").val("@<%=array[1]%>");
-		$("#img").val("<%=kakaoSignUser.getUserImage()%>");
-		$("#type").val("<%=kakaoSignUser.getUserLogType()%>");
+		$("#img").val("<%=kakaoNnaverSignUser.getUserImage()%>");
+		$("#type").val("<%=kakaoNnaverSignUser.getUserLogType()%>");
 	<%}%>
 		});
 

@@ -167,7 +167,8 @@
 
 		function logout() {
 	<%if (user != null) {
-				if (user.getUserLogType().equals("Kakao")) {%>
+				String type = user.getUserLogType();
+				if (type.equals("Kakao")) {%>
 		Kakao.init('78cecbcfa10a98bcb341599df55a3441');
 
 			Kakao.Auth.logout(function() {
@@ -177,10 +178,10 @@
 				}, 1000);
 
 			});
-	<%}
-			} else {%>
+	<%} else {%>
 		location.href = "/HaveANiceDream/user/logout.do";
-	<%}%>
+	<%}
+			}%>
 		}
 	</script>
 

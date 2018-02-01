@@ -76,7 +76,10 @@
 							</a>
 						</p>
 						<div id="naverIdLogin"></div>
-
+						<p>
+						<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+						</p>
+			
 					</div>
 					<div class="registration">
 						Don't have an account yet?<br /> <a class=""
@@ -112,10 +115,10 @@
 				</div>
 				<!-- modal -->
 				<!-- 카카오 로그인을 위한 숨겨진 input -->
-				<input type="hidden" id="kakaoid" name="kakaoid"> <input
-					type="hidden" id="kakaoemail" name="kakaoemail"> <input
-					type="hidden" id="kakaoimg" name="kakaoimg"> <input
-					type="hidden" id="kakaoname" name="kakaoname">
+				<input type="hidden" id="kakaoNnaverid" name="kakaoNnaverid"> <input
+					type="hidden" id="kakaoNnaveremail" name="kakaoNnaveremail"> <input
+					type="hidden" id="kakaoNnaverimg" name="kakaoNnaverimg"> <input
+					type="hidden" id="kakaoNnavername" name="kakaoNnavername">
 			</form>
 
 		</div>
@@ -152,10 +155,10 @@
 						url : '/v1/user/me',
 						success : function(res) {
 							//alert(JSON.stringify(res));
-							$("#kakaoid").val(res.id);
-							$("#kakaoemail").val(res.kaccount_email);
-							$("#kakaoimg").val(res.properties.thumbnail_image);
-							$("#kakaoname").val(res.properties.nickname);
+							$("#kakaoNnaverid").val(res.id);
+							$("#kakaoNnaveremail").val(res.kaccount_email);
+							$("#kakaoNnaverimg").val(res.properties.thumbnail_image);
+							$("#kakaoNnavername").val(res.properties.nickname);
 							$("#logtype").val("Kakao");
 							$("#id").removeAttr("required");
 							$("#pass").removeAttr("required");
@@ -187,6 +190,16 @@
 		});
 		naverLogin.init();
 	</script>
+	<!-- 페이스북 연동 코드 -->
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.12&appId=2119289184970452&autoLogAppEvents=1';
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 </html>
