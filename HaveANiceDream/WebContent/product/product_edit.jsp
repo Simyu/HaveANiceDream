@@ -146,7 +146,8 @@
 <body>
      <%
      ProductDTO product = (ProductDTO)request.getAttribute("product");
-     String file1 =(String) request.getAttribute("file1");
+     ArrayList<String> file1 =(ArrayList<String>) request.getAttribute("file1");
+ 
      int productNo= (int) request.getAttribute("productNo");
      
      %>
@@ -238,7 +239,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-						<div class="no-mg-no-pd"> <img  src="/HaveANiceDream/upload/<%=file1%>"/> </div>
+						<div class="no-mg-no-pd"> <img  src="/HaveANiceDream/upload/<%=file1.get(0)%>"/> </div>
 						
 							<textarea rows="10" cols="100%" id="productContent" name="productContent" >
 						 

@@ -230,7 +230,9 @@
 						<label class="col-sm-2 col-sm-2 control-label">업로드</label>
 						<div class="col-sm-10">
 							<div >
-								<input type="file" name="uploadFile1" required="required" /><br/> 
+								<input type="file" name="uploadFile1" required="required" /><br/>
+								<input type="file" name="uploadFile2"  /><br/>
+								<input type="file" name="uploadFile3"  /><br/> 
 								<!-- <textarea rows="3" cols="100%"></textarea>
 								<button type="button" class="btn btn-default">+추가</button>
 								<button type="button" class="btn btn-default">-삭제</button> -->

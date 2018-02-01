@@ -44,6 +44,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		realFolder = context.getRealPath(saveFolder);
 	
 	//	System.out.println(realFolder);
+		ArrayList<String> filelist = new ArrayList<String>();
 		MultipartRequest multipart = 
 				new MultipartRequest(request,
 						realFolder, size, encType, 
@@ -55,7 +56,9 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		while(files.hasMoreElements()){
 			String file = files.nextElement();
 			fileName = multipart.getFilesystemName(file);
+			filelist.add(fileName);
 		}
+		System.out.println(filelist);
 		HttpSession ses = request.getSession(false);
 		MemberDTO user = (MemberDTO) ses.getAttribute("user");
 		int productPrice = Integer.parseInt(multipart.getParameter("productPrice"));
@@ -81,7 +84,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 
 int result=0;
 		ProductService service = new ProductServiceimpl();
-			 result = service.insertProduct(product,fileName);
+			 result = service.insertProduct(product,filelist);
 		
 		System.out.println(result);
 		String url="";

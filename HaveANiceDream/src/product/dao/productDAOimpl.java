@@ -35,33 +35,35 @@ PRODUCT_NO                                NOT NULL NUMBER
  IMAGE_SRC                                          VARCHAR2(20)
 	 * */
 	@Override
-	public int insertProduct_Image(String imageSrc, Connection connection) throws SQLException {
+	public int insertProduct_Image(ArrayList<String> imageSrc, Connection connection) throws SQLException {
 		  int result=0;
 		  PreparedStatement ptmt=null;
-		  ptmt = connection.prepareStatement(ProductQuery.PRODUCT_IMG_INSERT);
-		//  System.out.println(imageSrc);
-		     ptmt.setString(1, imageSrc);
-		     result=ptmt.executeUpdate();
-		     
+		  for (int i = 0; i < imageSrc.size(); i++) {
+			  ptmt = connection.prepareStatement(ProductQuery.PRODUCT_IMG_INSERT);
+				     ptmt.setString(1, imageSrc.get(i));
+				     result=ptmt.executeUpdate();
+		}
+		 
 		     DBUtil.close(ptmt);
 		  return result;
 	}
 	
 	@Override
-	public String productSelect_Image(int productNo, Connection connection) throws SQLException {
+	public ArrayList<String> productSelect_Image(int productNo, Connection connection) throws SQLException {
 		ProductDTO product = null;
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
-		String result="";
+		ArrayList<String> imageList= new ArrayList<String>();
 		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_IMG_SELECTPNO);
 		ptmt.setInt(1, productNo);
 		resultSet = ptmt.executeQuery();
-		if(resultSet.next()){
-			result=resultSet.getString(1);
+		while(resultSet.next()){
+			String imageSrc= resultSet.getString(1);
+			imageList.add(imageSrc);
 		}
 		
 		 DBUtil.close(ptmt);
-		return result;
+		return imageList;
 	}
 	
 	
