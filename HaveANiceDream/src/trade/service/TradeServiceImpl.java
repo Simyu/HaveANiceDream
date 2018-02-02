@@ -48,6 +48,7 @@ public class TradeServiceImpl implements TradeService {
 					if(state){
 					connection.commit();
 					//SMSSendMethod test = new SMSSendMethod();
+					//에러 0004는 문자길이 초과로 인한 오류로 발생시 해당내용 수정 90자까지 되는걸로 알고있음( 단문전송만 가능) 
 					 //test.SMSSend(text.getUserTel()+","+text1.getUserTel(), text.getTextContent());	
 						
 					}else{
