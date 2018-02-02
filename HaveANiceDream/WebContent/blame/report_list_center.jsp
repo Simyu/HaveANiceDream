@@ -22,6 +22,16 @@ function windowpopup(i){
 	popup = window.open("Answer_list.jsp","num","width=1000,height=500,left=100 top=50");
 	num++;
 }
+/* $(document).ready(function(){
+	$("#search").on("click",function(){
+		var k = $(this).val();
+		$("#table > thead > tbody > tr > td").hide();
+		var temp = $("#table > thead >tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
+
+        $(temp).parent().show();
+	});
+	
+}); */
 
 
 </script>
@@ -49,11 +59,11 @@ function windowpopup(i){
 						<input type="hidden" name="list" id="center">
 						<div class="col-sm-2">
 							<button type="button"
-								class="btn btn-round btn-primary form-control">검색</button>
+								class="btn btn-round btn-primary form-control" id="search">검색</button>
 						</div>
 					</div>
 				</form>
-				<table class="table table-striped table-advance table-hover">
+				<table class="table table-striped table-advance table-hover" id="table">
 					<thead>
 						<tr>
 							<th>NO</th>
@@ -62,7 +72,7 @@ function windowpopup(i){
 							<th>신고자ID</th>
 							<th>상대방ID</th>
 							<th>제목</th>
-							<th>처리현황</th>
+							
 						</tr>
 					</thead>
 					<tbody>

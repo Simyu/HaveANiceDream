@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import blame.dto.BlameDTO;
 import blame.service.BlameService;
 import blame.service.BlameServiceimpl;
@@ -45,12 +47,14 @@ public class BlameListServlet extends HttpServlet{
 			viewpath = "../blame/report_list_center.jsp";
 			req.setAttribute("blamelist", blamelist);
 		}
-		
 		req.setAttribute("viewpath", viewpath);
 		
 		
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(req, res);
+		
+		//JSONObject obj = new JSONObject();
+		
 	}
 
 }
