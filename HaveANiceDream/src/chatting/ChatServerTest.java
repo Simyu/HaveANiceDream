@@ -17,7 +17,11 @@ public class ChatServerTest {
 	private static final String GUEST_PREFIX = "Guest";
 	//값이 저절로 증가하는 integer
 	private static final AtomicInteger connectionIds = new AtomicInteger(0);
-	/*CopyOnWriteArraySet은 Set의 구현체(Set interface를 구현한 클래스 중 하나)이다. 그런데 CopyOnWriteArraySet은 copy-on-write array라는(실제 CopyOnWriteArraySet는 CopyOnWriteArrayList를 멤버변수로 가지고 있고 add,remove,contains 등등 대부분의 메서드를 가지고 있다.) CopyOnWriteArraySet, CopyOnWriteArrayList의 핵심은 변경작업들, add,remove, set등의 작업에 대해 내부 배열변수에 복사본들 만들어 놓고, 해당 작업을 수행한다는 것이다. 이렇게 하면 interation시에 추가,삭제에 대해 동시성이 보장이 된다는 이점이 있다고 생각된다.*/
+	/*CopyOnWriteArraySet은 Set의 구현체(Set interface를 구현한 클래스 중 하나)이다. 
+	 * 그런데 CopyOnWriteArraySet은 copy-on-write array라는(실제 CopyOnWriteArraySet는 CopyOnWriteArrayList를 멤버변수로 가지고 있고 
+	 * add,remove,contains 등등 대부분의 메서드를 가지고 있다.) CopyOnWriteArraySet, 
+	 * CopyOnWriteArrayList의 핵심은 변경작업들, add,remove, set등의 작업에 대해 내부 배열변수에 복사본들 만들어 놓고, 
+	 * 해당 작업을 수행한다는 것이다. 이렇게 하면 interation시에 추가,삭제에 대해 동시성이 보장이 된다는 이점이 있다고 생각된다.*/
 	//아무튼 set!
 	private static final Set<ChatServerTest> connections = new CopyOnWriteArraySet<ChatServerTest>();
 	

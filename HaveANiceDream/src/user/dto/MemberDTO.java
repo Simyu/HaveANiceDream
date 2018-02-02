@@ -31,6 +31,8 @@ public class MemberDTO {
 	private Integer pointTotal;
 
 	private String userType;
+	
+	private boolean attendance;
 
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
@@ -53,6 +55,7 @@ public class MemberDTO {
 		this.userLastLoginTime = null;
 		this.pointTotal = 5000;
 		this.userType = "일반회원";
+		this.attendance = false;
 	}
 
 	public MemberDTO(String userId, String userPw, String userEmail, String userName, String userZipcode,
@@ -73,6 +76,7 @@ public class MemberDTO {
 		this.userImage = userImage;
 		this.pointTotal = pointTotal;
 		this.userType = userType;
+		this.attendance = false;
 	}
 
 	public String getUserId() {
@@ -187,13 +191,23 @@ public class MemberDTO {
 		this.userType = userType;
 	}
 
+	public boolean isAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(boolean attendance) {
+		this.attendance = attendance;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDTO [userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail + ", userName="
 				+ userName + ", userZipcode=" + userZipcode + ", userAddr=" + userAddr + ", userAddrDetail="
 				+ userAddrDetail + ", userTel=" + userTel + ", userSigdate=" + userSigdate + ", userLogType="
 				+ userLogType + ", userLastLoginTime=" + userLastLoginTime + ", userImage=" + userImage
-				+ ", pointTotal=" + pointTotal + ", userType=" + userType + "]";
+				+ ", pointTotal=" + pointTotal + ", userType=" + userType + ", attendance=" + attendance + "]";
 	}
+
+
 
 }
