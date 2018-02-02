@@ -70,7 +70,7 @@ public class Product_List_Servlet extends HttpServlet {
 		  category_list = service1.categoryList(null);
 			request.setAttribute("viewpath", viewpath);
 			request.setAttribute("productlist", productlist);
-		 
+		 System.out.println(productlist.size());
 		 request.setAttribute("category_list", category_list);
 		 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 			requestDispatcher.forward(request, response);

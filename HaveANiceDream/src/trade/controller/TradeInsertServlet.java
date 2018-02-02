@@ -71,15 +71,15 @@ public class TradeInsertServlet extends HttpServlet {
 			 String date = dateFormat.format(new Date(time));
 			 //트랜잭션처리해야겠당... ㅠㅠ     textno seq  tradeno currval, 전화번호... , 3개만... 이작업도 따로 빠져야함
 			 String msg = "[HaveANiceDream] 거래번호 [" +productdto.getProductNo()+"]";
-				msg= msg+" 물품이 신청되었습니다. 거래금액 [ " + productdto.getProductPrice()+" ] " + "신청 시간" +date;
+				msg= msg+" 물품이 신청되었습니다. 거래금액 [ " + productdto.getProductPrice()+" ] ";
 			 TextDTO text = new TextDTO(userId, date, msg, user.getUserTel());
 			 //판매자
 			 TextDTO text1 = new TextDTO(userId, date, msg,productdto.getUserTel());
 			 
 		
+				System.out.println("서블릿"+user.getUserTel());
 				
-				
-			 
+				System.out.println("서블릿"+productdto.getUserTel());
 			 
 			 TradeDTO tradedto = new TradeDTO(null, null, null, userId, productdto.getUserId(), productdto.getProductNo(), "거래대기");
 			 int rowNum = tradeservice.tradeInsert(tradedto,text,text1);

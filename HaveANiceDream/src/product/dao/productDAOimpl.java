@@ -39,9 +39,13 @@ PRODUCT_NO                                NOT NULL NUMBER
 		  int result=0;
 		  PreparedStatement ptmt=null;
 		  for (int i = 0; i < imageSrc.size(); i++) {
+			  if(imageSrc.get(i)!=null){
 			  ptmt = connection.prepareStatement(ProductQuery.PRODUCT_IMG_INSERT);
 				     ptmt.setString(1, imageSrc.get(i));
 				     result=ptmt.executeUpdate();
+			  }else{
+				  
+			  }
 		}
 		 
 		     DBUtil.close(ptmt);
@@ -105,8 +109,9 @@ PRODUCT_NO                                NOT NULL NUMBER
 			ptmt.setInt(2, categoryNo);
 			ptmt.setInt(3, categoryDetailNo);
 		}
-		else if(categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
+		else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL);
+			
 		}else if(userId!=null){
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL1);
 			ptmt.setString(1, userId);
