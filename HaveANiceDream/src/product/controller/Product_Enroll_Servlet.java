@@ -56,6 +56,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		while(files.hasMoreElements()){
 			String file = files.nextElement();
 			fileName = multipart.getFilesystemName(file);
+			System.out.println(fileName);
 			filelist.add(fileName);
 		}
 		System.out.println(filelist);

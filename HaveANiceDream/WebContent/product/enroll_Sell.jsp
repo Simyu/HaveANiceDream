@@ -11,6 +11,7 @@
 <meta name="author" content="Dashboard">
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	<script src="/HaveANiceDream/Theme/assets/js/Filechose.js"></script>
 <script type="text/javascript">
 	selectNum=""
       function getName(myform){
@@ -230,9 +231,21 @@
 						<label class="col-sm-2 col-sm-2 control-label">업로드</label>
 						<div class="col-sm-10">
 							<div >
-								<input type="file" name="uploadFile1" required="required" /><br/>
+								<div class="filebox bs3-primary preview-image">
+								 <label for="input_file1">파일찾기</label>
+								<input type="file" id="input_file1" class="upload-hidden" name="boardImg1" required="required">
+								</div>
+							<div class="filebox bs3-primary preview-image">
+								 <label for="input_file2">파일찾기</label>
+								<input type="file" id="input_file2" class="upload-hidden" name="boardImg2">
+							</div>
+								<div class="filebox bs3-primary preview-image">
+								 <label for="input_file3">파일찾기</label>
+								<input type="file" id="input_file3" class="upload-hidden" name="boardImg3">
+							</div>
+							<!-- 	<input type="file" name="uploadFile1"  /><br/>
 								<input type="file" name="uploadFile2"  /><br/>
-								<input type="file" name="uploadFile3"  /><br/> 
+								<input type="file" name="uploadFile3"  /><br/>  -->
 								<!-- <textarea rows="3" cols="100%"></textarea>
 								<button type="button" class="btn btn-default">+추가</button>
 								<button type="button" class="btn btn-default">-삭제</button> -->

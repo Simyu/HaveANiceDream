@@ -14,7 +14,6 @@
 <title>DASHGUM - Bootstrap Admin Template</title>
 
 <link href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
 <!-- Custom styles for this template -->
 <script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <script src="/HaveANiceDream/Theme/assets/js/Filechose.js"></script>
