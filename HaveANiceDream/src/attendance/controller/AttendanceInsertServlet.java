@@ -39,17 +39,17 @@ public class AttendanceInsertServlet extends HttpServlet {
 		AttendanceService service = new AttendanceServiceimpl();
 		int result = service.insert(attendance);
 		
-		if(result>0){
+		/*if(result>0){*/
 			PointService point = new PointServiceImpl();
 			point.pointInsert(new PointDTO(0,userId,null,"출석",attpoint));
 			response.sendRedirect("/HaveANiceDream/index.html");
-		}else{
+		/*}else{*/
 			String viewpath = "../attendance/project_calender.jsp";
 			request.setAttribute("viewpath", viewpath);
 			
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 			requestDispatcher.forward(request, response);
-		}
+		//}
 	
 	}
 

@@ -169,7 +169,7 @@
 }
 /* Today */
 .monthly-today .monthly-day-number {
-	color: #FFF;
+	color: black;
 	background: #EA6565;
 	border-radius: 20px;
 	top: 1px;
@@ -180,17 +180,12 @@
 	line-height: 18px;
 	text-align: center;
 }
-.monthly-todayy{
-	background: blue;
-	border-radius: 20px;
-	top: 1px;
-	left: 1px;
-	font-size: 10px;
-	width: 18px;
-	height: 18px;
-	line-height: 18px;
-	text-align: center;
+.add{
+		color: #FFF;
+	background: #EA6565;
 }
+
+
 .monthly-day-pick.monthly-today .monthly-day-number {
 	padding:0;
 	margin:22%;

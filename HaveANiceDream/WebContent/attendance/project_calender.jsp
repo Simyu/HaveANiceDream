@@ -1,17 +1,38 @@
+<%@page import="user.dto.MemberDTO"%>
+<%@page import="attendance.dto.AttendanceDTO"%>
+<%@page import="java.sql.Date"%>
+
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript">
-	function setPath(){
-		alert("출석체크완료");
-		location.href="/HaveANiceDream/attendance/insert.do";
-	}
+	 <%
+		MemberDTO dto = (MemberDTO)session.getAttribute("user");
+		//System.out.println(dto);
+	%> 
+
+	$(document).ready(function(){
+		$("#click").on("click",function(){
+			location.href="/HaveANiceDream/attendance/insert.do";
+			//alert("tet");
+			
+			<%
+				dto.setAttendance(true);
+			%> 
+			
+		});
+	});
 	
 </script>
 </head>
 <body>
+<%
+	ArrayList<Date> date = (ArrayList)request.getAttribute("attDate");
+//System.out.println(date);
+%>
 	<h3>
 		<i class="fa fa-angle-right"></i>출석체크
 	</h3>
@@ -24,14 +45,21 @@
 					</div>
                          
 				</div>
+			
 				<div class="col-lg-12">
 					<br /> <br /> <br /> <br />
-					<button class="btn btn-theme02" type="button" onclick="setPath()"id="check">출석체크</button>
+					<%
+					
+						if(!dto.isAttendance()){%> 
+					<button class="btn btn-theme02" type="button" name="check"id="click">출석체크</button>
+							
+					 <%}%>
 				</div>
+				
 			</div>
 		</div>
 	</div>
-
+	
 
 
 </body>

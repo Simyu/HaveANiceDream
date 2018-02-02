@@ -29,9 +29,8 @@ $(document).ready(function() {
 			$("#answercontent").text(res.answerContent);
 			$("#answerdate").text(res.answerDate);
 		},
-		error:function(b,bb,bbb){
-			alert(b+","+bb+","+bbb);
-		}
+		
+	
 	});
 
 });
@@ -59,7 +58,7 @@ $(document).ready(function() {
 							<tr>
 								<th class="first" scope="col">제목</th>
 								<th scope="col">문의일시</th>
-								<th scope="col">답변여부</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -76,9 +75,7 @@ $(document).ready(function() {
 								<td class="linebg">
 									<div class="inner-box02" id="date"></div>
 								</td>
-								<td class="linebg">
-									<div class="inner-box02" id="answer"></div>
-								</td>
+								
 							</tr>
 							<tr>
 								<td>
@@ -94,9 +91,7 @@ $(document).ready(function() {
 								<td class="linebg02">
 									<div class="inner-box02" name="answerdate" id="answerdate"></div>
 								</td>
-								<td class="linebg02">
-									<div class="inner-box02" id="answer_user"></div>
-								</td>
+								
 							</tr>
 						</tbody>
 					</table>

@@ -31,6 +31,12 @@
 			}
 		});
 	});
+	$(document).ready(function(){
+		$("#click").on("click",function(){
+			window.close();
+			self.close();
+		});
+	});
 	
 </script>
 </head>
@@ -56,7 +62,7 @@
 							<tr>
 								<th class="first" scope="col">제목</th>
 								<th scope="col">문의일시</th>
-								<th scope="col">답변여부</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -71,11 +77,9 @@
 									</div>
 								</td>
 								<td class="linebg">
-									<div class="inner-box02" id="date"></div>
+									<div class="inner-box" id="date"></div>
 								</td>
-								<td class="linebg">
-									<div class="inner-box02" id="answer"></div>
-								</td>
+							
 							</tr>
 							<tr>
 								<td>
@@ -91,22 +95,19 @@
 												style="height: 120px;" id="answercontent"></textarea>
 										</div>
 									</div>
-									</div>
-									</div>
+									
 								</td>
 								<td class="linebg02">
 									<div class="inner-box02" name="answerDate" id="answerdate"></div>
 								</td>
-								<td class="linebg02">
-									<div class="inner-box02"></div>
-								</td>
+								
 							</tr>
 						</tbody>
 					</table>
 					<div class="request-bottom">
 						<div class="btnbox tright">
 							<span class="btn-border"><input type="Submit"
-								class="orangebtn" value="답변등록" title="답변등록" /></span> <span
+								class="orangebtn" value="답변등록" title="답변등록" id="click"/></span> <span
 								class="btn-border type02"><input type="Submit"
 								class="bluebtn" value="취소" title="취소" /></span>
 						</div>

@@ -12,12 +12,17 @@ public class AttendanceDTO {
 
     private Date attDate;
     
-    public AttendanceDTO() {
-		// TODO Auto-generated constructor stub
-	}
+    
     public AttendanceDTO(String userId, Integer attPoint) {
 		super();
 		
+		this.userId = userId;
+		this.attPoint = attPoint;
+		
+	}
+    public AttendanceDTO(Integer attNo, String userId, Integer attPoint) {
+		super();
+		this.attNo = attNo;
 		this.userId = userId;
 		this.attPoint = attPoint;
 		

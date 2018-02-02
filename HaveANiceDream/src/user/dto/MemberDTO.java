@@ -196,7 +196,7 @@ public class MemberDTO {
 	}
 
 	public void setAttendance(boolean attendance) {
-		this.attendance = attendance;
+		this.attendance = attendance;//true
 	}
 
 	@Override

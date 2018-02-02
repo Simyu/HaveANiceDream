@@ -36,6 +36,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 -->
+
 </head>
 
 <body>
@@ -85,49 +86,32 @@
 	<script type="text/javascript" src="/HaveANiceDream/Theme/assets/js/gritter-conf.js"></script>
 	<!--script for this page-->
 
-	<script>
+	<!-- <script>
 		//custom select box
 
 		$(function() {
 			$('select.styled').customSelect();
 		});
-	</script>
-	  <script type="text/javascript">
+	</script> -->
+	 <!--  <script type="text/javascript">
       $(function() {
         //    fancybox
           jQuery(".fancybox").fancybox();
       });
 
-  </script>
+  </script> -->
   <script type="text/javascript">
-						$(window).load(function() {
+$(window).load(function() {
 
-							$('#mycalendar').monthly({
-						
-										weekStart: 'Sun',
-										mode: '',
-										xmlUrl: '',
-										target: '',
-										eventList: true,
-										maxWidth: false,
-										startHidden: false,
-										showTrigger: '',
-										stylePast: false,
-										disablePast: false
-									
-							});
+		$('#mycalendar').monthly({
+			
+			
+		});
 
-							$('#mycalendar2').monthly({
-								mode : 'picker',
-								target : '#mytarget',
-								maxWidth : '250px',
-								startHidden : true,
-								showTrigger : '#mytarget',
-								stylePast : true,
-								disablePast : true
-							});
-						});
+	
+	});
 	</script>
+ 
 	
 </body>
 </html>

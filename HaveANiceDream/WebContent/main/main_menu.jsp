@@ -58,7 +58,7 @@
 								조회</a></li>
 						<li><a href="/HaveANiceDream/point/list.do">포인트 조회</a></li>
 						<li><a
-							href="javascript:setPath('../attendance/project_calender.jsp')">출석체크</a></li>
+							href="/HaveANiceDream/attendance/list.do">출석체크</a></li>
 
 					</ul></li>
 

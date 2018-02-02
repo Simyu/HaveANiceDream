@@ -110,8 +110,10 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 			var setMonth = $('#' + uniqueId).data('setMonth'),
 				setYear = $('#' + uniqueId).data('setYear');
 			if (setMonth == currentMonth && setYear == currentYear) {
-				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').addClass('monthly-today');
+				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').addClass("add");
+				
 			}
+			
 
 			// Reset button
 			if (setMonth == currentMonth && setYear == currentYear) {
@@ -356,22 +358,21 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 		});
 		
 		// Clicking an event within the list
-		$(document.body).on('click', '#'+uniqueId+' .listed-event', function (e) {
+		/*$(document.body).on('click', '#'+uniqueId+' .listed-event', function (e) {
 			var href = $(this).attr('href');
 			// If there isn't a link, don't go anywhere
 			if(!href) {
 				e.preventDefault();
 			}
-		});
-		$(document.body).ready(function(){
+		});*/
+		$(document).ready(function(){
 			$("#click").click(function(){
 				alert("tet");
-				
-				
-
-
-				
-			});
+				var setMonth = $('#' + uniqueId).data('setMonth'),
+				setYear = $('#' + uniqueId).data('setYear');
+			if (setMonth == currentMonth && setYear == currentYear) {
+				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').css("background-color","blue");
+			}});
 		});
 
 		}

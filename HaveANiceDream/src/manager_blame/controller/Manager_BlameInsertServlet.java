@@ -40,8 +40,8 @@ public class Manager_BlameInsertServlet extends HttpServlet {
 		Manager_BlameService service = new Manager_BlameServiceimpl();
 		int result = service.insert(dto);
 		
-		/*BlameService blame = new BlameServiceimpl();
-		blame.update(blameno);*/
+		BlameService blame = new BlameServiceimpl();
+		blame.update(blameno);
 		
 		/*if(result>0){
 			//response.sendRedirect("/HaveANiceDream/blame/list.do?state=2");

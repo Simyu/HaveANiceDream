@@ -1,11 +1,17 @@
 package attendance.dao;
 
+import static fw.DBUtil.close;
+
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import static fw.DBUtil.*;
+import java.util.ArrayList;
+
 import attendance.dto.AttendanceDTO;
-import attendance.query.*;
+import attendance.query.AttendanceQuery;
+import fw.DBUtil;
 
 public class AttendanceDAOimpl implements AttendanceDAO {
 
@@ -20,6 +26,30 @@ public class AttendanceDAOimpl implements AttendanceDAO {
 		result = ptmt.executeUpdate();
 		close(ptmt);
 		return result;
+	}
+
+	@Override
+	public ArrayList<Date> list(String userid, Connection con) throws SQLException {
+		
+		ArrayList<Date> list = null;
+		PreparedStatement ptmt = null;
+		ResultSet resultSet = null;
+		ptmt = con.prepareStatement(AttendanceQuery.ATTENDANCEQUERY_LIST);
+		ptmt.setString(1, userid);
+		resultSet = ptmt.executeQuery();
+		
+		while(resultSet.next()){
+			if(list==null){
+				list = new ArrayList<Date>();
+			}
+			
+			list.add(resultSet.getDate(1));
+		}
+		//System.out.println(resultSet);
+		//System.out.println(list);
+		DBUtil.close(ptmt);
+		DBUtil.close(resultSet);
+		return list;
 	}
 
 }

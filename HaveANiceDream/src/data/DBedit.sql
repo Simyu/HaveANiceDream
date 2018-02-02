@@ -147,6 +147,3 @@ CREATE TABLE board
  	CONSTRAINT BOARD_PK PRIMARY KEY (board_No)
 );
 
-select b.blame_no, b.blame_date, b.blame_title, b.blame_content, a.answer_title, a.answer_content, a.answer_date
-from blame b, manager_blame a
-where b.blame_no=a.blame_no;
