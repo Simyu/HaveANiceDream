@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="user.dto.MemberDTO"%>
 <%@page import="category.dto.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -168,12 +169,13 @@ $(document).ready(function(){
 							<%
 								ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>) request.getAttribute("productlist");
 								int size = productlist.size();
-
+   								
 								for (int i = 0; i < size; i++) {
 									ProductDTO dto = productlist.get(i);
 									//검색간...   해당물품 검색 DB접근해서 서블릿요청
 									//이미지 실버 물품이미지넣을거고... 거레상태는 표시할예정
 							%>
+							
 							<tr> <!--  종류 부분 수정 ( 대분류 .. 내용 (이름 받아와야함.category_no로 name받아서) -->
 								<td><%=dto.getCategoryName() %></td>
 								<td><img
@@ -186,9 +188,7 @@ $(document).ready(function(){
 								<td class="numeric"><%=dto.getProductPrice()%></td>
 								<td class="numeric"><%=dto.getProductDate()%></td>
 							</tr>
-							<%
-								}
-							%>
+							<%} %>
 					
 
 						</tbody>

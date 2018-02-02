@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<textarea rows="40" cols="50" id="ta">
+
+</textarea>
+		<br> <input type="text" id="txt"> 
+		<input type="button" value="send" onclick="send()">
+	</div>
+	<script type="text/javascript">
+	var wSocket = new WebSocket("ws://localhost:8088/HaveANiceDream/user/chat");
+	
+	wSocket.onmessage = function(e) {
+		//alert(e.data);
+		document.getElementById("ta").value += (e.data+"\n");
+	}
+	
+	wSocket.onopen = function(e) {
+		alert("서버 연겨어어어어러럴!! 가즈아!");
+	}
+	
+	wSocket.onclose = function(e) {
+		alert("서버 종료!!!");
+	}
+	
+	function send() {
+		wSocket.send(document.getElementById("txt").value);
+	}
+	</script>
+</body>
+</html>

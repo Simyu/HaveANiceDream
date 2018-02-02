@@ -12,6 +12,10 @@ import point.dao.PointDAO;
 import point.dao.PointDAOImpl;
 import point.dto.PointDTO;
 import product.dto.ProductDTO;
+import sms.SMSSendMethod;
+import text.TextDTO;
+import text.dao.TextDAO;
+import text.dao.TextDAOImpl;
 import trade.dao.TradeDAOImpl;
 import trade.dao.TradeDAO;
 import trade.dto.TradeDTO;
@@ -22,20 +26,39 @@ import user.dto.MemberDTO;
 public class TradeServiceImpl implements TradeService {
 
 	@Override
-	public int tradeInsert(TradeDTO tradelist) {
+	public int tradeInsert(TradeDTO tradelist,TextDTO text,TextDTO text1 ) {
 		Connection connection = null;
 		int rowNum = 0;
-
+		int result=0;
+		boolean state=false;
 		try {
 			connection = DBUtil.getConnect();
-
+                 connection.setAutoCommit(false);
 			TradeDAO dao = new TradeDAOImpl();
 			rowNum = dao.tradeInsert(tradelist, connection);
-
+			TextDAO textdao = new TextDAOImpl();
+			result = textdao.insertText(text, connection);
+			result = textdao.insertText(text1, connection);
+            state =true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			
+		
+				try {
+					if(state){
+					connection.commit();
+					//SMSSendMethod test = new SMSSendMethod();
+					//에러 0004는 문자길이 초과로 인한 오류로 발생시 해당내용 수정 90자까지 되는걸로 알고있음( 단문전송만 가능) 
+					 //test.SMSSend(text.getUserTel()+","+text1.getUserTel(), text.getTextContent());	
+						
+					}else{
+						connection.rollback();
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
 			DBUtil.close(connection);
 		}
 
