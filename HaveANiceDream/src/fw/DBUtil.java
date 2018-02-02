@@ -20,7 +20,7 @@ public class DBUtil {
 		Connection connection = null;
 		
 		//main DB
-		//String url = "jdbc:oracle:thin:@192.168.9.50:1521:xe";
+		//String url = "jdbc:oracle:thin:@192.168.9.128:1521:xe";
 		//Test DB
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hand";
