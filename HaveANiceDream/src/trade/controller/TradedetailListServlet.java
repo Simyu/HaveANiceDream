@@ -52,8 +52,8 @@ public class TradedetailListServlet extends HttpServlet {
 		buyuserdto =userservice.userSelect(tradedto.getUserIdBuy());
 		selluserdto =userservice.userSelect(tradedto.getUserIdSell());
 		
-		
-		System.out.println(selluserdto);
+		String CategoryName= productdto.getCategoryName()+">"+productdto.getCategoryDetailName();
+		System.out.println(CategoryName);
 		
 		
 		
@@ -61,7 +61,7 @@ public class TradedetailListServlet extends HttpServlet {
 		
 		jsonObject.put("productImg", productdto.getImageSrc());
 
-		jsonObject.put("CategoryName", productdto.getCategoryName());
+		jsonObject.put("CategoryName", CategoryName);
 
 		jsonObject.put("ProductTitle", productdto.getProductTitle());
 

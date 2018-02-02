@@ -303,6 +303,43 @@ public class ProductDTO {
 		this.userEmail = userEmail;
 	}
 	
+	private String categoryDetailName;
+	public ProductDTO(Integer productNo, String userId, Integer categoryNo, String productName ,
+			 Integer productPrice, String productContent, String product_Grade, String productTitle,
+			Date productDate, int productState, Integer productExfDate, String tradeType, Integer categoryDetailNo, String categoryName,
+			String imageSrc, String userName,String userTel ,String userEmail, String categoryDetailName) {
+		super();
+		this.productNo = productNo;
+		this.userId = userId;
+		this.categoryNo = categoryNo;
+		this.categoryDetailNo = categoryDetailNo;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productContent = productContent;
+		this.product_Grade = product_Grade;
+		this.productTitle = productTitle;
+		this.productDate = productDate;
+		this.productState = productState;
+		this.productExfDate = productExfDate;
+		this.tradeType = tradeType;
+		this.categoryName = categoryName;
+		this.imageSrc = imageSrc;
+		this.userName = userName;
+		this.userTel = userTel;
+		this.userEmail = userEmail;
+		this.categoryDetailName = categoryDetailName;
+	}
+
+	public String getCategoryDetailName() {
+		return categoryDetailName;
+	}
+
+	public void setCategoryDetailName(String categoryDetailName) {
+		this.categoryDetailName = categoryDetailName;
+	}
+
+	
+	
 	
 	
 	

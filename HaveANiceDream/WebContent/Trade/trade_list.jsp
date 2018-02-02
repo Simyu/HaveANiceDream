@@ -55,7 +55,7 @@
 	num2 = 1;
 	function detailview(tradeNo,productNo){
 		$("#tradeNo").val(tradeNo);
-		$("#productNo").val(productNo);
+		$("#productNo").val(productNo);//팝업의 이름 
 		popup =	window.open("/HaveANiceDream/Trade/trade_ing-detail.jsp", num2, "width=1000, height=600, left=100, top=50");
 		num2++;
 	}

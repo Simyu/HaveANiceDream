@@ -4,8 +4,9 @@
 <html>
 <head>
 	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+	
 	<script type="text/javascript">
-	$(document).ready(function() {alert("들어는오냐");
+	$(document).ready(function() {
 				$.ajax({
 							url : "/HaveANiceDream/trade/detail.do",
 							type : "GET",
@@ -18,15 +19,20 @@
 								$("#CategoryName").text(res.CategoryName);
 								$("#productImg").attr(
 										"src",
-										"/HaveANiceDream/uploadresources/"
+										"/HaveANiceDream/upload/"
 												+ res.productImg);
 								$("#ProductTitle").text(res.ProductTitle);
 								$("#ProductPrice").text(res.ProductPrice);
 								$("#userZipcode").text(res.userZipcode);
 								$("#ProductDate").text(res.ProductDate);
+								if(res.TradeType.equals("delivery_trade")){
+		    				    	trade="택배거래";
+		    				    }else if(res.TradeType.equals("trade")){
+		    				    	trade="직거래";
+		    				    }
 								$("#ProductName").text(res.ProductName);
 								$("#ProductNo").text(res.ProductNo);
-								$("#TradeType").text(res.TradeType);
+								$("#TradeType").text(trade);
 								$("#sellUserId").text(res.sellUserId);
 								$("#sellUserTel").text(res.sellUserTel);
 								$("#sellUserEmail").text(res.sellUserEmail);
