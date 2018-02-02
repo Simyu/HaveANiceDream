@@ -9,6 +9,25 @@ create SEQUENCE trade_seq;
 alter table trade drop column trade_memo;
 
 
+update product set PRODUCT_STATE = null;
+
+ALTER TABLE product MODIFY (PRODUCT_STATE VARCHAR2(20));
+
+update product set PRODUCT_STATE = '거래대기';
+
+
+
+update product set PRODUCT_STATE = null;
+
+ALTER TABLE product MODIFY (PRODUCT_STATE VARCHAR2(20));
+
+update product set PRODUCT_STATE = '거래대기';
+
+
+
+
+
+
 select * from trade where USER_ID_BUY='person' or USER_ID_SELL='person';
 
 
