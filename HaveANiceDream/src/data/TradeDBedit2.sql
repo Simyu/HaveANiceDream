@@ -11,9 +11,9 @@ alter table trade drop column trade_memo;
 
 update product set PRODUCT_STATE = null;
 
-ALTER TABLE product MODIFY (PRODUCT_STATE VARCHAR2(20));
+ALTER TABLE product MODIFY (PRODUCT_STATE number);
 
-update product set PRODUCT_STATE = '거래대기';
+update product set PRODUCT_STATE = 3;
 
 
 

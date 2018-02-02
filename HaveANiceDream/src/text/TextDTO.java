@@ -10,15 +10,40 @@ public class TextDTO {
 
     private String userId;
 
-    private Date textDate;
+    private String textDate;
 
     private String textContent;
+  
+    private String userTel;
     
-    public TextDTO() {
+    public String getUserTel() {
+		return userTel;
+	}
+
+
+	public void setUserTel(String userTel) {
+		this.userTel = userTel;
+	}
+
+
+	public TextDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TextDTO(Integer textNo, Integer tradeNo, String userId, Date textDate, String textContent) {
+    
+		public TextDTO(String userId, String textDate, String textContent, String userTel) {
+		super();
+		this.userId = userId;
+		this.textDate = textDate;
+		this.textContent = textContent;
+		this.userTel = userTel;
+	}
+
+
+
+
+
+	public TextDTO(Integer textNo, Integer tradeNo, String userId, String textDate, String textContent) {
 		super();
 		this.textNo = textNo;
 		this.tradeNo = tradeNo;
@@ -51,11 +76,11 @@ public class TextDTO {
 		this.userId = userId;
 	}
 
-	public Date getTextDate() {
+	public String getTextDate() {
 		return textDate;
 	}
 
-	public void setTextDate(Date textDate) {
+	public void setTextDate(String textDate) {
 		this.textDate = textDate;
 	}
 

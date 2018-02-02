@@ -1,7 +1,9 @@
 package trade.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 
@@ -16,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import product.dto.ProductDTO;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
+import sms.SMSSendMethod;
+import text.TextDTO;
 import trade.dto.TradeDTO;
 import trade.service.TradeService;
 import trade.service.TradeServiceImpl;
@@ -46,21 +50,41 @@ public class TradeInsertServlet extends HttpServlet {
 
 		String viewpath="";
 		
-
+				//String msg =""; //파라미터에서 받아와서 뿌릴 msg + 로 조합;
+				
+				
+				
+				
+				
 		if(ses!=null){
 			TradeService tradeservice = new TradeServiceImpl();
 			ProductDTO productdto = new ProductDTO();
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
 			String userId= user.getUserId();
 			productdto = proservice.productSelect(Integer.parseInt(thisProduct));
+			 //DB에 텍스트 넣을 부분...
+
 			
+			 //구매자
+			 long time = System.currentTimeMillis(); //현재시간
+			 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
+			 String date = dateFormat.format(new Date(time));
+			 //트랜잭션처리해야겠당... ㅠㅠ     textno seq  tradeno currval, 전화번호... , 3개만... 이작업도 따로 빠져야함
+			 String msg = "[HaveANiceDream] 거래번호 [" +productdto.getProductNo()+"]";
+				msg= msg+" 물품이 신청되었습니다. 거래금액 [ " + productdto.getProductPrice()+" ] " + "신청 시간" +date;
+			 TextDTO text = new TextDTO(userId, date, msg, user.getUserTel());
+			 //판매자
+			 TextDTO text1 = new TextDTO(userId, date, msg,productdto.getUserTel());
+			 
+		
+				
+				
 			 
 			 
 			 TradeDTO tradedto = new TradeDTO(null, null, null, userId, productdto.getUserId(), productdto.getProductNo(), "거래대기");
-			 int rowNum = tradeservice.tradeInsert(tradedto);
+			 int rowNum = tradeservice.tradeInsert(tradedto,text,text1);
 			 
-			 
-			 
+			
 	
 		}else{
 			viewpath="../user/login.html";

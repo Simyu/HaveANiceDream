@@ -15,9 +15,11 @@ public class TextDAOImpl implements TextDAO {
 		
 		PreparedStatement ptmt = null;
 
-		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_INSERT);
-		//"insert into product values(product_seq.nextval,?,?,?,?,?,?,?,sysdate,?,3,?)";
-		
+		ptmt = connection.prepareStatement("insert into text values(text_seq.nextval,trade_seq.currval,?,?,?");
+		ptmt.setString(1, text.getUserId());
+		ptmt.setString(2, text.getTextDate());
+		ptmt.setString(3, text.getTextContent());
+		result = ptmt.executeUpdate();
 		
 		return result;
 	}
