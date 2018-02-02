@@ -47,8 +47,8 @@ public class TradeServiceImpl implements TradeService {
 				try {
 					if(state){
 					connection.commit();
-					 SMSSendMethod test = new SMSSendMethod();
-						test.SMSSend(text.getUserTel()+","+text1.getUserTel(), text.getTextContent());	
+					//SMSSendMethod test = new SMSSendMethod();
+					 //test.SMSSend(text.getUserTel()+","+text1.getUserTel(), text.getTextContent());	
 						
 					}else{
 						connection.rollback();
