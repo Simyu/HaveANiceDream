@@ -15,5 +15,5 @@ public interface productDAO {
 	ProductDTO productSelect(int productNo  ,Connection connection) throws SQLException;
 	int updateProduct(ProductDTO product, Connection connection) throws SQLException;
 	ArrayList<String> productSelect_Image(int productNo, Connection connection) throws SQLException;
-	
+	int productStateUpdate(int productState,int productNo);
 }

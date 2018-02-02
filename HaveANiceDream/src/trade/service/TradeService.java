@@ -10,4 +10,5 @@ public interface TradeService {
 	int tradeInsert(TradeDTO tradelist);
 	ArrayList<TradeDTO> tradeSelect(String userId);
 	TradeDTO tradenoSelect(int tradeNo);
+	int tradeStateUpdate(String tradeState, int tradeNo);
 }

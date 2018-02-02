@@ -85,5 +85,26 @@ public class TradeServiceImpl implements TradeService {
 		return dto;
 	}
 
+	@Override
+	public int tradeStateUpdate(String tradeState, int tradeNo) {
+		Connection connection = null;
+		int result = 0;
+		
+		try {
+			connection = DBUtil.getConnect();
+			TradeDAO dao = new TradeDAOImpl();
+			result = dao.tradeStateUpdate(tradeState, tradeNo, connection);
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		return result;
+	}
+
 
 }

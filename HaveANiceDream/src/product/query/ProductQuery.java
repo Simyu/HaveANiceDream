@@ -25,7 +25,7 @@ public class ProductQuery {
 	public static final String PRODUCT_IMG_INSERT = "insert into product_image values(PRODUCT_IMAGE_SEQ.nextval,product_seq.currval,?)";
 	public static final String PRODUCT_IMG_UPDATE = "update product_image set image_src =? where product_no = ?";
 	public static final String PRODUCT_IMG_SELECTPNO= "select IMAGE_SRC from product_image where  product_No= ?";
-
+	public static final String PRODUCT_STATE_UPDATE = "update product set PRODUCT_STATE = ? where PRODUCT_NO = ?"; 
 
 
 	

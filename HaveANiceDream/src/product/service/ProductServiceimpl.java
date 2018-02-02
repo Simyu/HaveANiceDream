@@ -8,6 +8,8 @@ import fw.DBUtil;
 import product.dao.productDAO;
 import product.dao.productDAOimpl;
 import product.dto.ProductDTO;
+import trade.dao.TradeDAO;
+import trade.dao.TradeDAOImpl;
 
 public class ProductServiceimpl implements ProductService {
 	@Override
@@ -137,6 +139,23 @@ public class ProductServiceimpl implements ProductService {
 			
 		}
 		return 0;
+	}
+
+	@Override
+	public int productStateUpdate(int productState, int productNo) {
+		Connection connection = null;
+		int result = 0;
+		try {
+			connection = DBUtil.getConnect();
+			productDAO dao = new productDAOimpl();
+			result = dao.productStateUpdate(productState, productNo);
+			
+			
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		return result;
 	}
 
 	

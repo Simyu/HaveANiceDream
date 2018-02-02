@@ -59,9 +59,7 @@
 		popup =	window.open("/HaveANiceDream/Trade/trade_ing-detail.jsp", num2, "width=1000, height=600, left=100, top=50");
 		num2++;
 	}
-	function statePath(tradeNo,productNo){
-		location.href = "/HaveANiceDream/trade/stateupdate.do?productNo="+productNo+"&tradeNo="+tradeNo;
-	}
+	
 </script>
 </head>
 
@@ -169,9 +167,7 @@
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<label class="text-price-point-state" style="margin-bottom: 10px;"><%=tradedto.getTradeState()%> </label>
 					</div>
-					<%if(tradedto.getTradeState().equals("거래대기")){ 
-							if(tradedto.getUserIdBuy().equals(user.getUserId())){
-								%>
+					<%if(tradedto.getTradeState().equals("거래대기")){ %>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<a id="add-regular" class="btn btn-default btn-sm" href="javascript:;">필수확인</a>
 
@@ -198,43 +194,8 @@
 								</div>
 							</div>
 						</div>
-						<!-- end Modal -->
 					</div>
-					<%	}else{ %>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<a id="add-regular" class="btn btn-default btn-sm" href="javascript:;">필수확인</a>
-
-
-						<button class="btn btn-primary btn-sm" data-toggle="modal"
-							data-target="#myModal<%=tradedto.getTradeNo()%>">인계확인</button>
-						
-						<!-- Modal -->
-						<div class="modal fade" id="myModal<%=tradedto.getTradeNo()%>" tabindex="-1" role="dialog"
-							aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true"></button>
-										<h4 class="modal-title" id="myModalLabel<%=tradedto.getTradeNo()%>">인계 완료</h4>
-									</div>
-									<div class="modal-body">물품을 인계하시겠습니까?</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">아니요</button>
-										<button type="button" class="btn btn-primary" 
-										onclick="javascript:statePath
-										(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>)" data-dismiss="modal">예</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- end Modal -->
-					</div>
-						
-						
-					<% 	}
-					} %>
+					<%} %>
 				</div>
 				
 				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">

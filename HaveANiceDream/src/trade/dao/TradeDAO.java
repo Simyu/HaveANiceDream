@@ -12,4 +12,5 @@ public interface TradeDAO {
 	int tradeInsert(TradeDTO tradelist, Connection connection) throws SQLException;
 	ArrayList<TradeDTO> tradeSelect(String userId, Connection connection) throws SQLException;
 	TradeDTO tradenoSelect(int tradeNo, Connection connection) throws SQLException;
+	int tradeStateUpdate(String tradeState ,int tradeNo, Connection connection) throws SQLException;
 }

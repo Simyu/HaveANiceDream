@@ -82,4 +82,21 @@ public class TradeDAOImpl implements TradeDAO {
 		
 		return dto;
 	}
+
+	@Override
+	public int tradeStateUpdate(String tradeState ,int tradeNo, Connection connection) throws SQLException {
+		int result = 0;
+		
+		PreparedStatement ptmt = connection.prepareStatement(TradeQuery.TRADE_STATE_UPDATE);
+		
+		ptmt.setString(1, tradeState);
+		ptmt.setInt(1, tradeNo);
+
+
+		result = ptmt.executeUpdate();
+
+		DBUtil.close(ptmt);
+		
+		return result;
+	}
 }
