@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import fw.DBUtil;
 import product.dto.ProductDTO;
 import product.query.ProductQuery;
+import trade.query.TradeQuery;
 import user.dto.MemberDTO;
 
 public class productDAOimpl implements productDAO {
@@ -245,6 +246,25 @@ PRODUCT_NO                                NOT NULL NUMBER
 		     
 		     DBUtil.close(ptmt);
 		  return result;
+	}
+
+	@Override
+	public int productStateUpdate(int productState, int productNo,Connection connection) throws SQLException{
+		
+		int result = 0;
+		
+		PreparedStatement ptmt = connection.prepareStatement(ProductQuery.PRODUCT_STATE_UPDATE);
+		//update product set PRODUCT_STATE = ? where PRODUCT_NO = ?
+		
+		ptmt.setInt(1, productState);
+		ptmt.setInt(2, productNo);
+
+
+		result = ptmt.executeUpdate();
+
+		DBUtil.close(ptmt);
+		
+		return result;
 	}
 
 

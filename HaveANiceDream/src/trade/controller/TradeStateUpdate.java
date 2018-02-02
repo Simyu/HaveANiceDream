@@ -41,7 +41,12 @@ public class TradeStateUpdate extends HttpServlet {
 		int productStateUpdateResult = 0;
 		if(tradedto.getTradeState().equals("거래대기")){
 			tradeStateUpdateResult = tradeservice.tradeStateUpdate("거래중 ", Integer.parseInt(tradeNo));
-			productStateUpdateResult = 
+			int productState=2;//거래중을 표시
+			productStateUpdateResult = proservice.productStateUpdate(productState, Integer.parseInt(productNo));
+		}else if(tradedto.getTradeState().equals("거래중")){
+			tradeStateUpdateResult = tradeservice.tradeStateUpdate("거래완료 ", Integer.parseInt(tradeNo));
+			int productState=1;//거래완료를 표시
+			productStateUpdateResult = proservice.productStateUpdate(productState, Integer.parseInt(productNo));
 		}
 		
 		

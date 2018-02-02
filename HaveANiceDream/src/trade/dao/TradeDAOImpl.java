@@ -90,7 +90,7 @@ public class TradeDAOImpl implements TradeDAO {
 		PreparedStatement ptmt = connection.prepareStatement(TradeQuery.TRADE_STATE_UPDATE);
 		
 		ptmt.setString(1, tradeState);
-		ptmt.setInt(1, tradeNo);
+		ptmt.setInt(2, tradeNo);
 
 
 		result = ptmt.executeUpdate();

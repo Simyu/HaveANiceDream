@@ -148,8 +148,11 @@ public class ProductServiceimpl implements ProductService {
 		try {
 			connection = DBUtil.getConnect();
 			productDAO dao = new productDAOimpl();
-			result = dao.productStateUpdate(productState, productNo);
+			result = dao.productStateUpdate(productState, productNo, connection);
 			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
 			
 		} finally{
 			DBUtil.close(connection);
