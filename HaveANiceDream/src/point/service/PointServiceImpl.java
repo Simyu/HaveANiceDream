@@ -74,7 +74,7 @@ public class PointServiceImpl implements PointService {
 	}
 
 	@Override
-	public int pointTradeInc(String userid, int point) {
+	public int pointTrade(String selluserid, String buyuserid, int point){
 		int res = 0;
 		Connection connection = null;
 		boolean state = false;
@@ -83,16 +83,24 @@ public class PointServiceImpl implements PointService {
 			connection = DBUtil.getConnect();
 			connection.setAutoCommit(false);
 			
-			PointDTO pointDTO = new PointDTO(userid, "드림 성공", point);
+			PointDTO pointDTO = new PointDTO(selluserid, "드림", point);
 			
 			PointDAO pointDAO = new PointDAOImpl();
 			res = pointDAO.pointInsert(pointDTO, connection);
 			
 			UserDAO userDAO = new UserDAOImpl();
-			int userPoint = userDAO.userGetPoint(userid, connection);
-			res += userDAO.userUpdatePoint(userPoint+point, userid, connection);
+			int userPoint = userDAO.userGetPoint(selluserid, connection);
+			res += userDAO.userUpdatePoint(userPoint+point, selluserid, connection);
+
+			pointDTO = new PointDTO(buyuserid, "받음", (-1)*point);
+			
+			res = pointDAO.pointInsert(pointDTO, connection);
+			
+			userPoint = userDAO.userGetPoint(buyuserid, connection);
+			res += userDAO.userUpdatePoint(userPoint-point, buyuserid, connection);
 			
 			state = true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -116,47 +124,5 @@ public class PointServiceImpl implements PointService {
 		return res;
 	}
 
-	@Override
-	public int pointTradeDec(String userid, int point) {
-		int res = 0;
-		Connection connection = null;
-		boolean state = false;
-		
-		try {
-			connection = DBUtil.getConnect();
-			connection.setAutoCommit(false);
-			
-			PointDTO pointDTO = new PointDTO(userid, "드림 받기 성공", (point*-1));
-			
-			PointDAO pointDAO = new PointDAOImpl();
-			res = pointDAO.pointInsert(pointDTO, connection);
-			
-			UserDAO userDAO = new UserDAOImpl();
-			int userPoint = userDAO.userGetPoint(userid, connection);
-			res += userDAO.userUpdatePoint(userPoint-point, userid, connection);
-			
-			state = true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-
-			try {
-
-				if (state){
-					connection.commit();
-				} else {
-					connection.rollback();
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
-			DBUtil.close(connection);
-		}
-		
-		
-		return res;
-	}
 
 }
