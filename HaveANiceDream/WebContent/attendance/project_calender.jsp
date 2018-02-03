@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	 <%
 		MemberDTO dto = (MemberDTO)session.getAttribute("user");
-		//System.out.println(dto);
+		System.out.println(dto);
 	%> 
 
 	$(document).ready(function(){
@@ -19,9 +19,6 @@
 			location.href="/HaveANiceDream/attendance/insert.do";
 			//alert("tet");
 			
-			<%
-				dto.setAttendance(true);
-			%> 
 			
 		});
 	});
@@ -33,6 +30,9 @@
 	ArrayList<Date> date = (ArrayList)request.getAttribute("attDate");
 //System.out.println(date);
 %>
+			<%
+				dto.setAttendance(true);
+			%> 
 	<h3>
 		<i class="fa fa-angle-right"></i>출석체크
 	</h3>
@@ -50,10 +50,10 @@
 					<br /> <br /> <br /> <br />
 					<%
 					
-						if(!dto.isAttendance()){%> 
+					if(!(boolean)session.getAttribute("attFlag")){%> 
 					<button class="btn btn-theme02" type="button" name="check"id="click">출석체크</button>
 							
-					 <%}%>
+					<%}%>
 				</div>
 				
 			</div>

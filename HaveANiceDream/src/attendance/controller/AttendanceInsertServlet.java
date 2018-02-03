@@ -42,7 +42,7 @@ public class AttendanceInsertServlet extends HttpServlet {
 		/*if(result>0){*/
 			PointService point = new PointServiceImpl();
 			point.pointInsert(new PointDTO(0,userId,null,"출석",attpoint));
-			response.sendRedirect("/HaveANiceDream/index.html");
+			//response.sendRedirect("/HaveANiceDream/index.html");
 		/*}else{*/
 			String viewpath = "../attendance/project_calender.jsp";
 			request.setAttribute("viewpath", viewpath);
