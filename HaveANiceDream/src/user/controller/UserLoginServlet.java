@@ -47,6 +47,7 @@ public class UserLoginServlet extends HttpServlet {
 
 		if (user != null) {
 			HttpSession session = request.getSession();
+			session.setAttribute("attFlag", false);
 			session.setAttribute("user", user);
 			String viewpath = "temp_main_con.jsp";
 
