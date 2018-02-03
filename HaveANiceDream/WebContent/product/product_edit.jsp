@@ -332,29 +332,55 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="form-group">
 								
-									 <label class="col-sm-2 col-sm-2 control-label">스크린샷</label>
-									<div class="col-sm-5">
-										<input class="upload-name" value="파일선택" disabled="disabled"
-											style="width: 200px;"> <label for="input_file">파일찾기</label>
-										<input type="file" id="input_file" class="upload-hidden">
-										<textarea rows="10" cols="100%"></textarea>
-									</div>
-									<div class="col-sm-5">
-										<button type="button" class="btn btn-default mb">추가</button>
-										<button type="button" class="btn btn-default mb">삭제</button>
-										<label class="mb">용량 500KB이하 jpg, gif만 가능(최대 5개)</label>
-
-									</div> 
-								</div> -->
-
-
-
-
 					<div class="form-group" align="center">
-						<button type="submit" class="btn btn-round btn-default">수정하기</button>
-					</div>
+						<button type="button"
+							class="btn btn-round btn btn-round btn-default"
+							data-toggle="modal" data-target="#myModal">수정하기</button>
+							<!-- 모달시작 -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									      
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">&times;</button>
+											<h4 class="modal-title" id="myModalLabel">게시글수정</h4>
+										</div>
+										
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-primary">수정하기</button>
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">취소</button>
+											
+										</div>
+								</div>
+							</div>
+						</div>
+						<!--  모달종료 -->
+							<button class="btn btn-round btn btn-round btn-default" data-toggle="modal" data-target="#myModal2"
+									>삭제하기</button>
+						<!-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									      
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">&times;</button>
+											<h4 class="modal-title" id="myModalLabel">정말삭제하시겠습니까?</h4>
+										</div>
+										
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-primary" onclick="location.href ='/HaveANiceDream/product_delete.do'">예</button>
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">아니오</button>
+											
+										</div>
+								</div>
+							</div>
+						</div> -->
 				</form>
 			</div>
 		</div>

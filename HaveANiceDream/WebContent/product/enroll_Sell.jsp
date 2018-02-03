@@ -281,7 +281,7 @@
 						<!--  모달종료 -->
 							<button class="btn btn-round btn btn-round btn-default" data-toggle="modal" data-target="#myModal2"
 									>취소하기</button>
-									<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+						<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
 							aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
