@@ -54,11 +54,17 @@ public class TradedetailListServlet extends HttpServlet {
 		
 		String CategoryName= productdto.getCategoryName()+">"+productdto.getCategoryDetailName();
 
+
+		
 		String tradetype = "";
 		if(productdto.getTradeType().equals("delivery_trade")){
 		tradetype="택배거래";
 	    }else if(productdto.getTradeType().equals("trade")){
+
 	    tradetype="직거래";
+
+	    tradetype="직거래";
+
 	    }
 		
 		JSONObject jsonObject = new JSONObject();

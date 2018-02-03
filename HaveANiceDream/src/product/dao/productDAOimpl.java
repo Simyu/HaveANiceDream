@@ -78,7 +78,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
 		if(productNo!=0){
-		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTPNO);
+		ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECT_PNO);
 		ptmt.setInt(1, productNo);
 		}
 		resultSet = ptmt.executeQuery();
@@ -101,14 +101,14 @@ PRODUCT_NO                                NOT NULL NUMBER
 		PreparedStatement ptmt = null;
 		
 		if(categoryNo!=0 & categoryDetailNo==0 & userId==null){  //대분류로만 검색
-				ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLENO);
+				ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_SEARCH_CATEGORY_DETAIL);
 				ptmt.setString(1, "%"+title+"%");
 				ptmt.setInt(2, categoryNo);
 				ptmt.setInt(3,startCount );
 				ptmt.setInt(4,endCount );
 				System.out.println("대분류");
 		}else if(categoryNo!=0 & userId==null ){ //대,소분류를 통한 검색
-			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLE);
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_SEARCH_CATEGORY);
 			ptmt.setString(1, "%"+title+"%");
 			ptmt.setInt(2, categoryNo);
 			ptmt.setInt(3, categoryDetailNo);
@@ -116,18 +116,18 @@ PRODUCT_NO                                NOT NULL NUMBER
 			ptmt.setInt(5,endCount );
 			System.out.println("대소분류");
 		}else if(title!=null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
-			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_PAGING);
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING);
 			ptmt.setInt(1,startCount );
 			ptmt.setInt(2,endCount );
 			System.out.println("여긴가..?");
 		}
 		else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
-			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_PAGING);
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING);
 			ptmt.setInt(1,startCount );
 			ptmt.setInt(2,endCount );
 			System.out.println("여긴가..?");
 		}else if(userId!=null){//???? 
-			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL1);
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_LIST_BY_UESR);
 			ptmt.setString(1, userId);
 			
 			// System.out.println("진:입성공:");
