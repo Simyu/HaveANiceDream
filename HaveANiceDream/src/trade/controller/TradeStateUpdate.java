@@ -8,12 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import point.service.PointService;
+import point.service.PointServiceImpl;
 import product.dto.ProductDTO;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
 import trade.dto.TradeDTO;
 import trade.service.TradeService;
 import trade.service.TradeServiceImpl;
+import user.service.UserService;
+import user.service.UserServiceImpl;
 
 
 @WebServlet(name = "trade/stateupdate", urlPatterns = { "/trade/stateupdate.do" })
@@ -40,13 +44,17 @@ public class TradeStateUpdate extends HttpServlet {
 		int tradeStateUpdateResult = 0;
 		int productStateUpdateResult = 0;
 		if(tradedto.getTradeState().equals("거래대기")){
-			tradeStateUpdateResult = tradeservice.tradeStateUpdate("거래중 ", Integer.parseInt(tradeNo));
+			tradeStateUpdateResult = tradeservice.tradeStateUpdate("거래중", Integer.parseInt(tradeNo));
 			int productState=2;//거래중을 표시
 			productStateUpdateResult = proservice.productStateUpdate(productState, Integer.parseInt(productNo));
 		}else if(tradedto.getTradeState().equals("거래중")){
-			tradeStateUpdateResult = tradeservice.tradeStateUpdate("거래완료 ", Integer.parseInt(tradeNo));
+			tradeStateUpdateResult = tradeservice.tradeStateUpdate("거래완료", Integer.parseInt(tradeNo));
 			int productState=1;//거래완료를 표시
 			productStateUpdateResult = proservice.productStateUpdate(productState, Integer.parseInt(productNo));
+			PointService pointservice = new PointServiceImpl();
+			pointservice.pointTrade(tradedto.getUserIdSell(), tradedto.getUserIdBuy(), productdto.getProductPrice());
+			
+			
 		}
 		
 		
