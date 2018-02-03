@@ -82,6 +82,7 @@ public class SignUpServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				user = service.userSelect(userId);
 				session.setAttribute("user", user);
+				session.setAttribute("attFlag", false);
 				response.sendRedirect("/HaveANiceDream/index.html");
 			} else {
 				response.sendRedirect("/HaveANiceDream/user/login.html");
