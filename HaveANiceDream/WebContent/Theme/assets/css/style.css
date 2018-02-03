@@ -1490,7 +1490,9 @@ PANELS CONFIGURATIONS
 }
 #op1:checked ~ label[for=op1]:before,
 #op2:checked ~ label[for=op2]:before,
-#op3:checked ~ label[for=op3]:before{
+#op3:checked ~ label[for=op3]:before,
+#op4:checked ~ label[for=op4]:before,
+#op5:checked ~ label[for=op5]:before{
   border: 2px solid #96c93c;
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGFJREFUeNpinHLMhgEHKADia0xQThIQs6JJ9gPxZhYQAcS6QHwDiI8hSYJAC0gBPxDLAvFcIJ6JJJkDxFNBVtgBcQ8Qa6BLghgwN4A4a9ElQYAFSj8C4mwg3o8sCQIAAQYA78QTYqnPZuEAAAAASUVORK5CYII=') no-repeat center center;
 }

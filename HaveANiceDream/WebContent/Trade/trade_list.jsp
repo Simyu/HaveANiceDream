@@ -62,6 +62,11 @@
 	function statePath(tradeNo,productNo){
 		location.href = "/HaveANiceDream/trade/stateupdate.do?productNo="+productNo+"&tradeNo="+tradeNo;
 	}
+	url
+	function gradePath(tradeNo,productNo,state){
+		url = "/HaveANiceDream/Trade/trade_gread.jsp?productNo="+productNo+"&tradeNo="+tradeNo+"&state="+state;
+		window.open(url , "a", "width=700, height=500, left=100, top=50");
+	}
 </script>
 </head>
 
@@ -170,7 +175,13 @@
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-3 centered height-sort">
 					<div class="col-md-12 col-sm-12 col-xs-12">
+					<%if(tradedto.getTradeState().equals("거래대기")){ %>
+						<label class="text-price-point-state" style="margin-bottom: 10px; color:#dd2b4e "><%=tradedto.getTradeState()%> </label>
+					<%}else if(tradedto.getTradeState().equals("거래중")){ %>
+						<label class="text-price-point-state" style="margin-bottom: 10px; color:#1290c3"><%=tradedto.getTradeState()%> </label>
+					<%}else{ %>
 						<label class="text-price-point-state" style="margin-bottom: 10px;"><%=tradedto.getTradeState()%> </label>
+					<%} %>
 					</div>
 					<%if(tradedto.getTradeState().equals("거래대기")){ 
 							if(tradedto.getUserIdBuy().equals(user.getUserId())){
@@ -253,15 +264,17 @@
 							
 				<%		}
 					}else if(tradedto.getTradeState().equals("거래완료")){ 
-						if(tradedto.getUserIdBuy().equals(user.getUserId())){%>
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){ //구매자라면?%>
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<label class="btn btn-success btn-sm">평가하기 </label>
+							<button class="btn btn-default btn-sm" onclick="javascript:gradePath
+								(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'1')">판매자 평가 </button>
 						</div>
 				<%
-						}else{
+						}else{ //판매자라면?
 							%>
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<label class="btn btn-success btn-sm">평가하기 </label>
+							<button class="btn btn-default btn-sm" onclick="javascript:gradePath
+								(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'2')">구매자 평가 </button>
 						</div>
 							
 				<%		}
