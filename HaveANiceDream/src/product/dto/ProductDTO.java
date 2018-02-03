@@ -5,7 +5,8 @@ import java.sql.Date;
 public class ProductDTO {
 
     private Integer productNo;
-
+	
+	int rowNum;
     public String getProduct_Grade() {
 		return product_Grade;
 	}
@@ -278,11 +279,12 @@ public class ProductDTO {
 		this.userTel = userTel;
 	}
 
-	public ProductDTO(Integer productNo, String userId, Integer categoryNo, String productName ,
+	public ProductDTO(int rowNum,Integer productNo, String userId, Integer categoryNo, String productName ,
 			 Integer productPrice, String productContent, String product_Grade, String productTitle,
 			Date productDate, int productState, Integer productExfDate, String tradeType, Integer categoryDetailNo, String categoryName,
 			String imageSrc, String userName,String userTel ,String userEmail) {
 		super();
+		this.rowNum = rowNum;
 		this.productNo = productNo;
 		this.userId = userId;
 		this.categoryNo = categoryNo;
@@ -302,6 +304,15 @@ public class ProductDTO {
 		this.userTel = userTel;
 		this.userEmail = userEmail;
 	}
+
+	public int getRowNum() {
+		return rowNum;
+	}
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
+
 	
 	private String categoryDetailName;
 	public ProductDTO(Integer productNo, String userId, Integer categoryNo, String productName ,
@@ -329,6 +340,7 @@ public class ProductDTO {
 		this.userEmail = userEmail;
 		this.categoryDetailName = categoryDetailName;
 	}
+
 
 	public String getCategoryDetailName() {
 		return categoryDetailName;

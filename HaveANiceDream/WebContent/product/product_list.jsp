@@ -194,14 +194,20 @@ $(document).ready(function(){
 						</tbody>
 					</table>
 				</section>
+				<%
+				
+				 int totalCount =(Integer) request.getAttribute("totalCount");
+
+				 int countPage = 10;
+				int paging =(int)Math.floor(totalCount/countPage);
+			
+				%>
 				<div class="text-center">
 				<ul class="pagination">
 					<li class="previous"><a href="#">이전</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
+					<% for(int i=0; i< paging;i++){ %>
+					<li><a href="/HaveANiceDream//product_list.do?state=ALL&paging=<%=i+1%>"><%=i+1%></a></li>
+					<%} %>
 					<li class="next"><a href="#">다음</a></li>
 				</ul>
 			</div>

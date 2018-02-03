@@ -28,14 +28,19 @@ public class Category_Read_Servlet_Ajax extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter pw = response.getWriter();
 		String categoryName=request.getParameter("categoryName");  //카테고리이름을 받아옴
-		
+		int categoryNo=0;
 		CategoryService service = new CategoryServiceimpl();
 		ArrayList<CategoryDetailDTO> category_detail_listAjax =  null; 
 		String state=request.getParameter("state");
 		if(state.equals("ENROLL")){//물품등록할때
 		 category_detail_listAjax=service.categoryDetailList(0,categoryName);//이름으로 검색할때 해당이름으로 시작하는것들은 전부가져오기 위해 이름으로 검색
 		}else if (state.equals("SEARCH")){//product_list.jsp화면에서 대분류를 선택했을때 실행되는 코드.
-			int categoryNo=Integer.parseInt(request.getParameter("categoryNo"));//?
+			 if(request.getParameter("categoryNo").equals("선택해주세요")){
+				 categoryNo=1;
+			 
+			 }else{
+			 categoryNo=Integer.parseInt(request.getParameter("categoryNo"));//?
+			 }
 			category_detail_listAjax =service.categoryDetailList(categoryNo,null);//카테고리 No로 검색 2번째는 이름으로검색. 리턴은 카테고리디테일리스트
 				}
 		JSONObject root_category_detail = new JSONObject();
