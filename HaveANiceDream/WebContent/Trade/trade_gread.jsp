@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>Æò°¡ÇÏ±â!</title>
+<title>í‰ê°€í•˜ê¸°!</title>
 
 <!-- Bootstrap core CSS -->
 <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css" rel="stylesheet">
@@ -21,67 +21,75 @@
 <script src="/HaveANiceDream/Theme/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    //¶óµğ¿À ¿ä¼ÒÃ³·³ µ¿ÀÛ½ÃÅ³ Ã¼Å©¹Ú½º ±×·ì ¼¿·ºÅÍ
+    //ë¼ë””ì˜¤ ìš”ì†Œì²˜ëŸ¼ ë™ì‘ì‹œí‚¬ ì²´í¬ë°•ìŠ¤ ê·¸ë£¹ ì…€ë ‰í„°
     $('input[type="checkbox"][name="group"]').click(function(){
-        //Å¬¸¯ ÀÌº¥Æ® ¹ß»ıÇÑ ¿ä¼Ò°¡ Ã¼Å© »óÅÂÀÎ °æ¿ì
+        //í´ë¦­ ì´ë²¤íŠ¸ ë°œìƒí•œ ìš”ì†Œê°€ ì²´í¬ ìƒíƒœì¸ ê²½ìš°
         if ($(this).prop('checked')) {
-            //Ã¼Å©¹Ú½º ±×·ìÀÇ ¿ä¼Ò ÀüÃ¼¸¦ Ã¼Å© ÇØÁ¦ÈÄ Å¬¸¯ÇÑ ¿ä¼Ò Ã¼Å© »óÅÂÁöÁ¤
+            //ì²´í¬ë°•ìŠ¤ ê·¸ë£¹ì˜ ìš”ì†Œ ì „ì²´ë¥¼ ì²´í¬ í•´ì œí›„ í´ë¦­í•œ ìš”ì†Œ ì²´í¬ ìƒíƒœì§€ì •
             $('input[type="checkbox"][name="group"]').prop('checked', false);
             $(this).prop('checked', true);
         }
     });
 });
 </script>
+<script type="text/javascript">
+	function insertPath(productNo,tradeNo,state){
+		location.href = "/HaveANiceDream/grade/insert.do?productNo="+productNo+"&tradeNo="+tradeNo+"&state="+state;
+		opener.parent.window.location.href="/HaveANiceDream/trade/list.do";
+		window.close();
+	}
 
+</script>
 </head>
 
 <body>
 	<%String productNo = request.getParameter("productNo"); 
 		String tradeNo = request.getParameter("tradeNo");
-		String state = request.getParameter("state");//'1'= ±¸¸ÅÀÚ -----> ÆÇ¸ÅÀÚÆò°¡,  '2'= ÆÇ¸ÅÀÚ -----> ±¸¸ÅÀÚÆò°¡
+		String state = request.getParameter("state");//'1'= êµ¬ë§¤ì -----> íŒë§¤ìí‰ê°€,  '2'= íŒë§¤ì -----> êµ¬ë§¤ìí‰ê°€
 
 	%>
 
 		<div class="col-md-1 col-sm-1 col-xs-1"></div>
 		<div class="col-md-10 col-sm-10 col-xs-10">
 			<%if(state.equals("1")){ %>
-			<div class="col-md-12 col-sm-12 col-xs-12" style="color: black; padding-top: 25px;"><h3>Æò°¡ÇÏ±â(ÆÇ¸ÅÀÚ)</h3></div>
+			<div class="col-md-12 col-sm-12 col-xs-12" style="color: black; padding-top: 25px;"><h3>í‰ê°€í•˜ê¸°(íŒë§¤ì)</h3></div>
 			<%}else{%>
-			<div class="col-md-12 col-sm-12 col-xs-12" style="color: black; padding-top: 25px;"><h3>Æò°¡ÇÏ±â(±¸¸ÅÀÚ)</h3></div>
+			<div class="col-md-12 col-sm-12 col-xs-12" style="color: black; padding-top: 25px;"><h3>í‰ê°€í•˜ê¸°(êµ¬ë§¤ì)</h3></div>
 			<%} %>
-			<form class="form-horizontal style-form" enctype="multipart/form-data" 
+			<form role="form" class="form-horizontal"
 				action="/HaveANiceDream/grade/insert.do?productNo=<%=productNo %>&tradeNo=<%=tradeNo%>&state=<%=state%>" method="post">
 				<div class="col-md-12 col-sm-12 col-xs-12 steps pn no-mg-no-pd" style="background-color: #d5e1ed; height: auto;">
 					<div class="ccol-md-3 col-sm-3 col-xs-3 no-mg-no-pd" >
-					<input id='op1' name="group" type='checkbox' checked/> <label for='op1'>¸Å¿ì¸¸Á·</label> 
+					<input id='op1' name="group" type='checkbox' value="ë§¤ìš°ë§Œì¡±" checked/> <label for='op1'>ë§¤ìš°ë§Œì¡±</label> 
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-2 no-mg-no-pd" >
-					<input id='op2'name="group" type='checkbox' /> <label for='op2'>¸¸Á·</label> 
+					<input id='op2'name="group" type='checkbox' value="ë§Œì¡±"/> <label for='op2'>ë§Œì¡±</label> 
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-2 no-mg-no-pd" >
-					<input id='op3' name="group" type='checkbox'/> <label for='op3'>º¸Åë</label>
+					<input id='op3' name="group" type='checkbox' value="ë³´í†µ"/> <label for='op3'>ë³´í†µ</label>
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-2 no-mg-no-pd" >
-					<input id='op4'name="group" type='checkbox' /> <label for='op4'>ºÒ¸¸Á·</label>
+					<input id='op4'name="group" type='checkbox' value="ë¶ˆë§Œì¡±" /> <label for='op4'>ë¶ˆë§Œì¡±</label>
 					</div>
 					<div class="col-md-3 col-sm-3 col-xs-3 no-mg-no-pd" >
-					<input id='op5'name="group" type='checkbox'/> <label for='op5'>¸Å¿ìºÒ¸¸Á·</label>
+					<input id='op5'name="group" type='checkbox' value="ë§¤ìš°ë¶ˆë§Œì¡±"/> <label for='op5'>ë§¤ìš°ë¶ˆë§Œì¡±</label>
 					</div>
 					<div class="col-md-1 col-sm-1 col-xs-1 no-mg-no-pd"></div>
 					<div class="col-md-11 col-sm-11 col-xs-11 no-mg-no-pd" style="height: 20px; margin-top: 10px; margin-bottom:10px; color: #2f78bd;">
-					³»¿ëÀÛ¼º
+					ë‚´ìš©ì‘ì„±
 					</div>
 					
 					<div class="col-md-1 col-sm-1 col-xs-1 no-mg-no-pd" style="height: 120px; "></div>
 					<div class="col-md-10 col-sm-10 col-xs-10 no-mg-no-pd" style="height: 120px; "> 
-					<textarea style="width:100%;border:1;overflow:visible;text-overflow:ellipsis; border: #8b929e" rows=6></textarea>
+					<textarea style="width:100%;border:1;overflow:visible;text-overflow:ellipsis; border: #8b929e" rows=6 name="gradeContent"></textarea>
 					</div>
 					<div class="col-md-1 col-sm-1 col-xs-1 no-mg-no-pd" style="height: 120px; "></div>
 					<div class="col-md-6 col-sm-6 col-xs-6 no-mg-no-pd">
-					<input type='submit' value='Ãë¼Ò' id='submit' onclick="window.close()"/>
+					<input type='submit' value='ì·¨ì†Œ' id='submit' onclick="window.close()"/>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6 no-mg-no-pd">
-					<input type='submit' value='Æò°¡ÇÏ±â' id='submit' onclick="window.close()"/>
+					<input type='submit' value='í‰ê°€í•˜ê¸°' id='submit' onclick="javascript:insertPath
+								(<%=productNo%>,<%=tradeNo%>,<%=state%>)"/>
 					</div>
 				</div>
 			</form>

@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import grade.dto.GradeDTO;
+import grade.service.GradeService;
+import grade.service.GradeServiceImpl;
 import product.dto.ProductDTO;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
@@ -39,7 +42,7 @@ public class TradeListServlet extends HttpServlet {
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
 			String userId= user.getUserId();
 			ArrayList<TradeDTO> tradelist = tradeservice.tradeSelect(userId);
-
+			
 			
 			if(tradelist!=null){//트레이드에 해당되는 물품번호를 가지고 product를 받아서 list에 담는 작업!!!
 				ArrayList<ProductDTO> productlist = new ArrayList<ProductDTO>();
@@ -55,6 +58,11 @@ public class TradeListServlet extends HttpServlet {
 				request.setAttribute("productlist", productlist);
 				request.setAttribute("tradelist", tradelist);
 			}
+			
+			ArrayList<GradeDTO> gradelist = new ArrayList<GradeDTO>();
+			GradeService gradeservice = new GradeServiceImpl();
+			gradelist = gradeservice.gradeList1();
+			request.setAttribute("gradelist", gradelist);
 			
 			
 			viewpath="../Trade/trade_list.jsp";

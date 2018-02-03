@@ -53,21 +53,12 @@ public class TradedetailListServlet extends HttpServlet {
 		selluserdto =userservice.userSelect(tradedto.getUserIdSell());
 		
 		String CategoryName= productdto.getCategoryName()+">"+productdto.getCategoryDetailName();
-<<<<<<< HEAD
-		System.out.println(CategoryName);
-		
-String trade="";
-		if(productdto.getTradeType().equals("delivery_trade")){
-	    	trade="택배거래";
-	    }else if(productdto.getTradeType().equals("trade")){
-	    	trade="직거래";
-=======
+
 		String tradetype = "";
 		if(productdto.getTradeType().equals("delivery_trade")){
 		tradetype="택배거래";
 	    }else if(productdto.getTradeType().equals("trade")){
 	    tradetype="직거래";
->>>>>>> branch 'master' of https://github.com/Simyu/HaveANiceDream.git
 	    }
 		
 		JSONObject jsonObject = new JSONObject();

@@ -1,3 +1,4 @@
+<%@page import="grade.dto.GradeDTO"%>
 <%@page import="javafx.scene.control.Alert"%>
 <%@page import="trade.dto.TradeDTO"%>
 <%@page import="product.dto.ProductDTO"%>
@@ -66,6 +67,7 @@
 	function gradePath(tradeNo,productNo,state){
 		url = "/HaveANiceDream/Trade/trade_gread.jsp?productNo="+productNo+"&tradeNo="+tradeNo+"&state="+state;
 		window.open(url , "a", "width=700, height=500, left=100, top=50");
+		
 	}
 	function delPath(tradeNo){
 		location.href = "/HaveANiceDream/trade/delete.do?tradeNo="+tradeNo;
@@ -77,9 +79,13 @@
 	<%MemberDTO user = (MemberDTO) session.getAttribute("user");
 	ArrayList<TradeDTO> tradelist =(ArrayList<TradeDTO>) request.getAttribute("tradelist");
 	ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>)request.getAttribute("productlist");
+	ArrayList<GradeDTO> gradelist = (ArrayList<GradeDTO>)request.getAttribute("gradelist");
+	int gradesize = gradelist.size();
 	int size = tradelist.size();
+	int gradechk = 0;
 	TradeDTO tradedto = null;
 	ProductDTO productdto = null;
+	GradeDTO gradedto = null;
 	%>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff">
 		<h4>
@@ -133,9 +139,11 @@
 				<div class="col-md-3 col-sm-3 col-xs-3">상태</div>
 				<div class="col-md-2 col-sm-2 col-xs-2">취소 및 신고</div>
 			</div>
+			
 			<%for(int i=0;i<size;i++){
 				tradedto = tradelist.get(i);
 				productdto = productlist.get(i);
+				gradechk=0;
 			%>
 			<div class="col-md-12 col-sm-12 col-xs-12 pd-con" style="border-bottom: 1px solid black;">
 				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
@@ -267,22 +275,34 @@
 							
 				<%		}
 					}else if(tradedto.getTradeState().equals("거래완료")){ 
-						if(tradedto.getUserIdBuy().equals(user.getUserId())){ //구매자라면?%>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<button class="btn btn-default btn-sm" onclick="javascript:gradePath
-								(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'1')">판매자 평가 </button>
-						</div>
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){ //구매자라면?
+		
+									%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<button class="btn btn-default btn-sm" onclick="javascript:gradePath
+												(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'1')">판매자 평가 </button>
+										</div>	
 				<%
-						}else{ //판매자라면?
-							%>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<button class="btn btn-default btn-sm" onclick="javascript:gradePath
-								(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'2')">구매자 평가 </button>
-						</div>
-							
-				<%		}
+						}else{ //판매자라면?%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<button class="btn btn-default btn-sm" onclick="javascript:gradePath
+												(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'2')">구매자 평가 </button>
+										</div>
+					<%					
+						}
+					}else if(tradedto.getTradeState().equals("댓글완료")){ 
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											
+										</div>	
+				<%
+						}else{ //판매자라면?%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+		
+										</div>
+					<%					
+						}
 					}%>
-					
 					
 					
 					
@@ -328,85 +348,14 @@
 					<%} %>
 				</div>
 			</div>
-			<% }%>
-			<div class="col-md-12 col-sm-12 col-xs-12" style="border-bottom: 1px solid black;">
-				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
-					<p>2018-01-21</p>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button class="label label-default trade-btn-height" onclick="popup()">거래상세보기</button>
+			<%}%>
+			<%if(tradedto==null){ %>
+				<div class="col-md-12 col-sm-12 col-xs-12 centered height-sort" style="text-align: center;">
+					<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
+						<label class="text-price-point-state" style="margin-bottom: 10px;">드림 내역이 없습니다!</label>
 					</div>
 				</div>
-				<div class="col-md-5 col-sm-5 col-xs-5">
-					<div class="col-md-3 col-sm-3 col-xs-3">
-						<img class="self-img-full-cont2"
-							src="/HaveANiceDream/Theme/assets/img/portfolio/port06.jpg">
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-9">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<i class="fa fa-user mr" style="color: #1f85e2"></i><a>드림왕</a>
-							<button class="label label-default trade-btn-height2">문의하기</button>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							글제목 : <a>내가 쓰다만 여러가지 각종 잡템을 드림해요!</a>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">거래번호: 20212154</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							거래 포인트 : <label class="text-price-point-state">3000</label> 포인트
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-3 col-xs-3 centered height-sort">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<label class="text-price-point-state" style="margin-bottom: 10px;">거래
-							완료</label>
-					</div>
-				</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort"></div>
-			</div>
-			<div class="col-md-12 col-sm-12 col-xs-12 pd-con" style="border-bottom: 1px solid black;">
-				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
-					<p>2018-01-21</p>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button class="label label-default trade-btn-height">거래상세보기</button>
-					</div>
-				</div>
-				<div class="col-md-5 col-sm-5 col-xs-5">
-					<div class="col-md-3 col-sm-3 col-xs-3">
-						<img class="self-img-full-cont2"
-							src="/HaveANiceDream/Theme/assets/img/portfolio/port04.jpg">
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-9">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<i class="fa fa-user mr" style="color: #1f85e2"></i><a>드림왕</a>
-							<button class="label label-default trade-btn-height2">문의하기</button>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							글제목 : <a>내가 쓰다만 여러가지 각종 잡템을 드림해요!</a>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">거래번호: 20212154</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							거래 포인트 : <label class="text-price-point-state">3000</label> 포인트
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-3 col-xs-3 centered height-sort">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<label class="text-price-point-state" style="margin-bottom: 10px;">거래
-							진행 중 </label>
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-primary btn-sm">인계확인</button>
-					</div>
-				</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-warning btn-sm"
-							style="margin-bottom: 10px;">취소</button>
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-danger btn-sm">신고</button>
-					</div>
-				</div>
+			<%} %>
 			</div>
 			<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 				<ul class="pagination">
@@ -420,7 +369,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+
 	<form action="" name="itisform">
 		<input type="hidden" name="selUserID" id="selUserID">
 	</form>

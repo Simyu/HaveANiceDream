@@ -150,5 +150,26 @@ public class TradeServiceImpl implements TradeService {
 		return result;
 	}
 
+	@Override
+	public int tradeEndDateUpdate(int tradeNo) {
+		Connection connection = null;
+		int result = 0;
+		
+		try {
+			connection = DBUtil.getConnect();
+			TradeDAO dao = new TradeDAOImpl();
+			result = dao.tradeEndDateUpdate(tradeNo, connection);
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		return result;
+	}
+
 
 }

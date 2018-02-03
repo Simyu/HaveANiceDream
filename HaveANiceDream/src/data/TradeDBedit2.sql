@@ -8,6 +8,17 @@ select * from grade;
 select * from trade_seq;
 create SEQUENCE trade_seq;
 alter table trade drop column trade_memo;
+create  SEQUENCE  grade_seq;
+select * from user_sequences
+ALTER TABLE grade add(grade_content VARCHAR2(300));
+ALTER TABLE grade add(grade_date DATE);
+ALTER TABLE grade add(grade_User_Id VARCHAR2(30));
+ALTER TABLE grade MODIFY(grade VARCHAR2(30));
+
+
+
+
+
 
 
 update product set PRODUCT_STATE = null;
@@ -129,7 +140,7 @@ insert into category_detail values(category_detail_seq.nextval,'건조대',5);
 insert into category_detail values(category_detail_seq.nextval,'슬리퍼',5);
 insert into category_detail values(category_detail_seq.nextval,'물티슈',5);
 
-create  SEQUENCE  category_detail_seq;
+create  SEQUENCE  grade_seq;
 
 
 DROP SEQUENCE  category_detail_seq;

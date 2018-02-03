@@ -13,4 +13,5 @@ public interface TradeService {
 	TradeDTO tradenoSelect(int tradeNo);
 	int tradeStateUpdate(String tradeState, int tradeNo);
 	int tradeDelete(int tradeNo);
+	int tradeEndDateUpdate(int tradeNo);
 }

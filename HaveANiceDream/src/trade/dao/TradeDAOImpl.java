@@ -115,4 +115,20 @@ public class TradeDAOImpl implements TradeDAO {
 		
 		return result;
 	}
+
+	@Override
+	public int tradeEndDateUpdate(int tradeNo, Connection connection) throws SQLException {
+		int result = 0;
+		
+		PreparedStatement ptmt = connection.prepareStatement(TradeQuery.TRADE_END_UPDATE);
+
+		ptmt.setInt(1, tradeNo);
+
+
+		result = ptmt.executeUpdate();
+
+		DBUtil.close(ptmt);
+		
+		return result;
+	}
 }

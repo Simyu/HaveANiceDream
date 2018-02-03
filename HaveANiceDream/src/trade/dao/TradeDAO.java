@@ -14,4 +14,5 @@ public interface TradeDAO {
 	TradeDTO tradenoSelect(int tradeNo, Connection connection) throws SQLException;
 	int tradeStateUpdate(String tradeState ,int tradeNo, Connection connection) throws SQLException;
 	int tradeDelete(int tradeNo, Connection connection) throws SQLException;
+	int tradeEndDateUpdate(int tradeNo, Connection connection) throws SQLException;
 }
