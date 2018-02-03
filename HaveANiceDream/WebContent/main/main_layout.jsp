@@ -120,7 +120,8 @@ $(window).load(function() {
 			
 			
 		});
-		<%ArrayList<Date> date = (ArrayList) request.getAttribute("attDate");
+		<%ArrayList<Date> date = (ArrayList) request.getAttribute("attdate");
+		System.out.println(date);
 			if (date != null) {
 				for (int i = 0; i < date.size(); i++) {%>
                               $("a[data-number='<%=date.get(i)%>']").css(
