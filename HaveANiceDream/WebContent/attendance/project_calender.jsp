@@ -20,7 +20,7 @@
 			//alert("tet");
 			
 			<%
-				session.setAttribute("attFlag", true);
+				//session.setAttribute("attFlag", true);
 			%> 
 			
 		});
@@ -31,7 +31,7 @@
 <body>
 <%
 	ArrayList<Date> date = (ArrayList)request.getAttribute("attDate");
-//System.out.println(date);
+
 %>
 	<h3>
 		<i class="fa fa-angle-right"></i>출석체크
@@ -50,10 +50,11 @@
 					<br /> <br /> <br /> <br />
 					<%
 					
-					if(!(boolean)session.getAttribute("attFlag")){%> 
+					if(!(boolean)session.getAttribute("attFlag")){
+					%> 
 					<button class="btn btn-theme02" type="button" name="check"id="click">출석체크</button>
 							
-					<%}%>
+					<%}%> 
 				</div>
 				
 			</div>

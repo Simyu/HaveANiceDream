@@ -42,17 +42,17 @@ public class AttendanceListServlet extends HttpServlet {
 														// -< 여기가 null로뜸 될때도 잇고
 														// null나올떄도있음
 
-		if (format == null) {
+		if (list!= null) {
 			for (int i = 0; i < list.size(); i++) {
 				day.add(format.format(list.get(i)));
 				System.out.println(format.format(list.get(i)));
 			}
 		} 
-
-		String viewpath = "";
-		viewpath = "../attendance/project_calender.jsp";
+		
+		/*String viewpath = "";
+		viewpath = "../attendance/project_calender.jsp";*/
 		req.setAttribute("attdate", list);
-		req.setAttribute("viewpath", viewpath);
+		//req.setAttribute("viewpath", viewpath);
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(req, res);
 	}
