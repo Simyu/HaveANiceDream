@@ -53,7 +53,6 @@ public class TradedetailListServlet extends HttpServlet {
 		selluserdto =userservice.userSelect(tradedto.getUserIdSell());
 		
 		String CategoryName= productdto.getCategoryName()+">"+productdto.getCategoryDetailName();
-		System.out.println(CategoryName);
 		
 		
 		
