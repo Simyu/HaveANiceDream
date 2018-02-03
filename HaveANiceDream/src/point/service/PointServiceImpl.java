@@ -73,4 +73,90 @@ public class PointServiceImpl implements PointService {
 		return rowNum;
 	}
 
+	@Override
+	public int pointTradeInc(String userid, int point) {
+		int res = 0;
+		Connection connection = null;
+		boolean state = false;
+		
+		try {
+			connection = DBUtil.getConnect();
+			connection.setAutoCommit(false);
+			
+			PointDTO pointDTO = new PointDTO(userid, "드림 성공", point);
+			
+			PointDAO pointDAO = new PointDAOImpl();
+			res = pointDAO.pointInsert(pointDTO, connection);
+			
+			UserDAO userDAO = new UserDAOImpl();
+			int userPoint = userDAO.userGetPoint(userid, connection);
+			res += userDAO.userUpdatePoint(userPoint+point, userid, connection);
+			
+			state = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+
+				if (state){
+					connection.commit();
+				} else {
+					connection.rollback();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			DBUtil.close(connection);
+		}
+		
+		
+		return res;
+	}
+
+	@Override
+	public int pointTradeDec(String userid, int point) {
+		int res = 0;
+		Connection connection = null;
+		boolean state = false;
+		
+		try {
+			connection = DBUtil.getConnect();
+			connection.setAutoCommit(false);
+			
+			PointDTO pointDTO = new PointDTO(userid, "드림 받기 성공", (point*-1));
+			
+			PointDAO pointDAO = new PointDAOImpl();
+			res = pointDAO.pointInsert(pointDTO, connection);
+			
+			UserDAO userDAO = new UserDAOImpl();
+			int userPoint = userDAO.userGetPoint(userid, connection);
+			res += userDAO.userUpdatePoint(userPoint-point, userid, connection);
+			
+			state = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+
+				if (state){
+					connection.commit();
+				} else {
+					connection.rollback();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			DBUtil.close(connection);
+		}
+		
+		
+		return res;
+	}
+
 }

@@ -17,6 +17,17 @@ public class PointDTO {
     public PointDTO() {
     	
 	}
+    
+    
+
+	public PointDTO(String userId, String pointType, Integer point) {
+		super();
+		this.userId = userId;
+		this.pointType = pointType;
+		this.point = point;
+	}
+
+
 
 	public PointDTO(Integer pointNo, String userId, Date pointDate, String pointType, Integer point) {
 		super();
