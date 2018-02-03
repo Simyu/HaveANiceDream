@@ -152,7 +152,7 @@ CREATE TABLE block
 create  SEQUENCE board_no_seq;
 
 alter table [해당테이블명] drop column [삭제할필드명];
-alter table board drop column board_type;
+alter table trade drop column trade_memo;
 ALTER TABLE board MODIFY(BOARD_STATE VARCHAR2(20));
 
 CREATE TABLE board

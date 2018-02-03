@@ -95,7 +95,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 	
 	
 	@Override
-	public ArrayList<ProductDTO> product_List(String title,int categoryNo,int  categoryDetailNo,String userId ,Connection connection) throws SQLException {
+	public ArrayList<ProductDTO> product_List(String title,int categoryNo,int  categoryDetailNo,String userId ,int startCount, int endCount,Connection connection) throws SQLException {
 		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
@@ -104,18 +104,32 @@ PRODUCT_NO                                NOT NULL NUMBER
 				ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLENO);
 				ptmt.setString(1, "%"+title+"%");
 				ptmt.setInt(2, categoryNo);
+				ptmt.setInt(3,startCount );
+				ptmt.setInt(4,endCount );
+				System.out.println("대분류");
 		}else if(categoryNo!=0 & userId==null ){ //대,소분류를 통한 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SEARCHTITLE);
 			ptmt.setString(1, "%"+title+"%");
 			ptmt.setInt(2, categoryNo);
 			ptmt.setInt(3, categoryDetailNo);
+			ptmt.setInt(4,startCount );
+			ptmt.setInt(5,endCount );
+			System.out.println("대소분류");
+		}else if(title!=null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_PAGING);
+			ptmt.setInt(1,startCount );
+			ptmt.setInt(2,endCount );
+			System.out.println("여긴가..?");
 		}
 		else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
-			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL);
-			
-		}else if(userId!=null){
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_PAGING);
+			ptmt.setInt(1,startCount );
+			ptmt.setInt(2,endCount );
+			System.out.println("여긴가..?");
+		}else if(userId!=null){//???? 
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_SELECTALL1);
 			ptmt.setString(1, userId);
+			
 			// System.out.println("진:입성공:");
 		}
 		resultSet = ptmt.executeQuery();
@@ -125,28 +139,28 @@ PRODUCT_NO                                NOT NULL NUMBER
 			}
 			ProductDTO  dto = new ProductDTO(
 					resultSet.getInt(1),
-					resultSet.getString(2),
-					resultSet.getInt(3),
-					resultSet.getString(4),
-					resultSet.getInt(5),
-					resultSet.getString(6),
+					resultSet.getInt(2),
+					resultSet.getString(3),
+					resultSet.getInt(4),
+					resultSet.getString(5),
+					resultSet.getInt(6),
 					resultSet.getString(7),
 					resultSet.getString(8),
-					resultSet.getDate(9),
-					resultSet.getInt(10),
+					resultSet.getString(9),
+					resultSet.getDate(10),
 					resultSet.getInt(11),
-					resultSet.getString(12),
-					resultSet.getInt(13),
-					resultSet.getString(14),
+					resultSet.getInt(12),
+					resultSet.getString(13),
+					resultSet.getInt(14),
 					resultSet.getString(15),
 					resultSet.getString(16),
 					resultSet.getString(17),
-					resultSet.getString(18)
+					resultSet.getString(18),
+					resultSet.getString(19)
 					);
 			product_list.add(dto);
 		}
 		 DBUtil.close(ptmt);
-		//System.out.println("DAO"+product_list);
 		return product_list;
 	}
 	
@@ -264,6 +278,22 @@ PRODUCT_NO                                NOT NULL NUMBER
 
 		DBUtil.close(ptmt);
 		
+		return result;
+	}
+
+	@Override
+	public int countProduct(Connection connection) throws SQLException{
+			int result = 0;
+			ResultSet resultSet = null;
+		PreparedStatement ptmt = connection.prepareStatement(ProductQuery.PRODUCT_COUNT);
+		
+	
+		resultSet=ptmt.executeQuery();
+		if(resultSet.next()){
+		result=	resultSet.getInt(1);
+		}
+		DBUtil.close(ptmt);
+		System.out.println(result);
 		return result;
 	}
 

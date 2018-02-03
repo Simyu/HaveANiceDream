@@ -73,7 +73,7 @@
 							href="/HaveANiceDream/category/read.do">물품등록</a>
 							<%}else{ %><a
 							href="/HaveANiceDream/user/login.html">물품등록</a><%} %></li>
-						<li><a href="/HaveANiceDream/product_list.do?state=ALL">물품검색</a></li>
+						<li><a href="/HaveANiceDream/product_list.do?state=ALL&paging=1">물품검색</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href="javascript:;"> <i
 						class="fa fa-book"></i> <span>커뮤니티</span>

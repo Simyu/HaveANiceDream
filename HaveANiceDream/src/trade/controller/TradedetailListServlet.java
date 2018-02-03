@@ -55,7 +55,12 @@ public class TradedetailListServlet extends HttpServlet {
 		String CategoryName= productdto.getCategoryName()+">"+productdto.getCategoryDetailName();
 		System.out.println(CategoryName);
 		
-		
+String trade="";
+		if(productdto.getTradeType().equals("delivery_trade")){
+	    	trade="택배거래";
+	    }else if(productdto.getTradeType().equals("trade")){
+	    	trade="직거래";
+	    }
 		
 		JSONObject jsonObject = new JSONObject();
 		
@@ -88,6 +93,7 @@ public class TradedetailListServlet extends HttpServlet {
 		jsonObject.put("buyUserEmail", buyuserdto.getUserEmail());
 		
 		PrintWriter printWriter = response.getWriter();
+		System.out.println(jsonObject);
 		printWriter.println(jsonObject.toJSONString());
 	}
 }

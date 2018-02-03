@@ -50,7 +50,7 @@ public class ProductServiceimpl implements ProductService {
 	}
 
 	@Override
-	public ArrayList<ProductDTO> product_List(String title, int categoryNo,int  categoryDetailNo,String UserId) {
+	public ArrayList<ProductDTO> product_List(String title, int categoryNo,int  categoryDetailNo,String UserId ,int startCount, int endCount) {
 		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
 		Connection connection = null;
 		productDAO dao = new productDAOimpl();
@@ -59,7 +59,7 @@ public class ProductServiceimpl implements ProductService {
 		
 		try {
 			connection = DBUtil.getConnect();
-			product_list = dao.product_List( title, categoryNo,categoryDetailNo, UserId,connection);
+			product_list = dao.product_List( title, categoryNo,categoryDetailNo, UserId,startCount,endCount,connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -149,6 +149,26 @@ public class ProductServiceimpl implements ProductService {
 			connection = DBUtil.getConnect();
 			productDAO dao = new productDAOimpl();
 			result = dao.productStateUpdate(productState, productNo, connection);
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+			
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int countProduct() {
+		Connection connection = null;
+		int result = 0;
+		try {
+			connection = DBUtil.getConnect();
+			productDAO dao = new productDAOimpl();
+			result = dao.countProduct(connection);
 			
 		} catch (SQLException e) {
 
