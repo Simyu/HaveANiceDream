@@ -25,14 +25,9 @@
 								$("#ProductPrice").text(res.ProductPrice);
 								$("#userZipcode").text(res.userZipcode);
 								$("#ProductDate").text(res.ProductDate);
-								if(res.TradeType.equals("delivery_trade")){
-		    				    	trade="택배거래";
-		    				    }else if(res.TradeType.equals("trade")){
-		    				    	trade="직거래";
-		    				    }
 								$("#ProductName").text(res.ProductName);
 								$("#ProductNo").text(res.ProductNo);
-								$("#TradeType").text(trade);
+								$("#TradeType").text(res.TradeType);
 								$("#sellUserId").text(res.sellUserId);
 								$("#sellUserTel").text(res.sellUserTel);
 								$("#sellUserEmail").text(res.sellUserEmail);
