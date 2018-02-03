@@ -19,10 +19,10 @@ public class CategoryDAOimpl implements CategoryDAO {
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
 		if(categoryName!=null){
-			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYSEARCHNAME);
+			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYLIST_SEARCH_NAME);
 			ptmt.setString(1, categoryName+"%");
 		}else{
-		ptmt = connection.prepareStatement(CategoryQuery.CATEGORYSEARCHALL);
+		ptmt = connection.prepareStatement(CategoryQuery.CATEGORYLIST_SEARCH);
 		}
 		resultSet = ptmt.executeQuery();
 		while (resultSet.next()) {
@@ -39,10 +39,10 @@ public class CategoryDAOimpl implements CategoryDAO {
 		ResultSet resultSet = null;
 		PreparedStatement ptmt = null;
 		if(categoryNo!=0){
-			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYDETAILSEARCHNO);
+			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYDETAILLIST_SEARCH_BYCNO);
 			 ptmt.setInt(1, categoryNo);
 		}else if(categoryDetailName!=null){
-			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYDETAILSEARCHNAME);
+			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYDETAILLIST_SEARCH_NAME);
 			 ptmt.setString(1, categoryDetailName+"%");
 		}
 		resultSet = ptmt.executeQuery();
