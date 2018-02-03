@@ -67,6 +67,9 @@
 		url = "/HaveANiceDream/Trade/trade_gread.jsp?productNo="+productNo+"&tradeNo="+tradeNo+"&state="+state;
 		window.open(url , "a", "width=700, height=500, left=100, top=50");
 	}
+	function delPath(tradeNo){
+		location.href = "/HaveANiceDream/trade/delete.do?tradeNo="+tradeNo;
+	}
 </script>
 </head>
 
@@ -287,13 +290,42 @@
 				</div>
 				
 				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-warning btn-sm"
-							style="margin-bottom: 10px;">취소</button>
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-danger btn-sm">신고</button>
-					</div>
+					<%if(!tradedto.getTradeState().equals("거래완료")){ 
+						if(tradedto.getUserIdSell().equals(user.getUserId())){
+						int modalnum = 100+i;
+						%>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button type="button" class="btn btn-warning btn-sm"
+								style="margin-bottom: 10px;" data-toggle="modal"
+								data-target="#myModal<%=modalnum%>">거래취소</button>
+									<!-- Modal -->
+									<div class="modal fade" id="myModal<%=modalnum%>" tabindex="-1" role="dialog"
+										aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header" style="background-color:#dd2b4e ">
+													<button type="button" class="close" data-dismiss="modal"
+														aria-hidden="true"></button>
+													<h4 class="modal-title" id="myModalLabel<%=modalnum%>">거래 취소</h4>
+												</div>
+												<div class="modal-body">거래를 취소하겠습니까?</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">아니요</button>
+													<button type="button" class="btn btn-primary" 
+													onclick="javascript:delPath(<%=tradedto.getTradeNo()%>)"  
+													data-dismiss="modal">예</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end Modal -->
+						</div>
+						<%} %>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button type="button" class="btn btn-danger btn-sm">신고</button>
+						</div>
+					<%} %>
 				</div>
 			</div>
 			<% }%>

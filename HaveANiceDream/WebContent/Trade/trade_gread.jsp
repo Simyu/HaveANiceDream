@@ -53,19 +53,19 @@ $(document).ready(function() {
 				action="/HaveANiceDream/grade/insert.do?productNo=<%=productNo %>&tradeNo=<%=tradeNo%>&state=<%=state%>" method="post">
 				<div class="col-md-12 col-sm-12 col-xs-12 steps pn no-mg-no-pd" style="background-color: #d5e1ed; height: auto;">
 					<div class="ccol-md-3 col-sm-3 col-xs-3 no-mg-no-pd" >
-					<input id='op1' name="group" type='checkbox' onclick="oneCheckbox(this) checked " /> <label for='op1'>매우만족</label> 
+					<input id='op1' name="group" type='checkbox' checked/> <label for='op1'>매우만족</label> 
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-2 no-mg-no-pd" >
-					<input id='op2'name="group" type='checkbox' onclick="oneCheckbox(this)" /> <label for='op2'>만족</label> 
+					<input id='op2'name="group" type='checkbox' /> <label for='op2'>만족</label> 
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-2 no-mg-no-pd" >
-					<input id='op3' name="group" type='checkbox' onclick="oneCheckbox(this)" /> <label for='op3'>보통</label>
+					<input id='op3' name="group" type='checkbox'/> <label for='op3'>보통</label>
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-2 no-mg-no-pd" >
-					<input id='op4'name="group" type='checkbox' onclick="oneCheckbox(this)" /> <label for='op4'>불만족</label>
+					<input id='op4'name="group" type='checkbox' /> <label for='op4'>불만족</label>
 					</div>
 					<div class="col-md-3 col-sm-3 col-xs-3 no-mg-no-pd" >
-					<input id='op5'name="group" type='checkbox' onclick="oneCheckbox(this)" /> <label for='op5'>매우불만족</label>
+					<input id='op5'name="group" type='checkbox'/> <label for='op5'>매우불만족</label>
 					</div>
 					<div class="col-md-1 col-sm-1 col-xs-1 no-mg-no-pd"></div>
 					<div class="col-md-11 col-sm-11 col-xs-11 no-mg-no-pd" style="height: 20px; margin-top: 10px; margin-bottom:10px; color: #2f78bd;">
