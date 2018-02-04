@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -74,7 +75,6 @@
 
 		<jsp:include page="footer.jsp"></jsp:include>
 	</section>
-
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script
 		src="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.js"></script>

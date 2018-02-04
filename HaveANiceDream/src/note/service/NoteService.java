@@ -3,6 +3,7 @@ package note.service;
 import java.util.ArrayList;
 
 import note.dto.NoteDTO;
+import user.dto.MemberDTO;
 
 public interface NoteService {
 	int noteInsert(NoteDTO note);
@@ -18,5 +19,9 @@ public interface NoteService {
 	int noteDelete(int noteNo);
 
 	int getNewNoteNum(String noteReceiver);
+
+	ArrayList<NoteDTO> noteList(String noteSender, String noteReceiver);
+	
+	ArrayList<MemberDTO> noteToList(String noteReceiver);
 
 }

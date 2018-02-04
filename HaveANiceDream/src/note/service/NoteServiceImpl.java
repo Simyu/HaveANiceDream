@@ -8,6 +8,7 @@ import fw.DBUtil;
 import note.dao.NoteDAO;
 import note.dao.NoteDAOImpl;
 import note.dto.NoteDTO;
+import user.dto.MemberDTO;
 
 public class NoteServiceImpl implements NoteService {
 
@@ -135,6 +136,42 @@ public class NoteServiceImpl implements NoteService {
 		}
 		
 		return res;
+	}
+
+	@Override
+	public ArrayList<NoteDTO> noteList(String noteSender, String noteReceiver) {
+		Connection connection = null;
+		ArrayList<NoteDTO> list = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			NoteDAO dao = new NoteDAOImpl();
+			list = dao.noteList(noteSender, noteReceiver, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public ArrayList<MemberDTO> noteToList(String noteReceiver) {
+		Connection connection = null;
+		ArrayList<MemberDTO> list = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			NoteDAO dao = new NoteDAOImpl();
+			list = dao.noteToList(noteReceiver, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		return list;
 	}
 
 }
