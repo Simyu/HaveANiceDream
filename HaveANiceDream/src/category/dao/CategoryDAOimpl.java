@@ -43,7 +43,7 @@ public class CategoryDAOimpl implements CategoryDAO {
 			 ptmt.setInt(1, categoryNo);
 		}else if(categoryDetailName!=null){
 			ptmt = connection.prepareStatement(CategoryQuery.CATEGORYDETAILLIST_SEARCH_NAME);
-			 ptmt.setString(1, categoryDetailName+"%");
+			 ptmt.setString(1,"%"+ categoryDetailName+"%");
 		}
 		resultSet = ptmt.executeQuery();
 		while (resultSet.next()) {

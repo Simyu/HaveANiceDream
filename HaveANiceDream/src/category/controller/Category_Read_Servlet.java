@@ -23,7 +23,7 @@ import category.service.CategoryService;
 @WebServlet(name = "category/read", urlPatterns = { "/category/read.do" })
 public class Category_Read_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+    //카테고리(대분류)읽어오는 부분. 
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");

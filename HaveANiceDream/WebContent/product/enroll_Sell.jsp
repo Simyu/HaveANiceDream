@@ -88,10 +88,9 @@
 				data:{"categoryName":name,"selectNum":selectNum},
 				dataType:"json",
 				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
-					$("#categoryDetailName").empty();
-					//alert(categorynum.attr("value"));
+					$("#categoryDetailName").empty();//항상 비워줌
 					for(i=0 ;i<data.category_detail.length;i++){ 
-					if(selectNum==data.category_detail[i].categoryNo){
+					if(selectNum==data.category_detail[i].categoryNo){//전부다 가져오는데 셀렉트NO과 카테고리 NO 같은것만 출력 사실 해당코드는 쿼리에 포함되어있는코드여야함;
 						var str="<option value='"+ data.category_detail[i].categoryDetailNo+"'>"+data.category_detail[i].categoryDetailName+"</option>";
 						 categorydetailname=$(str);
 						$("#categoryDetailName").append(categorydetailname);

@@ -18,6 +18,7 @@ import category.service.CategoryService;
 import category.service.CategoryServiceimpl;
 
 //category_detail에 대한 내용을 AJAX 통신을 사용하여 DB에 접근해서 받아옴
+//이름을 통한 방식(ENROLL) No을 통한 방식(서블릿단
 @WebServlet(name = "/category/DeatilSearchAJAX", urlPatterns = { "/category/DeatilSearchAJAX.do" })
 public class CategoryDetail_SEARCH_AJAX_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,15 +34,15 @@ public class CategoryDetail_SEARCH_AJAX_Servlet extends HttpServlet {
 		ArrayList<CategoryDetailDTO> category_detail_listAjax =  null; 
 		String state=request.getParameter("state");
 		if(state.equals("ENROLL")){//물품등록할때
-		 category_detail_listAjax=service.categoryDetailList(0,categoryName);//이름으로 검색할때 해당이름으로 시작하는것들은 전부가져오기 위해 이름으로 검색
+		 category_detail_listAjax=service.categoryDetailList(0,categoryName);//이름을 통한 전체검색(실제로 뿌려지는정보는 ajax에서  selectNum과 categoryNo로 비교함 당황하지마세요...
 		}else if (state.equals("SEARCH")){//product_list.jsp화면에서 대분류를 선택했을때 실행되는 코드.
-			 if(request.getParameter("categoryNo").equals("선택해주세요")){
+			 if(request.getParameter("categoryNo").equals("선택해주세요")){//문자열이어서 예외처리를 해주어야함...
 				 categoryNo=1;
 			 
 			 }else{
-			 categoryNo=Integer.parseInt(request.getParameter("categoryNo"));//?
+			 categoryNo=Integer.parseInt(request.getParameter("categoryNo"));//
 			 }
-			category_detail_listAjax =service.categoryDetailList(categoryNo,null);//카테고리 No로 검색 2번째는 이름으로검색. 리턴은 카테고리디테일리스트
+			category_detail_listAjax =service.categoryDetailList(categoryNo,null);//카테고리 No로 검색        2번째는 이름으로검색. 
 				}
 		JSONObject root_category_detail = new JSONObject();
 		JSONArray list = new JSONArray();
