@@ -13,5 +13,6 @@ public interface GradeService {
 	
 	ArrayList<GradeDTO> gradeList1();
 	
+	ArrayList<GradeDTO> gradeSelectType(String userid,String gradeType);
 }
 

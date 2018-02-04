@@ -61,4 +61,31 @@ public class GradeDAOImpl implements GradeDAO {
 		return gradelist;
 	}
 
+	@Override
+	public ArrayList<GradeDTO> gradeSelectType(String userid, String gradeType, Connection connection)
+			throws SQLException {
+		ArrayList<GradeDTO> gradelist = new ArrayList<GradeDTO>();
+		GradeDTO dto = null;
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		
+		ptmt = connection.prepareStatement(GradeQuery.GRADE_SELECT_TYPE);
+		
+		ptmt.setString(1, userid);
+		ptmt.setString(2, gradeType);
+		
+		rs = ptmt.executeQuery();
+		
+		while (rs.next()){
+			dto = new GradeDTO(rs.getInt(1), rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getDate(7),rs.getString(8));
+			
+			gradelist.add(dto);
+			
+		}
+		DBUtil.close(rs);
+		DBUtil.close(ptmt);
+		
+		return gradelist;
+	}
+
 }

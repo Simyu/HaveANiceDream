@@ -53,19 +53,22 @@ public class GradeInsertServlet extends HttpServlet {
 		int tradeStateUpdateResult = 0;
 
 		int result = 0;
-		String viewpath="";		
+		String viewpath="";	
+		String gradeType="";
 		if(ses!=null){
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
 			String userId= user.getUserId();
 			
 			if(state.equals("1")){
-				GradeDTO gradewrite = new GradeDTO(null, tradedto.getUserIdSell(), Integer.parseInt(tradeNo), grade, "판매평가", gradeContent, null,tradedto.getUserIdBuy());
+				gradeType= "판매평가";
+				GradeDTO gradewrite = new GradeDTO(null, tradedto.getUserIdSell(), Integer.parseInt(tradeNo), grade, gradeType, gradeContent, null,tradedto.getUserIdBuy());
 				GradeService gradeservice = new GradeServiceImpl();
 				result = gradeservice.gradeInsert(gradewrite);
 				
 				tradeStateUpdateResult = tradeservice.tradeStateUpdate("댓글완료", Integer.parseInt(tradeNo));
 			}else{
-				GradeDTO gradewrite = new GradeDTO(null, tradedto.getUserIdBuy(), Integer.parseInt(tradeNo), grade, "구매평가", gradeContent, null,tradedto.getUserIdSell());
+				gradeType= "구매평가";
+				GradeDTO gradewrite = new GradeDTO(null, tradedto.getUserIdBuy(), Integer.parseInt(tradeNo), grade, gradeType, gradeContent, null,tradedto.getUserIdSell());
 				GradeService gradeservice = new GradeServiceImpl();
 				result = gradeservice.gradeInsert(gradewrite);
 				

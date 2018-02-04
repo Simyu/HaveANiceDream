@@ -35,6 +35,7 @@
 <!-- 추가한 부분 입니다                                                             -->
 
 <script type="text/javascript">
+	url
 	function setPath(url) {
 
 		location.href = "/HaveANiceDream/view.html?url=" + url;
@@ -47,10 +48,12 @@
    		window.open("/HaveANiceDream/Trade/trade_gread.jsp", "a", "width=700, height=500, left=100, top=50")
    		
    	}
-	num = 1;
+	
 	function showUserInfo(id) {
+		num = 1;
 		$("#selUserID").val(id);
-		popup = window.open("/HaveANiceDream/user/user_profile.jsp",num,"width=300,height=500,left=100 top=50");
+		url = "/HaveANiceDream/grade/list.do?id="+id;
+		popup = window.open(url,num,"width=300,height=500,left=100 top=50");
 		num++;
 	}
 	num2 = 1;
@@ -63,7 +66,7 @@
 	function statePath(tradeNo,productNo){
 		location.href = "/HaveANiceDream/trade/stateupdate.do?productNo="+productNo+"&tradeNo="+tradeNo;
 	}
-	url
+	
 	function gradePath(tradeNo,productNo,state){
 		url = "/HaveANiceDream/Trade/trade_gread.jsp?productNo="+productNo+"&tradeNo="+tradeNo+"&state="+state;
 		window.open(url , "a", "width=700, height=500, left=100, top=50");
@@ -291,7 +294,10 @@
 					<%					
 						}
 					}else if(tradedto.getTradeState().equals("댓글완료")){ 
-						if(tradedto.getUserIdBuy().equals(user.getUserId())){%>
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){//구매자
+																					
+																					
+																					%>
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											
 										</div>	

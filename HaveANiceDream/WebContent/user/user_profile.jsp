@@ -19,6 +19,8 @@
 <link
 	href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css"
 	rel="stylesheet" />
+	
+
 
 <style type="text/css">
 .card {
@@ -268,11 +270,15 @@
 	height: 32px;
 	line-height: 18px;
 }
+.no-mg-no-pd{
+	margin: 0;
+	padding: 0;
+}
 </style>
 
 </head>
 <body>
-	<div class="container">
+	<div class="container" style="overflow:auto;width:320px; height:500px;">
 		<div class="row">
 			<div class="col-lg-3 col-sm-6">
 				<div class="card hovercard">
@@ -306,13 +312,53 @@
 							class="fa fa-behance"></i>
 						</a>
 					</div> -->
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+					  <li role="presentation" class="active"><a data-target="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">판매평가</a></li>
+					  <li role="presentation" class=""><a data-target="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">구매평가</a></li>
+					  <li role="presentation" class="dropdown">
+					  </li>
+					</ul>
+					<div id="myTabContent" class="tab-content col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="width: 270px; text-align: justify;">
+					  <div role="tabpanel" class="tab-pane fade active in col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" id="home" aria-labelledby="home-tab" >
+					  	<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : 드림왕 </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;">2018-01-05 </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : 8</p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;">매우만족 </p>
+					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray;">매너가 좋으시고 물품상태가 너무 좋아요! 다음에도 꼭 재구매 의사 있습니다! 도와주세요! </p>
+				
+				
+					  </div>
+					  <div role="tabpanel" class="tab-pane fade col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" id="profile" aria-labelledby="profile-tab">
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : 드림왕 </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;">2018-01-05 </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : 8</p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;">매우만족 </p>
+					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray;">매너가 좋으시고 물품상태가 너무 좋아요! 다음에도 꼭 재구매 의사 있습니다! 도와주세요! </p>
+				
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : 드림왕 </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;">2018-01-05 </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : 8</p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;">매우만족 </p>
+					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray;">매너가 좋으시고 물품상태가 너무 좋아요! 다음에도 꼭 재구매 의사 있습니다! 도와주세요! </p>
+				
+					  </div>
+					</div>
+						
 				</div>
-
+				
 			</div>
 
 		</div>
+		
 	</div>
+	
 	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+	
+    
 	<script type="text/javascript">
 		$(document)
 				.ready(
@@ -349,5 +395,6 @@
 									});
 						});
 	</script>
+	
 </body>
 </html>

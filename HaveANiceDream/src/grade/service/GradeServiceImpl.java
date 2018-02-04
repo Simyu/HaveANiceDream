@@ -55,4 +55,25 @@ public class GradeServiceImpl implements GradeService {
 
 	}
 
+	@Override
+	public ArrayList<GradeDTO> gradeSelectType(String userid, String gradeType) {
+		Connection connection = null;
+		ArrayList<GradeDTO> gradeSelectList = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			GradeDAO dao = new GradeDAOImpl();
+			gradeSelectList = dao.gradeSelectType(userid, gradeType, connection);
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally{
+			DBUtil.close(connection);
+		}
+		
+		return gradeSelectList;
+	}
+
 }
