@@ -13,28 +13,7 @@ import trade.query.TradeQuery;
 import user.dto.MemberDTO;
 
 public class productDAOimpl implements productDAO {
-/*
-PRODUCT_NO                                NOT NULL NUMBER
- USER_ID                                            VARCHAR2(20)
- CATEGORY_NO                                        NUMBER
- PRODUCT_NAME                                       VARCHAR2(20)
- PRODUCT_PRICE                                      NUMBER
- PRODUCT_CONTENT                                    VARCHAR2(2000)
- PRODUCT_GRADE                                      VARCHAR2(20)
- PRODUCT_TITLE                                      VARCHAR2(200)
- PRODUCT_DATE                                       DATE
- PRODUCT_STATE                                      NUMBER
- PRODUCT_EXF_DATE                                   NUMBER
- TRADE_TYPE                                         VARCHAR2(20)
- * */
-	
-	/*
-	 *  Name                                      Null?    Type
- ----------------------------------------- -------- --------------
- IMAGE_NO                                  NOT NULL NUMBER
- PRODUCT_NO                                         NUMBER
- IMAGE_SRC                                          VARCHAR2(20)
-	 * */
+	//이미지 인서트
 	@Override
 	public int insertProduct_Image(ArrayList<String> imageSrc, Connection connection) throws SQLException {
 		  int result=0;
@@ -52,7 +31,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		     DBUtil.close(ptmt);
 		  return result;
 	}
-	
+	//이미지 업데이트
 	@Override
 	public ArrayList<String> productSelect_Image(int productNo, Connection connection) throws SQLException {
 		ProductDTO product = null;
@@ -71,7 +50,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		return imageList;
 	}
 	
-	
+	//다만 카테고리디테일네임 (페이징)생성자 똑같이 19개
 	@Override
 	public ProductDTO productSelect(int productNo, Connection connection) throws SQLException {
 		ProductDTO product = null;
@@ -93,7 +72,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		return product;
 	}
 	
-	
+	//다만 rowNum (페이징)생성자 똑같이 19개
 	@Override
 	public ArrayList<ProductDTO> product_List(String title,int categoryNo,int  categoryDetailNo,String userId ,int startCount, int endCount,Connection connection) throws SQLException {
 		ArrayList<ProductDTO> product_list = new ArrayList<ProductDTO>();
@@ -114,21 +93,20 @@ PRODUCT_NO                                NOT NULL NUMBER
 			ptmt.setInt(3, categoryDetailNo);
 			ptmt.setInt(4,startCount );
 			ptmt.setInt(5,endCount );
-			System.out.println("대소분류");
 		}else if(title!=null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING);
 			ptmt.setInt(1,startCount );
 			ptmt.setInt(2,endCount );
-			System.out.println("여긴가..?");
 		}
 		else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING);
 			ptmt.setInt(1,startCount );
 			ptmt.setInt(2,endCount );
-			System.out.println("여긴가..?");
 		}else if(userId!=null){//???? 
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_LIST_BY_UESR);
 			ptmt.setString(1, userId);
+			ptmt.setInt(2,startCount );
+			ptmt.setInt(3,endCount );
 			
 			// System.out.println("진:입성공:");
 		}
@@ -160,6 +138,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 					);
 			product_list.add(dto);
 		}
+	//	System.out.println(product_list);
 		 DBUtil.close(ptmt);
 		return product_list;
 	}
@@ -214,21 +193,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 				
 				+ "TRADE_TYPE = ? ,"
 				+ "category_Detail_No = ?"
-				+ " where product_no = ?"  );  //물음표 추가해야함... 이거 다시 수정.. 번호 등등 다 확인해야함.. 뭐가오류인지...
-		
-		/*USER_ID                                            VARCHAR2(20)
- CATEGORY_NO                                        NUMBER
- PRODUCT_NAME                                       VARCHAR2(20)
- PRODUCT_PRICE                                      NUMBER
- PRODUCT_CONTENT                                    VARCHAR2(2000)
- PRODUCT_GRADE                                      VARCHAR2(20)
- PRODUCT_TITLE                                      VARCHAR2(200)
- PRODUCT_DATE                                       DATE
- PRODUCT_STATE                                      NUMBER
- PRODUCT_EXF_DATE                                   NUMBER
- TRADE_TYPE 
-		 * */
-		//"insert into product values(product_seq.nextval,?,?,?,?,?,?,?,sysdate,?,3,?)";
+				+ " where product_no = ?"  ); 
 		
 		ptmt.setString(1, product.getUserId());
 		ptmt.setInt(2, product.getCategoryNo());
@@ -245,7 +210,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		result = ptmt.executeUpdate();
 		 return result;
 	}
-
+  //상품업데이트
 	@Override
 	public int updateProduct_Image(String imageSrc, int productNo, Connection connection) throws SQLException {
 		  int result=0;
@@ -277,7 +242,7 @@ PRODUCT_NO                                NOT NULL NUMBER
 		result = ptmt.executeUpdate();
 
 		DBUtil.close(ptmt);
-		
+		System.out.println("업데이트스테이트"+result);
 		return result;
 	}
 

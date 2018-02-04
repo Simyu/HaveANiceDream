@@ -11,6 +11,8 @@ import fw.DBUtil;
 import point.dao.PointDAO;
 import point.dao.PointDAOImpl;
 import point.dto.PointDTO;
+import product.dao.productDAO;
+import product.dao.productDAOimpl;
 import product.dto.ProductDTO;
 import sms.SMSSendMethod;
 import text.TextDTO;
@@ -35,11 +37,13 @@ public class TradeServiceImpl implements TradeService {
 			connection = DBUtil.getConnect();
                  connection.setAutoCommit(false);
 			TradeDAO dao = new TradeDAOImpl();
-			rowNum = dao.tradeInsert(tradelist, connection);
 			TextDAO textdao = new TextDAOImpl();
-			result = textdao.insertText(text, connection);
-			result = textdao.insertText(text1, connection);
-            state =true;
+			productDAO productdao = new productDAOimpl();
+			rowNum = dao.tradeInsert(tradelist, connection);
+			result = textdao.insertText(text, connection); //구매자
+			result = textdao.insertText(text1, connection);//판매자
+			result = productdao.productStateUpdate(2, tradelist.getProductNo(), connection);//상태값변경
+			state=true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -47,7 +51,7 @@ public class TradeServiceImpl implements TradeService {
 				try {
 					if(state){
 					connection.commit();
-					//SMSSendMethod test = new SMSSendMethod();
+					//SMSSendMethod test = new SMSSendMethod();//문자전송
 					//에러 0004는 문자길이 초과로 인한 오류로 발생시 해당내용 수정 90자까지 되는걸로 알고있음( 단문전송만 가능) 
 					 //test.SMSSend(text.getUserTel()+","+text1.getUserTel(), text.getTextContent());	
 						

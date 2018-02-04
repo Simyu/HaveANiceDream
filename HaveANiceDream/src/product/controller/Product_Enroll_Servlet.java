@@ -23,20 +23,16 @@ import product.service.ProductService;
 import product.service.ProductServiceimpl;
 import user.dto.MemberDTO;
 
-/**
- * Servlet implementation class Product_Enroll_Servlet
- */
+//물품등록에 대한 서블릿
 @WebServlet(name = "product_enroll", urlPatterns = { "/product_enroll.do" })
 public class Product_Enroll_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		//ó���� ���� �⺻�۾�-�ѱۼ���,���䰴ü�� ���� ��Ʈ�� ���, ����Ÿ�� ����  
+	    
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-
-		
-		String saveFolder="/upload";
+		//업로드폴더
+		String saveFolder="/uploadresources/product";
 		String encType = "utf-8";
 		int size = 5*1024*1024;
 		String realFolder="";
@@ -59,28 +55,19 @@ public class Product_Enroll_Servlet extends HttpServlet {
 			System.out.println(fileName);
 			filelist.add(fileName);
 		}
-		System.out.println(filelist);
 		HttpSession ses = request.getSession(false);
 		MemberDTO user = (MemberDTO) ses.getAttribute("user");
 		int productPrice = Integer.parseInt(multipart.getParameter("productPrice"));
 		int categoryNo = Integer.parseInt(multipart.getParameter("categoryNohidden"));
 		int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailNohidden"));
-		//int categoryDetailNo = Integer.parseInt(multipart.getParameter("categoryDetailName"));
 		String productName = multipart.getParameter("productName");
 		String productTitle = multipart.getParameter("productTitle");
 		String productContent = multipart.getParameter("productContent");
 		String userId =  user.getUserId();
-	//	System.out.println(userId);
 		int productState =ProductState.TRADE_CURRENT;
 		String productGrade = multipart.getParameter("productGrade");
-			//���ŷ� �߰� 	
 		String tradeType = multipart.getParameter("tradeType");
-		
-		//System.out.println(tradeType);
-		//System.out.println(userId);
-		//���δ�Ʈ �ѹ� ��ǰ��  ������ �ʿ���� ���ܿ���  �Ѱ�����
-		//ProductDTO dto = new ProductDTO(productNo, userId, categoryNo, productName, productPrice, productContent, productCount, productTitle, productDate, productState, productExfDate, tradeType)
-		
+	
 		ProductDTO product = new ProductDTO(userId,categoryNo, productName, productPrice, productContent,productGrade, productTitle, productState, tradeType,categoryDetailNo);
 
 int result=0;

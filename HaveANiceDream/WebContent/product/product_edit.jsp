@@ -293,7 +293,7 @@
 								<%
 									for (int i = 0; i < file1.size(); i++) {
 								%>
-								<img src="/HaveANiceDream/upload/<%=file1.get(i)%>" />
+								<img src="/HaveANiceDream/uploadresources/product/<%=file1.get(i)%>" />
 							</div>
 							<%
 								}

@@ -13,29 +13,33 @@ public class ProductQuery {
 	public static final String PRODUCTLIST_PAGING="select * "
 			+ "from (select rowNum rnum,p.product_no,p.user_id,p.category_no,p.product_name,p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email "
 			+ "from product p,category c,product_image i,member m "
-			+ "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id ) productA"
+			+ "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.product_state=3) productA"
 			+ "  where rnum between ? and ?";
-	//해당회원아이디로 검색된 상품들을 확인할때 쓰는용도
-	
-	public static final String PRODUCT_LIST_BY_UESR="select p.product_no,p.user_id,p.category_no,p.product_name,p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email from product p, category c,product_image i,member m where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.user_id= ?";
+	//해당회원아이디로 검색된 상품들을 확인할때 쓰는용도 상태값을 절대 안줌.. 멤버아이디에 해당하는거는 다 보여줘야 하니까
+	public static final String PRODUCT_LIST_BY_UESR="select * "
+			+ "from (select rowNum rnum,p.product_no,p.user_id,p.category_no,p.product_name,p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email "
+			+ "from product p,category c,product_image i,member m "
+			+ "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id m.user_id = ?) productA"
+			+ "  where rnum between ? and ?";
+			
 	//상품상세보기,거래신청(거래번호)
 	public static final String PRODUCT_SELECT_PNO=
 			"select p.product_no,p.user_id,p.category_no,p.product_name,p.product_price,p.product_content,p.product_grade, "+
 			"p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no, " +
 			"c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email,cd.category_detail_name from product p, category c,product_image i, " +
 			"member m,category_detail cd where p.category_no = c.category_no and p.product_no "+ 
-			"= i.product_no and m.user_id = p.user_id and cd.category_no = c.category_no and  p.category_detail_no = cd.category_detail_no and p.product_No= ?";			
+			"= i.product_no and m.user_id = p.user_id and cd.category_no = c.category_no and  p.category_detail_no = cd.category_detail_no  and  p.product_No= ?";			
 					
 //대분류로 검색했을때  
 	public static final String PRODUCTLIST_SEARCH_CATEGORY="select * from"
 			+ "(select rowNum rnum,p.product_no,p.user_id,p.category_no,p.product_name,p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email "
 			+ "from product p, category c,product_image i,member m "
-			+ "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.product_title like ? and p.category_no = ? and p.category_detail_no = ? ) productA "
+			+ "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.product_state=3 and p.product_title like ? and p.category_no = ? and p.category_detail_no = ? ) productA "
 			+ "where rnum between ? and ? ";
 //대분류,소분류로 검색했을떄	    
 	public static final String PRODUCTLIST_SEARCH_CATEGORY_DETAIL="select * from"
 			+ "(select rowNum rnum, p.product_no,p.user_id,p.category_no,p.product_name,p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src "+
-" from product p, category c,product_image i where  p.category_no = c.category_no and p.product_no= i.product_no and  p.product_title like ? and   p.category_no = ? ) productA "
+" from product p, category c,product_image i where  p.category_no = c.category_no and p.product_no= i.product_no and p.product_state=3 and p.product_title like ? and   p.category_no = ? ) productA "
 + "where rnum between ? and ?";
 	//이미지 삽입
 	public static final String PRODUCT_IMG_INSERT = "insert into product_image values(PRODUCT_IMAGE_SEQ.nextval,product_seq.currval,?)";

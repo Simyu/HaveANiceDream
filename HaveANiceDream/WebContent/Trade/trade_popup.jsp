@@ -119,7 +119,7 @@ pageEncoding="utf-8"%>
 				<div class="row" style="margin-top: 30px;" >
 					<div class="col-md-4 col-sm-4 col-xs-4 no-pd plus-padding-left">
 					<%for(int i=0 ;i<file1.size();i++){ %>
-						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/upload/<%=file1.get(i)%>" width='250' height='250'/> </div> 
+						 <div class="self-img-full-cont"> <img  src="/HaveANiceDream/uploadresources/product/<%=file1.get(i)%>" width='250' height='250'/> </div> 
 						 <%} %>
 							<ul id="image-gallery" class="gallery list-unstyled cS-hidden">  <%=product.getUserName()%>
 								
