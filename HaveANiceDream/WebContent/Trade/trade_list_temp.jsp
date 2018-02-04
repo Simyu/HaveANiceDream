@@ -1,3 +1,4 @@
+<%@page import="grade.dto.GradeDTO"%>
 <%@page import="javafx.scene.control.Alert"%>
 <%@page import="trade.dto.TradeDTO"%>
 <%@page import="product.dto.ProductDTO"%>
@@ -34,6 +35,7 @@
 <!-- 추가한 부분 입니다                                                             -->
 
 <script type="text/javascript">
+	url
 	function setPath(url) {
 
 		location.href = "/HaveANiceDream/view.html?url=" + url;
@@ -46,10 +48,12 @@
    		window.open("/HaveANiceDream/Trade/trade_gread.jsp", "a", "width=700, height=500, left=100, top=50")
    		
    	}
-	num = 1;
+	
 	function showUserInfo(id) {
+		num = 1;
 		$("#selUserID").val(id);
-		popup = window.open("user_profile.jsp",num,"width=300,height=500,left=100 top=50");
+		url = "/HaveANiceDream/grade/list.do?id="+id;
+		popup = window.open(url,num,"width=300,height=500,left=100 top=50");
 		num++;
 	}
 	num2 = 1;
@@ -59,7 +63,18 @@
 		popup =	window.open("/HaveANiceDream/Trade/trade_ing-detail.jsp", num2, "width=1000, height=600, left=100, top=50");
 		num2++;
 	}
+	function statePath(tradeNo,productNo){
+		location.href = "/HaveANiceDream/trade/stateupdate.do?productNo="+productNo+"&tradeNo="+tradeNo;
+	}
 	
+	function gradePath(tradeNo,productNo,state){
+		url = "/HaveANiceDream/Trade/trade_gread.jsp?productNo="+productNo+"&tradeNo="+tradeNo+"&state="+state;
+		window.open(url , "a", "width=700, height=500, left=100, top=50");
+		
+	}
+	function delPath(tradeNo){
+		location.href = "/HaveANiceDream/trade/delete.do?tradeNo="+tradeNo;
+	}
 </script>
 </head>
 
@@ -67,9 +82,13 @@
 	<%MemberDTO user = (MemberDTO) session.getAttribute("user");
 	ArrayList<TradeDTO> tradelist =(ArrayList<TradeDTO>) request.getAttribute("tradelist");
 	ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>)request.getAttribute("productlist");
+	ArrayList<GradeDTO> gradelist = (ArrayList<GradeDTO>)request.getAttribute("gradelist");
+	int gradesize = gradelist.size();
 	int size = tradelist.size();
+	int gradechk = 0;
 	TradeDTO tradedto = null;
 	ProductDTO productdto = null;
+	GradeDTO gradedto = null;
 	%>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff">
 		<h4>
@@ -123,9 +142,11 @@
 				<div class="col-md-3 col-sm-3 col-xs-3">상태</div>
 				<div class="col-md-2 col-sm-2 col-xs-2">취소 및 신고</div>
 			</div>
+			
 			<%for(int i=0;i<size;i++){
 				tradedto = tradelist.get(i);
 				productdto = productlist.get(i);
+				gradechk=0;
 			%>
 			<div class="col-md-12 col-sm-12 col-xs-12 pd-con" style="border-bottom: 1px solid black;">
 				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
@@ -145,9 +166,12 @@
 								<li id="header_inbox_bar" class="dropdown"><i
 									class="fa fa-user mr" style="color: #1f85e2"></i><a
 									data-toggle="dropdown" href="index.html#"><%=tradedto.getUserIdSell()%></a>
+							<%if(tradedto.getUserIdBuy().equals(user.getUserId())){
+								%>
 								<button class="label label-default trade-btn-height2">문의하기</button>
+							<%}%>	
 									<ul class="dropdown-menu dropdown-kk inbox">
-										<li><a href="javascript:showUserInfo()">프로필 보기</a></li>
+										<li><a href="javascript:showUserInfo('<%=tradedto.getUserIdSell()%>')">프로필 보기</a></li>
 										<li><a href="index.html#">쪽지</a></li>
 										<li><a href="index.html#">1:1채팅</a></li>
 										<li><a href="index.html#">평가보기</a></li>
@@ -165,128 +189,179 @@
 				</div>
 				<div class="col-md-3 col-sm-3 col-xs-3 centered height-sort">
 					<div class="col-md-12 col-sm-12 col-xs-12">
-						<label class="text-price-point-state" style="margin-bottom: 10px;"><%=tradedto.getTradeState()%> </label>
-					</div>
 					<%if(tradedto.getTradeState().equals("거래대기")){ %>
+						<label class="text-price-point-state" style="margin-bottom: 10px; color:#dd2b4e "><%=tradedto.getTradeState()%> </label>
+					<%}else if(tradedto.getTradeState().equals("거래중")){ %>
+						<label class="text-price-point-state" style="margin-bottom: 10px; color:#1290c3"><%=tradedto.getTradeState()%> </label>
+					<%}else{ %>
+						<label class="text-price-point-state" style="margin-bottom: 10px;"><%=tradedto.getTradeState()%> </label>
+					<%} %>
+					</div>
+					<%if(tradedto.getTradeState().equals("거래대기")){ 
+							if(tradedto.getUserIdBuy().equals(user.getUserId())){
+								%>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<label >인계 대기 중 </label>
+					</div>
+					<%	}else{ %>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<a id="add-regular" class="btn btn-default btn-sm" href="javascript:;">필수확인</a>
 
 
-						<button class="btn btn-success btn-sm" data-toggle="modal"
-							data-target="#myModal">인수확인</button>
-
+						<button class="btn btn-primary btn-sm" data-toggle="modal"
+							data-target="#myModal<%=tradedto.getTradeNo()%>">인계확인</button>
+						
 						<!-- Modal -->
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+						<div class="modal fade" id="myModal<%=tradedto.getTradeNo()%>" tabindex="-1" role="dialog"
 							aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal"
 											aria-hidden="true"></button>
-										<h4 class="modal-title" id="myModalLabel">인수 완료</h4>
+										<h4 class="modal-title" id="myModalLabel<%=tradedto.getTradeNo()%>">인계 완료</h4>
 									</div>
-									<div class="modal-body">정말 물품을 인수 받았나요?</div>
+									<div class="modal-body">물품을 인계하시겠습니까?</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default"
 											data-dismiss="modal">아니요</button>
-										<button type="button" class="btn btn-primary" onclick="popup2()" data-dismiss="modal">예	받았습니다!!</button>
+										<button type="button" class="btn btn-primary" 
+										onclick="javascript:statePath
+										(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>)" data-dismiss="modal">예</button>
 									</div>
 								</div>
 							</div>
 						</div>
+						<!-- end Modal -->
 					</div>
-					<%} %>
+						
+						
+					<% 	}
+					} else if(tradedto.getTradeState().equals("거래중")){ 
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){%>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<a id="add-regular" class="btn btn-default btn-sm" href="javascript:;">필수확인</a>
+
+
+							<button class="btn btn-primary btn-sm" data-toggle="modal"
+								data-target="#myModal<%=tradedto.getTradeNo()%>">인수확인</button>
+							
+							<!-- Modal -->
+							<div class="modal fade" id="myModal<%=tradedto.getTradeNo()%>" tabindex="-1" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true"></button>
+											<h4 class="modal-title" id="myModalLabel<%=tradedto.getTradeNo()%>">인수 완료</h4>
+										</div>
+										<div class="modal-body">물품을 인수받았나요?</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">아니요</button>
+											<button type="button" class="btn btn-primary" 
+											onclick="javascript:statePath
+											(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>)" data-dismiss="modal">예</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end Modal -->
+						</div>
+				<%
+						}else{
+							%>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<label>인수 기다리는 중 </label>
+						</div>
+							
+				<%		}
+					}else if(tradedto.getTradeState().equals("거래완료")){ 
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){ //구매자라면?
+		
+									%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<button class="btn btn-default btn-sm" onclick="javascript:gradePath
+												(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'1')">판매자 평가 </button>
+										</div>	
+				<%
+						}else{ //판매자라면?%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<button class="btn btn-default btn-sm" onclick="javascript:gradePath
+												(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'2')">구매자 평가 </button>
+										</div>
+					<%					
+						}
+					}else if(tradedto.getTradeState().equals("댓글완료")){ 
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){//구매자
+																					
+																					
+																					%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											
+										</div>	
+				<%
+						}else{ //판매자라면?%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+		
+										</div>
+					<%					
+						}
+					}%>
+					
+					
+					
+					
 				</div>
 				
 				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-warning btn-sm"
-							style="margin-bottom: 10px;">취소</button>
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-danger btn-sm">신고</button>
-					</div>
+					<%if(!tradedto.getTradeState().equals("거래완료")){ 
+						if(tradedto.getUserIdSell().equals(user.getUserId())){
+						int modalnum = 100+i;
+						%>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button type="button" class="btn btn-warning btn-sm"
+								style="margin-bottom: 10px;" data-toggle="modal"
+								data-target="#myModal<%=modalnum%>">거래취소</button>
+									<!-- Modal -->
+									<div class="modal fade" id="myModal<%=modalnum%>" tabindex="-1" role="dialog"
+										aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header" style="background-color:#dd2b4e ">
+													<button type="button" class="close" data-dismiss="modal"
+														aria-hidden="true"></button>
+													<h4 class="modal-title" id="myModalLabel<%=modalnum%>">거래 취소</h4>
+												</div>
+												<div class="modal-body">거래를 취소하겠습니까?</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">아니요</button>
+													<button type="button" class="btn btn-primary" 
+													onclick="javascript:delPath(<%=tradedto.getTradeNo()%>)"  
+													data-dismiss="modal">예</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end Modal -->
+						</div>
+						<%} %>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button type="button" class="btn btn-danger btn-sm">신고</button>
+						</div>
+					<%} %>
 				</div>
 			</div>
-			<% }%>
-			<div class="col-md-12 col-sm-12 col-xs-12" style="border-bottom: 1px solid black;">
-				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
-					<p>2018-01-21</p>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button class="label label-default trade-btn-height" onclick="popup()">거래상세보기</button>
+			<%}%>
+			<%if(tradedto==null){ %>
+				<div class="col-md-12 col-sm-12 col-xs-12 centered height-sort" style="text-align: center;">
+					<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
+						<label class="text-price-point-state" style="margin-bottom: 10px;">드림 내역이 없습니다!</label>
 					</div>
 				</div>
-				<div class="col-md-5 col-sm-5 col-xs-5">
-					<div class="col-md-3 col-sm-3 col-xs-3">
-						<img class="self-img-full-cont2"
-							src="/HaveANiceDream/Theme/assets/img/portfolio/port06.jpg">
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-9">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<i class="fa fa-user mr" style="color: #1f85e2"></i><a>드림왕</a>
-							<button class="label label-default trade-btn-height2">문의하기</button>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							글제목 : <a>내가 쓰다만 여러가지 각종 잡템을 드림해요!</a>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">거래번호: 20212154</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							거래 포인트 : <label class="text-price-point-state">3000</label> 포인트
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-3 col-xs-3 centered height-sort">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<label class="text-price-point-state" style="margin-bottom: 10px;">거래
-							완료</label>
-					</div>
-				</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort"></div>
-			</div>
-			<div class="col-md-12 col-sm-12 col-xs-12 pd-con" style="border-bottom: 1px solid black;">
-				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
-					<p>2018-01-21</p>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button class="label label-default trade-btn-height">거래상세보기</button>
-					</div>
-				</div>
-				<div class="col-md-5 col-sm-5 col-xs-5">
-					<div class="col-md-3 col-sm-3 col-xs-3">
-						<img class="self-img-full-cont2"
-							src="/HaveANiceDream/Theme/assets/img/portfolio/port04.jpg">
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-9">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<i class="fa fa-user mr" style="color: #1f85e2"></i><a>드림왕</a>
-							<button class="label label-default trade-btn-height2">문의하기</button>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							글제목 : <a>내가 쓰다만 여러가지 각종 잡템을 드림해요!</a>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">거래번호: 20212154</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							거래 포인트 : <label class="text-price-point-state">3000</label> 포인트
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-3 col-xs-3 centered height-sort">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<label class="text-price-point-state" style="margin-bottom: 10px;">거래
-							진행 중 </label>
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-primary btn-sm">인계확인</button>
-					</div>
-				</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-warning btn-sm"
-							style="margin-bottom: 10px;">취소</button>
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<button type="button" class="btn btn-danger btn-sm">신고</button>
-					</div>
-				</div>
+			<%} %>
 			</div>
 			<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 				<ul class="pagination">
@@ -300,7 +375,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+
 	<form action="" name="itisform">
 		<input type="hidden" name="selUserID" id="selUserID">
 	</form>

@@ -194,7 +194,7 @@
 					<%}else if(tradedto.getTradeState().equals("거래중")){ %>
 						<label class="text-price-point-state" style="margin-bottom: 10px; color:#1290c3"><%=tradedto.getTradeState()%> </label>
 					<%}else{ %>
-						<label class="text-price-point-state" style="margin-bottom: 10px;"><%=tradedto.getTradeState()%> </label>
+						<label class="text-price-point-state" style="margin-bottom: 10px;">거래완료 </label>
 					<%} %>
 					</div>
 					<%if(tradedto.getTradeState().equals("거래대기")){ 
@@ -293,10 +293,8 @@
 										</div>
 					<%					
 						}
-					}else if(tradedto.getTradeState().equals("댓글완료")){ 
-						if(tradedto.getUserIdBuy().equals(user.getUserId())){//구매자
-																					
-																					
+					}else if(tradedto.getTradeState().equals("댓글완료1")){ 
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){//구매자																																										
 																					%>
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											
@@ -304,14 +302,37 @@
 				<%
 						}else{ //판매자라면?%>
 										<div class="col-md-12 col-sm-12 col-xs-12">
-		
+											<button class="btn btn-default btn-sm" onclick="javascript:gradePath
+												(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'4')">구매자 평가 </button>
 										</div>
 					<%					
 						}
-					}%>
-					
-					
-					
+					}else if(tradedto.getTradeState().equals("댓글완료2")){ 
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){//구매자%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<button class="btn btn-default btn-sm" onclick="javascript:gradePath
+												(<%=tradedto.getTradeNo()%>,<%=productdto.getProductNo()%>,'3')">판매자 평가 </button>
+										</div>	
+					<%
+						}else{ //판매자라면?%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											
+										</div>	
+						<%					
+						}
+					}else if(tradedto.getTradeState().equals("댓글완료3")||tradedto.getTradeState().equals("댓글완료4")){ 
+						if(tradedto.getUserIdBuy().equals(user.getUserId())){//구매자																																										
+																					%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											
+										</div>	
+					<%
+						}else{ //판매자라면?%>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											
+										</div>	
+				<%		}
+					}		%>
 					
 				</div>
 				

@@ -65,16 +65,29 @@ public class GradeInsertServlet extends HttpServlet {
 				GradeService gradeservice = new GradeServiceImpl();
 				result = gradeservice.gradeInsert(gradewrite);
 				
-				tradeStateUpdateResult = tradeservice.tradeStateUpdate("댓글완료", Integer.parseInt(tradeNo));
-			}else{
+				tradeStateUpdateResult = tradeservice.tradeStateUpdate("댓글완료1", Integer.parseInt(tradeNo));
+			}else if(state.equals("2")){
 				gradeType= "구매평가";
 				GradeDTO gradewrite = new GradeDTO(null, tradedto.getUserIdBuy(), Integer.parseInt(tradeNo), grade, gradeType, gradeContent, null,tradedto.getUserIdSell());
 				GradeService gradeservice = new GradeServiceImpl();
 				result = gradeservice.gradeInsert(gradewrite);
 				
-				tradeStateUpdateResult = tradeservice.tradeStateUpdate("댓글완료", Integer.parseInt(tradeNo));
+				tradeStateUpdateResult = tradeservice.tradeStateUpdate("댓글완료2", Integer.parseInt(tradeNo));
+			}else if(state.equals("3")){
+				gradeType= "판매평가";
+				GradeDTO gradewrite = new GradeDTO(null, tradedto.getUserIdSell(), Integer.parseInt(tradeNo), grade, gradeType, gradeContent, null,tradedto.getUserIdBuy());
+				GradeService gradeservice = new GradeServiceImpl();
+				result = gradeservice.gradeInsert(gradewrite);
+				
+				tradeStateUpdateResult = tradeservice.tradeStateUpdate("댓글완료3", Integer.parseInt(tradeNo));
+			}else if(state.equals("4")){
+				gradeType= "구매평가";
+				GradeDTO gradewrite = new GradeDTO(null, tradedto.getUserIdBuy(), Integer.parseInt(tradeNo), grade, gradeType, gradeContent, null,tradedto.getUserIdSell());
+				GradeService gradeservice = new GradeServiceImpl();
+				result = gradeservice.gradeInsert(gradewrite);
+				
+				tradeStateUpdateResult = tradeservice.tradeStateUpdate("댓글완료4", Integer.parseInt(tradeNo));
 			}
-			
 			 
 			
 
