@@ -1,3 +1,5 @@
+<%@page import="grade.dto.GradeDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="user.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -16,10 +18,8 @@
 <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css"
 	rel="stylesheet">
 
-<link
-	href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css"
-	rel="stylesheet" />
-	
+ <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 <style type="text/css">
@@ -278,6 +278,14 @@
 
 </head>
 <body>
+	<%ArrayList<GradeDTO> gradeBuyTypelist = (ArrayList<GradeDTO>)request.getAttribute("gradeBuyTypelist"); 
+	ArrayList<GradeDTO> gradeSellTypelist = (ArrayList<GradeDTO>)request.getAttribute("gradeSellTypelist"); 
+	GradeDTO gradedto = null;
+	int buytypesize= gradeBuyTypelist.size();
+	int selltypesize= gradeSellTypelist.size();
+		%>
+
+
 	<div class="container" style="overflow:auto;width:320px; height:500px;">
 		<div class="row">
 			<div class="col-lg-3 col-sm-6">
@@ -320,27 +328,61 @@
 					</ul>
 					<div id="myTabContent" class="tab-content col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="width: 270px; text-align: justify;">
 					  <div role="tabpanel" class="tab-pane fade active in col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" id="home" aria-labelledby="home-tab" >
-					  	<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : 드림왕 </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;">2018-01-05 </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : 8</p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;">매우만족 </p>
-					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray;">매너가 좋으시고 물품상태가 너무 좋아요! 다음에도 꼭 재구매 의사 있습니다! 도와주세요! </p>
-				
+					  	<%for(int i = 0; i <buytypesize;i++){
+					  		gradedto=gradeBuyTypelist.get(i);%>
+					  	<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : <%=gradedto.getGradeUserId() %> </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;"><%=gradedto.getGradeDate()%> </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : <%=gradedto.getTradeNo() %></p>
+					    	<%if(gradedto.getGrade().equals("매우만족")){%>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-smile-o" style="color:green ;"></i><%=gradedto.getGrade()%> </p>
+					    	<%}else if(gradedto.getGrade().equals("만족")) {%>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-smile-o" style="color:skyblue ;"></i><%=gradedto.getGrade()%> </p>
+					    	<%}else if(gradedto.getGrade().equals("보통")) {%>	
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-meh-o" style="color: yellow;"></i><%=gradedto.getGrade()%> </p>
+					    	<%}else if(gradedto.getGrade().equals("불만족")) {%>	
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-frown-o" style="color: purple;"></i><%=gradedto.getGrade()%> </p>
+					    	<%}else if(gradedto.getGrade().equals("매우불만족")) {%>	
+						<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-frown-o" style="color: red;"></i><%=gradedto.getGrade()%> </p>
+					    	<%} %>
+					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray; margin-bottom: 10px; padding: 10px;"><%=gradedto.getGradeContent()%> </p>
+
+						<%} %>
+						<%if(gradedto==null){ %>
+					  	
+					 	<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray; padding: 20px; text-align: center;">받은 평가가 없습니다</p>
+						<%}else{
+							gradedto=null;
+						}%>
 				
 					  </div>
 					  <div role="tabpanel" class="tab-pane fade col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" id="profile" aria-labelledby="profile-tab">
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : 드림왕 </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;">2018-01-05 </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : 8</p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;">매우만족 </p>
-					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray;">매너가 좋으시고 물품상태가 너무 좋아요! 다음에도 꼭 재구매 의사 있습니다! 도와주세요! </p>
-				
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : 드림왕 </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;">2018-01-05 </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : 8</p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;">매우만족 </p>
-					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray;">매너가 좋으시고 물품상태가 너무 좋아요! 다음에도 꼭 재구매 의사 있습니다! 도와주세요! </p>
-				
+					  
+					    <%for(int i = 0; i <selltypesize;i++){
+					  		gradedto=gradeSellTypelist.get(i); %>
+					  	
+					  	<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : <%=gradedto.getGradeUserId() %> </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;"><%=gradedto.getGradeDate()%> </p>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : <%=gradedto.getTradeNo() %></p>
+					    	<%if(gradedto.getGrade().equals("매우만족")){%>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-smile-o" style="color:green ;"></i><%=gradedto.getGrade()%> </p>
+					    	<%}else if(gradedto.getGrade().equals("만족")) {%>
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-smile-o" style="color:skyblue ;"></i><%=gradedto.getGrade()%> </p>
+					    	<%}else if(gradedto.getGrade().equals("보통")) {%>	
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-meh-o" style="color: yellow;"></i><%=gradedto.getGrade()%> </p>
+					    	<%}else if(gradedto.getGrade().equals("불만족")) {%>	
+					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-frown-o" style="color: purple;"></i><%=gradedto.getGrade()%> </p>
+					    	<%}else if(gradedto.getGrade().equals("매우불만족")) {%>	
+						<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-frown-o" style="color: red;"></i><%=gradedto.getGrade()%> </p>
+					    	<%} %>
+					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray; margin-bottom: 10px; padding: 10px;"><%=gradedto.getGradeContent()%> </p>
+
+						<%} %>
+						<%if(gradedto==null){ %>
+					  	
+					 	<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray; padding: 20px; text-align: center;">받은 평가가 없습니다</p>
+						<%}else{
+							gradedto=null;
+						}%>
 					  </div>
 					</div>
 						

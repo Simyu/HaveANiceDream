@@ -35,7 +35,7 @@
 <!-- 추가한 부분 입니다                                                             -->
 
 <script type="text/javascript">
-	url
+	
 	function setPath(url) {
 
 		location.href = "/HaveANiceDream/view.html?url=" + url;
@@ -53,11 +53,12 @@
 		num = 1;
 		$("#selUserID").val(id);
 		url = "/HaveANiceDream/grade/list.do?id="+id;
-		popup = window.open(url,num,"width=300,height=500,left=100 top=50");
+		popup = window.open(url,num,"width=350,height=600,left=100 top=50");
 		num++;
 	}
-	num2 = 1;
+	
 	function detailview(tradeNo,productNo){
+		num2 = 1;
 		$("#tradeNo").val(tradeNo);
 		$("#productNo").val(productNo);//팝업의 이름 
 		popup =	window.open("/HaveANiceDream/Trade/trade_ing-detail.jsp", num2, "width=1000, height=600, left=100, top=50");

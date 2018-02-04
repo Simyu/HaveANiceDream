@@ -54,7 +54,10 @@ public class GradeListServlet extends HttpServlet {
 			System.out.println(gradeBuyTypelist);
 			request.setAttribute("gradeBuyTypelist", gradeBuyTypelist);
 			request.setAttribute("gradeSellTypelist", gradeSellTypelist);
-			response.sendRedirect("/HaveANiceDream/user/user_profile.jsp");
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/user/user_profile.jsp");
+			rd.forward(request, response);
 		}
 		
 	}

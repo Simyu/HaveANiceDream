@@ -111,10 +111,11 @@
 			location.href = '/HaveANiceDream/user/updatetype.do?userId=' + id
 					+ '&userType=' + _type;
 		}
-		num = 1;
 		function showUserInfo(id) {
+			num = 1;
 			$("#selUserID").val(id);
-			popup = window.open("user_profile.jsp",num,"width=300,height=500,left=100 top=50");
+			url = "/HaveANiceDream/grade/list.do?id="+id;
+			popup = window.open(url,num,"width=400,height=700,left=100 top=50");
 			num++;
 		}
 	</script>
