@@ -170,6 +170,9 @@
 							<%if(tradedto.getUserIdBuy().equals(user.getUserId())){
 								%>
 								<button class="label label-default trade-btn-height2">문의하기</button>
+							<%}else{%>
+								<label style="margin-left: 5px">(내가등록한물품)</label> 
+								<button class="label label-default trade-btn-height2" style="width: 95px;" onclick="javascript:showUserInfo('<%=tradedto.getUserIdBuy()%>')">상대방 정보 확인</button>
 							<%}%>	
 									<ul class="dropdown-menu dropdown-kk inbox">
 										<li><a href="javascript:showUserInfo('<%=tradedto.getUserIdSell()%>')">프로필 보기</a></li>
@@ -338,7 +341,7 @@
 				</div>
 				
 				<div class="col-md-2 col-sm-2 col-xs-2 centered height-sort">
-					<%if(!tradedto.getTradeState().equals("거래완료")){ 
+					<%if(tradedto.getTradeState().equals("거래대기")||tradedto.getTradeState().equals("거래중")){ 
 						if(tradedto.getUserIdSell().equals(user.getUserId())){
 						int modalnum = 100+i;
 						%>
