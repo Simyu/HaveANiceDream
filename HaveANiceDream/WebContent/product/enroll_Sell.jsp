@@ -14,44 +14,36 @@
 	<script src="/HaveANiceDream/Theme/assets/js/Filechose.js"></script>
 <script type="text/javascript">
 	selectNum=""
-      function getName(myform){
+		//카테고리디테일로 셀렉트 태그의 함수
+		//클릭한 인덱스를 받아와 텍스트필드에 text를 입력 하고 히든태그에는 categoryDetailNo를 입력하는코드
+      function getDetailName(myform){
     	  index = myform.categoryDetailName.selectedIndex;
-    	  //alert(index);category_detail_list
     	 $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].text);
-    	 // $("#categoryDetailNameSearch").val(myform.categoryDetailName[index].value);
     	 selectDNumObj = myform.categoryDetailName[index];
     	 selectDNum = $(selectDNumObj).attr("value");
     	 $("#categoryDetailNohidden").attr("value",selectDNum);
-    	// alert(selectDNum);
     	             
       }
-      function getName1(myform){
+	//카테고리 셀렉트 태그의 함수
+	//클릭한 인덱스를 받아와 텍스트필드에 text를 입력 하고 히든태그에는 categoryNo를 입력하는코드
+      function getName(myform){
     	  index = myform.categoryName.selectedIndex;//select태그내에서 선택된 옵션의 인덱스가 몇번인지 구하는 코드 
-    	 $("#categoryNameSearch").val(myform.categoryName[index].text);//해당 옵션태그의 텍스트를 텍스트필드에 세팅
+    	 $("#categoryNameSearch").val(myform.categoryName[index].text);//텍스트필드에 값을 세팅 (셀렉트태그하위의  <option>태그의 선택된Index의 text값)
     	  // 옵션태그를 객체로 받아서
-    	   selectNumObj  =	myform.categoryName[index];//셀렉트태그  하위의 옵션태그를 selectNumObj객체로 생성.
-    	   //alert(selectNumObj);
-    	   //옵션태그의 속성을 selectNum에 저장
+    	   selectNumObj  =	myform.categoryName[index];//Index번째의 <option>태그를 selectNumObj객체로 생성.
+    	   //selectNumObj객체의 속성값(AJAX통신을 통해 얻어온 categoryNo)를 저장한 selectNum 변수 생성
     	   selectNum  =  $(selectNumObj).attr("value"); //생성된 객체의 속성(인덱스 : 즉 categoryNo)을 저장
-    	   $("#categoryNohidden").attr("value",selectNum);//히든태그에 categoryNo을 저장함  submit할떄 함께 전해짐
-    	//   alert(selectNum);
-    				//에러케이스정리
-    				//1. 물품선택간 검색을 안하고 바로 선택할 경우 에러발생(대분류에서)
-    				//2. option을 선택하지 않으면 value설정값을 넘길수가 없음...
-    				//개선방안 
-    				//텍스트필드에 적힌 이름이 아닌 고유번호를 넘겨야함. [완료]
-    	             
+    	   $("#categoryNohidden").attr("value",selectNum);//히든태그에 categoryNo을 저장함  submit할떄 함께 전달.
+    	   $("#categoryDetailNameSearch").val("");//고민해보자 어떻게 하면 뜰까..?
       }
      $(document).ready(function(){
-    	 
-    	 
     	 $("#enroll").on("click",function(){
     		 //제이쿼리를 이용 radio박스가 체크가 되있으면 실행 아니면 return false
     		 //:input태그로 정의된 속성에 사용할수 있음
     		 //:라디오버튼 그룹이 체크가 되있으면 true 아니면 false를 리턴
-    		 tchk =$("input:radio[name='tradeType']").is(":checked");
+    		 tchk =$("input:radio[name='tradeType']").is(":checked");//input태그의 라디오버튼중 이름 tradetype인것에 대한 정보 (true ,false 리턴)
     		 gchk =$("input:radio[name='productGrade']").is(":checked");
-    		 if(tchk & gchk){
+    		 if(tchk & gchk){//둘다체크가 되있다면
     		 }else{
     			 if(tchk){
     				 alert("물품등급을 상태를 선택해주세요");
@@ -60,17 +52,17 @@
     			 }else{
     				 alert("물품등급 및 거래방식을 선택해주세요")
     			 }
-    			 return false;
+    			 return false;//하나라도 안되있으면 실행을 안함..
     		 }
     		 
     		  
     		  
     	 });
-    	 
+    	 //enroll에서 대분류 검색(AJAX통신)
     	 $("#categoryNameSearch").on("keyup",function(){
      		var name = $(this).val();
      		$.ajax({
-     			url:"/HaveANiceDream/category/readAjax1.do",
+     			url:"/HaveANiceDream//category/SearchAJAX.do", // categorySearchAJAX.do
  				type:"get",
  				data:{"categoryName":name},
  				dataType:"json",
@@ -79,7 +71,7 @@
  					for(i=0 ;i<data.category.length;i++){ 					
  						var str="<option value='"+data.category[i].categoryNo+"'>"+data.category[i].categoryName+"</option>";
  						//옵션태그에서 카테고리 넘버를 value로 설정한 것을 객체로 생성해서  셀렉트태그에 붙이는 과정. 
- 						 categoryname=$(str);
+ 						 categoryname=$(str);//객체생성해서 셀렉트태그에 붙이ㅡㄴ 과정
  						$("#categoryName").append(categoryname);
  					}   
  				}
@@ -91,7 +83,7 @@
     		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
  				
     		$.ajax({
-    			url:"/HaveANiceDream/category/readAjax.do?state=ENROLL",
+    			url:"/HaveANiceDream//category/DeatilSearchAJAX.do?state=ENROLL",//categoryDeatilSearchAJAX.do
 				type:"get",
 				data:{"categoryName":name,"selectNum":selectNum},
 				dataType:"json",
@@ -104,9 +96,9 @@
 						 categorydetailname=$(str);
 						$("#categoryDetailName").append(categorydetailname);
 					}
-						//alert($("#categoryDetailName").children().length);
-						//     alert(name.text());
-						   
+					//dom을 활용한 방법 jquery방법이 간단하니 해당방법을 사용할것
+					//옵션태그를 객체로 생성해서  value는 속성값으로 부여하고 텍스트노드를 추가
+					//옵션태그를 부모노드인 셀렉트태그에 붙임.
 					 //$("categoryDetailNameSearch").val(categoryname.attr("value"));
 					/* 	str=data.categoryDetailName[i];
 						textnode = document.createTextNode(str);
@@ -115,7 +107,6 @@
 						 parentNode=document.getElementById("categoryDetailName");
 						 parentNode.appendChild(createOption); */
 						 //jquery로 간단하게 할것
-
 					}
 					  
 					                           
@@ -159,7 +150,7 @@
 								<input type="hidden" id="categoryNohidden" name="categoryNohidden"   />
 								<input type="text"  id="categoryNameSearch" name="categoryNameSearch"class="form-control" value="" required="required">
 								<br /> <select multiple class="form-control"  required="required"
-									name="categoryName" id=categoryName size="8" onclick="getName1(this.form)"
+									name="categoryName" id=categoryName size="8" onclick="getName(this.form)"
 									style="width: 100%">
 								  <%
 							  ArrayList<CategoryDTO> category_list =(ArrayList<CategoryDTO>) request.getAttribute("category_list");
@@ -178,7 +169,7 @@
 								<input type="text" class="form-control" id="categoryDetailNameSearch" name="categoryDetailNameSearch" required="required"
 									value=""> <br /> <select multiple
 									class="form-control" name="categoryDetailName" required="required"
-									id="categoryDetailName" size="8" style="width: 100%" onclick="getName(this.form)">
+									id="categoryDetailName" size="8" style="width: 100%" onclick="getDetailName(this.form)">
 								</select>
 							</div>
 

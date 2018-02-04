@@ -18,8 +18,8 @@ import category.service.CategoryService;
 import category.service.CategoryServiceimpl;
 
 //category_detail에 대한 내용을 AJAX 통신을 사용하여 DB에 접근해서 받아옴
-@WebServlet(name = "category/readAjax", urlPatterns = { "/category/readAjax.do" })
-public class Category_Read_Servlet_Ajax extends HttpServlet {
+@WebServlet(name = "/category/DeatilSearchAJAX", urlPatterns = { "/category/DeatilSearchAJAX.do" })
+public class CategoryDetail_SEARCH_AJAX_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unchecked")

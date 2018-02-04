@@ -18,34 +18,32 @@
 <title>DASHGUM - Bootstrap Admin Template</title>
 
 <script type="text/javascript">
+        //카테고리 디테일넘버에 카테고리NO를 통해 검색할수 있도록 하는 함수
         function myform(myform){
         	index = myform.categoryDetailNo.selectedIndex;
-        	//alert(index);
         	detailNo = myform.categoryDetailNo[index];
         	detailNoval= $(detailNo).attr("value");
         	$("#categoryDetailNohidden").attr("value",detailNoval);
-        //	alert($("#categoryDetailNohidden").attr("value"));
         	
         };
 $(document).ready(function(){
-	$("#search1").on("clcick",function(){ //왜 동작안할까.. 고민
+/* 	$("#search1").on("clcick",function(){ //왜 동작안할까.. 고민
 		var no = $("#categoryDetailNo").val();
 		//alert("셀렉트탴그 값:"+ no);
-		alert("히든값"+detailNoval);
+		//alert("히든값"+detailNoval);
 		if(no==null)
 			{
 			alert("리스트를 선택해주세요.")
 			return false;
 			}
 		
-	});
+	}); */
+	
 	$("#categoryNo").on("click",function(){
 		var name = $(this).val();//.val() 텍스트상자(옵션태그의) 속성값
-		//alert(name);
 		selectNum=	$("#categoryNohidden").attr("value",name);
-   //  alert(selectNum.attr("value"));
 		$.ajax({
-			url:"/HaveANiceDream/category/readAjax.do?state=SEARCH",
+			url:"/HaveANiceDream/category/DeatilSearchAJAX.do?state=SEARCH",//categoryDeatilSearchAJAX.do
 			type:"get",
 			data:{"categoryNo":name},
 			dataType:"json",
@@ -59,27 +57,16 @@ $(document).ready(function(){
 			}
 		})
 		$("#categoryDetailNohidden").attr("value",$("#categoryDetailNo").val());
-	    //   alert($("#categoryDetailNohidden").val());
-		
 	});
 	 
 });
 
-	/* 	function setPath(url) {
-
-	 location.href = "/HaveANiceDream/view.html?url=" + url;
-	 } */
-	function popup() {
-		window.open("/HaveANiceDream/Trade/trade_popup.jsp", "a", "width=1400, height=800, left=100, top=50")
-
-	}
 </script>
 </head>
 
 <body>
-<%
-		MemberDTO user = (MemberDTO) session.getAttribute("user");
-	//System.out.println(user);
+	<%
+		MemberDTO user = (MemberDTO) session.getAttribute("user");//로그인한 유저의 세션을 가지고 있음.
 	%>
 	<h3>
 		<i class="fa fa-angle-right"></i> 나눔공간

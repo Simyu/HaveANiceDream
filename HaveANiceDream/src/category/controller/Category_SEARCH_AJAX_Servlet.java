@@ -17,8 +17,8 @@ import category.dto.CategoryDTO;
 import category.service.CategoryService;
 import category.service.CategoryServiceimpl;
 
-@WebServlet(name = "category/readAjax1", urlPatterns = { "/category/readAjax1.do" })
-public class Category_Servlet_Ajax1 extends HttpServlet {
+@WebServlet(name = "/category/SearchAJAX", urlPatterns = { "/category/SearchAJAX.do" })
+public class Category_SEARCH_AJAX_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unchecked")
