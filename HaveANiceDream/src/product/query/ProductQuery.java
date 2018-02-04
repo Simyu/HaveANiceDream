@@ -15,6 +15,11 @@ public class ProductQuery {
 			+ "from product p,category c,product_image i,member m "
 			+ "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.product_state=3) productA"
 			+ "  where rnum between ? and ?";
+	public static final String PRODUCTLIST_TITLE="select * "
+			+ "from (select rowNum rnum,p.product_no,p.user_id,p.category_no,p.product_name,p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email "
+			+ "from product p,category c,product_image i,member m "
+			+ "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.product_state=3 and p.product_title like ?) productA"
+			+ "  where rnum between ? and ?";
 	//해당회원아이디로 검색된 상품들을 확인할때 쓰는용도 상태값을 절대 안줌.. 멤버아이디에 해당하는거는 다 보여줘야 하니까
 	public static final String PRODUCT_LIST_BY_UESR="select * "
 			+ "from (select rowNum rnum,p.product_no,p.user_id,p.category_no,p.product_name,p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email "

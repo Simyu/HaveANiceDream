@@ -94,9 +94,10 @@ public class productDAOimpl implements productDAO {
 			ptmt.setInt(4,startCount );
 			ptmt.setInt(5,endCount );
 		}else if(title!=null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
-			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING);
-			ptmt.setInt(1,startCount );
-			ptmt.setInt(2,endCount );
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_TITLE);
+			ptmt.setString(1, "%"+title+"%");
+			ptmt.setInt(2,startCount );
+			ptmt.setInt(3,endCount );
 		}
 		else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING);
@@ -242,7 +243,6 @@ public class productDAOimpl implements productDAO {
 		result = ptmt.executeUpdate();
 
 		DBUtil.close(ptmt);
-		System.out.println("업데이트스테이트"+result);
 		return result;
 	}
 

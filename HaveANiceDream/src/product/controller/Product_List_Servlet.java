@@ -34,15 +34,15 @@ public class Product_List_Servlet extends HttpServlet {
 		 int categoryDetailNo =0;
 
 		 String title=request.getParameter("title");
+		 System.out.println(title);
 		 ArrayList<ProductDTO>  productlist = null;
 		 ArrayList<CategoryDTO>  category_list = null;
 		 String viewpath="";
-	
 		 int startCount =1;
 		 int endCount =10;
 		 String paging =null;
 		 paging = request.getParameter("paging");
-		 System.out.println("paging"+paging);
+		// System.out.println("paging"+paging);
 		 if(paging!=null){
 			 int countPage = 10;
 			 int page= Integer.parseInt(paging);
@@ -51,21 +51,32 @@ public class Product_List_Servlet extends HttpServlet {
 			
 			 }
 		 if(state.equals("ALL")){
-		  productlist = service.product_List(null,categoryNo,categoryDetailNo,null,startCount,endCount);
+		  productlist = service.product_List(title,categoryNo,categoryDetailNo,null,startCount,endCount);
+		//  System.out.println(productlist);
 		 // System.out.println(startCount);
 		//  System.out.println(endCount);
 
 		  viewpath  = "../product/product_list.jsp";
-		 }else if(state.equals("SEARCH")){
+		 }else if(state.equals("MAIN")){
+			 if(title==null){
+				 title="";
+			 }
+			 productlist = service.product_List(title,0,0,null,startCount,endCount);
+				
+			  viewpath  = "../product/product_list.jsp";
+		 }
 			 //numberFOrma 예외처리해주어야합니다.
-		
+		 else if(state.equals("SEARCH")){
 				 if(request.getParameter("categoryNo").equals("선택해주세요")){
 					// System.out.println("아무것도 조건없이 검색만했을떄");
+					 if(title.equals(null)){
+						 title="";
+					 }
 					 productlist = service.product_List(title,0,0,null,startCount,endCount);
 						
 					  viewpath  = "../product/product_list.jsp";
 				 }else if(request.getParameter("categoryDetailNohidden").equals("선택해주세요")){//첫번쨰거만 입력하고 두번째꺼 안입력햇을ㄸ때
-						System.out.println("대분류만");
+				//		System.out.println("대분류만");
 					 categoryNo =Integer.parseInt(request.getParameter("categoryNohidden"));
 					 productlist = service.product_List(title,categoryNo,0,null,startCount,endCount);
 					// String test= request.getParameter("categoryDetailNo");

@@ -156,7 +156,7 @@ $(document).ready(function(){
 							<%
 								ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>) request.getAttribute("productlist");
 								int size = productlist.size();
-   								
+							
 								for (int i = 0; i < size; i++) {
 									ProductDTO dto = productlist.get(i);
 									//검색간...   해당물품 검색 DB접근해서 서블릿요청
@@ -166,7 +166,7 @@ $(document).ready(function(){
 							<tr> <!--  종류 부분 수정 ( 대분류 .. 내용 (이름 받아와야함.category_no로 name받아서) -->
 								<td><%=dto.getCategoryName() %></td>
 								<td><img
-									src="/HaveANiceDream/upload/<%=dto.getImageSrc()%>"
+									src="/HaveANiceDream/uploadresources/product/<%=dto.getImageSrc()%>"
 									width='100' height='100' alt='실버' /></td>
 								<td class="numeric"><!-- 이미지 추가...... -->
 								<a	href="/HaveANiceDream/product_search.do?productNo=<%=dto.getProductNo()%>&state=BUY" >
@@ -176,7 +176,7 @@ $(document).ready(function(){
 								<td class="numeric"><%=dto.getProductDate()%></td>
 							</tr>
 							<%} %>
-					
+				
 
 						</tbody>
 					</table>
@@ -192,7 +192,7 @@ $(document).ready(function(){
 				<div class="text-center">
 				<ul class="pagination">
 					<li class="previous"><a href="#">이전</a></li>
-					<% for(int i=0; i< paging;i++){ %>
+					<% for(int i=0; i< paging+1;i++){ %>
 					<li><a href="/HaveANiceDream//product_list.do?state=ALL&paging=<%=i+1%>"><%=i+1%></a></li>
 					<%} %>
 					<li class="next"><a href="#">다음</a></li>

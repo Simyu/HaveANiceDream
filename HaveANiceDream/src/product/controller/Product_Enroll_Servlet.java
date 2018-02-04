@@ -52,7 +52,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		while(files.hasMoreElements()){
 			String file = files.nextElement();
 			fileName = multipart.getFilesystemName(file);
-			System.out.println(fileName);
+			//System.out.println(fileName);
 			filelist.add(fileName);
 		}
 		HttpSession ses = request.getSession(false);
@@ -64,7 +64,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		String productTitle = multipart.getParameter("productTitle");
 		String productContent = multipart.getParameter("productContent");
 		String userId =  user.getUserId();
-		int productState =ProductState.TRADE_CURRENT;
+		int productState =ProductState.TRADE_WAIT;
 		String productGrade = multipart.getParameter("productGrade");
 		String tradeType = multipart.getParameter("tradeType");
 	
@@ -74,7 +74,7 @@ int result=0;
 		ProductService service = new ProductServiceimpl();
 			 result = service.insertProduct(product,filelist);
 		
-		System.out.println(result);
+		//System.out.println(result);
 		String url="";
 		String viewpath = request.getParameter("url");
 

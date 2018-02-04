@@ -67,14 +67,16 @@
 				<!--이미지 넘어가는 벝 END-->
 				
 				<!--검색창 만들기  start-->
+					<form class="form-horizontal style-form" method="post" enctype="multipart/form-data"
+					action="/HaveANiceDream/product_list.do?state=MAIN&paging=1'"><!-- 어떻게해야넘어갈까.. 고민해보자 -->
 				<div class="row">
 					<div class="col-md-3">
 					</div>
 					<div class="col-md-6 mt">
 						<div id="custom-search-input">
 							<div class="input-group col-md-12 centered">
-								<input type="text" class="form-control input-lg" placeholder="검색할물건" /> <span class="input-group-btn">
-									<button class="btn btn-info btn-lg" type="button">
+								<input type="text" class="form-control input-lg"  name="title" id="title" placeholder="검색할물건" /> <span class="input-group-btn">
+									<button class="btn btn-info btn-lg" type="submit">
 										<i class="glyphicon glyphicon-search"></i>
 									</button>
 								</span>
@@ -82,6 +84,7 @@
 						</div>
 					</div>
 				</div>
+				</form>
 				<!--검색창 만들기 end-->
 				
 				<!-- 메인 추천 이미지 생성 부분 -->
