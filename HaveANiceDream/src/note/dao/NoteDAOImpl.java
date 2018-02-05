@@ -187,6 +187,7 @@ public class NoteDAOImpl implements NoteDAO {
 		PreparedStatement preparedStatement = connection.prepareStatement(NoteQuery.NOTE_TO_LIST);
 		
 		preparedStatement.setString(1, noteReceiver);
+		preparedStatement.setString(2, noteReceiver);
 
 		ResultSet resultSet = preparedStatement.executeQuery();
 
