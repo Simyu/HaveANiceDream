@@ -45,8 +45,7 @@ public class AttendanceDAOimpl implements AttendanceDAO {
 			
 			list.add(resultSet.getDate(1));
 		}
-		//System.out.println(resultSet);
-		//System.out.println(list);
+		
 		DBUtil.close(ptmt);
 		DBUtil.close(resultSet);
 		return list;

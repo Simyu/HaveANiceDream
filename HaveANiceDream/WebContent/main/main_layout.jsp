@@ -1,4 +1,3 @@
-<%@page import="user.dto.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -75,6 +74,7 @@
 
 		<jsp:include page="footer.jsp"></jsp:include>
 	</section>
+
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script
 		src="/HaveANiceDream/Theme/assets/js/fancybox/jquery.fancybox.js"></script>
@@ -121,11 +121,11 @@ $(window).load(function() {
 			
 		});
 		<%ArrayList<Date> date = (ArrayList) request.getAttribute("attdate");
-		System.out.println(date);
+		//System.out.println(date);
 			if (date != null) {
 				for (int i = 0; i < date.size(); i++) {%>
                               $("a[data-number='<%=date.get(i)%>']").css(
-									"background-color", "blue");
+									{"background-image":"url('../Theme/assets/img/coins.png')"});
 	<%}
 			}%>
 		});

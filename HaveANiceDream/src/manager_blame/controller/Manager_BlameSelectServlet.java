@@ -29,7 +29,7 @@ public class Manager_BlameSelectServlet extends HttpServlet {
 		
 		Manager_BlameService service = new Manager_BlameServiceimpl();
 		ArrayList<String> dto = service.select(blameno);
-		System.out.println(dto);
+		//System.out.println(dto);
 		
 		JSONObject json = new JSONObject();
 

@@ -11,34 +11,26 @@
 <script type="text/javascript">
 	
 <%MemberDTO dto = (MemberDTO) session.getAttribute("user");
-			//System.out.println(dto);%>
+			%>
 	$(document).ready(
 			function() {
 				$("#click").on(
 						"click",
 						function() {
 							location.href = "/HaveANiceDream/attendance/insert.do";
-							
-							/* arr = [ "5", "4" ];
-							for (i = 0; i < arr.length; i++) {
-								$("a[data-number='" + arr[i] + "']").css(
-										"background-color", "blue");
-
-							} */
 						});
-
 			});
 </script>
 </head>
 <body>
 	<%
 		ArrayList<Date> date = (ArrayList) request.getAttribute("attDate");
-		//System.out.println(date);
+		
 	%>
-	<h3>
+	<h3 style="margin-left:30px;">
 		<i class="fa fa-angle-right"></i>출석체크
 	</h3>
-	<div class="form-panel">
+	<div class="form-panel-calendar" style="width:800px;">
 		<div class="row mt">
 			<div class="col-lg-12 calender-board">
 				<div class="page">
@@ -47,13 +39,14 @@
 					</div>
 
 				</div>
+	</div>
 
-				<div class="col-lg-12">
+				<div class="col-lg-12" style="margin-left: 10px;">
 					<br /> <br /> <br /> <br />
 					<%
 						if (!(boolean) session.getAttribute("attFlag")) {
 					%>
-					<button class="btn btn-theme02" type="button" name="check"
+					<button class="btn btn-primary" type="button" name="check"
 						id="click">출석체크</button>
 
 					<%
@@ -63,7 +56,6 @@
 
 			</div>
 		</div>
-	</div>
 
 
 

@@ -53,7 +53,7 @@ public class BlameListServlet extends HttpServlet{
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(req, res);
 		
-		//JSONObject obj = new JSONObject();
+	
 		
 	}
 

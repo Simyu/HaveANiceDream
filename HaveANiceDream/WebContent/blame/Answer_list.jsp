@@ -52,6 +52,7 @@
 				<input type="hidden" name="blameNo" value="" id="blameNo">
 				<input type="hidden" name="userId" value="<%=user.getUserId() %>" id="userId">
 					<table class="request-view" cellspacing="0" cellpadding="0"
+					style="box-shadow:1px 1px 1px black; margin-top: 50px; border-color:silver;"
 						summary="표" border="1">
 						<colgroup>
 							<col style="" />
@@ -60,14 +61,14 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th class="first" scope="col">제목</th>
-								<th scope="col">문의일시</th>
+								<th class="first" scope="col" style="border-color: white;">제목</th>
+								<th scope="col" style="border-color: white;">문의일시</th>
 								
 							</tr>
 						</thead>
 						<tbody>
 							<tr class="bg-type">
-								<td>
+								<td style="border-color: white;">
 									<div class="inner-box">
 										<p class="subject">
 											<em class="faq-icon">제목: </em> <span class="slideBtn" id="title">
@@ -76,13 +77,13 @@
 										<div class="inner-view" id="content">내용: </div>
 									</div>
 								</td>
-								<td class="linebg">
+								<td class="linebg" style="border-color: white;">
 									<div class="inner-box" id="date"></div>
 								</td>
 							
 							</tr>
 							<tr>
-								<td>
+								<td style="border-color: white;">
 									<div class="inner-box">
 										<div class="inner-view">
 											<p class="subject">
@@ -97,7 +98,7 @@
 									</div>
 									
 								</td>
-								<td class="linebg02">
+								<td class="linebg02" style="border-color: white;">
 									<div class="inner-box02" name="answerDate" id="answerdate"></div>
 								</td>
 								
@@ -107,9 +108,9 @@
 					<div class="request-bottom">
 						<div class="btnbox tright">
 							<span class="btn-border"><input type="Submit"
-								class="orangebtn" value="답변등록" title="답변등록" id="click"/></span> <span
+								class="btn btn-primary" value="답변등록" title="답변등록" id="click"/></span> <span
 								class="btn-border type02"><input type="Submit"
-								class="bluebtn" value="취소" title="취소" /></span>
+								class="btn btn-primary" value="취소" title="취소" /></span>
 						</div>
 					</div>
 				</form>

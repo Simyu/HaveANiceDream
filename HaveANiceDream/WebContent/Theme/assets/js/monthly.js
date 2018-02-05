@@ -110,7 +110,7 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 			var setMonth = $('#' + uniqueId).data('setMonth'),
 				setYear = $('#' + uniqueId).data('setYear');
 			if (setMonth == currentMonth && setYear == currentYear) {
-				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').addClass("add");
+				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]');
 				
 			}
 			
@@ -371,7 +371,7 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 				var setMonth = $('#' + uniqueId).data('setMonth'),
 				setYear = $('#' + uniqueId).data('setYear');
 			if (setMonth == currentMonth && setYear == currentYear) {
-				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]').css("background-color","black");
+				$('#' + uniqueId + ' *[data-number="'+currentDay+'"]');
 				//$(".monthly-day monthly-day-pick").css("background-color","black");
 			}});
 		});

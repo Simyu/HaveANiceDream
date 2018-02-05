@@ -22,7 +22,7 @@ public class BlameUpdateServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		int blameno = Integer.parseInt(request.getParameter("blameNo"));
-		System.out.println(blameno);
+		//System.out.println(blameno);
 		BlameService service = new BlameServiceimpl();
 		service.update(blameno);
 		

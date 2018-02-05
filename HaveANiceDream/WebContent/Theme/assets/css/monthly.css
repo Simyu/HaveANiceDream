@@ -128,7 +128,7 @@
 
 /* Days that are part of previous or next month */
 .monthly-day-blank {
-	background:#8080c0;
+	background:#dadada;
 }
 
 /* Event calendar day number styles */
@@ -181,7 +181,7 @@
 	text-align: center;
 }
 .add{
-		color: #FFF;
+		color: #400080;
 	background: #EA6565;
 }
 

@@ -10,7 +10,8 @@
 <meta name="author" content="Dashboard">
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-<script src="/HaveANiceDream/Theme/assets/js/Filechose.js"></script>
+
+<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <title>DASHGUM - Bootstrap Admin Template</title>
 
 
@@ -27,15 +28,16 @@
 	<%
 		MemberDTO user = (MemberDTO) session.getAttribute("user");
 	%>
-	<h3>
+	<h3 style="margin-left: 30px;">
 		<i class="fa fa-angle-right"></i>신고하기
 	</h3>
-	<div class="row mt">
-		<div class="col-lg-12">
-			<div class="form-panel">
+	<div class="form-panel-panel">
+		<div class="row mt">
+			<div class="col-lg-12">
 
 				<form action="/HaveANiceDream/blame/insert.do" method="get">
-					<table summary="신고정보" height="600" border="1">
+					<table summary="신고정보" height="600" border="1" 
+						style="margin-left: 150px; border-color: silver;">
 						<colgroup>
 							<col style="width: 14%;">
 							<col>
@@ -65,8 +67,7 @@
 												maxlength="15" style="width: 133px;" /></span> <label>물건번호</label>
 											<span class="input-box"><input name="productNo"
 												type="text" id="orderno1" class="txt" maxlength="15"
-												style="width: 133px;" /></span> <input type="button"
-												value="물건번호조회" onclick="popup()">
+												style="width: 133px;" /></span>
 										</dt>
 									</dl>
 								</td>
@@ -90,7 +91,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th><label for="inquirySubject">제목</label></th>
+								<th>제목</th>
 								<td><span class="input-box"><input name="blameTitle"
 										type="text" id="mailtitle" class="txt" title="제목"
 										style="width: 440px;" /> <input name="Mcategorybox"
@@ -113,16 +114,16 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="request-bottom">
-						<div class="btnbox tright">
-							<span class="btn-border"><input type="Submit"
-								class="orangebtn" value="신고하기" title="신고하기" /></span> <span
-								class="btn-border type02"><input type="Submit"
-								class="bluebtn" value="취소" title="취소" /></span>
-						</div>
-					</div>
-				</form>
 			</div>
+			<div class="request-bottom" style="margin-left: 750px;">
+				<div class="btnbox tright">
+					<span class="btn-border"><input type="Submit"
+						class="btn btn-primary" value="신고하기" title="신고하기" /></span> <span
+						class="btn-border type02"><input type="Submit"
+						class="btn btn-primary" value="취소" title="취소" /></span>
+				</div>
+			</div>
+			</form>
 		</div>
 	</div>
 </body>

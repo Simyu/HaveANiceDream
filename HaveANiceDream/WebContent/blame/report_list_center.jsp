@@ -22,16 +22,7 @@ function windowpopup(i){
 	popup = window.open("Answer_list.jsp","num","width=1000,height=500,left=100 top=50");
 	num++;
 }
-/* $(document).ready(function(){
-	$("#search").on("click",function(){
-		var k = $(this).val();
-		$("#table > thead > tbody > tr > td").hide();
-		var temp = $("#table > thead >tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
 
-        $(temp).parent().show();
-	});
-	
-}); */
 
 
 </script>

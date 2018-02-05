@@ -30,21 +30,15 @@ public class AttendanceListServlet extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		MemberDTO dto = (MemberDTO) session.getAttribute("user");
 		String userid = dto.getUserId();
-		// System.out.println(userid);
+		
 		AttendanceService service = new AttendanceServiceimpl();
 		ArrayList<Date> list = service.list(userid);
-		// System.out.println(service);
-		// System.out.println(userid);
-		// System.out.println(format);
-		// System.out.println(format.format(list.get(0)));
 		ArrayList<String> day = new ArrayList<String>();
 
 		if (list!= null) {
 			SimpleDateFormat format = new SimpleDateFormat("d");
 			for (int i = 0; i < list.size(); i++) {
 				day.add(format.format(list.get(i)));
-				//System.out.println(format.format(list.get(i)));
-				
 			}
 		} 
 		

@@ -41,9 +41,7 @@ public class AttendanceServiceimpl implements AttendanceService {
 			e.printStackTrace();
 		}finally{
 			DBUtil.close(con);
-			//System.out.println(result);
-			//System.out.println(dao);
-			//System.out.println(userid);
+			
 		}
 		return result;
 	}
