@@ -35,6 +35,7 @@ public class Product_Search_Servlet extends HttpServlet {
 
 		ProductService service = new ProductServiceimpl();
 		ProductDTO product = service.productSelect(productNo);
+		System.out.println(product);
 		ArrayList<String> fileName = service.productSelect_Image(productNo);
 		CategoryService service1 = new CategoryServiceimpl();
 		ArrayList<CategoryDTO> category_list = service1.categoryList(null);

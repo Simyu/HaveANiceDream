@@ -267,13 +267,13 @@
 						<label class="col-sm-2 col-sm-2 control-label">물품상태</label>
 						<div class="col-sm-10">
 							<input type="radio" name="productGrade" value="high"
-								<%if (product.product_Grade().equals("high")) {%>
+								<%if (product.getProduct_Grade().equals("high")) {%>
 								checked="checked" <%}%>>상 <input type="radio"
 								name="productGrade" value="middle"
-								<%if (product.product_Grade().equals("middle")) {%>
+								<%if (product.getProduct_Grade().equals("middle")) {%>
 								checked="checked" <%}%>>중 <input type="radio"
 								name="productGrade" value="low"
-								<%if (product.product_Grade().equals("low")) {%>
+								<%if (product.getProduct_Grade().equals("low")) {%>
 								checked="checked" <%}%>>하
 						</div>
 					</div>
