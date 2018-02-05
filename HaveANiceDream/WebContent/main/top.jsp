@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<%	MemberDTO user = (MemberDTO) session.getAttribute("user"); %>
+	<%	MemberDTO user = (MemberDTO) session.getAttribute("user"); %>
 
 	<!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -36,79 +36,15 @@
 		<div class="nav notify-row" id="top_menu">
 			<!--  notification start -->
 			<ul class="nav top-menu">
-				<!-- settings start -->
-				<li class="dropdown"><a data-toggle="dropdown"
-					class="dropdown-toggle" href="index.html#"> <i
-						class="fa fa-tasks"></i> <span class="badge bg-theme">4</span>
-				</a>
-					<ul class="dropdown-menu extended tasks-bar">
-						<div class="notify-arrow notify-arrow-green"></div>
-						<li>
-							<p class="green">You have 4 pending tasks</p>
-						</li>
-						<li><a href="index.html#">
-								<div class="task-info">
-									<div class="desc">DashGum Admin Panel</div>
-									<div class="percent">40%</div>
-								</div>
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-success"
-										role="progressbar" aria-valuenow="40" aria-valuemin="0"
-										aria-valuemax="100" style="width: 40%">
-										<span class="sr-only">40% Complete (success)</span>
-									</div>
-								</div>
-						</a></li>
-						<li><a href="index.html#">
-								<div class="task-info">
-									<div class="desc">Database Update</div>
-									<div class="percent">60%</div>
-								</div>
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-warning"
-										role="progressbar" aria-valuenow="60" aria-valuemin="0"
-										aria-valuemax="100" style="width: 60%">
-										<span class="sr-only">60% Complete (warning)</span>
-									</div>
-								</div>
-						</a></li>
-						<li><a href="index.html#">
-								<div class="task-info">
-									<div class="desc">Product Development</div>
-									<div class="percent">80%</div>
-								</div>
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-info" role="progressbar"
-										aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-										style="width: 80%">
-										<span class="sr-only">80% Complete</span>
-									</div>
-								</div>
-						</a></li>
-						<li><a href="index.html#">
-								<div class="task-info">
-									<div class="desc">Payments Sent</div>
-									<div class="percent">70%</div>
-								</div>
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-danger"
-										role="progressbar" aria-valuenow="70" aria-valuemin="0"
-										aria-valuemax="100" style="width: 70%">
-										<span class="sr-only">70% Complete (Important)</span>
-									</div>
-								</div>
-						</a></li>
-						<li class="external"><a href="#">See All Tasks</a></li>
-					</ul></li>
-				<!-- settings end -->
 				<!-- inbox dropdown start-->
 				<li id="header_inbox_bar" class="dropdown"><a
 					data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-						<i class="fa fa-envelope-o"></i> <span class="badge bg-theme" id="notenum">0</span>
+						<i class="fa fa-envelope-o"></i> <span class="badge bg-theme"
+						id="notenum">0</span>
 				</a>
 					<ul class="dropdown-menu extended inbox" id="talklist">
 						<div class="notify-arrow notify-arrow-green"></div>
-						
+
 					</ul></li>
 				<!-- inbox dropdown end -->
 			</ul>
@@ -133,11 +69,9 @@
 			</ul>
 		</div>
 	</header>
-<% if(user !=null){%>
-<div id="chatarea">	
-
-</div>
-<%} %>
+	<% if(user !=null){%>
+	<div id="chatarea"></div>
+	<%} %>
 	<!--header end-->
 	<!-- 카카오 SDK -->
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -196,13 +130,18 @@
 				},
 				dataType : "json",
 				success : function(resp) {
-					//alert(resp);
+					//alert(resp.list[0].name);
 					var size = resp.list.length;
 					for(var i=0;i<size;i++){
-						var talkunit = "<li><a href='javascript:showTalkList('"+resp.list[i].id+"')'> <span class='photo'>"
-						+"<img alt='avatar' src='/HaveANiceDream/uploadresources/user/"+resp.list[i].img+"''></span> "
-						+"<span class='subject'> <span class='from'>"+resp.list[i].name+"</span> </span></a></li>";
+						var talkunit = "<li><a id='lst"+i+"'> <span class='photo'>"
+						+"<img alt='avatar' src='/HaveANiceDream/uploadresources/user/"+resp.list[i].img+"'/></span> "
+						+"<span class='subject'> <span class='from'>"+resp.list[i].name+"</span></span></a></li>";
+						
 						$("#talklist").append(talkunit);
+						var temp = "#lst"+i;
+						$(temp).on("click", {id : resp.list[i].id}, function(e) {
+							showTalkList(e.data.id);
+						});
 					}
 
 				}
@@ -216,16 +155,20 @@
 			var $chatbox = $('.chatbox'),
 			$chatboxTitle = $('.chatbox__title'),
 			$chatboxTitleClose = $('.chatbox__title__close');
+			
 			$chatboxTitle.on('click', function() {
-        $chatbox.toggleClass('chatbox--tray');
-        });
-        $chatboxTitleClose.on('click', function(e) {
-            e.stopPropagation();
-            $chatbox.addClass('chatbox--closed');
-        });
+        		$chatbox.toggleClass('chatbox--tray');
+      		});
+			
+	        $chatboxTitleClose.on('click', function(e) {
+	            e.stopPropagation();
+	            $chatbox.addClass('chatbox--closed');
+	        });
+        
         $chatbox.on('transitionend', function() {
             if ($chatbox.hasClass('chatbox--closed')) $chatbox.remove();
         });      
+        
         $('.chatbox__message').keypress(function (e) {
             if (e.which == 13){
             	var str = $(this).val();
@@ -235,7 +178,7 @@
             	$(".chatbox__body").append(msg);
             	var data = {
             			"from" : '<%=user.getUserId()%>',
-            			"to" : you,
+            			"to" : you+"",
             			"text" : str
             	}
         		wSocket.send(JSON.stringify(data));
@@ -262,7 +205,10 @@
 		
 		function showTalkList(selyou) {
 			you = selyou;
+			//alert('test');
+			
         	$("#chatarea").empty();
+        	
         	var chatarea = "<div class='chatbox chatbox--tray'><div class='chatbox__title'><h5><a href=#'>"
         	+you+"</a></h5><button class='chatbox__title__tray'><span></span></button>"
         	+"<button class='chatbox__title__close'><span>"
@@ -281,7 +227,7 @@
 				type : "GET",
 				data : {
 					"me" : '<%=user.getUserId()%>',
-					"you" : you
+					"you" : you+""
 				},
 				dataType : "json",
 				success : function(resp) {
@@ -289,7 +235,7 @@
 					youimg = resp.yourimg;
 					for(var i=0;i<size;i++){
 						var msg = "";
-						if (resp.list[i].from == 'a'){
+						if (resp.list[i].from == '<%=user.getUserId()%>'){
 			            	msg = '<div class="chatbox__body__message chatbox__body__message--right">'
 			                	+'<img src="/HaveANiceDream/uploadresources/user/'+'<%=user.getUserImage()%>'+'" alt="Picture">'
 			                	+'<p>'+resp.list[i].content+'</p></div>';
@@ -306,7 +252,7 @@
 			});
 		}
 	<%}%>
-
+		
 	</script>
 
 </body>

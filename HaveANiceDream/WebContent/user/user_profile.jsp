@@ -18,8 +18,10 @@
 <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css"
 	rel="stylesheet">
 
- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 
 <style type="text/css">
@@ -270,23 +272,42 @@
 	height: 32px;
 	line-height: 18px;
 }
-.no-mg-no-pd{
+
+.no-mg-no-pd {
 	margin: 0;
 	padding: 0;
 }
+
+.btn-comment {
+	color: #fff;
+	background-color: #5193ea;
+	border-color: #2775e2;
+}
+
+.btn-comment:hover, .btn-comment:focus, .btn-comment:active,
+	.btn-comment.active, .open .dropdown-toggle.btn-comment {
+	color: #fff;
+	background-color: #2775e2;
+	border-color: #2775e2;
+}
+.btn {
+        margin-bottom: 5px;
+    }
 </style>
 
 </head>
 <body>
-	<%ArrayList<GradeDTO> gradeBuyTypelist = (ArrayList<GradeDTO>)request.getAttribute("gradeBuyTypelist"); 
-	ArrayList<GradeDTO> gradeSellTypelist = (ArrayList<GradeDTO>)request.getAttribute("gradeSellTypelist"); 
-	GradeDTO gradedto = null;
-	int buytypesize= gradeBuyTypelist.size();
-	int selltypesize= gradeSellTypelist.size();
-		%>
+	<%
+		ArrayList<GradeDTO> gradeBuyTypelist = (ArrayList<GradeDTO>) request.getAttribute("gradeBuyTypelist");
+		ArrayList<GradeDTO> gradeSellTypelist = (ArrayList<GradeDTO>) request.getAttribute("gradeSellTypelist");
+		GradeDTO gradedto = null;
+		int buytypesize = gradeBuyTypelist.size();
+		int selltypesize = gradeSellTypelist.size();
+	%>
 
 
-	<div class="container" style="overflow:auto;width:320px; height:500px;">
+	<div class="container"
+		style="overflow: auto; width: 320px; height: 500px;">
 		<div class="row">
 			<div class="col-lg-3 col-sm-6">
 				<div class="card hovercard">
@@ -305,6 +326,9 @@
 						<div class="desc" id="userTel"></div>
 						<div class="desc" id="userType"></div>
 					</div>
+					<button class="btn btn-comment" type="button" onclick="chatstart()">
+						<i class="fa fa-comment"></i>1:1 대화하기
+					</button>
 					<!-- <div class="bottom">
 						<a class="btn btn-primary btn-twitter btn-sm"
 							href="https://twitter.com/webmaniac"> <i
@@ -321,86 +345,189 @@
 						</a>
 					</div> -->
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
-					  <li role="presentation" class="active"><a data-target="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">판매평가</a></li>
-					  <li role="presentation" class=""><a data-target="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">구매평가</a></li>
-					  <li role="presentation" class="dropdown">
-					  </li>
+						<li role="presentation" class="active"><a data-target="#home"
+							id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
+							aria-expanded="true">판매평가</a></li>
+						<li role="presentation" class=""><a data-target="#profile"
+							role="tab" id="profile-tab" data-toggle="tab"
+							aria-controls="profile" aria-expanded="false">구매평가</a></li>
+						<li role="presentation" class="dropdown"></li>
 					</ul>
-					<div id="myTabContent" class="tab-content col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="width: 270px; text-align: justify;">
-					  <div role="tabpanel" class="tab-pane fade active in col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" id="home" aria-labelledby="home-tab" >
-					  	<%for(int i = 0; i <buytypesize;i++){
-					  		gradedto=gradeBuyTypelist.get(i);%>
-					  	<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : <%=gradedto.getGradeUserId() %> </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;"><%=gradedto.getGradeDate()%> </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : <%=gradedto.getTradeNo() %></p>
-					    	<%if(gradedto.getGrade().equals("매우만족")){%>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-smile-o" style="color:green ;"></i><%=gradedto.getGrade()%> </p>
-					    	<%}else if(gradedto.getGrade().equals("만족")) {%>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-smile-o" style="color:skyblue ;"></i><%=gradedto.getGrade()%> </p>
-					    	<%}else if(gradedto.getGrade().equals("보통")) {%>	
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-meh-o" style="color: yellow;"></i><%=gradedto.getGrade()%> </p>
-					    	<%}else if(gradedto.getGrade().equals("불만족")) {%>	
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-frown-o" style="color: purple;"></i><%=gradedto.getGrade()%> </p>
-					    	<%}else if(gradedto.getGrade().equals("매우불만족")) {%>	
-						<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-frown-o" style="color: red;"></i><%=gradedto.getGrade()%> </p>
-					    	<%} %>
-					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray; margin-bottom: 10px; padding: 10px;"><%=gradedto.getGradeContent()%> </p>
+					<div id="myTabContent"
+						class="tab-content col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd"
+						style="width: 270px; text-align: justify;">
+						<div role="tabpanel"
+							class="tab-pane fade active in col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd"
+							id="home" aria-labelledby="home-tab">
+							<%
+								for (int i = 0; i < buytypesize; i++) {
+									gradedto = gradeBuyTypelist.get(i);
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd">
+								평가자 :
+								<%=gradedto.getGradeUserId()%>
+							</p>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right;"><%=gradedto.getGradeDate()%>
+							</p>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="border-bottom: 1px solid #e6e6e6;">
+								거래번호 :
+								<%=gradedto.getTradeNo()%></p>
+							<%
+								if (gradedto.getGrade().equals("매우만족")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-smile-o" style="color: green;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								} else if (gradedto.getGrade().equals("만족")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-smile-o" style="color: skyblue;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								} else if (gradedto.getGrade().equals("보통")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-meh-o" style="color: yellow;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								} else if (gradedto.getGrade().equals("불만족")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-frown-o" style="color: purple;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								} else if (gradedto.getGrade().equals("매우불만족")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-frown-o" style="color: red;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								}
+							%>
+							<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd"
+								style="border-bottom: 1px solid gray; margin-bottom: 10px; padding: 10px;"><%=gradedto.getGradeContent()%>
+							</p>
 
-						<%} %>
-						<%if(gradedto==null){ %>
-					  	
-					 	<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray; padding: 20px; text-align: center;">받은 평가가 없습니다</p>
-						<%}else{
-							gradedto=null;
-						}%>
-				
-					  </div>
-					  <div role="tabpanel" class="tab-pane fade col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" id="profile" aria-labelledby="profile-tab">
-					  
-					    <%for(int i = 0; i <selltypesize;i++){
-					  		gradedto=gradeSellTypelist.get(i); %>
-					  	
-					  	<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" >평가자 : <%=gradedto.getGradeUserId() %> </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style=" text-align: right;"><%=gradedto.getGradeDate()%> </p>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="border-bottom: 1px solid #e6e6e6;">거래번호 : <%=gradedto.getTradeNo() %></p>
-					    	<%if(gradedto.getGrade().equals("매우만족")){%>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-smile-o" style="color:green ;"></i><%=gradedto.getGrade()%> </p>
-					    	<%}else if(gradedto.getGrade().equals("만족")) {%>
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-smile-o" style="color:skyblue ;"></i><%=gradedto.getGrade()%> </p>
-					    	<%}else if(gradedto.getGrade().equals("보통")) {%>	
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-meh-o" style="color: yellow;"></i><%=gradedto.getGrade()%> </p>
-					    	<%}else if(gradedto.getGrade().equals("불만족")) {%>	
-					    <p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-frown-o" style="color: purple;"></i><%=gradedto.getGrade()%> </p>
-					    	<%}else if(gradedto.getGrade().equals("매우불만족")) {%>	
-						<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd" style="text-align: right;border-bottom: 1px solid #e6e6e6;"><i class="fa fa-frown-o" style="color: red;"></i><%=gradedto.getGrade()%> </p>
-					    	<%} %>
-					    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray; margin-bottom: 10px; padding: 10px;"><%=gradedto.getGradeContent()%> </p>
+							<%
+								}
+							%>
+							<%
+								if (gradedto == null) {
+							%>
 
-						<%} %>
-						<%if(gradedto==null){ %>
-					  	
-					 	<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd" style="border-bottom: 1px solid gray; padding: 20px; text-align: center;">받은 평가가 없습니다</p>
-						<%}else{
-							gradedto=null;
-						}%>
-					  </div>
+							<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd"
+								style="border-bottom: 1px solid gray; padding: 20px; text-align: center;">받은
+								평가가 없습니다</p>
+							<%
+								} else {
+									gradedto = null;
+								}
+							%>
+
+						</div>
+						<div role="tabpanel"
+							class="tab-pane fade col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd"
+							id="profile" aria-labelledby="profile-tab">
+
+							<%
+								for (int i = 0; i < selltypesize; i++) {
+									gradedto = gradeSellTypelist.get(i);
+							%>
+
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd">
+								평가자 :
+								<%=gradedto.getGradeUserId()%>
+							</p>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right;"><%=gradedto.getGradeDate()%>
+							</p>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="border-bottom: 1px solid #e6e6e6;">
+								거래번호 :
+								<%=gradedto.getTradeNo()%></p>
+							<%
+								if (gradedto.getGrade().equals("매우만족")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-smile-o" style="color: green;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								} else if (gradedto.getGrade().equals("만족")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-smile-o" style="color: skyblue;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								} else if (gradedto.getGrade().equals("보통")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-meh-o" style="color: yellow;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								} else if (gradedto.getGrade().equals("불만족")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-frown-o" style="color: purple;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								} else if (gradedto.getGrade().equals("매우불만족")) {
+							%>
+							<p class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-mg-no-pd"
+								style="text-align: right; border-bottom: 1px solid #e6e6e6;">
+								<i class="fa fa-frown-o" style="color: red;"></i><%=gradedto.getGrade()%>
+							</p>
+							<%
+								}
+							%>
+							<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd"
+								style="border-bottom: 1px solid gray; margin-bottom: 10px; padding: 10px;"><%=gradedto.getGradeContent()%>
+							</p>
+
+							<%
+								}
+							%>
+							<%
+								if (gradedto == null) {
+							%>
+
+							<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-mg-no-pd"
+								style="border-bottom: 1px solid gray; padding: 20px; text-align: center;">받은
+								평가가 없습니다</p>
+							<%
+								} else {
+									gradedto = null;
+								}
+							%>
+						</div>
 					</div>
-						
+
 				</div>
-				
+
 			</div>
 
 		</div>
-		
-	</div>
-	
-	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</div>
+
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+	<script src="/HaveANiceDream/Theme/assets/js/bootstrap.min.js"></script>
 	<script src="/HaveANiceDream/Theme/assets/js/jquery.scrollTo.min.js"></script>
-    <script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-	
-    
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js"
+		type="text/javascript"></script>
+
+
 	<script type="text/javascript">
 		$(document)
 				.ready(
@@ -436,7 +563,10 @@
 										}
 									});
 						});
+		function chatstart() {
+			opener.showTalkList($("#userId").text());
+		}
 	</script>
-	
+
 </body>
 </html>
