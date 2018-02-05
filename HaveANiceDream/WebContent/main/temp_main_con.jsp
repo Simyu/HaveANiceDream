@@ -1,3 +1,5 @@
+<%@page import="product.dto.ProductDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -86,38 +88,41 @@
 				</div>
 				</form>
 				<!--검색창 만들기 end-->
-				
+				<% ArrayList<ProductDTO> productlist= (ArrayList<ProductDTO> )request.getAttribute("productlist"); %>
 				<!-- 메인 추천 이미지 생성 부분 -->
           	<h3 class="ml"><i class="fa fa-angle-right"></i> 메인추천</h3>
           	<hr>
 				<div class="row mt">
+				<%for(int i=0;i<productlist.size();i++){
+		                            	ProductDTO product = productlist.get(i);%>
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
 						<div class="project-wrapper">
 		                    <div class="project">
 		                        <div class="photo-wrapper photo-wrapper-background-color ml">
 		                            <div class="photo">
-		                            	<a class="fancybox" href="/HaveANiceDream/Theme/assets/img/portfolio/port04.jpg"><img class="img-responsive" src="/HaveANiceDream/Theme/assets/img/portfolio/port04.jpg" alt=""></a>
+		                            
+		                            	<a class="fancybox" href="/HaveANiceDream/product_search.do?productNo=<%=product.getProductNo()%>&state=BUY"><img class="self-img-full-cont3" src="/HaveANiceDream/uploadresources/product/<%=product.getImageSrc()%>" alt=""></a>
 		                            	<div class="col-xs-12 mainview-content-title-font">
-		                            	저에게 전혀 필요없는 옷들 드림합니다!
+		                            	<%=product.getProductTitle()%>
 		                            	</div>
 		                            	<div class="col-xs-12">
 		                            		<label class="label label-warning">강력추천</label>
 		                            		<label class="label label-primary">new</label>
 		                            	</div>
 		                            	<div class="col-xs-12">
-		                            	상태 : 굉장히 양호
+		                            	상태 : <%=product.getProduct_Grade()%>
 		                            	</div>
 		                            	<div class="col-xs-12 mainview-price">
-		                            	 2,000 포인트
+		                            	필요 포인트 : <%=product.getProductPrice()%>
 		                            	</div>
 		                            	<div class="col-xs-12">
-		                            	 거래방법 : 직거래
+		                            	 거래방법 : <%=product.getTradeType()%>
 		                            	</div>
 		                            	<div class="col-xs-12">
-		                            	 등록일자 : 2018.01.18
+		                            	 등록일자 : <%=product.getProductDate()%>
 		                            	</div>
 		                            	<div class="col-xs-12">
-		                            	아이디 : 드림왕
+		                            	아이디 : <%=product.getUserId() %>
 		                            	</div>
 		                            </div>
 		                           		
@@ -126,183 +131,7 @@
 		                    </div>
 		                </div>
 					</div><!-- col-lg-4 -->
-					
-					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-						<div class="project-wrapper">
-		                    <div class="project">
-		                        <div class="photo-wrapper">
-		                            <div class="photo">
-		                            	<a class="fancybox" href="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg"><img class="img-responsive" src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg" alt=""></a>
-		                            </div>
-		                            <div class="col-xs-12 mainview-content-title-font">
-		                            	쓸모없는 애플 드림합니다!!! 하루사용!!
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            		<label class="label label-warning">강력추천</label>
-		                            		<label class="label label-primary">new</label>
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	상태 : 굉장히 양호
-		                            	</div>
-		                            	<div class="col-xs-12 mainview-price">
-		                            	 5,000 포인트
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 거래방법 : 직거래
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 등록일자 : 2018.01.18
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	아이디 : 드림왕
-		                            	</div>
-		                            <div class="overlay"></div>
-		                        </div>
-		                    </div>
-		                </div>
-					</div><!-- col-lg-4 -->
-					
-					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-						<div class="project-wrapper">
-		                    <div class="project">
-		                        <div class="photo-wrapper">
-		                            <div class="photo">
-		                            	<a class="fancybox" href="/HaveANiceDream/Theme/assets/img/portfolio/port06.jpg"><img class="img-responsive" src="/HaveANiceDream/Theme/assets/img/portfolio/port06.jpg" alt=""></a>
-		                            </div>
-		                            <div class="col-xs-12 mainview-content-title-font">
-		                            	보드 드림할테니, 대신 저랑 데이트하실분!
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            		<label class="label label-warning">강력추천</label>
-		                            		<label class="label label-primary">new</label>
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	상태 : 굉장히 양호
-		                            	</div>
-		                            	<div class="col-xs-12 mainview-price">
-		                            	 2,000 포인트
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 거래방법 : 직거래
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 등록일자 : 2018.01.18
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	아이디 : 드림왕
-		                            	</div>
-		                            <div class="overlay"></div>
-		                        </div>
-		                    </div>
-		                </div>
-					</div><!-- col-lg-4 -->
-				</div><!-- /row -->
-
-				<div class="row mt">
-					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-						<div class="project-wrapper">
-		                    <div class="project">
-		                        <div class="photo-wrapper">
-		                            <div class="photo">
-		                            	<a class="fancybox" href="/HaveANiceDream/Theme/assets/img/portfolio/port01.jpg"><img class="img-responsive" src="/HaveANiceDream/Theme/assets/img/portfolio/port01.jpg" alt=""></a>
-		                            </div>
-		                            	<div class="col-xs-12 mainview-content-title-font">
-		                            	영어책 못 읽어서 드림합니다!
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            		<label class="label label-warning">강력추천</label>
-		                            		<label class="label label-primary">new</label>
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	상태 : 굉장히 양호
-		                            	</div>
-		                            	<div class="col-xs-12 mainview-price">
-		                            	 2,500 포인트
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 거래방법 : 직거래
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 등록일자 : 2018.01.18
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	아이디 : 드림왕
-		                            	</div>
-		                            <div class="overlay"></div>
-		                        </div>
-		                    </div>
-		                </div>
-					</div><!-- col-lg-4 -->
-					
-					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-						<div class="project-wrapper">
-		                    <div class="project">
-		                        <div class="photo-wrapper">
-		                            <div class="photo">
-		                            	<a class="fancybox" href="/HaveANiceDream/Theme/assets/img/portfolio/port02.jpg"><img class="img-responsive" src="/HaveANiceDream/Theme/assets/img/portfolio/port02.jpg" alt=""></a>
-		                            </div>
-		                            <div class="col-xs-12 mainview-content-title-font">
-		                            	옆에 사람이랑 같은 이유로 드림합니다.
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            		<label class="label label-warning">강력추천</label>
-		                            		<label class="label label-primary">new</label>
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	상태 : 굉장히 양호
-		                            	</div>
-		                            	<div class="col-xs-12 mainview-price">
-		                            	 2,100 포인트
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 거래방법 : 직거래
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 등록일자 : 2018.01.18
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	아이디 : 나눔왕
-		                            	</div>
-		                            <div class="overlay"></div>
-		                        </div>
-		                    </div>
-		                </div>
-					</div><!-- col-lg-4 -->
-					
-					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc mb">
-						<div class="project-wrapper">
-		                    <div class="project">
-		                        <div class="photo-wrapper">
-		                            <div class="photo">
-		                            	<a class="fancybox" href="/HaveANiceDream/Theme/assets/img/portfolio/port03.jpg"><img class="img-responsive" src="/HaveANiceDream/Theme/assets/img/portfolio/port03.jpg" alt=""></a>
-		                            </div>
-		                            <div class="col-xs-12 mainview-content-title-font">
-		                            	저도 같은이유로 드림해요
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            		<label class="label label-warning">강력추천</label>
-		                            		<label class="label label-primary">new</label>
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	상태 : 굉장히 양호
-		                            	</div>
-		                            	<div class="col-xs-12 mainview-price">
-		                            	 3,000 포인트
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 거래방법 : 직거래
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	 등록일자 : 2018.01.18
-		                            	</div>
-		                            	<div class="col-xs-12">
-		                            	아이디 : 드림왕
-		                            	</div>
-		                            <div class="overlay"></div>
-		                        </div>
-		                    </div>
-		                </div>
-					</div><!-- col-lg-4 -->
-				</div><!-- /row -->
+					<%} %>		
+		</div><!-- /row -->
 </body>
 </html>

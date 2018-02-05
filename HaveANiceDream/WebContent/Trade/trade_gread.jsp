@@ -35,7 +35,7 @@ $(document).ready(function() {
 <script type="text/javascript">
 	function insertPath(productNo,tradeNo,state){
 		location.href = "/HaveANiceDream/grade/insert.do?productNo="+productNo+"&tradeNo="+tradeNo+"&state="+state;
-		opener.parent.window.location.href="/HaveANiceDream/trade/list.do";
+		opener.location.href="/HaveANiceDream/trade/list.do";
 		window.close();
 	}
 

@@ -103,6 +103,10 @@ public class productDAOimpl implements productDAO {
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING);
 			ptmt.setInt(1,startCount );
 			ptmt.setInt(2,endCount );
+		}else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null & endCount==6){  //전체리스트 검색
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING_RECENT);
+			ptmt.setInt(1,startCount );
+			ptmt.setInt(2,endCount );
 		}else if(userId!=null){//???? 
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCT_LIST_BY_UESR);
 			ptmt.setString(1, userId);
