@@ -234,7 +234,7 @@
             	+'<p>'+str+'</p></div>';
             	$(".chatbox__body").append(msg);
             	var data = {
-            			"from" : '<%=user.getUserImage()%>',
+            			"from" : '<%=user.getUserId()%>',
             			"to" : you,
             			"text" : str
             	}
@@ -249,7 +249,7 @@
 		wSocket.onmessage = function(e) {
 			//alert(e.data);
 			var data = JSON.parse(e.data);
-			if(data.from == you){
+			if(data.from == you && data.to=='<%=user.getUserId()%>'){
         	var msg = '<div class="chatbox__body__message chatbox__body__message--left">'
             	+'<img src="/HaveANiceDream/uploadresources/user/'+youimg+'" alt="Picture">'
             	+'<p>'+data.text+'</p></div>';
@@ -280,7 +280,7 @@
 				url : "/HaveANiceDream/note/talklist.do",
 				type : "GET",
 				data : {
-					"me" : '<%=user.getUserImage()%>',
+					"me" : '<%=user.getUserId()%>',
 					"you" : you
 				},
 				dataType : "json",
