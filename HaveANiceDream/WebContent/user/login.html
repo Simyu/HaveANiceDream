@@ -78,12 +78,13 @@
 						</p>
 						<div id="naverIdLogin"></div>
 						<p>
+						<!-- 페이스북 -->
 						<div class="fb-login-button" scope="public_profile,email"
 							data-max-rows="1" data-size="large" data-button-type="login_with"
 							data-show-faces="false" data-auto-logout-link="false"
 							data-use-continue-as="false" onlogin="fbLogin();"></div>
 						</p>
-
+						<!-- 페이스북 종료 -->
 					</div>
 					<div class="registration">
 						Don't have an account yet?<br /> <a class=""
@@ -212,7 +213,7 @@
 
 				if (response.status === 'connected') {
 					FB.api('/me', function(res) {
-						// 제일 마지막에 실행
+						// 제일 마지막에 실행 // me가 벌써 토근생성해서  내정보 받아옴acess 엑세스토근을 받아옴..
 						console.log("Success Login : " + response.name);
 						// alert("Success Login : " + response.name);
 					});
@@ -234,6 +235,9 @@
 			js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.12&appId=2119289184970452&autoLogAppEvents=1';
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
+		
+		
+		
 	</script>
 
 </body>
