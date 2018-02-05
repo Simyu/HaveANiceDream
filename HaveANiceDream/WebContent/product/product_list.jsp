@@ -186,7 +186,7 @@ $(document).ready(function(){
 				 int totalCount =(Integer) request.getAttribute("totalCount");
 
 				 int countPage = 10;
-				int paging =(int)Math.floor(totalCount/countPage);
+				int paging =(int)Math.ceil(totalCount/countPage);
 			
 				%>
 				<div class="text-center">
