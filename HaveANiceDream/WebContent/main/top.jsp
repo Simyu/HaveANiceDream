@@ -76,7 +76,7 @@
 	<!-- 카카오 SDK -->
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript">
-		var wSocket = new WebSocket("ws://localhost:8088/HaveANiceDream/user/chat");
+		var wSocket = new WebSocket("ws://192.168.9.50:8088/HaveANiceDream/user/chat");
 		
 		function setPath(url) {
 			location.href = "/HaveANiceDream/view.html?url=" + url;

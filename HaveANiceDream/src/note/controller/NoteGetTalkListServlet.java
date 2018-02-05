@@ -37,7 +37,7 @@ public class NoteGetTalkListServlet extends HttpServlet {
 
 		NoteService service = new NoteServiceImpl();
 		ArrayList<NoteDTO> list = service.noteList(me, you);
-		System.out.println("dto => "+list);
+		//System.out.println("dto => "+list);
 		if (list != null) {
 			UserService userService = new UserServiceImpl();
 			MemberDTO memberDTO = userService.userSelect(you);
@@ -57,6 +57,10 @@ public class NoteGetTalkListServlet extends HttpServlet {
 			for (int i = 0; i < size; i++) {
 				JSONObject object = new JSONObject();
 				NoteDTO dto = list.get(i);
+				
+				if (dto.getNoteReceiver() == me) {
+					service.noteUpdateState(dto.getNoteNo());
+				}
 
 				object.put("from", dto.getNoteSender());
 				object.put("date", dto.getNoteDate().toString());
@@ -69,7 +73,7 @@ public class NoteGetTalkListServlet extends HttpServlet {
 			if (memberDTO != null) {
 				jsonObject.put("yourimg", memberDTO.getUserImage());
 			}
-			System.out.println("json => "+jsonObject.toJSONString());
+			//System.out.println("json => "+jsonObject.toJSONString());
 
 			printWriter.println(jsonObject.toJSONString());
 		} else {
