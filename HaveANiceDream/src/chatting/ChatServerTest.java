@@ -70,6 +70,8 @@ public class ChatServerTest {
 	public void incoming(String message) {
 		// 클라이언트를 믿지 말것!!!!!
 		//String filteredMessage = HTMLFilter.filter(message.toString());
+		System.out.println(message);
+
 		JSONParser parser = new JSONParser();
 		try {
 			JSONObject object = (JSONObject) parser.parse(message);

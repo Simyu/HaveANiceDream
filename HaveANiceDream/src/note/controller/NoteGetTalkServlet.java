@@ -23,10 +23,13 @@ public class NoteGetTalkServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		response.setHeader("cache-control", "no-cache,no-store");
 		String userId = request.getParameter("userId");
 
 		NoteService service = new NoteServiceImpl();
 		ArrayList<MemberDTO> list = service.noteToList(userId);
+		//System.out.println(list);
 
 		JSONObject jsonObject = new JSONObject();
 		JSONArray array = new JSONArray();
@@ -46,6 +49,7 @@ public class NoteGetTalkServlet extends HttpServlet {
 			}
 
 			jsonObject.put("list", array);
+			//System.out.println(jsonObject.toJSONString());
 		}
 		PrintWriter printWriter = response.getWriter();
 		printWriter.println(jsonObject.toJSONString());

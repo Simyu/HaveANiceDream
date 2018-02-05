@@ -28,6 +28,8 @@ public class NoteGetTalkListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		response.setHeader("cache-control", "no-cache,no-store");
 		String me = request.getParameter("me");
 		String you = request.getParameter("you");
 
@@ -35,6 +37,7 @@ public class NoteGetTalkListServlet extends HttpServlet {
 
 		NoteService service = new NoteServiceImpl();
 		ArrayList<NoteDTO> list = service.noteList(me, you);
+		System.out.println("dto => "+list);
 		if (list != null) {
 			UserService userService = new UserServiceImpl();
 			MemberDTO memberDTO = userService.userSelect(you);
@@ -66,6 +69,7 @@ public class NoteGetTalkListServlet extends HttpServlet {
 			if (memberDTO != null) {
 				jsonObject.put("yourimg", memberDTO.getUserImage());
 			}
+			System.out.println("json => "+jsonObject.toJSONString());
 
 			printWriter.println(jsonObject.toJSONString());
 		} else {

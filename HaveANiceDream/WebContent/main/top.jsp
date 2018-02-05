@@ -130,14 +130,18 @@
 				},
 				dataType : "json",
 				success : function(resp) {
-					//alert(resp);
+					//alert(resp.list[0].name);
 					var size = resp.list.length;
 					for(var i=0;i<size;i++){
-						var talkunit = "<li><a href='javascript:showTalkList('"+resp.list[i].id+"')'> <span class='photo'>"
-						+"<img alt='avatar' src='/HaveANiceDream/uploadresources/user/"+resp.list[i].img+"''></span> "
+						var talkunit = "<li><a id='lst"+i+"'> <span class='photo'>"
+						+"<img alt='avatar' src='/HaveANiceDream/uploadresources/user/"+resp.list[i].img+"'/></span> "
 						+"<span class='subject'> <span class='from'>"+resp.list[i].name+"</span></span></a></li>";
 						
 						$("#talklist").append(talkunit);
+						var temp = "#lst"+i;
+						$(temp).on("click", {id : resp.list[i].id}, function(e) {
+							showTalkList(e.data.id);
+						});
 					}
 
 				}
@@ -153,13 +157,13 @@
 			$chatboxTitleClose = $('.chatbox__title__close');
 			
 			$chatboxTitle.on('click', function() {
-        $chatbox.toggleClass('chatbox--tray');
-        });
+        		$chatbox.toggleClass('chatbox--tray');
+      		});
 			
-        $chatboxTitleClose.on('click', function(e) {
-            e.stopPropagation();
-            $chatbox.addClass('chatbox--closed');
-        });
+	        $chatboxTitleClose.on('click', function(e) {
+	            e.stopPropagation();
+	            $chatbox.addClass('chatbox--closed');
+	        });
         
         $chatbox.on('transitionend', function() {
             if ($chatbox.hasClass('chatbox--closed')) $chatbox.remove();
@@ -174,7 +178,7 @@
             	$(".chatbox__body").append(msg);
             	var data = {
             			"from" : '<%=user.getUserId()%>',
-            			"to" : you,
+            			"to" : you+"",
             			"text" : str
             	}
         		wSocket.send(JSON.stringify(data));
@@ -201,6 +205,7 @@
 		
 		function showTalkList(selyou) {
 			you = selyou;
+			//alert('test');
 			
         	$("#chatarea").empty();
         	
@@ -222,7 +227,7 @@
 				type : "GET",
 				data : {
 					"me" : '<%=user.getUserId()%>',
-					"you" : you
+					"you" : you+""
 				},
 				dataType : "json",
 				success : function(resp) {
@@ -230,7 +235,7 @@
 					youimg = resp.yourimg;
 					for(var i=0;i<size;i++){
 						var msg = "";
-						if (resp.list[i].from == 'a'){
+						if (resp.list[i].from == '<%=user.getUserId()%>'){
 			            	msg = '<div class="chatbox__body__message chatbox__body__message--right">'
 			                	+'<img src="/HaveANiceDream/uploadresources/user/'+'<%=user.getUserImage()%>'+'" alt="Picture">'
 			                	+'<p>'+resp.list[i].content+'</p></div>';
