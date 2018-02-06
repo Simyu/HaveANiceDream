@@ -51,7 +51,8 @@ public class UserLoginServlet extends HttpServlet {
 		if (user != null) {
 			HttpSession session = request.getSession();
 			SimpleDateFormat format = new SimpleDateFormat("MM:dd");
-			if (!format.format(user.getUserLastLoginTime()).equals(new Date())){
+
+			if (!format.format(user.getUserLastLoginTime()).equals(format.format(new Date()))){
 				session.setAttribute("attFlag", false);
 			} else {
 				Cookie[] cookies = request.getCookies();
