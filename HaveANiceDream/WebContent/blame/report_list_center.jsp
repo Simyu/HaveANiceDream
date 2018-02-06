@@ -22,7 +22,19 @@ function windowpopup(i){
 	popup = window.open("Answer_list.jsp","num","width=1000,height=500,left=100 top=50");
 	num++;
 }
-
+$(document).ready(function(){
+	$.ajax({
+		url : "/HaveANiceDream/manager_blame/search.do",
+		type : "GET",
+		data : {
+			"blameNo" : opener.document.form.list.value,
+		},
+		dataType : "json",
+		success : function(res) {
+			alert("test");
+		}
+	});
+});
 
 
 </script>
