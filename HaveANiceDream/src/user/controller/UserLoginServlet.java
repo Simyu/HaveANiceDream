@@ -37,13 +37,13 @@ public class UserLoginServlet extends HttpServlet {
 
 		UserService service = new UserServiceImpl();
 		MemberDTO user = null;
-		
+
 		if (logtype.equals("기본")) {
 			id = request.getParameter("id");
 			String pass = request.getParameter("pass");
 			user = service.userLogin(id, pass);
-			
-		} else if (logtype.equals("Kakao") || logtype.equals("Naver")||logtype.equals("Facebook")) {
+
+		} else if (logtype.equals("Kakao") || logtype.equals("Naver") || logtype.equals("Facebook")) {
 			id = request.getParameter("SNSid");
 			user = service.userSelect(id);
 		}
@@ -52,25 +52,30 @@ public class UserLoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			SimpleDateFormat format = new SimpleDateFormat("MM:dd");
 
-			if (!format.format(user.getUserLastLoginTime()).equals(format.format(new Date()))){
+			if (!format.format(user.getUserLastLoginTime()).equals(format.format(new Date()))) {
 				session.setAttribute("attFlag", false);
 			} else {
 				Cookie[] cookies = request.getCookies();
-				String flag = "";
-				
-				for (int i = 0; i < cookies.length; i++) {
-					if(cookies[i].getName().equals("attFlag")){
-						flag = cookies[i].getValue();
-					} 
-				}
-				
-				if (flag.equals("T")){
-					session.setAttribute("attFlag", true);
+
+				if (cookies != null) {
+					String flag = "";
+
+					for (int i = 0; i < cookies.length; i++) {
+						if (cookies[i].getName().equals("attFlag")) {
+							flag = cookies[i].getValue();
+						}
+					}
+
+					if (flag.equals("T")) {
+						session.setAttribute("attFlag", true);
+					} else {
+						session.setAttribute("attFlag", false);
+					}
 				} else {
 					session.setAttribute("attFlag", false);
 				}
 			}
-			
+
 			session.setAttribute("user", user);
 			String viewpath = "temp_main_con.jsp";
 
@@ -79,34 +84,30 @@ public class UserLoginServlet extends HttpServlet {
 			request.setAttribute("viewpath", viewpath);
 			url = "/main/main_layout.jsp";
 
-		} else if (logtype.equals("Kakao") || logtype.equals("Naver")||logtype.equals("Facebook")) {
+		} else if (logtype.equals("Kakao") || logtype.equals("Naver") || logtype.equals("Facebook")) {
 			user = new MemberDTO();
 
 			String SNSemail = request.getParameter("SNSemail");
 			String SNSimg = request.getParameter("SNSimg");
 			String SNSname = request.getParameter("SNSname");
-			System.out.println("서블릿"+SNSemail);
-			System.out.println("서블릿"+SNSimg);
-			System.out.println(SNSname);
+
 			user.setUserId(id);
 			user.setUserEmail(SNSemail);
 			user.setUserName(SNSname);
 			user.setUserLogType(logtype);
-			
-			System.out.println(user);
 
-			if (!SNSimg.equals("")){
-			URL imgurl = new URL(SNSimg);
-			BufferedImage bufferedImage = ImageIO.read(imgurl);
-			//http://graph.facebook.com/100006497919491/picture?type=large 
-			// 업로드 경로 구해오기
-			String uploadpath = request.getSession().getServletContext().getRealPath("/uploadresources/user/");
-			File file = new File(uploadpath + id + ".jpg");
-			ImageIO.write(bufferedImage, "jpg", file);
+			if (!SNSimg.equals("")) {
+				URL imgurl = new URL(SNSimg);
+				BufferedImage bufferedImage = ImageIO.read(imgurl);
+				// http://graph.facebook.com/100006497919491/picture?type=large
+				// 업로드 경로 구해오기
+				String uploadpath = request.getSession().getServletContext().getRealPath("/uploadresources/user/");
+				File file = new File(uploadpath + id + ".jpg");
+				ImageIO.write(bufferedImage, "jpg", file);
 
-			user.setUserImage(id + ".jpg");
+				user.setUserImage(id + ".jpg");
 			} else {
-				user.setUserImage(SNSimg);
+				user.setUserImage("ui-sam.jpg");
 			}
 			String viewpath = "../user/sign_in_page.jsp";
 
@@ -114,32 +115,13 @@ public class UserLoginServlet extends HttpServlet {
 			request.setAttribute("viewpath", viewpath);
 
 			url = "/main/main_layout.jsp";
-		/*}else if(logtype.equals("Facebook")){
-			user = new MemberDTO();
-			String fackbookid = request.getParameter("fackbookid");
-			String fackbookname = request.getParameter("fackbookname");
-			String fackbookemail = request.getParameter("fackbookemail");
-			user.setUserId(fackbookid);
-			user.setUserName(fackbookname);
-			user.setUserEmail(fackbookemail);
-			user.setUserLogType(logtype);
-			user.setUserImage("");
-			
-			String viewpath = "../user/sign_in_page.jsp";
-
-			request.setAttribute("SNSsignup", user);
-			request.setAttribute("viewpath", viewpath);
-			url = "/main/main_layout.jsp";
-			}*/
-		}else {
+		} else {
 			url = "/user/login.html";
 		}
-
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
 		requestDispatcher.forward(request, response);
 
 	}
-
 
 }

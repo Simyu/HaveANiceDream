@@ -44,41 +44,53 @@ public class ChatServer {
 		JSONParser parser = new JSONParser();
 		try {
 			JSONObject object = (JSONObject) parser.parse(message);
-			NoteDTO dto = new NoteDTO((String)object.get("from"), (String)object.get("to"), (String)object.get("text"));
-			NoteService service = new NoteServiceImpl();
-			service.noteInsert(dto);
+			if (object.get("type").equals("text")) {
+				String to = (String) object.get("to");
+				NoteDTO dto = new NoteDTO((String) object.get("from"), to, (String) object.get("text"));
+				NoteService service = new NoteServiceImpl();
+				service.noteInsert(dto);
+				sendTo(message, to);
+			} else if (object.get("type").equals("info")) {
+				nickname = (String) object.get("id");
+			}
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		broadcast(message);
+
 	}
 
 	@OnError // 에러났어요!!!!
 	public void onError(Throwable t) throws Throwable {
-		
+
 	}
 
-	private void broadcast(String message) {
+	private void sendTo(String message, String to) {
 		for (ChatServer client : connections) {
-			/**********요기서 판별*************/
-			try {
-				synchronized (client) {
-					client.session.getBasicRemote().sendText(message);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-
-				connections.remove(client);
-
+			if (client.nickname.equals(to)) {
+				
 				try {
-					client.session.close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+					
+					synchronized (client) {
+						client.session.getBasicRemote().sendText(message);
+					}
+					
+				} catch (IOException e) {
+					e.printStackTrace();
 
-			}
-		}
+					connections.remove(client);
 
+					try {
+						client.session.close();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+
+				} 
+				
+				break;
+				
+			} // if end
+			
+		} // for end
 	}
 }

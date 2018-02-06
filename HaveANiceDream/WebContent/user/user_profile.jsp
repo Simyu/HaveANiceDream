@@ -564,7 +564,7 @@
 									});
 						});
 		function chatstart() {
-			opener.showTalkList($("#userId").text());
+			opener.showTalkList($("#userId").text(),$("#userName").text());
 		}
 	</script>
 
