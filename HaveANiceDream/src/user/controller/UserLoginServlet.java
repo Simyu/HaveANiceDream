@@ -4,11 +4,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,7 +50,26 @@ public class UserLoginServlet extends HttpServlet {
 
 		if (user != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("attFlag", false);
+			SimpleDateFormat format = new SimpleDateFormat("MM:dd");
+			if (!format.format(user.getUserLastLoginTime()).equals(new Date())){
+				session.setAttribute("attFlag", false);
+			} else {
+				Cookie[] cookies = request.getCookies();
+				String flag = "";
+				
+				for (int i = 0; i < cookies.length; i++) {
+					if(cookies[i].getName().equals("attFlag")){
+						flag = cookies[i].getValue();
+					} 
+				}
+				
+				if (flag.equals("T")){
+					session.setAttribute("attFlag", true);
+				} else {
+					session.setAttribute("attFlag", false);
+				}
+			}
+			
 			session.setAttribute("user", user);
 			String viewpath = "temp_main_con.jsp";
 

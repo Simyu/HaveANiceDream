@@ -1,8 +1,10 @@
 package user.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +24,19 @@ public class UserLogOutServlet extends HttpServlet {
 		if(session != null){
 			MemberDTO user = (MemberDTO) session.getAttribute("user");
 			new UserServiceImpl().userUpdateLoginTime(user.getUserId());
+
+			String flag = ""; 
+			
+			if ((boolean) session.getAttribute("attFlag")) {
+				flag = "T";
+			} else {
+				flag = "F";
+			}
+			
+			Cookie cookie = new Cookie("attFlag", flag);
+			cookie.setMaxAge(60*60*24);
+			response.addCookie(cookie);
+			
 			session.invalidate();
 		}
 		
