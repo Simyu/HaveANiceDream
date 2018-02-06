@@ -263,18 +263,20 @@
 					});
 
 		
-	<%MemberDTO kakaoNnaverSignUser = (MemberDTO) request.getAttribute("kakaoNnaversignup");
-			if (kakaoNnaverSignUser != null) {
-				String[] array = kakaoNnaverSignUser.getUserEmail().split("@");%>
+	<%MemberDTO SNSSignUser = (MemberDTO) request.getAttribute("SNSsignup");
+			if (SNSSignUser != null) {
+				System.out.println(SNSSignUser);
+				String[] array = SNSSignUser.getUserEmail().split("@");%>
 				
-		$("#userImage").attr("src","/HaveANiceDream/uploadresources/user/<%=kakaoNnaverSignUser.getUserImage()%>");
-		$("#userId").val("<%=kakaoNnaverSignUser.getUserId()%>");
+		$("#userImage").attr("src","/HaveANiceDream/uploadresources/user/<%=SNSSignUser.getUserImage()%>");
+		$("#userId").val("<%=SNSSignUser.getUserId()%>");
 		$("#userId").attr("readonly", "readonly");
-		$("#userName").val("<%=kakaoNnaverSignUser.getUserName()%>");
+		$("#userName").val("<%=SNSSignUser.getUserName()%>");
 		$("#userEmail1").val("<%=array[0]%>");
 		$("#userEmail2").val("@<%=array[1]%>");
-		$("#img").val("<%=kakaoNnaverSignUser.getUserImage()%>");
-		$("#type").val("<%=kakaoNnaverSignUser.getUserLogType()%>");
+		$("#img").val("<%=SNSSignUser.getUserImage()%>");
+		$("#type").val("<%=SNSSignUser.getUserLogType()%>");
+		
 	<%}%>
 		});
 

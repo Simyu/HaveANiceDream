@@ -120,15 +120,10 @@
 				</div>
 				<!-- modal -->
 				<!-- 카카오 로그인을 위한 숨겨진 input -->
-				<input type="hidden" id="kakaoNnaverid" name="kakaoNnaverid">
-				<input type="hidden" id="kakaoNnaveremail" name="kakaoNnaveremail">
-				<input type="hidden" id="kakaoNnaverimg" name="kakaoNnaverimg">
-				<input type="hidden" id="kakaoNnavername" name="kakaoNnavername">
-				<!-- 페이스북 로그인을 위한 숨겨진 input -->
-				<input type="hidden" id="fackbookid" name="fackbookid">
-				<input type="hidden" id="fackbookname" name="fackbookname">
-				<input type="hidden" id="fackbookimg" name="fackbookimg">
-				<input type="hidden" id="fackbookemail" name="fackbookemail">
+				<input type="hidden" id="SNSid" name="SNSid">
+				<input type="hidden" id="SNSemail" name="SNSemail">
+				<input type="hidden" id="SNSimg" name="SNSimg">
+				<input type="hidden" id="SNSname" name="SNSname">
 			</form>
 
 		</div>
@@ -165,11 +160,11 @@
 						url : '/v1/user/me',
 						success : function(res) {
 							//alert(JSON.stringify(res));
-							$("#kakaoNnaverid").val(res.id);
-							$("#kakaoNnaveremail").val(res.kaccount_email);
-							$("#kakaoNnaverimg").val(
+							$("#SNSid").val(res.id);
+							$("#SNSemail").val(res.kaccount_email);
+							$("#SNSimg").val(
 									res.properties.thumbnail_image);
-							$("#kakaoNnavername").val(res.properties.nickname);
+							$("#SNSname").val(res.properties.nickname);
 							$("#logtype").val("Kakao");
 							$("#id").removeAttr("required");
 							$("#pass").removeAttr("required");
@@ -217,17 +212,24 @@
 			FB.getLoginStatus(function(response) {
 
 				if (response.status === 'connected') {
-					FB.api('/me', function(response) {
+					FB.api('/me', {fields:'email,name'}, function(response) {
 						// 제일 마지막에 실행 // me가 벌써 토근생성해서  내정보 받아옴acess 엑세스토근을 받아옴..
 						console.log("Success Login : " + response.name);
+				        
+						alert(response.name);
+						 alert(response.email);
+						alert(JSON.stringify(response));
+				         alert(response.picture.data.url);
+				         
+				     
 						console.log("Success Login : " + response.email);
 						console.log("Success Login : " + response.id);
-						
-						// alert("Success Login : " + response.n$("#kakaoNnaverid").val(res.id);
-							$("#fackbookid").val(response.id);
-							$("#fackbookname").val(
+							$("#SNSid").val(response.id);
+							$("#SNSname").val(
 									response.name);
-							$("#fackbookemail").val(response.email);
+							$("#SNSemail").val(response.email);
+							$("#SNSimg").val(response.picture.data.url);
+							//picture.data.url
 							$("#logtype").val("Facebook");
 							$("#id").removeAttr("required");
 							$("#pass").removeAttr("required");
@@ -240,7 +242,7 @@
 					// 그 사람은 Facebook에 로그인하지 않았으므로이 앱에 로그인했는지 여부는 확실하지 않습니다.
 					alert('페이스북에 로그인해야 이용가능한 기능입니다.');
 				}
-			}, true); // 중복실행방지
+			},true); // 중복실행방지
 		}
 		(function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];

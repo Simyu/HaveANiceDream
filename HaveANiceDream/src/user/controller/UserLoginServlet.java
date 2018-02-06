@@ -43,8 +43,8 @@ public class UserLoginServlet extends HttpServlet {
 			String pass = request.getParameter("pass");
 			user = service.userLogin(id, pass);
 			
-		} else if (logtype.equals("Kakao") || logtype.equals("Naver")) {
-			id = request.getParameter("kakaoNnaverid");
+		} else if (logtype.equals("Kakao") || logtype.equals("Naver")||logtype.equals("Facebook")) {
+			id = request.getParameter("SNSid");
 			user = service.userSelect(id);
 		}
 
@@ -79,34 +79,42 @@ public class UserLoginServlet extends HttpServlet {
 			request.setAttribute("viewpath", viewpath);
 			url = "/main/main_layout.jsp";
 
-		} else if (logtype.equals("Kakao") || logtype.equals("Naver")) {
+		} else if (logtype.equals("Kakao") || logtype.equals("Naver")||logtype.equals("Facebook")) {
 			user = new MemberDTO();
 
-			String kakaoNnaveremail = request.getParameter("kakaoNnaveremail");
-			String kakaoNnaverimg = request.getParameter("kakaoNnaverimg");
-			String kakaoNnavername = request.getParameter("kakaoNnavername");
-
+			String SNSemail = request.getParameter("SNSemail");
+			String SNSimg = request.getParameter("SNSimg");
+			String SNSname = request.getParameter("SNSname");
+			System.out.println("서블릿"+SNSemail);
+			System.out.println("서블릿"+SNSimg);
+			System.out.println(SNSname);
 			user.setUserId(id);
-			user.setUserEmail(kakaoNnaveremail);
-			user.setUserName(kakaoNnavername);
+			user.setUserEmail(SNSemail);
+			user.setUserName(SNSname);
 			user.setUserLogType(logtype);
+			
+			System.out.println(user);
 
-			URL imgurl = new URL(kakaoNnaverimg);
+			if (!SNSimg.equals("")){
+			URL imgurl = new URL(SNSimg);
 			BufferedImage bufferedImage = ImageIO.read(imgurl);
+			//http://graph.facebook.com/100006497919491/picture?type=large 
 			// 업로드 경로 구해오기
 			String uploadpath = request.getSession().getServletContext().getRealPath("/uploadresources/user/");
 			File file = new File(uploadpath + id + ".jpg");
 			ImageIO.write(bufferedImage, "jpg", file);
 
 			user.setUserImage(id + ".jpg");
-
+			} else {
+				user.setUserImage(SNSimg);
+			}
 			String viewpath = "../user/sign_in_page.jsp";
 
-			request.setAttribute("kakaoNnaversignup", user);
+			request.setAttribute("SNSsignup", user);
 			request.setAttribute("viewpath", viewpath);
 
 			url = "/main/main_layout.jsp";
-		}else if(logtype.equals("Facebook")){
+		/*}else if(logtype.equals("Facebook")){
 			user = new MemberDTO();
 			String fackbookid = request.getParameter("fackbookid");
 			String fackbookname = request.getParameter("fackbookname");
@@ -119,11 +127,11 @@ public class UserLoginServlet extends HttpServlet {
 			
 			String viewpath = "../user/sign_in_page.jsp";
 
-			request.setAttribute("kakaoNnaversignup", user);
+			request.setAttribute("SNSsignup", user);
 			request.setAttribute("viewpath", viewpath);
 			url = "/main/main_layout.jsp";
-			}
-		else {
+			}*/
+		}else {
 			url = "/user/login.html";
 		}
 
