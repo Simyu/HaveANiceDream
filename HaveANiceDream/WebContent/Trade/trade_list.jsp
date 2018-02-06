@@ -73,8 +73,8 @@
 		window.open(url , "a", "width=700, height=500, left=100, top=50");
 		
 	}
-	function delPath(tradeNo){
-		location.href = "/HaveANiceDream/trade/delete.do?tradeNo="+tradeNo;
+	function delPath(tradeNo,productPrice){
+		location.href = "/HaveANiceDream/trade/delete.do?tradeNo="+tradeNo+"&productPrice="+productPrice;
 	}
 </script>
 </head>
@@ -364,7 +364,7 @@
 													<button type="button" class="btn btn-default"
 														data-dismiss="modal">아니요</button>
 													<button type="button" class="btn btn-primary" 
-													onclick="javascript:delPath(<%=tradedto.getTradeNo()%>)"  
+													onclick="javascript:delPath(<%=tradedto.getTradeNo()%>,<%=productdto.getProductPrice()%>)"  
 													data-dismiss="modal">예</button>
 												</div>
 											</div>

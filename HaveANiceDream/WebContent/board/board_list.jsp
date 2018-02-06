@@ -17,9 +17,8 @@ pageEncoding="utf-8"%>
 	function boardWritePath(url,state){
 		location.href = "/HaveANiceDream/board/replywrite.do?url=" + url+"&state="+state;
 	}
-		
-	
 </script>
+
 </head>
 
 <body>

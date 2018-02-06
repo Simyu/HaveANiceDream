@@ -54,7 +54,7 @@ public class TradeStateUpdate extends HttpServlet {
 			int productState=1;//거래완료를 표시
 			productStateUpdateResult = proservice.productStateUpdate(productState, Integer.parseInt(productNo));
 			PointService pointservice = new PointServiceImpl();
-			pointservice.pointTrade(tradedto.getUserIdSell(), tradedto.getUserIdBuy(), productdto.getProductPrice());
+			pointservice.pointTradeInc(tradedto.getUserIdSell(), productdto.getProductPrice());
 			
 			
 		}

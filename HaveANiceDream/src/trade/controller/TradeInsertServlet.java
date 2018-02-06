@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import point.service.PointService;
+import point.service.PointServiceImpl;
 import product.dto.ProductDTO;
 import product.service.ProductService;
 import product.service.ProductServiceimpl;
@@ -69,6 +70,8 @@ public class TradeInsertServlet extends HttpServlet {
 			 TradeDTO tradedto = new TradeDTO(null, null, null, userId, productdto.getUserId(), productdto.getProductNo(), "거래대기");
 			 int rowNum = tradeservice.tradeInsert(tradedto,text,text1);
 			 
+			 PointService pointservice = new PointServiceImpl();
+			 pointservice.pointTradeDec(tradedto.getUserIdBuy(), productdto.getProductPrice());
 			
 	
 		}else{

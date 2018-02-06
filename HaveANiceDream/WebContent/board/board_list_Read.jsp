@@ -34,6 +34,36 @@ pageEncoding="utf-8"%>
 		location.href = "/HaveANiceDream/board/delete.do?url=" + url+"&boardNo="+boardNo;
 	}
    </script>
+   <script type="text/javascript">
+	$(document).ready(function(){
+		$("#replyInsert").on("click", rplyInsert);
+		$("#replyRe").on("click", replySelect);
+
+	});
+	
+	function rplyInsert() {
+		var content = $("#replyContentwrite").val();
+		if (content=="") {
+			alert("댓글을 입력해주세요");
+		}
+		$.ajax({
+			url : "/HaveANiceDream/reply/insert.do",
+			type : "GET",
+			data : {
+				"userId" : id
+			},
+			dataType : "text",
+			success : function(resp) {
+				$("#helpId").html(resp);
+			}
+		});
+	}
+	function replySelect() {
+
+	}
+			
+	</script>
+   
 </head>
 
 <body>
@@ -99,7 +129,7 @@ pageEncoding="utf-8"%>
 					</h5>
 					<div class="col-sm-8"></div>
 					<h5 class="col-sm-2" style="text-align: center;">
-						새로고침(<a>▩</a>)
+						새로고침<a id="replyRe"><i class="fa fa-history"></i></a>
 					</h5>
 					<div class="col-xs-12 border-reply-mid">
 						<!-- 답글! -->
@@ -123,7 +153,7 @@ pageEncoding="utf-8"%>
 						<div class="col-xs-2 mb">
 							<button type="button" class="btn btn-danger btn-xs pull-right">신고하기</button>
 						</div>
-						<div class="col-xs-12 border-content-detail">여기는 내용이 들어갈
+						<div class="col-xs-12 border-content-detail" id="replyContent">여기는 내용이 들어갈
 							공간입니다. 어떤 내용이 들어가도 줄바꿈이 가능하며 걱정없습니다. 계속해서 쭉쭉쭉 써주세요 그리고 신고기능을 추가할
 							겁니다. 어떻게 해야할까요? 내용안에 넣어야 겠지요? 그럼 신고기능 연결을 위해 우리 신고기능을 맡고 있는 진우와 또
 							의논을 해봐야 겠네요? 자 어때요 css 및 뷰작업은 이제 껌때가리죠? ㅎㅎㅎㅎㅎ 어떤내용을 넣을지 막막할 때는
@@ -135,11 +165,11 @@ pageEncoding="utf-8"%>
 					<div class="col-xs-12 border-reply-back">
 						<span class="col-xs-2 border-reply-id-font"><i
 							class="fa fa-user"></i> <a>드림왕</a> </span> <span class="col-md-9">
-							<textarea name="ourtext"
+							<textarea name="ourtext" id="replyContentwrite"
 								style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;"
 								rows=5>텍스트</textarea>
 						</span> <span class="col-xs-1"> <a
-							class="btn btn-default border-reply-btn-size" href="#"><i
+							class="btn btn-default border-reply-btn-size" id="replyInsert" href="#"><i
 								class=" fa fa-edit"></i>등록</a>
 						</span>
 					</div>

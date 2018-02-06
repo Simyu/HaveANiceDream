@@ -4,6 +4,7 @@ select * from board;
 select * from trade;
 select * from product;
 select * from grade;
+select * from reply;
 select * from grade where user_id=person and grade_type='판매'
 
 

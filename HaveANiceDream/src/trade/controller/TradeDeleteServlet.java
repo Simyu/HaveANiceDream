@@ -31,11 +31,19 @@ public class TradeDeleteServlet extends HttpServlet {
 		HttpSession ses = request.getSession(false);
 		
 		String tradeNo = request.getParameter("tradeNo");
-
+		String productPrice = request.getParameter("productPrice");
 		TradeService tradeservice = new TradeServiceImpl();
 		int result = 0;
 		result = tradeservice.tradeDelete(Integer.parseInt(tradeNo));
 
+		
+		TradeDTO tradedto = null;
+		tradedto = tradeservice.tradenoSelect(Integer.parseInt(tradeNo));
+		
+		
+		PointService pointservice = new PointServiceImpl();
+		pointservice.pointTradeInc(tradedto.getUserIdBuy(), Integer.parseInt(productPrice));
+		
 		response.sendRedirect("/HaveANiceDream/trade/list.do");
 	}
 
