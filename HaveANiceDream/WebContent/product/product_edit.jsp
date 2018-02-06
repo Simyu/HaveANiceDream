@@ -288,7 +288,6 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">상세설명</label>
 						<div class="col-sm-10">
-							<<<<<<< HEAD =======
 							<div class="no-mg-no-pd">
 								<%
 									for (int i = 0; i < file1.size(); i++) {
@@ -298,8 +297,6 @@
 							<%
 								}
 							%>
-							>>>>>>> branch 'master' of
-							https://github.com/Simyu/HaveANiceDream.git
 							<textarea rows="10" cols="100%" id="productContent"
 								name="productContent">
 						 

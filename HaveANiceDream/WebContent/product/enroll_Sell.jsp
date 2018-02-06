@@ -13,6 +13,47 @@
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<script src="/HaveANiceDream/Theme/assets/js/Filechose.js"></script>
 <script type="text/javascript">
+	function getCategoryDetail(){  //카테고리디테일부분 검색. 
+		//alert("안녕");
+	var name = $("#categoryDetailNameSearch").val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
+			
+	$.ajax({
+		url:"/HaveANiceDream//category/DeatilSearchAJAX.do?state=ENROLL",//categoryDeatilSearchAJAX.do
+		type:"get",
+		data:{"categoryName":name,"selectNum":selectNum},
+		dataType:"json",
+		success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
+			//alert("안녕");
+			$("#categoryDetailName").empty();//항상 비워줌
+			for(i=0 ;i<data.category_detail.length;i++){ 
+			if(selectNum==data.category_detail[i].categoryNo){//전부다 가져오는데 셀렉트NO과 카테고리 NO 같은것만 출력 사실 해당코드는 쿼리에 포함되어있는코드여야함;
+				var str="<option value='"+ data.category_detail[i].categoryDetailNo+"'>"+data.category_detail[i].categoryDetailName+"</option>";
+				 categorydetailname=$(str);
+				$("#categoryDetailName").append(categorydetailname);
+			}
+			//dom을 활용한 방법 jquery방법이 간단하니 해당방법을 사용할것
+			//옵션태그를 객체로 생성해서  value는 속성값으로 부여하고 텍스트노드를 추가
+			//옵션태그를 부모노드인 셀렉트태그에 붙임.
+			 //$("categoryDetailNameSearch").val(categoryname.attr("value"));
+			/* 	str=data.categoryDetailName[i];
+				textnode = document.createTextNode(str);
+				 var createOption=document.createElement("option");
+				 createOption.appendChild(textnode);
+				 parentNode=document.getElementById("categoryDetailName");
+				 parentNode.appendChild(createOption); */
+				 //jquery로 간단하게 할것
+			}
+			  
+			                           
+		}
+	})
+	};
+	
+	
+
+
+
+
 	selectNum=""
 		//카테고리디테일로 셀렉트 태그의 함수
 		//클릭한 인덱스를 받아와 텍스트필드에 text를 입력 하고 히든태그에는 categoryDetailNo를 입력하는코드
@@ -35,6 +76,8 @@
     	   selectNum  =  $(selectNumObj).attr("value"); //생성된 객체의 속성(인덱스 : 즉 categoryNo)을 저장
     	   $("#categoryNohidden").attr("value",selectNum);//히든태그에 categoryNo을 저장함  submit할떄 함께 전달.
     	   $("#categoryDetailNameSearch").val("");//고민해보자 어떻게 하면 뜰까..?
+    	   getCategoryDetail();
+    			   
       }
      $(document).ready(function(){
     	 $("#enroll").on("click",function(){
@@ -79,40 +122,8 @@
 	
      	});
 
-    	$("#categoryDetailNameSearch").on("keyup",function(){  //카테고리디테일부분 검색. 
-    		var name = $(this).val();//.val() 텍스트상자의 값을 읽어올떄 사용하는 메소드
- 				
-    		$.ajax({
-    			url:"/HaveANiceDream//category/DeatilSearchAJAX.do?state=ENROLL",//categoryDeatilSearchAJAX.do
-				type:"get",
-				data:{"categoryName":name,"selectNum":selectNum},
-				dataType:"json",
-				success:function(data){//jquery로 ajax요청하면 json파싱되어 리턴
-					$("#categoryDetailName").empty();//항상 비워줌
-					for(i=0 ;i<data.category_detail.length;i++){ 
-					if(selectNum==data.category_detail[i].categoryNo){//전부다 가져오는데 셀렉트NO과 카테고리 NO 같은것만 출력 사실 해당코드는 쿼리에 포함되어있는코드여야함;
-						var str="<option value='"+ data.category_detail[i].categoryDetailNo+"'>"+data.category_detail[i].categoryDetailName+"</option>";
-						 categorydetailname=$(str);
-						$("#categoryDetailName").append(categorydetailname);
-					}
-					//dom을 활용한 방법 jquery방법이 간단하니 해당방법을 사용할것
-					//옵션태그를 객체로 생성해서  value는 속성값으로 부여하고 텍스트노드를 추가
-					//옵션태그를 부모노드인 셀렉트태그에 붙임.
-					 //$("categoryDetailNameSearch").val(categoryname.attr("value"));
-					/* 	str=data.categoryDetailName[i];
-						textnode = document.createTextNode(str);
-						 var createOption=document.createElement("option");
-						 createOption.appendChild(textnode);
-						 parentNode=document.getElementById("categoryDetailName");
-						 parentNode.appendChild(createOption); */
-						 //jquery로 간단하게 할것
-					}
-					  
-					                           
-				}
-    		})
-    		
-    		
+    	$("#categoryDetailNameSearch").on("keyup",function(){
+    		getCategoryDetail();
     	});
     	 
      });
