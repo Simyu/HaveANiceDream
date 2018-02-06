@@ -37,66 +37,28 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 
 	@Override
-	public ArrayList<BoardDTO> boardList(Connection connection) throws SQLException {
-		ArrayList<BoardDTO> boardlist = new ArrayList<BoardDTO>();
-		BoardDTO dto = null;
+	public ArrayList<ReplyDTO> replyList(int boardNo, Connection connection) throws SQLException {
+		ArrayList<ReplyDTO> replyList = new ArrayList<ReplyDTO>();
+		ReplyDTO dto = null;
 		PreparedStatement ptmt = null;
 		ResultSet rs = null;
 		
-		ptmt = connection.prepareStatement(BoardQuery.BOARD_LIST);
+		ptmt = connection.prepareStatement(ReplyQuery.REPLY_LIST);
 		
+		ptmt.setInt(1, boardNo);
 		rs = ptmt.executeQuery();
 		
 		while (rs.next()){
-			dto = new BoardDTO(rs.getInt(1), rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),
-					rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getString(13));
-			boardlist.add(dto);
+			dto = new ReplyDTO(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getDate(5));
+			replyList.add(dto);
 			
 		}
 		DBUtil.close(rs);
 		DBUtil.close(ptmt);
 		
-		return boardlist;
+		return replyList;
 	}
 
-	@Override
-	public BoardDTO boardRead(int boardNo, Connection connection) throws SQLException {
-		BoardDTO dto = null;
-		PreparedStatement ptmt = null;
-		ResultSet rs = null;
-		
-		ptmt = connection.prepareStatement(BoardQuery.BOARD_READ);
-		
-		ptmt.setInt(1, boardNo);
-		
-		rs = ptmt.executeQuery();
-		
-		if(rs.next()){
-			dto = new BoardDTO(rs.getInt(1), rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),
-					rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getString(13));
-			
-		}
-		DBUtil.close(rs);
-		DBUtil.close(ptmt);
-		
-		return dto;
-	}
-
-	@Override
-	public int boardDelete(int boardNo, Connection connection) throws SQLException {
-		int rowNum = 0;
-
-		PreparedStatement preparedStatement = connection.prepareStatement(BoardQuery.BOARD_DELETE);
-
-
-		preparedStatement.setInt(1, boardNo);
-
-		rowNum = preparedStatement.executeUpdate();
-
-		DBUtil.close(preparedStatement);
-
-		return rowNum;
-	}
 
 
 

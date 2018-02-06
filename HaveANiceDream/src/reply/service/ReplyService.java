@@ -9,9 +9,7 @@ import reply.dto.ReplyDTO;
 public interface ReplyService {
 	int replyInsert(ReplyDTO replywrite);
 	
-	ArrayList<BoardDTO> boardList();
+	ArrayList<ReplyDTO> replyList(int boardNo);
 	
-	BoardDTO boardRead(int boardNo);
 	
-	int boardDelete(int boardNo);
 }

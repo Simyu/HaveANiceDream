@@ -41,15 +41,16 @@ public class ReplyServiceImpl implements ReplyService {
 		return rowNum;
 	}
 
+
 	@Override
-	public ArrayList<BoardDTO> boardList() {
+	public ArrayList<ReplyDTO> replyList(int boardNo) {
 		Connection connection = null;
-		ArrayList<BoardDTO> boardlist = null;
+		ArrayList<ReplyDTO> replyList = null;
 		
 		try {
 			connection = DBUtil.getConnect();
-			BoardDAO dao = new BoardDAOImpl();
-			boardlist = dao.boardList(connection);
+			ReplyDAO dao = new ReplyDAOImpl();
+			replyList = dao.replyList(boardNo, connection);
 			
 			
 		} catch (SQLException e) {
@@ -59,46 +60,7 @@ public class ReplyServiceImpl implements ReplyService {
 			DBUtil.close(connection);
 		}
 		
-		return boardlist;
-	}
-
-	@Override
-	public BoardDTO boardRead(int boardNo) {
-		Connection connection = null;
-		BoardDTO dto = null;
-		
-		try {
-			connection = DBUtil.getConnect();
-			BoardDAO dao = new BoardDAOImpl();
-			dto = dao.boardRead(boardNo, connection);
-			
-			
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally{
-			DBUtil.close(connection);
-		}
-		
-		return dto;
-	}
-
-	@Override
-	public int boardDelete(int boardNo) {
-		Connection connection = null;
-		BoardDAO dao = new BoardDAOImpl();
-		int rowNum = 0;
-
-		try {
-			connection = DBUtil.getConnect();
-			rowNum = dao.boardDelete(boardNo, connection);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(connection);
-		}
-
-		return rowNum;
+		return replyList;
 	}
 
 
