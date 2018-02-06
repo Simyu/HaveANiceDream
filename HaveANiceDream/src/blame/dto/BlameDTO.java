@@ -144,5 +144,15 @@ public class BlameDTO {
 		this.blameTitle = blameTitle;
 		this.blameContent = blameContent;
 	}
+	public BlameDTO(Integer blameNo, Date blameDate,String userIdBlamere, String userIdBlamee, String blameType,String blameTitle) {
+		super();
+		this.blameNo = blameNo;
+		this.blameDate = blameDate;
+		this.userIdBlamere = userIdBlamere;
+		this.userIdBlamee = userIdBlamee;
+		this.blameType = blameType;
+		this.blameTitle = blameTitle;
+		
+	}
 
 }

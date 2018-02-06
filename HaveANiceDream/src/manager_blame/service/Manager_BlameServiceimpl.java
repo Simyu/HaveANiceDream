@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import blame.dto.BlameDTO;
+
 import static fw.DBUtil.*;
 
 import manager_blame.dao.Manager_BlameDAO;
@@ -39,6 +41,24 @@ public class Manager_BlameServiceimpl implements Manager_BlameService {
 		} finally{
 			close(con);
 		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<BlameDTO> findByName(String userIdBlamere) {
+		ArrayList<BlameDTO> result = null;
+		Connection con = null;
+		Manager_BlameDAO dao = new Manager_BlameDAOimpl();
+		
+		try {
+			con = getConnect();
+			dao.findByName(userIdBlamere, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	finally{
+			close(con);
+		}
+		
 		return result;
 	}
 

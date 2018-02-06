@@ -16,4 +16,5 @@ public class Manager_BlameQuery {
 			+ "b.blame_content, a.answer_title, a.answer_content, a.answer_date "
 			+ "from blame b, manager_blame a "
 			+ "where b.blame_no=a.blame_no and b.blame_no = ?";
+	public static final String ANSWER_SEARCH ="select * from blame where userIdBlamere like ?";
 }
