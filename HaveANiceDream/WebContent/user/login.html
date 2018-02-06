@@ -124,6 +124,11 @@
 				<input type="hidden" id="kakaoNnaveremail" name="kakaoNnaveremail">
 				<input type="hidden" id="kakaoNnaverimg" name="kakaoNnaverimg">
 				<input type="hidden" id="kakaoNnavername" name="kakaoNnavername">
+				<!-- 페이스북 로그인을 위한 숨겨진 input -->
+				<input type="hidden" id="fackbookid" name="kakaoNnaverid">
+				<input type="hidden" id="fackbookname" name="kakaoNnaveremail">
+				<input type="hidden" id="fackbookimg" name="kakaoNnaverimg">
+				<input type="hidden" id="fackbook" name="kakaoNnavername">
 			</form>
 
 		</div>
@@ -215,6 +220,9 @@
 					FB.api('/me', function(res) {
 						// 제일 마지막에 실행 // me가 벌써 토근생성해서  내정보 받아옴acess 엑세스토근을 받아옴..
 						console.log("Success Login : " + response.name);
+						console.log("Success Login : " + response.email);
+						console.log("Success Login : " + response.id);
+						
 						// alert("Success Login : " + response.name);
 					});
 				} else if (response.status === 'not_authorized') {

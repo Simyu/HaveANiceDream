@@ -93,6 +93,7 @@
           	<h3 class="ml"><i class="fa fa-angle-right"></i> 메인추천</h3>
           	<hr>
 				<div class="row mt">
+				<%if(productlist!=null){ %>
 				<%for(int i=0;i<productlist.size();i++){
 		                            	ProductDTO product = productlist.get(i);%>
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
@@ -131,7 +132,7 @@
 		                    </div>
 		                </div>
 					</div><!-- col-lg-4 -->
-					<%} %>		
+					<%} }%>		
 		</div><!-- /row -->
 </body>
 </html>
