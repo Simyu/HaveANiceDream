@@ -1,3 +1,4 @@
+<%@page import="user.dto.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="product.dao.productDAO"%>
 <%@page import="product.dto.*"%>
@@ -73,6 +74,8 @@ pageEncoding="utf-8"%>
                 }  
             });
 		});
+    	 
+    	 
     </script>
     
     
@@ -87,6 +90,7 @@ pageEncoding="utf-8"%>
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
     				  <%
+    				  MemberDTO user = (MemberDTO) session.getAttribute("user");
 					    ProductDTO product = (ProductDTO)  request.getAttribute("product");
     				   ArrayList<String> file1 =(ArrayList<String>) request.getAttribute("file1");
     				    String grade="";
@@ -157,7 +161,11 @@ pageEncoding="utf-8"%>
 							class="btn btn-default btn-lg btn-style-line mr ml"
 							data-toggle="modal" data-target="#myModal">거래신청</button>
 							<!-- 모달시작 -->
-								<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							<% int total =user.getPointTotal();
+							int price =product.getProductPrice();%>
+						<%if(total>=price){ %>
+							
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 							aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -167,23 +175,57 @@ pageEncoding="utf-8"%>
 												aria-hidden="true">&times;</button>
 											<h4 class="modal-title" id="myModalLabel">거래신청</h4>
 										</div>
+							<div class="modal-body">
+								<p>보유중인 포인트:<%=user.getPointTotal()%></p>
+								<p>물품 가격:<%=product.getProductPrice()%></p>
+								<p>구매후 남는포인트:<%=user.getPointTotal()-product.getProductPrice()%></p>
+							</div>
 										
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-primary">거래신청</button>
+											<button type="submit" class="btn btn-primary" >거래신청</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">취소</button>
 											
 										</div>
+									
 								</div>
 							</div>
 						</div>
+						<%} %><%else{ %>
+							
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									      
+										<div class="modal-header" style="background-color:red;">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true" >&times;</button>
+											<h4 class="modal-title" id="myModalLabel">잔액부족</h4>
+										</div>
+							<div class="modal-body">
+								<p>보유중인 포인트:<%=user.getPointTotal()%></p>
+								<p>물품 가격:<%=product.getProductPrice()%></p>
+								<p style="color: red;">구매후 남는포인트:<%=user.getPointTotal()-product.getProductPrice()%></p>
+							</div>
+										
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">확인</button>
+											
+										</div>
+									
+								</div>
+							</div>
+						</div>
+						<%} %>
 						<!--  모달종료 -->
 					<button class="btn btn-default btn-lg btn-style-line mr ml">1:1채팅</button>
 				</div>
 				</form>
 		</section>
 		<!-- /MAIN CONTENT -->
-
+								
 		<!--main content end-->
  
     <!-- js placed at the end of the document so the pages load faster -->
