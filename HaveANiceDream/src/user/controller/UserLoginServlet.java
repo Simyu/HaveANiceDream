@@ -106,7 +106,24 @@ public class UserLoginServlet extends HttpServlet {
 			request.setAttribute("viewpath", viewpath);
 
 			url = "/main/main_layout.jsp";
-		} else {
+		}else if(logtype.equals("Facebook")){
+			user = new MemberDTO();
+			String fackbookid = request.getParameter("fackbookid");
+			String fackbookname = request.getParameter("fackbookname");
+			String fackbookemail = request.getParameter("fackbookemail");
+			user.setUserId(fackbookid);
+			user.setUserName(fackbookname);
+			user.setUserEmail(fackbookemail);
+			user.setUserLogType(logtype);
+			user.setUserImage("");
+			
+			String viewpath = "../user/sign_in_page.jsp";
+
+			request.setAttribute("kakaoNnaversignup", user);
+			request.setAttribute("viewpath", viewpath);
+			url = "/main/main_layout.jsp";
+			}
+		else {
 			url = "/user/login.html";
 		}
 
@@ -115,5 +132,6 @@ public class UserLoginServlet extends HttpServlet {
 		requestDispatcher.forward(request, response);
 
 	}
+
 
 }

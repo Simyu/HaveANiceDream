@@ -125,10 +125,10 @@
 				<input type="hidden" id="kakaoNnaverimg" name="kakaoNnaverimg">
 				<input type="hidden" id="kakaoNnavername" name="kakaoNnavername">
 				<!-- 페이스북 로그인을 위한 숨겨진 input -->
-				<input type="hidden" id="fackbookid" name="kakaoNnaverid">
-				<input type="hidden" id="fackbookname" name="kakaoNnaveremail">
-				<input type="hidden" id="fackbookimg" name="kakaoNnaverimg">
-				<input type="hidden" id="fackbook" name="kakaoNnavername">
+				<input type="hidden" id="fackbookid" name="fackbookid">
+				<input type="hidden" id="fackbookname" name="fackbookname">
+				<input type="hidden" id="fackbookimg" name="fackbookimg">
+				<input type="hidden" id="fackbookemail" name="fackbookemail">
 			</form>
 
 		</div>
@@ -217,13 +217,21 @@
 			FB.getLoginStatus(function(response) {
 
 				if (response.status === 'connected') {
-					FB.api('/me', function(res) {
+					FB.api('/me', function(response) {
 						// 제일 마지막에 실행 // me가 벌써 토근생성해서  내정보 받아옴acess 엑세스토근을 받아옴..
 						console.log("Success Login : " + response.name);
 						console.log("Success Login : " + response.email);
 						console.log("Success Login : " + response.id);
 						
-						// alert("Success Login : " + response.name);
+						// alert("Success Login : " + response.n$("#kakaoNnaverid").val(res.id);
+							$("#fackbookid").val(response.id);
+							$("#fackbookname").val(
+									response.name);
+							$("#fackbookemail").val(response.email);
+							$("#logtype").val("Facebook");
+							$("#id").removeAttr("required");
+							$("#pass").removeAttr("required");
+							$("#signin").trigger("click");
 					});
 				} else if (response.status === 'not_authorized') {
 					// 사람은 Facebook에 로그인했지만 앱에는 로그인하지 않았습니다.
