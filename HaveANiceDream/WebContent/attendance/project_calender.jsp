@@ -25,7 +25,6 @@
 <body>
 	<%
 		ArrayList<Date> date = (ArrayList) request.getAttribute("attDate");
-		
 	%>
 	<h3 style="margin-left:30px;">
 		<i class="fa fa-angle-right"></i>출석체크

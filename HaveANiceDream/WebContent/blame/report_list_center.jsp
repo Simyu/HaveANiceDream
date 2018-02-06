@@ -16,27 +16,22 @@
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 <script type="text/javascript">
-function windowpopup(i){
-	num =1;
-	$("#center").val(i);
-	popup = window.open("Answer_list.jsp","num","width=1000,height=500,left=100 top=50");
-	num++;
-}
-$(document).ready(function(){
-	$.ajax({
-		url : "/HaveANiceDream/manager_blame/search.do",
-		type : "GET",
-		data : {
-			"blameNo" : opener.document.form.list.value,
-		},
-		dataType : "json",
-		success : function(res) {
-			alert("test");
-		}
+	function windowpopup(i) {
+		num = 1;
+		$("#center").val(i);
+		popup = window.open("Answer_list.jsp", "num",
+				"width=1000,height=500,left=100 top=50");
+		num++;
+	}
+	$(document).ready(function(){
+		$("#search").keyup(function(){
+			var k = $(this).val();
+			 $("#table > tbody > tr").hide();
+			 var temp = $("#table > tbody > tr > td:contains('" + k + "')");
+
+             $(temp).parent().show();
+		});
 	});
-});
-
-
 </script>
 </head>
 
@@ -57,16 +52,17 @@ $(document).ready(function(){
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">신고자 ID</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" id="search">
 						</div>
 						<input type="hidden" name="list" id="center">
-						<div class="col-sm-2">
+						<!-- <div class="col-sm-2">
 							<button type="button"
-								class="btn btn-round btn-primary form-control" id="search">검색</button>
-						</div>
+								class="btn btn-round btn-primary form-control" >검색</button>
+						</div> -->
 					</div>
 				</form>
-				<table class="table table-striped table-advance table-hover" id="table">
+				<table class="table table-striped table-advance table-hover"
+					id="table">
 					<thead>
 						<tr>
 							<th>NO</th>
@@ -75,7 +71,7 @@ $(document).ready(function(){
 							<th>신고자ID</th>
 							<th>상대방ID</th>
 							<th>제목</th>
-							
+
 						</tr>
 					</thead>
 					<tbody>
@@ -83,7 +79,6 @@ $(document).ready(function(){
 							<%
 								for (int i = 0; i < size; i++) {
 									BlameDTO dept = list.get(i);
-									
 							%>
 							<td><%=dept.getBlameNo()%></td>
 							<td><%=dept.getBlameDate()%></td>

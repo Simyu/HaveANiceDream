@@ -54,26 +54,6 @@ public class Manager_BlameDAOimpl implements Manager_BlameDAO {
 	}
 
 
-	public ArrayList<BlameDTO> findByName(String userIdBlamere, Connection con) throws SQLException {
-		ArrayList<BlameDTO> dto = null;
-		PreparedStatement ptmt = null;
-		ptmt = con.prepareStatement(Manager_BlameQuery.ANSWER_SEARCH);
-		ResultSet rs = null;
-		ptmt.setString(1, "%"+userIdBlamere+"%");
-		rs = ptmt.executeQuery();
-		
-		while(rs.next()){
-			if(dto ==null){
-				dto = new ArrayList<BlameDTO>();
-			}
-				BlameDTO blamedto = new BlameDTO(rs.getInt(1),rs.getDate(2),rs.getString(3),rs.getString(4),
-						rs.getString(5),rs.getString(6));
-				dto.add(blamedto);
-			}
-			DBUtil.close(rs);
-			DBUtil.close(ptmt);
-		
-		return dto;
-	}
+	
 
 }
