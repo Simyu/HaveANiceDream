@@ -11,5 +11,5 @@ import manager_blame.dto.Manager_BlameDTO;
 public interface Manager_BlameDAO {
 	int insert(Manager_BlameDTO dto,Connection con) throws SQLException;
 	ArrayList<String> select(int answerNo,Connection con) throws SQLException;
-	ArrayList<BlameDTO> findByName(String userIdBlamere,Connection con) throws SQLException;
+	
 }
