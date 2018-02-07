@@ -155,6 +155,7 @@ $(document).ready(function(){
 						<tbody>
 							<%
 								ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>) request.getAttribute("productlist");
+								//System.out.println("qwheoiqwej"+productlist);
 								int size = productlist.size();
 							
 								for (int i = 0; i < size; i++) {

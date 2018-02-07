@@ -113,7 +113,7 @@ drop table category_detail;
 select * from BLAME;
 select * from ATTENDANCE;
 select * from MANAGER_BLAME;
-
+select * from PRODUCT;
 
 
 CREATE TABLE block

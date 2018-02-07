@@ -58,8 +58,9 @@
 									<em class="faq-icon">제목: </em> <span class="slideBtn"
 										id="title"> </span>
 								</p>
-								<label class="faq-icon">내용:<span class="inner-view"
-									id="content"> </span></label>
+								<label class="faq-icon">내용: <span class="inner-view"
+									id="content">									
+									 </span></label>
 							</div>
 						</td>
 
