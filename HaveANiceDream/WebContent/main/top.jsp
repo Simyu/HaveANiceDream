@@ -76,7 +76,7 @@
 	<!-- 카카오 SDK -->
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript">
-		var wSocket = new WebSocket("ws://192.168.9.50:8088/HaveANiceDream/user/chat");
+		var wSocket = new WebSocket("ws://localhost:8088/HaveANiceDream/user/chat");
 		
 		function setPath(url) {
 			location.href = "/HaveANiceDream/view.html?url=" + url;
@@ -139,8 +139,8 @@
 						
 						$("#talklist").append(talkunit);
 						var temp = "#lst"+i;
-						$(temp).on("click", {id : resp.list[i].id}, function(e) {
-							showTalkList(e.data.id);
+						$(temp).on("click", {id : resp.list[i].id,name : resp.list[i].name}, function(e) {
+							showTalkList(e.data.id, e.data.name);
 						});
 					}
 
@@ -177,6 +177,7 @@
             	+'<p>'+str+'</p></div>';
             	$(".chatbox__body").append(msg);
             	var data = {
+            			"type" : "text",
             			"from" : '<%=user.getUserId()%>',
             			"to" : you+"",
             			"text" : str
@@ -187,7 +188,14 @@
             }
         });
 		}
-
+		
+		wSocket.onopen = function(e) {
+        	var data = {
+        			"type" : "info",
+        			"id" : '<%=user.getUserId()%>'
+        	}
+    		wSocket.send(JSON.stringify(data));
+		}
 
 		wSocket.onmessage = function(e) {
 			//alert(e.data);
@@ -203,14 +211,14 @@
 			//document.getElementById("ta").value += (e.data+"\n");
 		}
 		
-		function showTalkList(selyou) {
+		function showTalkList(selyou,name) {
 			you = selyou;
 			//alert('test');
 			
         	$("#chatarea").empty();
         	
         	var chatarea = "<div class='chatbox chatbox--tray'><div class='chatbox__title'><h5><a href=#'>"
-        	+you+"</a></h5><button class='chatbox__title__tray'><span></span></button>"
+        	+name+"</a></h5><button class='chatbox__title__tray'><span></span></button>"
         	+"<button class='chatbox__title__close'><span>"
         	+"<svg viewBox='0 0 12 12' width='12px' height='12px'>"
         	+"<line stroke='#FFFFFF' x1='11.75' y1='0.25' x2='0.25' y2='11.75'></line>"

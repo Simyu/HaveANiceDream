@@ -36,6 +36,49 @@ pageEncoding="utf-8"%>
    </script>
    <script type="text/javascript">
 	$(document).ready(function(){
+		boardNo = $("#boardNo1").val();
+		replylistdata="";
+		replyNode = $("#replyCon");
+		alert(replyNode);
+		$.ajax({
+			url : "/HaveANiceDream/reply/list.do",
+			type : "GET",
+			data : {
+				"boardNo" : boardNo 
+			},
+			dataType : "json", 
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       },
+			success : function(data) {
+				
+				alert(data.replylist.length);
+				
+				$("#replylist").text(data.replylist);
+				for(i in data.emplist){
+					replylistdata = replylistdata+data.replylist[i].id+"<br/>";
+				}
+				$(replyNode).html(replylistdata);
+				/* $("#CategoryName").text(res.CategoryName);
+				$("#productImg").attr(
+						"src",
+						"/HaveANiceDream/upload/"
+								+ res.productImg);
+				$("#ProductTitle").text(res.ProductTitle);
+				$("#ProductPrice").text(res.ProductPrice);
+				$("#userZipcode").text(res.userZipcode);
+				$("#ProductDate").text(res.ProductDate);
+				$("#ProductName").text(res.ProductName);
+				$("#ProductNo").text(res.ProductNo);
+				$("#TradeType").text(res.TradeType);
+				$("#sellUserId").text(res.sellUserId);
+				$("#sellUserTel").text(res.sellUserTel);
+				$("#sellUserEmail").text(res.sellUserEmail);
+				$("#buyUserId").text(res.buyUserId);
+				$("#buyUserTel").text(res.buyUserTel);
+				$("#buyUserEmail").text(res.buyUserEmail); */
+			}
+		});
 		$("#replyInsert").on("click", rplyInsert);
 		$("#replyRe").on("click", replySelect);
 
@@ -43,23 +86,27 @@ pageEncoding="utf-8"%>
 	
 	function rplyInsert() {
 		var content = $("#replyContentwrite").val();
+		var boardNo1 = $("#boardNo1").val();
+		alert(boardNo1);
 		if (content=="") {
 			alert("댓글을 입력해주세요");
+		}else{
+ 			alert(content);
+			$.ajax({
+				url : "/HaveANiceDream/reply/insert.do",
+				type : "POST",
+				data : {
+					"replyContent" : content,
+					"boardNo" : boardNo1
+				},
+				dataType : "text",
+				success : function(resp) {
+				}
+			});	 
 		}
-		$.ajax({
-			url : "/HaveANiceDream/reply/insert.do",
-			type : "GET",
-			data : {
-				"userId" : id
-			},
-			dataType : "text",
-			success : function(resp) {
-				$("#helpId").html(resp);
-			}
-		});
-	}
-	function replySelect() {
-
+		$("#replyContentwrite").val("");
+		
+		
 	}
 			
 	</script>
@@ -153,7 +200,7 @@ pageEncoding="utf-8"%>
 						<div class="col-xs-2 mb">
 							<button type="button" class="btn btn-danger btn-xs pull-right">신고하기</button>
 						</div>
-						<div class="col-xs-12 border-content-detail" id="replyContent">여기는 내용이 들어갈
+						<div class="col-xs-12 border-content-detail" id="replyCon">여기는 내용이 들어갈
 							공간입니다. 어떤 내용이 들어가도 줄바꿈이 가능하며 걱정없습니다. 계속해서 쭉쭉쭉 써주세요 그리고 신고기능을 추가할
 							겁니다. 어떻게 해야할까요? 내용안에 넣어야 겠지요? 그럼 신고기능 연결을 위해 우리 신고기능을 맡고 있는 진우와 또
 							의논을 해봐야 겠네요? 자 어때요 css 및 뷰작업은 이제 껌때가리죠? ㅎㅎㅎㅎㅎ 어떤내용을 넣을지 막막할 때는
@@ -162,14 +209,16 @@ pageEncoding="utf-8"%>
 						<button type="button" class="btn btn-round btn-xs btn-default ml">삭제하기</button>
 						<button type="button" class="btn btn-round btn-xs btn-default ml">수정하기</button>
 					</div>
+					
+					
 					<div class="col-xs-12 border-reply-back">
 						<span class="col-xs-2 border-reply-id-font"><i
 							class="fa fa-user"></i> <a>드림왕</a> </span> <span class="col-md-9">
-							<textarea name="ourtext" id="replyContentwrite"
+							<textarea name="replyContent" id="replyContentwrite"
 								style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;"
-								rows=5>텍스트</textarea>
+								rows=5></textarea>
 						</span> <span class="col-xs-1"> <a
-							class="btn btn-default border-reply-btn-size" id="replyInsert" href="#"><i
+							class="btn btn-default border-reply-btn-size" id="replyInsert" ><i
 								class=" fa fa-edit"></i>등록</a>
 						</span>
 					</div>
@@ -177,6 +226,8 @@ pageEncoding="utf-8"%>
 			</div>
 		</div>
 	</div>
-
+	<form action="thisform">
+		<input type="hidden" name="boardNo1" id="boardNo1" value="<%=boardRead.getBoardNo()%>" >
+	</form>
 </body>
 </html>

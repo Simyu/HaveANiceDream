@@ -1,11 +1,11 @@
 package reply.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,31 +13,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
-import board.dto.BoardDTO;
-import board.service.BoardService;
-import board.service.BoardServiceImpl;
-import grade.dto.GradeDTO;
-import grade.service.GradeService;
-import grade.service.GradeServiceImpl;
-import product.dto.ProductDTO;
-import product.service.ProductService;
-import product.service.ProductServiceimpl;
+
 import reply.dto.ReplyDTO;
 import reply.service.ReplyService;
 import reply.service.ReplyServiceImpl;
-import trade.dto.TradeDTO;
-import trade.service.TradeService;
-import trade.service.TradeServiceImpl;
+
 import user.dto.MemberDTO;
 
-@WebServlet(name = "reply/insert", urlPatterns = { "/reply/insert.do" })
-public class ReplyInsertServlet extends HttpServlet {
+@WebServlet(name = "reply/list", urlPatterns = { "/reply/list.do" })
+public class ReplyListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -48,12 +38,36 @@ public class ReplyInsertServlet extends HttpServlet {
 		String replyContent = request.getParameter("replyContent");
 		String viewpath = "";
 		
+		
+		
 		if(ses!=null){
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
 			String sesuserId= user.getUserId();
 			ReplyService service = new ReplyServiceImpl();
-			ReplyDTO replywrite = new ReplyDTO(null, Integer.parseInt(boardNo), replyContent, sesuserId, null);
-			int res = service.replyInsert(replywrite);
+			ArrayList<ReplyDTO> replyList = null;
+			ReplyDTO reply = null;
+			JSONObject replyroot = new JSONObject();
+			JSONArray replyjsonlist = new JSONArray();
+			replyList = service.replyList(Integer.parseInt(boardNo));
+			System.out.println(replyList);
+			int size = replyList.size();
+			for (int i = 0; i < size; i++) {
+				JSONObject replyjson = new JSONObject();
+				reply = replyList.get(i);
+				replyjson.put("ReplyNo", reply.getReplyNo());
+				replyjson.put("BorderNo", reply.getBorderNo());
+				replyjson.put("ReplyContent", reply.getReplyContent());
+				replyjson.put("UserId", reply.getUserId());
+				replyjson.put("ReplyEditDate", reply.getReplyEditDate());
+				replyjsonlist.add(replyjson);
+			}
+			replyroot.put("replylist", replyjsonlist);
+			
+			System.out.println(replyroot);
+			response.setContentType("application/json");		
+			response.setHeader("cache-control", "no-cache,no-store");
+			PrintWriter pw = response.getWriter();
+			pw.print(replyroot);
 			
 			
 		}else{

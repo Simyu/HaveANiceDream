@@ -212,7 +212,7 @@
 			FB.getLoginStatus(function(response) {
 
 				if (response.status === 'connected') {
-					FB.api('/me', {fields:'email,name'}, function(response) {
+					FB.api('/me', {fields:'email,name,picture'}, function(response) {
 						// 제일 마지막에 실행 // me가 벌써 토근생성해서  내정보 받아옴acess 엑세스토근을 받아옴..
 						console.log("Success Login : " + response.name);
 				        
