@@ -72,7 +72,7 @@ $(document).ready(function(){
 		<i class="fa fa-angle-right"></i> 나눔공간
 	</h3>
 	<div class="row mt">
-		<div class="col-lg-12">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 
 
@@ -82,9 +82,9 @@ $(document).ready(function(){
 				</h4>
 				<form  class="form-horizontal style-form" method="post" 
 					action="/HaveANiceDream/product_list.do?state=SEARCH">
-				<div class="col-lg-12">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-					<div class="col-lg-4">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					<input type="hidden" id="categoryNohidden" name="categoryNohidden"    />
 						<select  class="form-control"
 									name="categoryNo" id=categoryNo  required="required" 
@@ -103,7 +103,7 @@ $(document).ready(function(){
 						</select>
 					</div>
 
-					<div class="col-lg-3">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 					<input type="hidden" id="categoryDetailNohidden" name="categoryDetailNohidden"     /><!-- 히든태그선언 이름을 넘기면 등록할떄 제한사항이 생기므로 hidden 태그에서해결 -->
 					 <select 
 									class="form-control" name="categoryDetailNo" onchange="myform(this.form)" required="required"
@@ -112,7 +112,7 @@ $(document).ready(function(){
 
 						</select>
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 						<ul>
 
 
@@ -121,7 +121,7 @@ $(document).ready(function(){
 								style="width: 100%"/></li>
 						</ul>
 					</div>
-					<div class="col-lg-2">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 						<ul>
 							<!-- <li><input type="image" name="btnSearch" value="검색"
 								src="/HaveANiceDream/product_list.do?state=SEARCH"
@@ -131,9 +131,9 @@ $(document).ready(function(){
 					</div>
 				</div>
 				</form>
-				<div class="col-lg-10">
+				<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 				</div>
-				<div class="col-lg-2">
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 					<select id="goods_list" name="goods_list"
 						 class=" form-control pull-right mb">
 						<option value="10">10개</option>

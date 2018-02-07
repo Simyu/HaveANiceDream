@@ -39,7 +39,6 @@ pageEncoding="utf-8"%>
 		boardNo = $("#boardNo1").val();
 		replylistdata="";
 		replyNode = $("#replyCon");
-		alert(replyNode);
 		$.ajax({
 			url : "/HaveANiceDream/reply/list.do",
 			type : "GET",
@@ -50,12 +49,9 @@ pageEncoding="utf-8"%>
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       },
-			success : function(data) {
-				
-				alert(data.replylist.length);
-				
+			success : function(data) {				
 				$("#replylist").text(data.replylist);
-				for(i in data.emplist){
+				for(i in data.replylist){
 					replylistdata = replylistdata+data.replylist[i].id+"<br/>";
 				}
 				$(replyNode).html(replylistdata);
@@ -85,13 +81,12 @@ pageEncoding="utf-8"%>
 	});
 	
 	function rplyInsert() {
+		alert("하이");
 		var content = $("#replyContentwrite").val();
 		var boardNo1 = $("#boardNo1").val();
-		alert(boardNo1);
 		if (content=="") {
 			alert("댓글을 입력해주세요");
 		}else{
- 			alert(content);
 			$.ajax({
 				url : "/HaveANiceDream/reply/insert.do",
 				type : "POST",
@@ -105,10 +100,32 @@ pageEncoding="utf-8"%>
 			});	 
 		}
 		$("#replyContentwrite").val("");
-		
-		
+		rplyList();
 	}
-			
+	function rplyList() {
+			alert("뭐징");
+			boardNo = $("#boardNo1").val();
+			replylistdata="";
+			replyNode = $("#replyCon");
+			$.ajax({
+				url : "/HaveANiceDream/reply/list.do",
+				type : "GET",
+				data : {
+					"boardNo" : boardNo 
+				},
+				dataType : "json", 
+				error:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			       },
+				success : function(data) {				
+					$("#replylist").text(data.replylist);
+					for(i in data.replylist){
+						replylistdata = replylistdata+data.replylist[i].id+"<br/>";
+					}
+					$(replyNode).html(replylistdata);
+				}
+			});
+	}
 	</script>
    
 </head>

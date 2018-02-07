@@ -58,16 +58,16 @@ public class ReplyListServlet extends HttpServlet {
 				replyjson.put("BorderNo", reply.getBorderNo());
 				replyjson.put("ReplyContent", reply.getReplyContent());
 				replyjson.put("UserId", reply.getUserId());
-				replyjson.put("ReplyEditDate", reply.getReplyEditDate());
+				replyjson.put("ReplyEditDate", reply.getReplyEditDate()+"");
 				replyjsonlist.add(replyjson);
 			}
 			replyroot.put("replylist", replyjsonlist);
 			
-			System.out.println(replyroot);
+			System.out.println(replyroot.toJSONString());
 			response.setContentType("application/json");		
 			response.setHeader("cache-control", "no-cache,no-store");
 			PrintWriter pw = response.getWriter();
-			pw.print(replyroot);
+			pw.print(replyroot.toJSONString());
 			
 			
 		}else{
