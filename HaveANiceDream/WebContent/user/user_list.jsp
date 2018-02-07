@@ -27,7 +27,12 @@
 			<div class="content-panel">
 				<form class="form-horizontal style-form" method="get">
 					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">회원 ID</label>
+						<div class="col-sm-2 ">
+							<select class="form-control">
+								<option>회원 ID</option>
+								<option>회원 이름</option>
+							</select>
+						</div>
 						<div class="col-sm-8">
 							<input type="text" class="form-control">
 						</div>
@@ -42,6 +47,7 @@
 						<tr>
 							<th>ID</th>
 							<th>마지막 접속 날짜</th>
+							<th>로그인 방법</th>
 							<th>회원종류</th>
 							<th></th>
 						</tr>
@@ -57,8 +63,9 @@
 									String type = user.getUserType();
 						%>
 						<tr>
-							<td><a href="javascript:showUserInfo('<%=Id %>')"><%=Id%></a></td>
+							<td><a href="javascript:showUserInfo('<%=Id%>')"><%=Id%></a></td>
 							<td><%=user.getUserLastLoginTime()%></td>
+							<td><%=user.getUserLogType()%></td>
 							<td><%=type%></td>
 							<td>
 								<%
@@ -114,8 +121,9 @@
 		function showUserInfo(id) {
 			num = 1;
 			$("#selUserID").val(id);
-			url = "/HaveANiceDream/grade/list.do?id="+id;
-			popup = window.open(url,num,"width=400,height=700,left=100 top=50");
+			url = "/HaveANiceDream/grade/list.do?id=" + id;
+			popup = window.open(url, num,
+					"width=400,height=700,left=100 top=50");
 			num++;
 		}
 	</script>

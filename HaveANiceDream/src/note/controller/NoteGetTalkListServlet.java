@@ -58,7 +58,7 @@ public class NoteGetTalkListServlet extends HttpServlet {
 				JSONObject object = new JSONObject();
 				NoteDTO dto = list.get(i);
 				
-				if (dto.getNoteReceiver() == me) {
+				if (dto.getNoteReceiver().equals(me)) {
 					service.noteUpdateState(dto.getNoteNo());
 				}
 

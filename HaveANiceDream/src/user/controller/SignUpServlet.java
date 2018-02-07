@@ -89,7 +89,7 @@ public class SignUpServlet extends HttpServlet {
 			}
 		} else {
 
-			String viewpath = "../user/sig_in_page.jsp";
+			String viewpath = "../user/sign_in_page.jsp";
 
 			request.setAttribute("viewpath", viewpath);
 

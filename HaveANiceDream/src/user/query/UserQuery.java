@@ -20,6 +20,8 @@ USER_TYPE                                          VARCHAR2(20)
 public class UserQuery {
 	public static final String USER_INSERT = "insert into member values(?,?,?,?,?,?,?,?,sysdate,?,sysdate,?,?,?)";
 	public static final String USER_LIST = "select * from member";
+	public static final String USER_SERCH_NAME = USER_LIST + " where USER_NAME like ?";
+	public static final String USER_SERCH_ID = USER_LIST + " where USER_ID like ?";
 	public static final String USER_SELECT = "select * from member where USER_ID = ?";
 	public static final String USER_LOGIN = "select * from member where USER_ID = ? and USER_PW = ?";
 	public static final String USER_DELETE = "delete from member where USER_ID = ?";
