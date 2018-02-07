@@ -57,14 +57,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ArrayList<MemberDTO> userList() {
+	public ArrayList<MemberDTO> userList(int type, String condition) {
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
 		ArrayList<MemberDTO> dtos = null;
 
 		try {
 			connection = DBUtil.getConnect();
-			dtos = dao.userList(connection);
+			dtos = dao.userList(type,condition,connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

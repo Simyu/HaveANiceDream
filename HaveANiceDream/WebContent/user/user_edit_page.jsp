@@ -1,3 +1,4 @@
+<%@page import="java.util.regex.Pattern"%>
 <%@page import="user.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="utf-8"%>
@@ -98,6 +99,9 @@
 					</div>
 					<%
 						String mail = user.getUserEmail();
+						if (mail == null) {
+							mail = "test@naver.com";
+						}
 						String[] strArry = mail.split("@");
 					%>
 					<div class="form-group">
@@ -125,6 +129,10 @@
 
 					<%
 						String tel = user.getUserTel();
+						if (!Pattern.matches("[0-9]{3}-[0-9]?[0-9]{3}-[0-9]{4}", tel)) {
+							tel = "010-0000-0000";
+						}
+
 						strArry = tel.split("-");
 					%>
 					<div class="form-group">

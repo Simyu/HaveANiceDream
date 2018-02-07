@@ -7,7 +7,7 @@ import user.dto.MemberDTO;
 public interface UserService {
 	int userInsert(MemberDTO user);
 
-	ArrayList<MemberDTO> userList();
+	ArrayList<MemberDTO> userList(int type, String condition);
 
 	MemberDTO userSelect(String userId);
 

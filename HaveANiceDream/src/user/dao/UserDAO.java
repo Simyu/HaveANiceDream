@@ -9,7 +9,7 @@ import user.dto.MemberDTO;
 public interface UserDAO {
 	int userInsert(MemberDTO user, Connection connection) throws SQLException;
 
-	ArrayList<MemberDTO> userList(Connection connection) throws SQLException;
+	ArrayList<MemberDTO> userList(int type, String condition, Connection connection) throws SQLException;
 
 	MemberDTO userSelect(String userId, Connection connection) throws SQLException;
 
@@ -28,6 +28,6 @@ public interface UserDAO {
 	boolean idCheck(String userId, Connection connection) throws SQLException;
 
 	int userUpdate(MemberDTO user, Connection connection) throws SQLException;
-	
+
 	int userUpdatePass(String userId, String oldPass, String newPass, Connection connection) throws SQLException;
 }

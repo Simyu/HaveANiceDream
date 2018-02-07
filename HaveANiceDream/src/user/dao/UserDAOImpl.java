@@ -59,7 +59,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public ArrayList<MemberDTO> userList(Connection connection) throws SQLException {
+	public ArrayList<MemberDTO> userList(int type, String condition, Connection connection) throws SQLException {
 		ArrayList<MemberDTO> list = null;
 		MemberDTO dto = null;
 
@@ -290,18 +290,18 @@ public class UserDAOImpl implements UserDAO {
 	public int userUpdatePass(String userId, String oldPass, String newPass, Connection connection)
 			throws SQLException {
 		int rowNum = 0;
-		
+
 		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_PASS_UPDATE);
-		//"update member set USER_PW = ? where USER_ID = ? and USER_PW = ?";
-		
+		// "update member set USER_PW = ? where USER_ID = ? and USER_PW = ?";
+
 		preparedStatement.setString(1, newPass);
 		preparedStatement.setString(2, userId);
 		preparedStatement.setString(3, oldPass);
-		
+
 		rowNum = preparedStatement.executeUpdate();
-		
-		DBUtil.close(preparedStatement);		
-		
+
+		DBUtil.close(preparedStatement);
+
 		return rowNum;
 	}
 

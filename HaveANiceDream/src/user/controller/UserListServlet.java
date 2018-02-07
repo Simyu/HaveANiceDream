@@ -26,7 +26,7 @@ public class UserListServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 
-		userlist = service.userList();
+		userlist = service.userList(0,"name");
 
 		String viewpath = "../user/user_list.jsp";
 
