@@ -30,7 +30,7 @@ public class ReplyListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+		response.setContentType("application/json;charset=utf-8");
 		
 		HttpSession ses = request.getSession(false);
 		
@@ -64,7 +64,7 @@ public class ReplyListServlet extends HttpServlet {
 			replyroot.put("replylist", replyjsonlist);
 			
 			System.out.println(replyroot.toJSONString());
-			response.setContentType("application/json");		
+			
 			response.setHeader("cache-control", "no-cache,no-store");
 			PrintWriter pw = response.getWriter();
 			pw.print(replyroot.toJSONString());
