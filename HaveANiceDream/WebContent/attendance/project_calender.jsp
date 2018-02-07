@@ -29,7 +29,7 @@
 	<h3 style="margin-left:30px;">
 		<i class="fa fa-angle-right"></i>출석체크
 	</h3>
-	<div class="form-panel-calendar" style="width:800px;">
+	<div class="form-panel-calendar" style="width:700px;">
 		<div class="row mt">
 			<div class="col-lg-12 calender-board">
 				<div class="page">
