@@ -46,34 +46,23 @@ pageEncoding="utf-8"%>
 				"boardNo" : boardNo 
 			},
 			dataType : "json", 
-			error:function(request,status,error){
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		       },
-			success : function(data) {				
-				$("#replylist").text(data.replylist);
-				for(i in data.replylist){
-					replylistdata = replylistdata+data.replylist[i].id+"<br/>";
+		       success : function(data) {	
+					//$("#replylist").text(data.replylist);
+					$("#replycount").text(data.replylist.length);
+					$("#replycount2").text(data.replylist.length);
+					for(i in data.replylist){
+						
+						$(replyNode).append("<div class='col-xs-12 col-md-12 mb col-sm-12 border-reply-mid'>"+
+								"<div class='col-xs-8 col-md-8 col-sm-8'>아이디:&nbsp;"+replylistdata+data.replylist[i].UserId+
+								"</div>"+
+								"<div class='col-xs-4 col-md-4 col-sm-4 mb' style='text-align: right;'>"+" 작성일 :"+replylistdata+data.replylist[i].ReplyEditDate+
+								"</div>"+
+								"<div class='col-xs-12 col-md-12 mb col-sm-12 border-content-detail'>"+replylistdata+data.replylist[i].ReplyContent+
+								"</div>"+
+								"</div>" );
+		
+					}
 				}
-				$(replyNode).html(replylistdata);
-				/* $("#CategoryName").text(res.CategoryName);
-				$("#productImg").attr(
-						"src",
-						"/HaveANiceDream/upload/"
-								+ res.productImg);
-				$("#ProductTitle").text(res.ProductTitle);
-				$("#ProductPrice").text(res.ProductPrice);
-				$("#userZipcode").text(res.userZipcode);
-				$("#ProductDate").text(res.ProductDate);
-				$("#ProductName").text(res.ProductName);
-				$("#ProductNo").text(res.ProductNo);
-				$("#TradeType").text(res.TradeType);
-				$("#sellUserId").text(res.sellUserId);
-				$("#sellUserTel").text(res.sellUserTel);
-				$("#sellUserEmail").text(res.sellUserEmail);
-				$("#buyUserId").text(res.buyUserId);
-				$("#buyUserTel").text(res.buyUserTel);
-				$("#buyUserEmail").text(res.buyUserEmail); */
-			}
 		});
 		$("#replyInsert").on("click", rplyInsert);
 		$("#replyRe").on("click", replySelect);
@@ -81,7 +70,6 @@ pageEncoding="utf-8"%>
 	});
 	
 	function rplyInsert() {
-		alert("하이");
 		var content = $("#replyContentwrite").val();
 		var boardNo1 = $("#boardNo1").val();
 		if (content=="") {
@@ -96,17 +84,17 @@ pageEncoding="utf-8"%>
 				},
 				dataType : "text",
 				success : function(resp) {
+					rplyList();
 				}
 			});	 
 		}
 		$("#replyContentwrite").val("");
-		rplyList();
+		
 	}
 	function rplyList() {
-			alert("뭐징");
-			boardNo = $("#boardNo1").val();
-			replylistdata="";
-			replyNode = $("#replyCon");
+			var boardNo = $("#boardNo1").val();
+			var replylistdata="";
+			var replyNode = $("#replyCon");
 			$.ajax({
 				url : "/HaveANiceDream/reply/list.do",
 				type : "GET",
@@ -114,15 +102,21 @@ pageEncoding="utf-8"%>
 					"boardNo" : boardNo 
 				},
 				dataType : "json", 
-				error:function(request,status,error){
-			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			       },
 				success : function(data) {				
-					$("#replylist").text(data.replylist);
-					for(i in data.replylist){
-						replylistdata = replylistdata+data.replylist[i].id+"<br/>";
-					}
-					$(replyNode).html(replylistdata);
+
+					//$("#replylist").text(data.replylist);
+					var size = data.replylist.length;
+					$("#replycount").text(size);
+						$(replyNode).append("<div class='col-xs-12 col-md-12 mb col-sm-12 border-reply-mid'>"+
+								"<div class='col-xs-8 col-md-8 col-sm-8 id-list-font'>아이디:&nbsp;"+replylistdata+data.replylist[size-1].UserId+
+								"</div>"+
+								"<div class='col-xs-4 col-md-4 col-sm-4 mb' style='text-align: right'>"+" 작성일 :"+replylistdata+data.replylist[size-1].ReplyEditDate+
+								"</div>"+
+								"<div class='col-xs-12 col-md-12 mb col-sm-12 border-content-detail'>"+replylistdata+data.replylist[size-1].ReplyContent+
+								"</div>"+
+								"</div>" );
+		
+					
 				}
 			});
 	}
@@ -154,8 +148,8 @@ pageEncoding="utf-8"%>
 			<div class="form-group">
 				<h5 class="col-sm-2" style="text-align: center;"><%=boardRead.getBoardType1() %>><%=boardRead.getBoardType2() %></h5>
 				<div class="col-sm-8"></div>
-				<h5 class="col-sm-2" style="text-align: center;">
-					목록 | 댓글(<a>10</a>)
+				<h5 class="col-sm-2" style="text-align: center;" >
+					 댓글(<span id="replycount"></span>)
 				</h5>
 			</div>
 			<div class="form-group">
@@ -164,8 +158,8 @@ pageEncoding="utf-8"%>
 			<div class="form-group mb" style="height: auto;">
 				
 				<div class="col-sm-12 border-content-detail"><%=boardRead.getBoardContent()%></div>
-				<div style="padding-left: 30px;"> 첨부된 이미지</div>
-				<div class="no-mg-no-pd" style="padding-left: 30px;"> <img alt="" src="/HaveANiceDream/uploadresources/board/<%=boardRead.getBoardimageSrc()%>" > </div>
+				<div style="padding-left: 30px; color: black;"> 첨부된 이미지</div>
+				<div class="no-mg-no-pd" style="padding-left: 30px;"> <img class="reply-img-full-cont2 " alt="" src="/HaveANiceDream/uploadresources/board/<%=boardRead.getBoardimageSrc()%>" > </div>
 				<div style="padding-right: 20px; height: auto; text-align: right;"><button type="button" class="btn btn-danger btn-sm" onclick="popup()">게시글 신고하기</button></div>
 			</div>
 
@@ -185,59 +179,31 @@ pageEncoding="utf-8"%>
 			<div class="form-group">
 				<div class="col-md-12 border-reply-top mb">
 					<!-- 답글 최상위 페이지!! -->
-					<h4>
+					<h4 style="color: black; margin-bottom: 10px;">
 						<i class="fa fa-angle-right"></i>댓글달기
 					</h4>
 					<h5 class="col-sm-2" style="text-align: center;">
-						▼ 댓글(<a>10</a>)
+						댓글갯수&nbsp;(<span id="replycount2"></span>)
 					</h5>
-					<div class="col-sm-8"></div>
-					<h5 class="col-sm-2" style="text-align: center;">
-						새로고침<a id="replyRe"><i class="fa fa-history"></i></a>
+					<div class="col-xs-8 col-sm-8 col-md-8"></div>
+					<h5 class="col-xs-2 col-sm-2 col-md-2" style="text-align: center;">
+						새로고침&nbsp;<a id="replyRe"><i class="fa fa-history"></i></a>
 					</h5>
-					<div class="col-xs-12 border-reply-mid">
-						<!-- 답글! -->
-						<div class="col-xs-10 mb">아이디 : id (작성일자 : 2018-01-05 20:30)</div>
-						<div class="col-xs-2 mb">
-							<button type="button" class="btn btn-danger btn-xs pull-right">신고하기</button>
-						</div>
-						<div class="col-xs-12 border-content-detail">여기는 내용이 들어갈
-							공간입니다. 어떤 내용이 들어가도 줄바꿈이 가능하며 걱정없습니다. 계속해서 쭉쭉쭉 써주세요 그리고 신고기능을 추가할
-							겁니다. 어떻게 해야할까요? 내용안에 넣어야 겠지요? 그럼 신고기능 연결을 위해 신고기능을 맡고 있는 우리 진우와 또
-							의논을 해봐야 겠네요? 자 어때요 css 및 뷰작업은 이제 껌때가리죠? ㅎㅎㅎㅎㅎ 어떤내용을 넣을지 막막할 때는
-							무조건 구글링 & 밤샘 작업을 한다면 문제 없지요 자 그럼 우리 다함께 드림 합시다 드림드림드림 드림
-							드림~ㅇㅀㅇㅀㄹㅇㅎ~
-							
-						</div>
-						<button type="button" class="btn btn-round btn-xs btn-default ml">삭제하기</button>
-						<button type="button" class="btn btn-round btn-xs btn-default ml">수정하기</button>
-					</div>
-					<div class="col-xs-12 border-reply-mid">
-						<div class="col-xs-10 mb">아이디 : id (작성일자 : 2018-01-05 20:30)</div>
-						<div class="col-xs-2 mb">
-							<button type="button" class="btn btn-danger btn-xs pull-right">신고하기</button>
-						</div>
-						<div class="col-xs-12 border-content-detail" id="replyCon">여기는 내용이 들어갈
-							공간입니다. 어떤 내용이 들어가도 줄바꿈이 가능하며 걱정없습니다. 계속해서 쭉쭉쭉 써주세요 그리고 신고기능을 추가할
-							겁니다. 어떻게 해야할까요? 내용안에 넣어야 겠지요? 그럼 신고기능 연결을 위해 우리 신고기능을 맡고 있는 진우와 또
-							의논을 해봐야 겠네요? 자 어때요 css 및 뷰작업은 이제 껌때가리죠? ㅎㅎㅎㅎㅎ 어떤내용을 넣을지 막막할 때는
-							무조건 구글링 & 밤샘 작업을 한다면 문제 없지요 자 그럼 우리 다함께 드림 합시다 드림드림드림 드림
-							드림~ㅇㅀㅇㅀㄹㅇㅎ~</div>
-						<button type="button" class="btn btn-round btn-xs btn-default ml">삭제하기</button>
-						<button type="button" class="btn btn-round btn-xs btn-default ml">수정하기</button>
+					
+					<div class="col-xs-12 col-sm-12 col-md-12 border-reply-mid no-mg-no-pd" id="replyCon">
+						
+						
 					</div>
 					
 					
-					<div class="col-xs-12 border-reply-back">
-						<span class="col-xs-2 border-reply-id-font"><i
-							class="fa fa-user"></i> <a>드림왕</a> </span> <span class="col-md-9">
-							<textarea name="replyContent" id="replyContentwrite"
-								style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;"
-								rows=5></textarea>
-						</span> <span class="col-xs-1"> <a
-							class="btn btn-default border-reply-btn-size" id="replyInsert" ><i
-								class=" fa fa-edit"></i>등록</a>
-						</span>
+					<div class="col-xs-12 col-sm-12 col-md-12 border-reply-back">
+						<span class="col-xs-3 col-sm-3 col-md-3 border-reply-id-font"><i class="fa fa-user" style="color: #1290c3;"></i> <a><%=user.getUserId()%></a> 
+							<img class="reply-img-full-cont" src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>">
+						</span> 
+						<span class="col-xs-7 col-sm-7 col-md-7">
+							<textarea name="replyContent" id="replyContentwrite" style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;" rows=5></textarea>
+						</span> 
+						<span class="col-xs-2 col-sm-2 col-md-2"> <a class="btn btn-default border-reply-btn-size" id="replyInsert" ><i class=" fa fa-edit"></i>등록</a>	</span>
 					</div>
 				</div>
 			</div>
