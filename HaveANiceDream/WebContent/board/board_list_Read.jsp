@@ -52,12 +52,12 @@ pageEncoding="utf-8"%>
 					$("#replycount2").text(data.replylist.length);
 					for(i in data.replylist){
 						
-						$(replyNode).append("<div class='col-xs-12 border-reply-mid'>"+
-								"<div class='col-xs-10 mb' id='userId'>아이디 :"+replylistdata+data.replylist[i].UserId+" (작성일자 :"+
-								replylistdata+data.replylist[i].ReplyEditDate+")</div>"+
-								"<div class='col-xs-2 mb'>"+
+						$(replyNode).append("<div class='col-xs-12 col-md-12 mb col-sm-12 border-reply-mid'>"+
+								"<div class='col-xs-8 col-md-8 col-sm-8'>아이디:&nbsp;"+replylistdata+data.replylist[i].UserId+
 								"</div>"+
-								"<div class='col-xs-12 border-content-detail'>"+replylistdata+data.replylist[i].ReplyContent+
+								"<div class='col-xs-4 col-md-4 col-sm-4 mb' style='text-align: right;'>"+" 작성일 :"+replylistdata+data.replylist[i].ReplyEditDate+
+								"</div>"+
+								"<div class='col-xs-12 col-md-12 mb col-sm-12 border-content-detail'>"+replylistdata+data.replylist[i].ReplyContent+
 								"</div>"+
 								"</div>" );
 		
@@ -92,9 +92,9 @@ pageEncoding="utf-8"%>
 		
 	}
 	function rplyList() {
-			boardNo = $("#boardNo1").val();
-			replylistdata="";
-			replyNode = $("#replyCon");
+			var boardNo = $("#boardNo1").val();
+			var replylistdata="";
+			var replyNode = $("#replyCon");
 			$.ajax({
 				url : "/HaveANiceDream/reply/list.do",
 				type : "GET",
@@ -107,12 +107,12 @@ pageEncoding="utf-8"%>
 					//$("#replylist").text(data.replylist);
 					var size = data.replylist.length;
 					$("#replycount").text(size);
-						$(replyNode).append("<div class='col-xs-12 border-reply-mid'>"+
-								"<div class='col-xs-10 mb' id='userId'>아이디 :"+replylistdata+data.replylist[size-1].UserId+" (작성일자 :"+
-								replylistdata+data.replylist[size-1].ReplyEditDate+")</div>"+
-								"<div class='col-xs-2 mb'>"+
+						$(replyNode).append("<div class='col-xs-12 col-md-12 mb col-sm-12 border-reply-mid'>"+
+								"<div class='col-xs-8 col-md-8 col-sm-8 id-list-font'>아이디:&nbsp;"+replylistdata+data.replylist[size-1].UserId+
 								"</div>"+
-								"<div class='col-xs-12 border-content-detail'>"+replylistdata+data.replylist[size-1].ReplyContent+
+								"<div class='col-xs-4 col-md-4 col-sm-4 mb' style='text-align: right'>"+" 작성일 :"+replylistdata+data.replylist[size-1].ReplyEditDate+
+								"</div>"+
+								"<div class='col-xs-12 col-md-12 mb col-sm-12 border-content-detail'>"+replylistdata+data.replylist[size-1].ReplyContent+
 								"</div>"+
 								"</div>" );
 		
@@ -149,7 +149,7 @@ pageEncoding="utf-8"%>
 				<h5 class="col-sm-2" style="text-align: center;"><%=boardRead.getBoardType1() %>><%=boardRead.getBoardType2() %></h5>
 				<div class="col-sm-8"></div>
 				<h5 class="col-sm-2" style="text-align: center;" >
-					목록 | 댓글(<span id="replycount"></span>)
+					 댓글(<span id="replycount"></span>)
 				</h5>
 			</div>
 			<div class="form-group">
@@ -158,8 +158,8 @@ pageEncoding="utf-8"%>
 			<div class="form-group mb" style="height: auto;">
 				
 				<div class="col-sm-12 border-content-detail"><%=boardRead.getBoardContent()%></div>
-				<div style="padding-left: 30px;"> 첨부된 이미지</div>
-				<div class="no-mg-no-pd" style="padding-left: 30px;"> <img alt="" src="/HaveANiceDream/uploadresources/board/<%=boardRead.getBoardimageSrc()%>" > </div>
+				<div style="padding-left: 30px; color: black;"> 첨부된 이미지</div>
+				<div class="no-mg-no-pd" style="padding-left: 30px;"> <img class="reply-img-full-cont2 " alt="" src="/HaveANiceDream/uploadresources/board/<%=boardRead.getBoardimageSrc()%>" > </div>
 				<div style="padding-right: 20px; height: auto; text-align: right;"><button type="button" class="btn btn-danger btn-sm" onclick="popup()">게시글 신고하기</button></div>
 			</div>
 
@@ -179,33 +179,31 @@ pageEncoding="utf-8"%>
 			<div class="form-group">
 				<div class="col-md-12 border-reply-top mb">
 					<!-- 답글 최상위 페이지!! -->
-					<h4>
+					<h4 style="color: black; margin-bottom: 10px;">
 						<i class="fa fa-angle-right"></i>댓글달기
 					</h4>
 					<h5 class="col-sm-2" style="text-align: center;">
-						▼ 댓글(<span id="replycount2"></span>)
+						댓글갯수&nbsp;(<span id="replycount2"></span>)
 					</h5>
 					<div class="col-xs-8 col-sm-8 col-md-8"></div>
 					<h5 class="col-xs-2 col-sm-2 col-md-2" style="text-align: center;">
-						새로고침<a id="replyRe"><i class="fa fa-history"></i></a>
+						새로고침&nbsp;<a id="replyRe"><i class="fa fa-history"></i></a>
 					</h5>
 					
-					<div class="col-xs-12 col-sm-12 col-md-12 border-reply-mid" id="replyCon">
+					<div class="col-xs-12 col-sm-12 col-md-12 border-reply-mid no-mg-no-pd" id="replyCon">
 						
 						
 					</div>
 					
 					
 					<div class="col-xs-12 col-sm-12 col-md-12 border-reply-back">
-						<span class="col-xs-2 col-sm-2 col-md-2 border-reply-id-font"><i
-							class="fa fa-user"></i> <a>드림왕</a> </span> <span class="col-xs-9 col-sm-9 col-md-9">
-							<textarea name="replyContent" id="replyContentwrite"
-								style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;"
-								rows=5></textarea>
-						</span> <span class="col-xs-1 col-sm-1 col-md-1"> <a
-							class="btn btn-default border-reply-btn-size" id="replyInsert" ><i
-								class=" fa fa-edit"></i>등록</a>
-						</span>
+						<span class="col-xs-3 col-sm-3 col-md-3 border-reply-id-font"><i class="fa fa-user" style="color: #1290c3;"></i> <a><%=user.getUserId()%></a> 
+							<img class="reply-img-full-cont" src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>">
+						</span> 
+						<span class="col-xs-7 col-sm-7 col-md-7">
+							<textarea name="replyContent" id="replyContentwrite" style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;" rows=5></textarea>
+						</span> 
+						<span class="col-xs-2 col-sm-2 col-md-2"> <a class="btn btn-default border-reply-btn-size" id="replyInsert" ><i class=" fa fa-edit"></i>등록</a>	</span>
 					</div>
 				</div>
 			</div>
