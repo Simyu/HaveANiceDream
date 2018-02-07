@@ -35,7 +35,7 @@ ALTER TABLE blame MODIFY(BLAME_TITLE VARCHAR2(100));
 ALTER TABLE blame MODIFY(BLAME_CONTENT VARCHAR2(1000));
 ALTER TABLE manager_blame MODIFY(ANSWER_TITLE VARCHAR2(100));
 ALTER TABLE manager_blame MODIFY(ANSWER_CONTENT VARCHAR2(1000));
-delete from BLAME where BLAME_NO = 45;
+delete from BLAME where BLAME_NO = 63;
 
 ALTER TABLE product MODIFY(trade_type VARCHAR2(20));
 ALTER TABLE product RENAME COLUMN PRODUCT_COUNT TO PRODUCT_GRADE;
@@ -122,7 +122,7 @@ CREATE TABLE block
     block_reason    VARCHAR2(20)    NULL, 
     block_date      DATE            NULL   
 );
-
+alter table blame drop column product_no;
 create  SEQUENCE board_no_seq;
 
 alter table [해당테이블명] drop column [삭제할필드명];

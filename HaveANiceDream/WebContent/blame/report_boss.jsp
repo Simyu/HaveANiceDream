@@ -60,14 +60,12 @@
 								<td>
 									<dl>
 										<dt>
-											<label>신고자ID: </label>
+											<label style="margin-left:100px;">신고자ID: </label>
 											<%=user.getUserId()%>
-											<label>상대방ID</label> <span class="input-box"><input
+											<label style="margin-left:170px;">상대방ID</label> <span class="input-box"><input
 												name="userIdBlamee" type="text" id="auctionno2" class="txt"
-												maxlength="15" style="width: 133px;" /></span> <label>물건번호</label>
-											<span class="input-box"><input name="productNo"
-												type="text" id="orderno1" class="txt" maxlength="15"
-												style="width: 133px;" /></span>
+												maxlength="15" style="width: 133px;" /></span> 
+										
 										</dt>
 									</dl>
 								</td>

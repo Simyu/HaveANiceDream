@@ -31,13 +31,12 @@ public class BlameInsertServlet extends HttpServlet {
 		String blameType = request.getParameter("blameType");
 		String userIdBlamere = user.getUserId();
 		String userIdBlamee = request.getParameter("userIdBlamee");
-		int productNo = Integer.parseInt(request.getParameter("productNo"));  
 		String attachedFile = request.getParameter("attachedFile");
 		String blameTitle = request.getParameter("blameTitle");
 		String blameContent = request.getParameter("blameContent");
 		
 		
-		BlameDTO blame = new BlameDTO(blameType,userIdBlamere,userIdBlamee,productNo,attachedFile,blameTitle,blameContent);
+		BlameDTO blame = new BlameDTO(blameType,userIdBlamere,userIdBlamee,attachedFile,blameTitle,blameContent);
 		BlameService service = new BlameServiceimpl();
 		int result = service.insert(blame);
 		

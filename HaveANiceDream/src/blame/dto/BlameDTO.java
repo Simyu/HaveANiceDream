@@ -14,8 +14,6 @@ public class BlameDTO {
 
 	private String blameType;
 
-	private Integer productNo;
-
 	private String attachedFile;
 
 	private String blameTitle;
@@ -68,13 +66,6 @@ public class BlameDTO {
 		this.blameType = blameType;
 	}
 
-	public Integer getProductNo() {
-		return productNo;
-	}
-
-	public void setProductNo(Integer productNo) {
-		this.productNo = productNo;
-	}
 
 	public String getAttachedFile() {
 		return attachedFile;
@@ -111,27 +102,26 @@ public class BlameDTO {
 	@Override
 	public String toString() {
 		return "BlameDTO [blameNo=" + blameNo + ", blameDate=" + blameDate + ", userIdBlamere=" + userIdBlamere
-				+ ", userIdBlamee=" + userIdBlamee + ", blameType=" + blameType + ", productNo=" + productNo
-				+ ", attachedFile=" + attachedFile + ", blameTitle=" + blameTitle + ", blameContent=" + blameContent
+				+ ", userIdBlamee=" + userIdBlamee + ", blameType=" + blameType + ", attachedFile=" + attachedFile + ", blameTitle=" + blameTitle + ", blameContent=" + blameContent
 				+ ", blameanswer=" + blameanswer + "]";
 	}
 
-	public BlameDTO(Integer blameNo, Date blameDate, String userIdBlamere, String userIdBlamee, String blameType,
-			Integer productNo, String attachedFile, String blameTitle, String blameContent, String blameanswer) {
+	public BlameDTO(Integer blameNo, Date blameDate, String userIdBlamere, String userIdBlamee, String blameType
+			, String attachedFile, String blameTitle, String blameContent, String blameanswer) {
 		super();
 		this.blameNo = blameNo;
 		this.blameDate = blameDate;
 		this.userIdBlamere = userIdBlamere;
 		this.userIdBlamee = userIdBlamee;
 		this.blameType = blameType;
-		this.productNo = productNo;
+		
 		this.attachedFile = attachedFile;
 		this.blameTitle = blameTitle;
 		this.blameContent = blameContent;
 		this.blameanswer = blameanswer;
 	}
 
-	public BlameDTO(String userIdBlamere, String userIdBlamee, String blameType, Integer productNo, String attachedFile,
+	public BlameDTO(String userIdBlamere, String userIdBlamee, String blameType, String attachedFile,
 			String blameTitle, String blameContent) {
 		super();
 		this.blameNo = null;
@@ -139,7 +129,7 @@ public class BlameDTO {
 		this.userIdBlamere = userIdBlamere;
 		this.userIdBlamee = userIdBlamee;
 		this.blameType = blameType;
-		this.productNo = productNo;
+		
 		this.attachedFile = attachedFile;
 		this.blameTitle = blameTitle;
 		this.blameContent = blameContent;

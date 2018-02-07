@@ -34,10 +34,9 @@ public class BlameDAOimpl implements BlameDAO {
 		ptmt.setString(3, dto.getUserIdBlamere());
 		ptmt.setString(1, dto.getUserIdBlamee());
 		ptmt.setString(2, dto.getBlameType());
-		ptmt.setInt(4, dto.getProductNo());
-		ptmt.setString(5, dto.getAttachedFile());
-		ptmt.setString(6, dto.getBlameTitle());
-		ptmt.setString(7, dto.getBlameContent());
+		ptmt.setString(4, dto.getAttachedFile());
+		ptmt.setString(5, dto.getBlameTitle());
+		ptmt.setString(6, dto.getBlameContent());
 		
 		
 		result = ptmt.executeUpdate();
@@ -65,11 +64,10 @@ public class BlameDAOimpl implements BlameDAO {
 					resultSet.getString(3),
 					resultSet.getString(4),
 					resultSet.getString(5),
-					resultSet.getInt(6),
+					resultSet.getString(6),
 					resultSet.getString(7),
 					resultSet.getString(8),
-					resultSet.getString(9),
-					resultSet.getString(10)
+					resultSet.getString(9)
 					);
 			list.add(dto);
 		}
@@ -97,11 +95,10 @@ public class BlameDAOimpl implements BlameDAO {
 						resultSet.getString(3),
 						resultSet.getString(4),
 						resultSet.getString(5),
-						resultSet.getInt(6),
+						resultSet.getString(6),
 						resultSet.getString(7),
 						resultSet.getString(8),
-						resultSet.getString(9),
-						resultSet.getString(10)
+						resultSet.getString(9)
 					);
 		}
 		DBUtil.close(resultSet);
@@ -148,11 +145,10 @@ public class BlameDAOimpl implements BlameDAO {
 					resultSet.getString(3),
 					resultSet.getString(4),
 					resultSet.getString(5),
-					resultSet.getInt(6),
+					resultSet.getString(6),
 					resultSet.getString(7),
 					resultSet.getString(8),
-					resultSet.getString(9),
-					resultSet.getString(10)
+					resultSet.getString(9)
 					);
 			list.add(dto);
 		}
