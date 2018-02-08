@@ -65,7 +65,8 @@
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">이름</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="userName" id="userName">
+							<input type="text" class="form-control" name="userName"
+								id="userName">
 						</div>
 					</div>
 					<div class="form-group">
@@ -176,9 +177,9 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-round btn-primary">가입하기</button>
-					<input type="hidden" id="type" name="type" value="기본">
-					<input type="hidden" id="img" name="img">
-				</form> 
+					<input type="hidden" id="type" name="type" value="기본"> <input
+						type="hidden" id="img" name="img">
+				</form>
 			</div>
 		</div>
 	</div>
@@ -275,8 +276,8 @@
 		$("#userEmail1").val("<%=array[0]%>");
 		$("#userEmail2").val("@<%=array[1]%>");
 		$("#img").val("<%=SNSSignUser.getUserImage()%>");
-		$("#type").val("<%=SNSSignUser.getUserLogType()%>");
-		
+		$("#type").val("<%=SNSSignUser.getUserLogType()%>
+		");
 	<%}%>
 		});
 
@@ -291,13 +292,23 @@
 			}
 		}
 
+		function emailVerify() {
+			var pattern = /^[A-z]+(\\.[A-z]+)*@[a-z]+(\\.[a-z]+){1,2}$/;
+			var email = $("#userEmail1").val() + $("#userEmail2").val();
+
+			if (!pattern.test(email)) {
+				return false;
+			}
+
+		}
+
 		function idVerify() {
 			var id = $("#userId").val();
 			var helpMsg = "";
-			var patten = /^[a-z0-9]*$/;
+			var patten = /^[A-z0-9]*$/;
 
 			if (!patten.test(id)) {
-				$("#helpId").html("ID 는 소문자와 숫자만 사용 할 수 있습니다.");
+				$("#helpId").html("ID 는 알파벳과 숫자만 사용 할 수 있습니다.");
 				return false;
 			}
 

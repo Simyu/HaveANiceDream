@@ -49,41 +49,47 @@ public class UserLoginServlet extends HttpServlet {
 		}
 
 		if (user != null) {
-			HttpSession session = request.getSession();
-			SimpleDateFormat format = new SimpleDateFormat("MM:dd");
-
-			if (!format.format(user.getUserLastLoginTime()).equals(format.format(new Date()))) {
-				session.setAttribute("attFlag", false);
+			if (user.getUserType().equals("차단회원")) {
+				request.setAttribute("managerMSG", "차단된 회원입니다. 관리자에게 문의주세요.");
+				url = "/user/login.html";
+			} else if (user.getUserType().equals("탈퇴회원")) {
+				url = "/user/login.html";
 			} else {
-				Cookie[] cookies = request.getCookies();
+				HttpSession session = request.getSession();
+				SimpleDateFormat format = new SimpleDateFormat("MM:dd");
 
-				if (cookies != null) {
-					String flag = "";
+				if (!format.format(user.getUserLastLoginTime()).equals(format.format(new Date()))) {
+					session.setAttribute("attFlag", false);
+				} else {
+					Cookie[] cookies = request.getCookies();
 
-					for (int i = 0; i < cookies.length; i++) {
-						if (cookies[i].getName().equals("attFlag")) {
-							flag = cookies[i].getValue();
+					if (cookies != null) {
+						String flag = "";
+
+						for (int i = 0; i < cookies.length; i++) {
+							if (cookies[i].getName().equals("attFlag")) {
+								flag = cookies[i].getValue();
+							}
 						}
-					}
 
-					if (flag.equals("T")) {
-						session.setAttribute("attFlag", true);
+						if (flag.equals("T")) {
+							session.setAttribute("attFlag", true);
+						} else {
+							session.setAttribute("attFlag", false);
+						}
 					} else {
 						session.setAttribute("attFlag", false);
 					}
-				} else {
-					session.setAttribute("attFlag", false);
 				}
+
+				session.setAttribute("user", user);
+				String viewpath = "temp_main_con.jsp";
+
+				new UserServiceImpl().userUpdateLoginTime(user.getUserId());
+
+				request.setAttribute("viewpath", viewpath);
+				url = "/main/main_layout.jsp";
 			}
-
-			session.setAttribute("user", user);
-			String viewpath = "temp_main_con.jsp";
-
-			new UserServiceImpl().userUpdateLoginTime(user.getUserId());
-
-			request.setAttribute("viewpath", viewpath);
-			url = "/main/main_layout.jsp";
-
 		} else if (logtype.equals("Kakao") || logtype.equals("Naver") || logtype.equals("Facebook")) {
 			user = new MemberDTO();
 
