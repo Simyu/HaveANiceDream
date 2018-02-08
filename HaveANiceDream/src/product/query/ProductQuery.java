@@ -20,12 +20,12 @@ public class ProductQuery {
 	
 	//메인에 띄워지는 6개 화면에 대한 글..
 	public static final String PRODUCTLIST_PAGING_RECENT="select * "
-			+ "from (select rowNum rnum,p.product_no,p.user_id,p.category_no,p.product_name, p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email "
+			+ "from (select rank() over (order by p.PRODUCT_DATE desc) rk,p.product_no,p.user_id,p.category_no,p.product_name, p.product_price,p.product_content,p.product_grade,p.product_title,p.product_date,p.product_state,p.product_exf_date,p.trade_type,p.category_detail_no,c.category_name,i.image_src, m.user_name,m.user_tel,m.user_email "
 		       + "from product p,category c,product_image i,member m, (select min(image_no) imgno "
 		                                                             + "from product_image  "
 		                                                             + "group by product_no) t "
 		       + "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.product_state=3 and t.imgno=i.image_no order by p.PRODUCT_DATE desc ) "
-		+ "where rnum between ? and ?";
+		+ "where rk between ? and ?";
 	
 	
 	
