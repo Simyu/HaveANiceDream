@@ -34,7 +34,7 @@ public class Product_Enroll_Servlet extends HttpServlet {
 		//업로드폴더
 		String saveFolder="/uploadresources/product";
 		String encType = "utf-8";
-		int size = 5*1024*1024;
+		int size = 50*1024*1024;
 		String realFolder="";
 		ServletContext context = getServletContext();
 		realFolder = context.getRealPath(saveFolder);
