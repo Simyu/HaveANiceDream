@@ -31,7 +31,7 @@ public class IndexServlet extends HttpServlet {
 		
 		String viewpath = "temp_main_con.jsp";
 		
-		System.out.println(productlist);
+	//
 		
 		request.setAttribute("productlist", productlist);
 		request.setAttribute("viewpath", viewpath);

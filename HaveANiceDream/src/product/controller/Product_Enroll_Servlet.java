@@ -79,7 +79,7 @@ int result=0;
 		String viewpath = request.getParameter("url");
 
 		request.setAttribute("viewpath", viewpath);
-
+System.out.println(viewpath);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
 		requestDispatcher.forward(request, response);
 		
