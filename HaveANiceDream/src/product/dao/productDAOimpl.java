@@ -98,13 +98,15 @@ public class productDAOimpl implements productDAO {
 			ptmt.setString(1, "%"+title+"%");
 			ptmt.setInt(2,startCount );
 			ptmt.setInt(3,endCount );
+			System.out.println();
+		}else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null & endCount==6){  //전체리스트 검색
+			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING_RECENT);
+			ptmt.setInt(1,startCount );
+			ptmt.setInt(2,endCount );
+			
 		}
 		else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null){  //전체리스트 검색
 			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING);
-			ptmt.setInt(1,startCount );
-			ptmt.setInt(2,endCount );
-		}else if(title==null&categoryNo==0 & categoryDetailNo==0  & userId==null & endCount==6){  //전체리스트 검색
-			ptmt = connection.prepareStatement(ProductQuery.PRODUCTLIST_PAGING_RECENT);
 			ptmt.setInt(1,startCount );
 			ptmt.setInt(2,endCount );
 		}else if(userId!=null){//???? 
@@ -113,7 +115,7 @@ public class productDAOimpl implements productDAO {
 			ptmt.setInt(2,startCount );
 			ptmt.setInt(3,endCount );
 			
-			// System.out.println("진:입성공:");
+			
 		}
 		resultSet = ptmt.executeQuery();
 		while (resultSet.next()) {
