@@ -26,7 +26,17 @@ public class UserListServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 
-		userlist = service.userList(0,"name");
+		int searchType = 0;
+
+		String searchCondi = request.getParameter("searchCondi");
+
+		if (searchCondi == null || searchCondi.equals("")) {
+			searchCondi = null;
+		} else {
+			searchType = Integer.parseInt(request.getParameter("searchType"));
+		}
+		
+		userlist = service.userList(searchType, searchCondi);
 
 		String viewpath = "../user/user_list.jsp";
 

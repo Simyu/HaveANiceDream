@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fw.DBUtil;
+import fw.LoggableStatement;
 import user.dto.MemberDTO;
 import user.query.UserQuery;
 
@@ -65,12 +66,20 @@ public class UserDAOImpl implements UserDAO {
 
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-
-		preparedStatement = connection.prepareStatement(UserQuery.USER_LIST);
-		// "select * from member";
+		
+		if (type == 1) {
+			preparedStatement = connection.prepareStatement(UserQuery.USER_SERCH_ID);
+			preparedStatement.setString(1, "%"+condition+"%");
+		} else if (type == 2) {
+			preparedStatement = connection.prepareStatement(UserQuery.USER_SERCH_NAME);
+			preparedStatement.setString(1, "%"+condition+"%");
+		} else {
+			preparedStatement = connection.prepareStatement(UserQuery.USER_LIST);
+			// "select * from member";
+		}
 
 		resultSet = preparedStatement.executeQuery();
-
+		
 		while (resultSet.next()) {
 			if (list == null) {
 				list = new ArrayList<MemberDTO>();

@@ -25,19 +25,20 @@
 
 		<div class="col-md-12">
 			<div class="content-panel">
-				<form class="form-horizontal style-form" method="get">
+				<form class="form-horizontal style-form" method="get"
+					action="/HaveANiceDream/user/list.do">
 					<div class="form-group">
 						<div class="col-sm-2 ">
-							<select class="form-control">
-								<option>회원 ID</option>
-								<option>회원 이름</option>
+							<select class="form-control" name="searchType">
+								<option value="1">회원 ID</option>
+								<option value="2">회원 이름</option>
 							</select>
 						</div>
 						<div class="col-sm-8">
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" name="searchCondi">
 						</div>
 						<div class="col-sm-2">
-							<button type="button"
+							<button type="submit"
 								class="btn btn-round btn-primary form-control">검색</button>
 						</div>
 					</div>

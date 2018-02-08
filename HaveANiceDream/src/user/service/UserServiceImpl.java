@@ -39,17 +39,17 @@ public class UserServiceImpl implements UserService {
 		} finally {
 
 			try {
-			
+
 				if (state) {
 					connection.commit();
 				} else {
 					connection.rollback();
 				}
-			
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
+
 			DBUtil.close(connection);
 		}
 
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
 
 		try {
 			connection = DBUtil.getConnect();
-			dtos = dao.userList(type,condition,connection);
+			dtos = dao.userList(type, condition, connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -206,7 +206,7 @@ public class UserServiceImpl implements UserService {
 		int rowNum = 0;
 		Connection connection = null;
 		UserDAO dao = new UserDAOImpl();
-		
+
 		try {
 			connection = DBUtil.getConnect();
 			rowNum = dao.userUpdatePass(userId, oldPass, newPass, connection);
@@ -215,7 +215,7 @@ public class UserServiceImpl implements UserService {
 		} finally {
 			DBUtil.close(connection);
 		}
-		
+
 		return rowNum;
 	}
 
