@@ -271,7 +271,7 @@
 										</div>
 										
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-primary">등록하기</button>
+											<button type="submit" class="btn btn-primary" id="enroll">등록하기</button>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">취소</button>
 											

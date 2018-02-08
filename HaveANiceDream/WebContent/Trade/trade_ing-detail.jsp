@@ -19,7 +19,7 @@
 								$("#CategoryName").text(res.CategoryName);
 								$("#productImg").attr(
 										"src",
-										"/HaveANiceDream/upload/"
+										"/HaveANiceDream/uploadresources/product/"
 												+ res.productImg);
 								$("#ProductTitle").text(res.ProductTitle);
 								$("#ProductPrice").text(res.ProductPrice);
@@ -61,7 +61,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3" style="margin-bottom: 15px;">
 			<div class="col-md-8 col-sm-8 col-xs-8">
 				<div class="col-md-4 col-sm-4 col-xs-4">
-					<img class="self-img-full-cont3" id="productImg"
+					<img class="self-img-full-cont4" id="productImg"
 						src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg">
 				</div>
 				<div class="col-md-8 col-sm-8 col-xs-8" style="height: 85px; padding-top: 12px">

@@ -76,6 +76,10 @@
 	function delPath(tradeNo,productPrice){
 		location.href = "/HaveANiceDream/trade/delete.do?tradeNo="+tradeNo+"&productPrice="+productPrice;
 	}
+	function reportPath(url) {
+
+		location.href = "/HaveANiceDream/view.html?url=" + url;
+	}
 </script>
 </head>
 
@@ -160,7 +164,7 @@
 				<div class="col-md-5 col-sm-5 col-xs-5">
 					<div class="col-md-3 col-sm-3 col-xs-3">
 						<img class="self-img-full-cont2"
-							src="/HaveANiceDream/upload/<%=productdto.getImageSrc()%>">
+							src="/HaveANiceDream/uploadresources/product/<%=productdto.getImageSrc()%>">
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-9">
 						<div class="col-md-12 col-sm-12 col-xs-12">
@@ -374,10 +378,11 @@
 									<!-- end Modal -->
 						</div>
 						<%} %>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<button type="button" class="btn btn-danger btn-sm">신고</button>
-						</div>
+						
 					<%} %>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button type="button" class="btn btn-danger btn-sm" onclick="javascript:reportPath('../blame/report_boss.jsp')">신고</button>
+						</div>
 				</div>
 			</div>
 			<%}
