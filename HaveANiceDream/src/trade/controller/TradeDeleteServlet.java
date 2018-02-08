@@ -54,7 +54,7 @@ public class TradeDeleteServlet extends HttpServlet {
 		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
 		 String date = dateFormat.format(new Date(time));
 		 String msg = "[HaveANiceDream] 거래번호 [" +tradedto.getProductNo()+"]";
-		msg= msg+" 물품이 취소되었습니다. ";
+		msg= msg+" 물품이 정상적으로 취소되었습니다. ";
 		 //구매자
 		memdto = userservice.userSelect(tradedto.getUserIdBuy());
 		 TextDTO text = new TextDTO(tradedto.getUserIdBuy(),tradedto.getTradeNo() ,date, msg, memdto.getUserTel());
