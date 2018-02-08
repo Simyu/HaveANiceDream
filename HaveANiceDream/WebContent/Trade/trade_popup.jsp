@@ -220,7 +220,7 @@ pageEncoding="utf-8"%>
 						</div>
 						<%} %>
 						<!--  모달종료 -->
-					<button class="btn btn-default btn-lg btn-style-line mr ml" onclick="javascript:showTalkList('<%=product.getUserId()%>')">1:1채팅</button>
+					<button class="btn btn-default btn-lg btn-style-line mr ml" onclick="javascript:showTalkList('<%=product.getUserId()%>','<%=product.getUserId()%>')">1:1채팅</button>
 				</div>
 				</form>
 		</section>

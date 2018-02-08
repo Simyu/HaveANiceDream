@@ -124,9 +124,7 @@
 		<h4>
 			<i class="fa fa-angle-right icon-sty"></i> <span
 				style="color: black; font-weight: 900; font-size: 12pt;">판매자
-				정보</span> <span style="margin-left: 20px;"><button
-					class="label label-default trade-btn-height">1:1채팅</button>
-				<button class="label label-default trade-btn-height">쪽지보내기</button></span>
+				정보</span> <span style="margin-left: 20px;"></span>
 		</h4>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
 			style="border: none; background-color: white; margin-bottom: 10px;">
@@ -156,9 +154,7 @@
 		<h4>
 			<i class="fa fa-angle-right icon-sty"></i> <span
 				style="color: black; font-weight: 900; font-size: 12pt;">구매자
-				정보</span> <span style="margin-left: 20px;"><button
-					class="label label-default trade-btn-height">1:1채팅</button>
-				<button class="label label-default trade-btn-height">쪽지보내기</button></span>
+				정보</span> <span style="margin-left: 20px;"></span>
 		</h4>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
 			style="border: none; background-color: white; margin-bottom: 10px;">
