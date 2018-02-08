@@ -61,7 +61,7 @@ public class ProductQuery {
 		       + "from product p,category c,product_image i,member m, (select min(image_no) imgno "
 		                                                             + "from product_image  "
 		                                                             + "group by product_no) t "
-		       + "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.product_title like ? and p.category_no = ? and p.category_detail_no = ? and t.imgno=i.image_no ) "
+		       + "where p.category_no = c.category_no and p.product_no = i.product_no and m.user_id = p.user_id and p.product_state=3 and p.product_title like ? and p.category_no = ? and p.category_detail_no = ? and t.imgno=i.image_no ) "
 		+ "where rnum between ? and ?";
 //대분류,소분류로 검색했을떄	    
 	public static final String PRODUCTLIST_SEARCH_CATEGORY_DETAIL="select * "
