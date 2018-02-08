@@ -17,6 +17,9 @@ CREATE TABLE member
     CONSTRAINT MEMBER_PK PRIMARY KEY (user_id)
 );
 
+        
+ALTER TABLE member MODIFY(user_addr_detail VARCHAR2(200));
+
 CREATE TABLE blame
 (
     blame_no           NUMBER            NOT NULL, 
@@ -261,6 +264,8 @@ ALTER TABLE reply
 ALTER TABLE reply
     ADD CONSTRAINT FK_reply_board_no_board_board_ FOREIGN KEY (board_no)
         REFERENCES board (board_no);
+        
+ALTER TABLE reply MODIFY(reply_content VARCHAR2(200));
         
 CREATE TABLE point
 (

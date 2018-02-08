@@ -11,5 +11,6 @@ public interface BlameDAO {
 	ArrayList<BlameDTO> user_list(String userIdBlamere,Connection con)throws SQLException;
 	int update(int blameNo,Connection con) throws SQLException;
 	BlameDTO select(int blameNo,Connection con) throws SQLException;
+	
 
 }

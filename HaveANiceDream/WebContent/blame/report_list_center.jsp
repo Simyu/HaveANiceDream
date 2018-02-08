@@ -20,7 +20,7 @@
 		num = 1;
 		$("#center").val(i);
 		popup = window.open("Answer_list.jsp", "num",
-				"width=1000,height=500,left=100 top=50");
+				"width=1000,height=700,left=100 top=50");
 		num++;
 	}
 	$(document).ready(function(){
@@ -50,7 +50,7 @@
 			<div class="content-panel">
 				<form class="form-horizontal style-form" method="get" name="form">
 					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">신고자 ID</label>
+						<label class="col-sm-2 col-sm-2 control-label" style="text-align: right;">검색 : </label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" id="search">
 						</div>

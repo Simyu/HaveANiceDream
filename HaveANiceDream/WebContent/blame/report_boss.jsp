@@ -13,15 +13,8 @@
 
 <script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
 <title>DASHGUM - Bootstrap Admin Template</title>
+<script src="/HaveANiceDream/Theme/assets/js/Filechose.js"></script>
 
-
-<script type="text/javascript">
-	function popup() {//물건번호조회 팝업
-		window.open("report_popup.jsp", "a",
-				"width=700, height=900, left=100, top=50")
-
-	}
-</script>
 </head>
 
 <body>
@@ -35,8 +28,8 @@
 		<div class="row mt">
 			<div class="col-lg-12">
 
-				<form action="/HaveANiceDream/blame/insert.do" method="get">
-					<table summary="신고정보" height="600" border="1" 
+				<form action="/HaveANiceDream/blame/insert.do" method="post" enctype="multipart/form-data">
+					<table summary="신고정보" height="600" border="1"
 						style="margin-left: 150px; border-color: silver;">
 						<colgroup>
 							<col style="width: 14%;">
@@ -60,12 +53,26 @@
 								<td>
 									<dl>
 										<dt>
-											<label style="margin-left:100px;">신고자ID: </label>
+											<label style="margin-left: 100px;">신고자ID: </label>
 											<%=user.getUserId()%>
-											<label style="margin-left:170px;">상대방ID</label> <span class="input-box"><input
-												name="userIdBlamee" type="text" id="auctionno2" class="txt"
-												maxlength="15" style="width: 133px;" /></span> 
-										
+											<label style="margin-left: 170px;">상대방ID</label>
+											<%
+												String userIdBlamee = (String) request.getAttribute("userIdBlamee");
+												if (userIdBlamee != null) {
+											%>
+											<span class="input-box"><input name="userIdBlamee"
+												type="text" id="auctionno2" class="txt" maxlength="15"
+												style="width: 133px;" value="<%=userIdBlamee%>"
+												readonly="readonly" /></span>
+											<%
+												} else {
+											%>
+											<span class="input-box"><input name="userIdBlamee"
+												type="text" id="auctionno2" class="txt" maxlength="15"
+												style="width: 133px;" /></span>
+											<%
+												}
+											%>
 										</dt>
 									</dl>
 								</td>

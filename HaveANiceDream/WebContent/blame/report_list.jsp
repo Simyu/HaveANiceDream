@@ -19,7 +19,7 @@
 function windowpopup(i){
 	num =1;
 	$("#back").val(i);
-	popup = window.open("Answer_list_user.jsp","num","width=1000,height=500,left=100 top=50");
+	popup = window.open("Answer_list_user.jsp","num","width=1000,height=700,left=100 top=50");
 	num++;
 }
 </script>
