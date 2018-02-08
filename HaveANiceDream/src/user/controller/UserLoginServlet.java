@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.imageio.ImageIO;
@@ -17,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import product.dto.ProductDTO;
+import product.service.ProductService;
+import product.service.ProductServiceimpl;
 import user.dto.MemberDTO;
 import user.service.UserService;
 import user.service.UserServiceImpl;
@@ -84,7 +88,10 @@ public class UserLoginServlet extends HttpServlet {
 
 				session.setAttribute("user", user);
 				String viewpath = "temp_main_con.jsp";
-
+				ArrayList<ProductDTO>  productlist = null;
+				ProductService productservice = new ProductServiceimpl();
+				productlist = productservice.product_List(null,0,0,null,1,6);
+				request.setAttribute("productlist", productlist);
 				new UserServiceImpl().userUpdateLoginTime(user.getUserId());
 
 				request.setAttribute("viewpath", viewpath);
