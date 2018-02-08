@@ -148,6 +148,7 @@
 				tradedto = tradelist.get(i);
 				productdto = productlist.get(i);
 				gradechk=0;
+				if(!tradedto.getTradeState().equals("거래취소")){
 			%>
 			<div class="col-md-12 col-sm-12 col-xs-12 pd-con" style="border-bottom: 1px solid black;">
 				<div class="col-md-2 col-sm-2 col-xs-2 trade-ing-date height-sort">
@@ -379,7 +380,8 @@
 					<%} %>
 				</div>
 			</div>
-			<%}%>
+			<%}
+			}%>
 			<%if(tradedto==null){ %>
 				<div class="col-md-12 col-sm-12 col-xs-12 centered height-sort" style="text-align: center;">
 					<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center;">

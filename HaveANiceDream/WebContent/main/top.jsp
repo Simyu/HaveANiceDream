@@ -24,13 +24,13 @@
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
 	<!--header start-->
-	<header class="header black-bg">
+	<header class="header black-bg" style="background-color: white; height: 80px; padding-top: 10px; border-bottom: solid 2px #e8e8e8; padding-top: 10px; border-top: solid 1px #e8e8e8;">
 		<div class="sidebar-toggle-box">
 			<div class="fa fa-bars tooltips" data-placement="right"
 				data-original-title="Toggle Navigation"></div>
 		</div>
 		<!--logo start-->
-		<a href="/HaveANiceDream/index.html" class="logo"><b>HAVE A
+		<a href="/HaveANiceDream/index.html" class="logo" ><b style="color: black; padding-left: 20px">HAVE A
 				NICE DREAM</b></a>
 		<!--logo end-->
 		<div class="nav notify-row" id="top_menu">
@@ -56,13 +56,13 @@
 				
 					if (user == null) {
 				%>
-				<li><a class="logout" href="/HaveANiceDream/user/login.html">Login</a></li>
+				<li><a class="logout" href="/HaveANiceDream/user/login.html" style="background-color: #d12438; border: none;">Login</a></li>
 				<li><a class="logout"
-					href="javascript:setPath('../user/sign_in_page.jsp')">Signup</a></li>
+					href="javascript:setPath('../user/sign_in_page.jsp')" style="background-color: #d12438; border: none;">Signup</a></li>
 				<%
 					} else {
 				%>
-				<li><a class="logout" href="javascript:logout()">Logout</a></li>
+				<li><a class="logout" href="javascript:logout()" style="background-color: #d12438; border: none;">Logout</a></li>
 				<%
 					}
 				%>
