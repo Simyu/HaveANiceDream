@@ -187,11 +187,10 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label">판매금액</label>
+						<label class="col-sm-2 col-sm-2 control-label">드림포인트</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="productPrice" name="productPrice" required="required"> <span
-								class="help-block" " >A block of help text that breaks onto
-								a new line and may extend beyond one line.</span>
+							<input type="number" class="form-control" id="productPrice" name="productPrice" required="required"> <span
+								class="help-block" >드림하고자 하는 포인트을 숫자로 입력해주세요.</span>
 						</div>
 					</div>
 					<div class="form-group">
