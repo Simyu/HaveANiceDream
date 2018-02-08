@@ -102,7 +102,7 @@
 				내역 확인</span>
 		</h4>
 		<hr>
-		<div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con"
+		<!-- <div class="col-md-2 col-sm-2 col-xs-2 trade-lookup-con"
 			style="border-right: none; text-align: right;">기간별조회</div>
 		<div class="col-md-3 col-sm-3 col-xs-3 trade-lookup-con no-mg-no-pd"
 			style="border-left: none; border-right: none; text-align: left;">
@@ -136,9 +136,9 @@
 					▶</button>
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-3 trade-lookup-con2"></div>
-		</div>
+		</div> 
 		<div class="col-md-1 col-sm-1 col-xs-1 trade-lookup-con no-mg-no-pd"
-			style="border-left: none;"></div>
+			style="border-left: none;"></div>-->
 		<div class="content-panel">
 			<div class="col-md-12 col-sm-12 col-xs-12 trade-ing-line pd-con">
 
@@ -174,7 +174,7 @@
 									data-toggle="dropdown" href="index.html#"><%=tradedto.getUserIdSell()%></a>
 							<%if(tradedto.getUserIdBuy().equals(user.getUserId())){
 								%>
-								<button class="label label-default trade-btn-height2">문의하기</button>
+								
 							<%}else{%>
 								<label style="margin-left: 5px">(내가등록한물품)</label> 
 								<button class="label label-default trade-btn-height2" style="width: 95px;" onclick="javascript:showUserInfo('<%=tradedto.getUserIdBuy()%>')">상대방 정보 확인</button>
