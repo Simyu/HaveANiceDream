@@ -31,13 +31,13 @@
 			success : function(res) {
 				$("#title").text(res.blameTitle);
 				$("#content").text(res.blameContent);
+				$("#img").attr("src","/HaveANiceDream/uploadresources/blame/"+res.blamefile);
 				$("#date").text(res.blameDate);
 				$("#blameNo").val(res.blameNo);
 				//alert(res.blameNo);
 			}
 		});
-	});
-	$(document).ready(function() {
+
 		$("#click").on("click", function() {
 			window.close();
 			self.close();
@@ -51,8 +51,7 @@
 	</h3>
 	<%
 		MemberDTO user = (MemberDTO) session.getAttribute("user");
-		ProductDTO fileName = (ProductDTO)session.getAttribute("fileName");	
-		System.out.println("fileName:"+fileName);
+		
 	
 	%>
 	<div class="row mt">
@@ -86,15 +85,9 @@
 												id="title"> </span>
 										</p>
 										<div class="inner-view" id="content">내용:</div>
-										<%	
-											//ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>)session.getAttribute("productlist");
-											//System.out.println(productlist);
-											/* ProductDTO dto = (ProductDTO)session.getAttribute("dto");
-											System.out.println(dto); */
-												
-										%> 
-										<img src="/HaveANiceDream/uploadresources/blame/<%-- <%=productlist.get(0).getImageSrc() %> --%> %>" />
-																	<%-- <%} %>	 --%>
+										
+										<img alt="picture" id="img"/>
+																	
 									</div>
 								</td>
 								<td class="linebg" style="border-color: white;">

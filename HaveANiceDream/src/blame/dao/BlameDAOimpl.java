@@ -156,4 +156,6 @@ public class BlameDAOimpl implements BlameDAO {
 		DBUtil.close(resultSet);
 		return list;
 	}
+
+	
 }

@@ -155,9 +155,8 @@ $(document).ready(function(){
 						<tbody>
 							<%
 								ArrayList<ProductDTO> productlist = (ArrayList<ProductDTO>) request.getAttribute("productlist");
-								//System.out.println("qwheoiqwej"+productlist);
 								int size = productlist.size();
-							
+							   
 								for (int i = 0; i < size; i++) {
 									ProductDTO dto = productlist.get(i);
 									//검색간...   해당물품 검색 DB접근해서 서블릿요청

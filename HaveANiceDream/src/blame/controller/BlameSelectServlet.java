@@ -32,6 +32,7 @@ public class BlameSelectServlet extends HttpServlet {
 		json.put("blameNo", dto.getBlameNo());
 		json.put("blameTitle", dto.getBlameTitle());
 		json.put("blameContent", dto.getBlameContent());
+		json.put("blamefile", dto.getAttachedFile());
 		json.put("blameDate", dto.getBlameDate().toString());
 		
 		  PrintWriter pw = response.getWriter();

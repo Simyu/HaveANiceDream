@@ -12,5 +12,6 @@ public interface BlameService {
 	ArrayList<BlameDTO> user_list(String userIdBlamere);
 	int update(int blameNo);
 	BlameDTO select(int blameNo);
+	
 
 }

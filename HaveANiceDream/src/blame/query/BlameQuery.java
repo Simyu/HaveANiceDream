@@ -18,4 +18,5 @@ public class BlameQuery {
 	public static final String BLAME_LIST2 = "select * from blame where USER_ID_BLAMERE = ?";
 	public static final String BLAME_SELECT = "select * from blame where BLAME_NO = ?";
 	public static final String BLAME_UPDATE = "update blame set BLAME_ANSWER = '답변완료' where BLAME_NO = ?";
+	//public static final String BLAME_IMG_INSERT = "insert into blame values(BLAME_IMAGE_SEQ.nextval,product_seq.currval,?)";
 }

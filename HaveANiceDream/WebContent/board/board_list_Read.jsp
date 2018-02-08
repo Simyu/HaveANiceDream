@@ -12,10 +12,7 @@ pageEncoding="utf-8"%>
 <title>게시판</title>
 
 <script type="text/javascript">
-   	function popup2(){
-   		window.open("/HaveANiceDream/blame/report_popup.jsp", "a", "width=700, height=900, left=100, top=50")
-   		
-   	}
+   	
 /* 	function boardListPath() {
 		location.href = "/HaveANiceDream/board/list.do";
 	} */
@@ -32,6 +29,10 @@ pageEncoding="utf-8"%>
 	}
 	function DelPath(url,boardNo){
 		location.href = "/HaveANiceDream/board/delete.do?url=" + url+"&boardNo="+boardNo;
+	}
+	function reportPath(url) {
+
+		location.href = "/HaveANiceDream/view.html?url=" + url;
 	}
    </script>
    <script type="text/javascript">
@@ -160,7 +161,7 @@ pageEncoding="utf-8"%>
 				<div class="col-sm-12 border-content-detail"><%=boardRead.getBoardContent()%></div>
 				<div style="padding-left: 30px; color: black;"> 첨부된 이미지</div>
 				<div class="no-mg-no-pd" style="padding-left: 30px;"> <img class="reply-img-full-cont2 " alt="" src="/HaveANiceDream/uploadresources/board/<%=boardRead.getBoardimageSrc()%>" > </div>
-				<div style="padding-right: 20px; height: auto; text-align: right;"><button type="button" class="btn btn-danger btn-sm" onclick="popup()">게시글 신고하기</button></div>
+				<div style="padding-right: 20px; height: auto; text-align: right;"><button type="button" class="btn btn-danger btn-sm" onclick="javascript:reportPath('../blame/report_boss.jsp')">게시글 신고하기</button></div>
 			</div>
 
 			
