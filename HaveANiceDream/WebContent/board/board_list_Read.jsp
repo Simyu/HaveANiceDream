@@ -106,6 +106,7 @@ pageEncoding="utf-8"%>
 
 					//$("#replylist").text(data.replylist);
 					var size = data.replylist.length;
+					if(size!=0){
 					$("#replycount").text(size);
 						$(replyNode).append("<div class='col-xs-12 col-md-12 mb col-sm-12 border-reply-mid'>"+
 								"<div class='col-xs-8 col-md-8 col-sm-8 id-list-font'>아이디:&nbsp;"+replylistdata+data.replylist[size-1].UserId+
@@ -116,7 +117,7 @@ pageEncoding="utf-8"%>
 								"</div>"+
 								"</div>" );
 		
-					
+					}
 				}
 			});
 	}

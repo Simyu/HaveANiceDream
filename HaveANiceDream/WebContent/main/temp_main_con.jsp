@@ -102,7 +102,7 @@
 		                        <div class="photo-wrapper photo-wrapper-background-color ml">
 		                            <div class="photo">
 		                            
-		                            	<a class="fancybox" href="/HaveANiceDream/product_search.do?productNo=<%=product.getProductNo()%>&state=BUY"><img class="self-img-full-cont3" src="/HaveANiceDream/uploadresources/product/<%=product.getImageSrc()%>" alt=""></a>
+		                            	<a class="fancybox" href="/HaveANiceDream/product_search.do?productNo=<%=product.getProductNo()%>&state=BUY"><img class="self-img-full-cont2" src="/HaveANiceDream/uploadresources/product/<%=product.getImageSrc()%>" alt=""></a>
 		                            	<div class="col-xs-12 mainview-content-title-font">
 		                            	<%=product.getProductTitle()%>
 		                            	</div>
