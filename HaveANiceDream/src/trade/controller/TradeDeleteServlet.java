@@ -34,8 +34,8 @@ public class TradeDeleteServlet extends HttpServlet {
 		String productPrice = request.getParameter("productPrice");
 		TradeService tradeservice = new TradeServiceImpl();
 		int result = 0;
-		result = tradeservice.tradeDelete(Integer.parseInt(tradeNo));
-
+		result = tradeservice.tradeStateUpdate("거래취소", Integer.parseInt(tradeNo));
+		
 		
 		TradeDTO tradedto = null;
 		tradedto = tradeservice.tradenoSelect(Integer.parseInt(tradeNo));
