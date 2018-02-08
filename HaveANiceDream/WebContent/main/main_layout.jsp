@@ -129,6 +129,26 @@ $(window).load(function() {
 	<%}
 			}%>
 		});
+		
+function fileCheck(file) {
+	// 사이즈체크
+	var maxSize = 5 * 1024 * 1024;
+	var fileSize = 0;
+	// 브라우저 확인
+	var browser = navigator.appName;
+	// 익스플로러일 경우
+	if(browser=="Microsoft Internet Explorer"){
+		var oas = new ActiveXObject("Scripting.FileSystemObject");
+		fileSize = oas.getFile(file.value).size;
+	}else{// 익스플로러가 아닐경우
+		fileSize = file.files[0].size;
+	}
+	alert("파일사이즈 : " + fileSize + ", 최대파일사이즈 : 5MB");
+	if(fileSize>maxSize) {
+		alert("첨부파일 사이즈는 5MB 이내로 등록 가능합니다.    ");
+		return;
+	}
+}
 	</script>
 
 
