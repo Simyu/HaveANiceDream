@@ -38,6 +38,15 @@ public class TextDTO {
 		this.textContent = textContent;
 		this.userTel = userTel;
 	}
+		
+		public TextDTO(String userId, Integer tradeNo,String textDate, String textContent, String userTel) {
+			super();
+			this.userId = userId;
+			this.tradeNo = tradeNo;
+			this.textDate = textDate;
+			this.textContent = textContent;
+			this.userTel = userTel;
+		}
 
 
 

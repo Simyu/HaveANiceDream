@@ -62,11 +62,11 @@ public class TradeInsertServlet extends HttpServlet {
 			 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
 			 String date = dateFormat.format(new Date(time));
 			 String msg = "[HaveANiceDream] 거래번호 [" +productdto.getProductNo()+"]";
-			msg= msg+" 물품이 신청되었습니다. 거래금액 [ " + productdto.getProductPrice()+" ] ";
-			//구매자
+			msg= msg+" 물품이 취소되었습니다. 거래금액 [ " + productdto.getProductPrice()+" ] ";
+			 //구매자
 			 TextDTO text = new TextDTO(userId, date, msg, user.getUserTel());
 			 //판매자
-			 TextDTO text1 = new TextDTO(userId, date, msg,productdto.getUserTel()); 
+			 TextDTO text1 = new TextDTO(productdto.getUserId(), date, msg,productdto.getUserTel()); 
 			 TradeDTO tradedto = new TradeDTO(null, null, null, userId, productdto.getUserId(), productdto.getProductNo(), "거래대기");
 			 int rowNum = tradeservice.tradeInsert(tradedto,text,text1);
 			 

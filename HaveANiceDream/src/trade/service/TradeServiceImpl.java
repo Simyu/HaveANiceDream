@@ -51,9 +51,9 @@ public class TradeServiceImpl implements TradeService {
 				try {
 					if(state){
 					connection.commit();
-					//SMSSendMethod test = new SMSSendMethod();//문자전송
+					SMSSendMethod test = new SMSSendMethod();//문자전송
 					//에러 0004는 문자길이 초과로 인한 오류로 발생시 해당내용 수정 90자까지 되는걸로 알고있음( 단문전송만 가능) 
-					 //test.SMSSend(text.getUserTel()+","+text1.getUserTel(), text.getTextContent());	
+					test.SMSSend(text.getUserTel()+","+text1.getUserTel(), text.getTextContent());	
 						
 					}else{
 						connection.rollback();
@@ -134,20 +134,41 @@ public class TradeServiceImpl implements TradeService {
 	}
 
 	@Override
-	public int tradeDelete(int tradeNo) {
+	public int tradeDelete(String tradeState,int tradeNo,TextDTO text,TextDTO text1) {
 		Connection connection = null;
 		int result = 0;
-		
+		boolean state=false;
 		try {
 			connection = DBUtil.getConnect();
+			connection.setAutoCommit(false);
+			TextDAO textdao = new TextDAOImpl();
 			TradeDAO dao = new TradeDAOImpl();
-			result = dao.tradeDelete(tradeNo, connection);
-			
-			
+			result = dao.tradeStateUpdate(tradeState, tradeNo, connection);
+			result = textdao.stateText(text, connection); //구매자
+			result = textdao.stateText(text1, connection);//판매자
+			state=true;
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		} finally{
+			
+			
+			try {
+				if(state){
+				connection.commit();
+				SMSSendMethod test = new SMSSendMethod();//문자전송
+				//에러 0004는 문자길이 초과로 인한 오류로 발생시 해당내용 수정 90자까지 되는걸로 알고있음( 단문전송만 가능) 
+				test.SMSSend(text.getUserTel()+","+text1.getUserTel(), text.getTextContent());	
+					
+				}else{
+					connection.rollback();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+			
 			DBUtil.close(connection);
 		}
 		
