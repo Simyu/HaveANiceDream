@@ -181,9 +181,9 @@
 							<%}%>	
 									<ul class="dropdown-menu dropdown-kk inbox">
 										<li><a href="javascript:showUserInfo('<%=tradedto.getUserIdSell()%>')">프로필 보기</a></li>
-										<li><a href="index.html#">쪽지</a></li>
-										<li><a href="index.html#">1:1채팅</a></li>
-										<li><a href="index.html#">평가보기</a></li>
+							
+										<li><a href="javascript:showTalkList('<%=tradedto.getUserIdSell()%>','<%=tradedto.getUserIdSell()%>')">1:1채팅</a></li>
+				
 									</ul></li>
 							</ul>
 						</div>
