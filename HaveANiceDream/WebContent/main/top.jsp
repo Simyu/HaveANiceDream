@@ -116,75 +116,17 @@
 
 					<form action="/HaveANiceDream/user/login.do" method="post"'>
 
-
 						<input type="hidden" id="logtype" name="logtype" value="기본">
 						<input type="text" class="form-control" placeholder="User ID"
 							name="id" id="id" required autofocus>
 						<br>
 						<input type="password" class="form-control" placeholder="Password"
 							name="pass" id="pass" required>
-						<label class="checkbox">
-							<span class="pull-right">
-								<a data-toggle="modal" href="passModal"> Forgot
-									Password?</a>
-							</span>
-						</label>
+						<br>
 						<button class="btn btn-theme btn-block" type="submit" id="signin">
 							<i class="fa fa-lock"></i>
 							SIGN IN
 						</button>
-						<hr>
-
-						<div class="login-social-link centered">
-							<p>
-								<a id="kakao-login-btn" href="javascript:kakaologin()">
-									<img alt=""
-										src="/HaveANiceDream/Theme/assets/img/user/kakao_account_login_btn_medium_narrow_ov.png">
-								</a>
-							</p>
-							<div id="naverIdLogin"></div>
-							<p>
-								<!-- 페이스북 -->
-							<div class="fb-login-button" scope="public_profile,email"
-								data-max-rows="1" data-size="large"
-								data-button-type="login_with" data-show-faces="false"
-								data-auto-logout-link="false" data-use-continue-as="false"
-								onlogin="fbLogin();"></div>
-							</p>
-							<!-- 페이스북 종료 -->
-						</div>
-						<div class="registration">
-							아직 계정이 없으신가요?
-							<br />
-							<a class="" href="javascript:setPath('../user/sign_in_page.jsp')">
-								가입하기 </a>
-						</div>
-
-
-						<!-- Modal -->
-						<div aria-hidden="true" aria-labelledby="myModalLabel"
-							role="dialog" tabindex="-1" id="passModal" class="modal fade">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">&times;</button>
-										<h4 class="modal-title">Forgot Password ?</h4>
-									</div>
-									<div class="modal-body">
-										<p>Enter your e-mail address below to reset your password.</p>
-										<input type="text" name="email" placeholder="Email"
-											autocomplete="off" class="form-control placeholder-no-fix">
-
-									</div>
-									<div class="modal-footer">
-										<button data-dismiss="modal" class="btn btn-default"
-											type="button">Cancel</button>
-										<button class="btn btn-theme" type="button">Submit</button>
-									</div>
-								</div>
-							</div>
-						</div>
 
 						<!-- 카카오 로그인을 위한 숨겨진 input -->
 						<input type="hidden" id="SNSid" name="SNSid">
@@ -193,6 +135,60 @@
 						<input type="hidden" id="SNSname" name="SNSname">
 
 					</form>
+					<label class="checkbox">
+						<span class="pull-right">
+							<a href="javascript:showpassform()">비밀번호 찾기</a>
+						</span>
+						<span class="pull-left">
+							<a href="javascript:showidform()">ID 찾기</a>
+						</span>
+					</label>
+					<hr>
+					<div id="findiddiv" style="display: none;">
+						<input type="text" class="form-control"
+							placeholder="가입시 사용한 메일주소를 입력해주세요" id="findidmail" required autofocus>
+						<br>
+						<button class="btn btn-theme btn-block" type="button" id="findid">
+							ID 찾기</button>
+						<br>
+					</div>
+					<div id="findpassdiv" style="display: none;">
+						<form action="/HaveANiceDream/user/findpass.do" method="post">
+							<input type="text" class="form-control" placeholder="User ID"
+								id="findpassid" required autofocus>
+							<br>
+							<input type="text" class="form-control"
+								placeholder="가입시 사용한 메일주소를 입력해주세요" id="findpassmail" required>
+							<br>
+							<button class="btn btn-theme btn-block"  type="button" id="findpass">
+								비밀번호 찾기</button>
+							<br>
+						</form>
+					</div>
+
+					<div class="login-social-link centered" id="social-link-div">
+						<p>
+							<a id="kakao-login-btn" href="javascript:kakaologin()">
+								<img alt=""
+									src="/HaveANiceDream/Theme/assets/img/user/kakao_account_login_btn_medium_narrow_ov.png">
+							</a>
+						</p>
+						<div id="naverIdLogin"></div>
+						<p>
+							<!-- 페이스북 -->
+						<div class="fb-login-button" scope="public_profile,email"
+							data-max-rows="1" data-size="large" data-button-type="login_with"
+							data-show-faces="false" data-auto-logout-link="false"
+							data-use-continue-as="false" onlogin="fbLogin();"></div>
+						</p>
+
+					</div>
+					<div class="registration">
+						아직 계정이 없으신가요?
+						<br />
+						<a class="" href="javascript:setPath('../user/sign_in_page.jsp')">
+							가입하기 </a>
+					</div>
 				</div>
 				<!-- modal body -->
 			</div>
@@ -202,8 +198,22 @@
 	<!-- 카카오 SDK -->
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript">
-		var wSocket = new WebSocket("ws://localhost:8088/HaveANiceDream/user/chat");
+
+		function showpassform() {
+			$("#findpassdiv").css("display", "block");
+			$("#social-link-div").css("display", "none");
+			$("#findiddiv").css("display", "none");
+		};
 		
+		function showidform() {
+			$("#findpassdiv").css("display", "none");
+			$("#social-link-div").css("display", "none");
+			$("#findiddiv").css("display", "block");
+		};
+		
+		var wSocket = new WebSocket(
+				"ws://localhost:8088/HaveANiceDream/user/chat");
+
 		function setPath(url) {
 			location.href = "/HaveANiceDream/view.html?url=" + url;
 		}
@@ -273,9 +283,11 @@
 			});
 			
 			chatSet();
+			
+			
 
 		});
-		
+
 		function chatSet() {
 			var $chatbox = $('.chatbox'),
 			$chatboxTitle = $('.chatbox__title'),
@@ -391,6 +403,40 @@
 
 		$("#login-page").draggable({
 			handle : ".modal-header"
+		});
+		
+
+		$("#findid").on("click", function() {
+			$.ajax({
+				url : "/HaveANiceDream/user/findid.do",
+				type : "post",
+				data : {
+					"mail" : document.getElementById("findidmail").value
+				},
+				dataType : "text",
+				success : function(resp) {
+					alert(resp);
+
+				}
+			});
+
+		});
+		
+		$("#findpass").on("click", function() {
+			$.ajax({
+				url : "/HaveANiceDream/user/findpass.do",
+				type : "post",
+				data : {
+					"mail" : document.getElementById("findpassmail").value,
+					"userid" : document.getElementById("findpassid").value
+				},
+				dataType : "text",
+				success : function(resp) {
+					alert(resp);
+
+				}
+			});
+
 		});
 	</script>
 	<!-- 카카오 연동 -->
