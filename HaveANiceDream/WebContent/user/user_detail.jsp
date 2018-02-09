@@ -17,7 +17,8 @@
 
 <body>
 	<h3>
-		<i class="fa fa-angle-right"></i> 내 정보 보기
+		<i class="fa fa-angle-right"></i>
+		내 정보 보기
 	</h3>
 	<div class="row mt">
 		<div class="col-lg-12">

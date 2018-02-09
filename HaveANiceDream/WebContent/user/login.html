@@ -46,88 +46,17 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
 
-	<div id="login-page">
-		<div class="container">
+	
 
-			<form class="form-login" action="/HaveANiceDream/user/login.do"
-				method="post">
-				<input type="hidden" id="logtype" name="logtype" value="기본">
-				<h2 class="form-login-heading">sign in now</h2>
-				<div class="login-wrap">
-					<input type="text" class="form-control" placeholder="User ID"
-						name="id" id="id" required autofocus> <br> <input
-						type="password" class="form-control" placeholder="Password"
-						name="pass" id="pass" required> <label class="checkbox">
-						<span class="pull-right"> <a data-toggle="modal"
-							href="login.html#myModal"> Forgot Password?</a>
 
-					</span>
-					</label>
-					<button class="btn btn-theme btn-block" type="submit" id="signin">
-						<i class="fa fa-lock"></i> SIGN IN
-					</button>
-					<hr>
 
-					<div class="login-social-link centered">
-						<p>or you can sign in via your social network</p>
-						<p>
-							<a id="kakao-login-btn" href="javascript:kakaologin()"> <img
-								alt=""
-								src="/HaveANiceDream/Theme/assets/img/user/kakao_account_login_btn_medium_narrow_ov.png">
-							</a>
-						</p>
-						<div id="naverIdLogin"></div>
-						<p>
-						<!-- 페이스북 -->
-						<div class="fb-login-button" scope="public_profile,email"
-							data-max-rows="1" data-size="large" data-button-type="login_with"
-							data-show-faces="false" data-auto-logout-link="false"
-							data-use-continue-as="false" onlogin="fbLogin();"></div>
-						</p>
-						<!-- 페이스북 종료 -->
-					</div>
-					<div class="registration">
-						Don't have an account yet?<br /> <a class=""
-							href="javascript:setPath('../user/sign_in_page.jsp')"> Create
-							an account </a>
-					</div>
 
-				</div>
 
-				<!-- Modal -->
-				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-					tabindex="-1" id="myModal" class="modal fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">&times;</button>
-								<h4 class="modal-title">Forgot Password ?</h4>
-							</div>
-							<div class="modal-body">
-								<p>Enter your e-mail address below to reset your password.</p>
-								<input type="text" name="email" placeholder="Email"
-									autocomplete="off" class="form-control placeholder-no-fix">
 
-							</div>
-							<div class="modal-footer">
-								<button data-dismiss="modal" class="btn btn-default"
-									type="button">Cancel</button>
-								<button class="btn btn-theme" type="button">Submit</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- modal -->
-				<!-- 카카오 로그인을 위한 숨겨진 input -->
-				<input type="hidden" id="SNSid" name="SNSid">
-				<input type="hidden" id="SNSemail" name="SNSemail">
-				<input type="hidden" id="SNSimg" name="SNSimg">
-				<input type="hidden" id="SNSname" name="SNSname">
-			</form>
 
-		</div>
-	</div>
+
+
+
 
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
@@ -206,6 +135,13 @@
 	</script>
 	<!-- 페이스북 연동 코드 -->
 	<div id="fb-root"></div>
+	
+	
+	
+	
+	
+	
+	
 	<script>
 		function fbLogin() {
 			// 로그인 여부 체크

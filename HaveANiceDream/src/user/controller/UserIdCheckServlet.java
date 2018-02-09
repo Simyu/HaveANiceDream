@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import user.service.UserService;
 import user.service.UserServiceImpl;
 
@@ -18,19 +20,23 @@ public class UserIdCheckServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html;charset=euc-kr");
+		response.setCharacterEncoding("utf-8");
 		response.setHeader("cache-control", "no-cache,no-store");
 		PrintWriter printWriter = response.getWriter();
 
 		String userId = request.getParameter("userId");
 
 		UserService service = new UserServiceImpl();
+		
+		JSONObject jsonObject = new JSONObject();
 
 		if (service.idCheck(userId)) {
-			printWriter.println("이미 존재하는 ID입니다.");
+			jsonObject.put("data", "T");
 		} else {
-			printWriter.println("사용하실 수 있는 ID입니다.");
+			jsonObject.put("data", "F");
 		}
+		
+		printWriter.println(jsonObject.toJSONString());
 
 	}
 

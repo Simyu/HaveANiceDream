@@ -19,7 +19,8 @@
 <body>
 
 	<h3>
-		<i class="fa fa-angle-right"></i> 회원 조회
+		<i class="fa fa-angle-right"></i>
+		회원 조회
 	</h3>
 	<div class="row mt">
 
@@ -64,7 +65,9 @@
 									String type = user.getUserType();
 						%>
 						<tr>
-							<td><a href="javascript:showUserInfo('<%=Id%>')"><%=Id%></a></td>
+							<td>
+								<a href="javascript:showUserInfo('<%=Id%>')"><%=Id%></a>
+							</td>
 							<td><%=user.getUserLastLoginTime()%></td>
 							<td><%=user.getUserLogType()%></td>
 							<td><%=type%></td>

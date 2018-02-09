@@ -17,6 +17,12 @@
 
 </head>
 
+<style>
+.modal-dialog {
+	width: 300px;
+}
+</style>
+
 <body>
 	<%	MemberDTO user = (MemberDTO) session.getAttribute("user"); %>
 
@@ -31,25 +37,30 @@
 				data-original-title="Toggle Navigation"></div>
 		</div>
 		<!--logo start-->
-		<a href="/HaveANiceDream/index.html" class="logo"><b
-			style="color: black; padding-left: 20px">HAVE A NICE DREAM</b></a>
+		<a href="/HaveANiceDream/index.html" class="logo">
+			<b style="color: black; padding-left: 20px">HAVE A NICE DREAM</b>
+		</a>
 		<!--logo end-->
 		<div class="nav notify-row" id="top_menu">
 			<!--  notification start -->
 			<ul class="nav top-menu">
 				<!-- inbox dropdown start-->
-				<li id="header_inbox_bar" class="dropdown"><a
-					data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-						<i class="fa fa-envelope-o"></i> <span class="badge bg-theme"
-						id="notenum">0</span>
-				</a>
+				<li id="header_inbox_bar" class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle"
+						href="index.html#">
+						<i class="fa fa-envelope-o"></i>
+						<span class="badge bg-theme" id="notenum">0</span>
+					</a>
 					<ul class="dropdown-menu extended inbox" id="talklist">
 						<div class="notify-arrow notify-arrow-green"></div>
 
-					</ul></li>
+					</ul>
+				</li>
 				<!-- inbox dropdown end -->
 				<%if(user!=null) {%>
-				<li><%=user.getUserName() %>님 보유포인트 : <%=user.getPointTotal() %>점</li>
+				<li><%=user.getUserName() %>님 보유포인트 :
+					<%=user.getPointTotal() %>점
+				</li>
 				<%} %>
 			</ul>
 			<!--  notification end -->
@@ -60,16 +71,24 @@
 				
 					if (user == null) {
 				%>
-				<li><a class="logout" href="/HaveANiceDream/user/login.html"
-					style="background-color: #d12438; border: none;">Login</a></li>
-				<li><a class="logout"
-					href="javascript:setPath('../user/sign_in_page.jsp')"
-					style="background-color: #d12438; border: none;">Signup</a></li>
+
+				<li>
+					<a class="logout" style="background-color: #d12438; border: none;"
+						id='btn_login'>Login</a>
+				</li>
+
+				<li>
+					<a class="logout"
+						href="javascript:setPath('../user/sign_in_page.jsp')"
+						style="background-color: #d12438; border: none;">Signup</a>
+				</li>
 				<%
 					} else {
 				%>
-				<li><a class="logout" href="javascript:logout()"
-					style="background-color: #d12438; border: none;">Logout</a></li>
+				<li>
+					<a class="logout" href="javascript:logout()"
+						style="background-color: #d12438; border: none;">Logout</a>
+				</li>
 				<%
 					}
 				%>
@@ -80,6 +99,119 @@
 	<div id="chatarea"></div>
 	<%} %>
 	<!--header end-->
+
+
+
+
+	<div id="login-page" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content"'>
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">sign in now</h4>
+				</div>
+
+				<div class="modal-body">
+
+					<form action="/HaveANiceDream/user/login.do" method="post"'>
+
+
+						<input type="hidden" id="logtype" name="logtype" value="기본">
+						<input type="text" class="form-control" placeholder="User ID"
+							name="id" id="id" required autofocus>
+						<br>
+						<input type="password" class="form-control" placeholder="Password"
+							name="pass" id="pass" required>
+						<label class="checkbox">
+							<span class="pull-right">
+								<a data-toggle="modal" href="passModal"> Forgot
+									Password?</a>
+							</span>
+						</label>
+						<button class="btn btn-theme btn-block" type="submit" id="signin">
+							<i class="fa fa-lock"></i>
+							SIGN IN
+						</button>
+						<hr>
+
+						<div class="login-social-link centered">
+							<p>
+								<a id="kakao-login-btn" href="javascript:kakaologin()">
+									<img alt=""
+										src="/HaveANiceDream/Theme/assets/img/user/kakao_account_login_btn_medium_narrow_ov.png">
+								</a>
+							</p>
+							<div id="naverIdLogin"></div>
+							<p>
+								<!-- 페이스북 -->
+							<div class="fb-login-button" scope="public_profile,email"
+								data-max-rows="1" data-size="large"
+								data-button-type="login_with" data-show-faces="false"
+								data-auto-logout-link="false" data-use-continue-as="false"
+								onlogin="fbLogin();"></div>
+							</p>
+							<!-- 페이스북 종료 -->
+						</div>
+						<div class="registration">
+							아직 계정이 없으신가요?
+							<br />
+							<a class="" href="javascript:setPath('../user/sign_in_page.jsp')">
+								가입하기 </a>
+						</div>
+
+
+						<!-- Modal -->
+						<div aria-hidden="true" aria-labelledby="myModalLabel"
+							role="dialog" tabindex="-1" id="passModal" class="modal fade">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">&times;</button>
+										<h4 class="modal-title">Forgot Password ?</h4>
+									</div>
+									<div class="modal-body">
+										<p>Enter your e-mail address below to reset your password.</p>
+										<input type="text" name="email" placeholder="Email"
+											autocomplete="off" class="form-control placeholder-no-fix">
+
+									</div>
+									<div class="modal-footer">
+										<button data-dismiss="modal" class="btn btn-default"
+											type="button">Cancel</button>
+										<button class="btn btn-theme" type="button">Submit</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 카카오 로그인을 위한 숨겨진 input -->
+						<input type="hidden" id="SNSid" name="SNSid">
+						<input type="hidden" id="SNSemail" name="SNSemail">
+						<input type="hidden" id="SNSimg" name="SNSimg">
+						<input type="hidden" id="SNSname" name="SNSname">
+
+					</form>
+				</div>
+				<!-- modal body -->
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<!-- 카카오 SDK -->
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript">
@@ -93,7 +225,6 @@
 	<%if (user != null) {
 				String type = user.getUserLogType();
 				if (type.equals("Kakao")) {%>
-		Kakao.init('78cecbcfa10a98bcb341599df55a3441');
 
 			Kakao.Auth.logout(function() {
 				setTimeout(function() {
@@ -267,8 +398,116 @@
 			});
 		}
 	<%}%>
-		
-	</script>
+		$('#btn_login').on("click", function() {
+			$("#login-page").modal();
+		})
 
+		$("#login-page").draggable({
+			handle : ".modal-header"
+		});
+	</script>
+	<!-- 카카오 연동 -->
+	<!-- 카카오 SDK -->
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script type='text/javascript'>
+		//<![CDATA[
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		Kakao.init('78cecbcfa10a98bcb341599df55a3441');
+		// 카카오 로그인 버튼을 생성합니다.
+
+		function kakaologin() {
+
+			Kakao.Auth.loginForm({
+				success : function(authObj) {
+					//alert(JSON.stringify(authObj));
+					Kakao.API.request({
+						url : '/v1/user/me',
+						success : function(res) {
+							//alert(JSON.stringify(res));
+							$("#SNSid").val(res.id);
+							$("#SNSemail").val(res.kaccount_email);
+							$("#SNSimg").val(res.properties.thumbnail_image);
+							$("#SNSname").val(res.properties.nickname);
+							$("#logtype").val("Kakao");
+							$("#id").removeAttr("required");
+							$("#pass").removeAttr("required");
+							$("#signin").trigger("click");
+						},
+						fail : function(error) {
+							alert(JSON.stringify(error));
+						}
+					});
+				},
+				fail : function(err) {
+					alert(JSON.stringify(err));
+				},
+				persistAccessToken : false
+			});
+		}
+		//]]>
+	</script>
+	<!-- 네이버 연동 코드 -->
+	<!-- 네이버SDK -->
+	<script type="text/javascript"
+		src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
+		charset="utf-8"></script>
+	<!-- 네이버아디디로로그인 초기화 Script -->
+	<script type="text/javascript">
+		var naverLogin = new naver.LoginWithNaverId(
+				{
+					clientId : "JaM3SgETDGwc6FCEo9Mw",
+					callbackUrl : "http://localhost:8088/HaveANiceDream/user/naver_callback.html",
+					isPopup : false, /* 팝업을 통한 연동처리 여부 */
+					loginButton : {
+						color : "green",
+						type : 3,
+						height : 49
+					}
+				/* 로그인 버튼의 타입을 지정 */
+				});
+		naverLogin.init();
+	</script>
+	<!-- 페이스북 연동 코드 -->
+	<div id="fb-root"></div>
+
+	<script>
+		function fbLogin() {
+			// 로그인 여부 체크
+			FB.getLoginStatus(function(response) {
+
+				if (response.status === 'connected') {
+					FB.api('/me', {
+						fields : 'email,name,picture'
+					}, function(response) {
+						// 제일 마지막에 실행 // me가 벌써 토근생성해서  내정보 받아옴acess 엑세스토근을 받아옴..
+						$("#SNSid").val(response.id);
+						$("#SNSname").val(response.name);
+						$("#SNSemail").val(response.email);
+						$("#SNSimg").val(response.picture.data.url);
+						//picture.data.url
+						$("#logtype").val("Facebook");
+						$("#id").removeAttr("required");
+						$("#pass").removeAttr("required");
+						$("#signin").trigger("click");
+					});
+				} else if (response.status === 'not_authorized') {
+					// 사람은 Facebook에 로그인했지만 앱에는 로그인하지 않았습니다.
+					alert('앱에 로그인해야 이용가능한 기능입니다.');
+				} else {
+					// 그 사람은 Facebook에 로그인하지 않았으므로이 앱에 로그인했는지 여부는 확실하지 않습니다.
+					alert('페이스북에 로그인해야 이용가능한 기능입니다.');
+				}
+			}, true); // 중복실행방지
+		}
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.12&appId=2119289184970452&autoLogAppEvents=1';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 </body>
 </html>

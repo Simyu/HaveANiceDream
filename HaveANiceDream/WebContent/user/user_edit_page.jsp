@@ -19,7 +19,8 @@
 <body>
 	<!-- 없어져야할 page -->
 	<h3>
-		<i class="fa fa-angle-right"></i> 내 정보 수정하기
+		<i class="fa fa-angle-right"></i>
+		내 정보 수정하기
 	</h3>
 	<div class="row mt">
 		<div class="col-lg-12">
@@ -117,12 +118,19 @@
 						<div class="btn-group col-sm-4">
 							<button type="button" class="btn dropdown-toggle"
 								data-toggle="dropdown">
-								이메일 선택 <span class="caret"></span>
+								이메일 선택
+								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:setEmailAddr('@gmail.com')">@gmail.com</a></li>
-								<li><a href="javascript:setEmailAddr('@naver.com')">@naver.com</a></li>
-								<li><a href="javascript:setEmailAddr('@hanmail.net')">@hanmail.net</a></li>
+								<li>
+									<a href="javascript:setEmailAddr('@gmail.com')">@gmail.com</a>
+								</li>
+								<li>
+									<a href="javascript:setEmailAddr('@naver.com')">@naver.com</a>
+								</li>
+								<li>
+									<a href="javascript:setEmailAddr('@hanmail.net')">@hanmail.net</a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -207,8 +215,8 @@
 								}
 								// 건물명이 있을 경우 추가한다.
 								if (data.buildingName !== '') {
-									extraAddr += (extraAddr !== '' ? ', '
-											+ data.buildingName
+									extraAddr += (extraAddr !== ''
+											? ', ' + data.buildingName
 											: data.buildingName);
 								}
 								// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.

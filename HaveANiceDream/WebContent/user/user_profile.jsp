@@ -290,9 +290,10 @@
 	background-color: #2775e2;
 	border-color: #2775e2;
 }
+
 .btn {
-        margin-bottom: 5px;
-    }
+	margin-bottom: 5px;
+}
 </style>
 
 </head>
@@ -327,30 +328,18 @@
 						<div class="desc" id="userType"></div>
 					</div>
 					<button class="btn btn-comment" type="button" onclick="chatstart()">
-						<i class="fa fa-comment"></i>1:1 대화하기
+						<i class="fa fa-comment"></i>
+						1:1 대화하기
 					</button>
-					<!-- <div class="bottom">
-						<a class="btn btn-primary btn-twitter btn-sm"
-							href="https://twitter.com/webmaniac"> <i
-							class="fa fa-twitter"></i>
-						</a> <a class="btn btn-danger btn-sm" rel="publisher"
-							href="https://plus.google.com/+ahmshahnuralam"> <i
-							class="fa fa-google-plus"></i>
-						</a> <a class="btn btn-primary btn-sm" rel="publisher"
-							href="https://plus.google.com/shahnuralam"> <i
-							class="fa fa-facebook"></i>
-						</a> <a class="btn btn-warning btn-sm" rel="publisher"
-							href="https://plus.google.com/shahnuralam"> <i
-							class="fa fa-behance"></i>
-						</a>
-					</div> -->
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a data-target="#home"
-							id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
-							aria-expanded="true">판매평가</a></li>
-						<li role="presentation" class=""><a data-target="#profile"
-							role="tab" id="profile-tab" data-toggle="tab"
-							aria-controls="profile" aria-expanded="false">구매평가</a></li>
+						<li role="presentation" class="active">
+							<a data-target="#home" id="home-tab" role="tab" data-toggle="tab"
+								aria-controls="home" aria-expanded="true">판매평가</a>
+						</li>
+						<li role="presentation" class="">
+							<a data-target="#profile" role="tab" id="profile-tab"
+								data-toggle="tab" aria-controls="profile" aria-expanded="false">구매평가</a>
+						</li>
 						<li role="presentation" class="dropdown"></li>
 					</ul>
 					<div id="myTabContent"
@@ -564,7 +553,7 @@
 									});
 						});
 		function chatstart() {
-			opener.showTalkList($("#userId").text(),$("#userName").text());
+			opener.showTalkList($("#userId").text(), $("#userName").text());
 		}
 	</script>
 

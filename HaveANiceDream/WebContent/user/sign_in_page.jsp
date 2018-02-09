@@ -19,14 +19,15 @@
 <body>
 
 	<h3>
-		<i class="fa fa-angle-right"></i> 회원가입
+		<i class="fa fa-angle-right"></i>
+		회원가입
 	</h3>
 	<div class="row mt">
 		<div class="col-lg-12">
 			<div class="form-panel">
 				<form class="form-horizontal style-form"
 					enctype="multipart/form-data"
-					action="/HaveANiceDream/user/insert.do" method="post">
+					action="/HaveANiceDream/user/insert.do" method="post" onsubmit="return inputVerify();">
 					<div class="form-group">
 						<p class="centered">
 							<img src="/HaveANiceDream/Theme/assets/img/ui-sam.jpg"
@@ -42,24 +43,24 @@
 						<label class="col-sm-2 col-sm-2 control-label">아이디</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userId" name="userId"
-								required="required"> <span class="help-block"
-								id="helpId"></span>
+								required="required">
+							<span class="help-block" id="helpId"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" placeholder=""
-								name="userPw" id="userPw"> <span class="help-block"
-								id="helpPw"></span>
+								name="userPw" id="userPw">
+							<span class="help-block" id="helpPw"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">비밀번호 확인</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" placeholder=""
-								id="userPwConf"> <span class="help-block"
-								id="helpPwConf"></span>
+								id="userPwConf">
+							<span class="help-block" id="helpPwConf"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -105,12 +106,19 @@
 						<div class="btn-group col-sm-2">
 							<button type="button" class="btn dropdown-toggle"
 								data-toggle="dropdown" id="btnUserEmail">
-								이메일 선택 <span class="caret"></span>
+								이메일 선택
+								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="javascript:setEmailAddr('@gmail.com')">@gmail.com</a></li>
-								<li><a href="javascript:setEmailAddr('@naver.com')">@naver.com</a></li>
-								<li><a href="javascript:setEmailAddr('@hanmail.net')">@hanmail.net</a></li>
+								<li>
+									<a href="javascript:setEmailAddr('@gmail.com')">@gmail.com</a>
+								</li>
+								<li>
+									<a href="javascript:setEmailAddr('@naver.com')">@naver.com</a>
+								</li>
+								<li>
+									<a href="javascript:setEmailAddr('@hanmail.net')">@hanmail.net</a>
+								</li>
 							</ul>
 						</div>
 						<div class="col-sm-2">
@@ -122,8 +130,8 @@
 					<div class="form-group" style="display: none;" id="emailVerifyForm">
 						<label class="col-sm-2 col-sm-2 control-label">인증번호</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="txtEmailRandNum"><span
-								class="help-block" id="helpEmailRandNum"> </span>
+							<input type="text" class="form-control" id="txtEmailRandNum">
+							<span class="help-block" id="helpEmailRandNum"> </span>
 						</div>
 						<div class="col-sm-2">
 							<button type="button"
@@ -162,8 +170,8 @@
 					<div class="form-group" style="display: none;" id="telVerifyForm">
 						<label class="col-sm-2 col-sm-2 control-label">인증번호</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="txtTelRandNum"><span
-								class="help-block" id="helpTelRandNum"> </span>
+							<input type="text" class="form-control" id="txtTelRandNum">
+							<span class="help-block" id="helpTelRandNum"> </span>
 						</div>
 						<div class="col-sm-2">
 							<button type="button"
@@ -177,8 +185,8 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-round btn-primary">가입하기</button>
-					<input type="hidden" id="type" name="type" value="기본"> <input
-						type="hidden" id="img" name="img">
+					<input type="hidden" id="type" name="type" value="기본">
+					<input type="hidden" id="img" name="img">
 				</form>
 			</div>
 		</div>
@@ -189,9 +197,13 @@
 	<script type="text/javascript">
 		var emailRandNum = 0;
 		var telRandNum = 0;
+		var emailConf = false;
+		var telConf = false;
+		var idVerifyflag = false;
 		$(document).ready(
 				function() {
 					$("#userId").on("keyup", idVerify);
+					$("#userPw").on("keyup", passVerify);
 					$("#userPwConf").on("keyup", pwConf);
 					$("#emailVerify").on("click", function() {
 						$("#emailVerifyForm").css("display", "block");
@@ -220,10 +232,12 @@
 								});
 							});
 					$("#enterEmailRandNum").on("click", function() {
+						alert("enterEmailRandNum");
 						var msg = "";
 						if ($("#txtEmailRandNum").val() != emailRandNum) {
 							msg = "인증번호가 다릅니다.";
 						} else {
+							emailConf = true;
 							$("#userEmail1").attr("readonly", "readonly");
 							$("#userEmail2").attr("readonly", "readonly");
 							$("#btnUserEmail").attr("disabled", "disabled");
@@ -252,10 +266,13 @@
 								});
 							});
 					$("#enterTelRandNum").on("click", function() {
+
+						alert("enterTelRandNum");
 						var msg = "";
 						if ($("#txtTelRandNum").val() != telRandNum) {
 							msg = "인증번호가 다릅니다.";
 						} else {
+							telConf = true;
 							$("#userTel1").attr("readonly", "readonly");
 							$("#userTel2").attr("readonly", "readonly");
 							$("#userTel3").attr("readonly", "readonly");
@@ -276,45 +293,118 @@
 		$("#userEmail1").val("<%=array[0]%>");
 		$("#userEmail2").val("@<%=array[1]%>");
 		$("#img").val("<%=SNSSignUser.getUserImage()%>");
-		$("#type").val("<%=SNSSignUser.getUserLogType()%>
-		");
+		$("#type").val("<%=SNSSignUser.getUserLogType()%>");
 	<%}%>
 		});
+		
+		function inputVerify(){
+			if (idVerifyflag && passVerify()
+					&&pwConf()&&emailVerify()
+					&&telVerify() && (emailConf||telConf)) {
+				return true;
+			} else {
+				alert("test");
+				return false;
+			}
+			
+		}
 
 		function pwConf() {
+
+			//alert("pwConf");
 			var pw = $("#userPw").val();
 			var pwConf = $("#userPwConf").val();
 
 			if (pw != pwConf) {
 				$("#helpPwConf").html("비밀번호가 일치하지 않습니다.");
+				return false;
 			} else {
 				$("#helpPwConf").html("");
+				return true;
 			}
 		}
 
 		function emailVerify() {
-			var pattern = /^[A-z]+(\\.[A-z]+)*@[a-z]+(\\.[a-z]+){1,2}$/;
+
+			//alert("emailVerify");
+			var pattern =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			var email = $("#userEmail1").val() + $("#userEmail2").val();
 
 			if (!pattern.test(email)) {
+				//alert(email);
+				alert("이메일 형식이 맞지 않습니다.");
 				return false;
 			}
+			return true;
 
 		}
 
+		function telVerify() {
+
+			//alert("telVerify");
+			var pattern = /^(?:(010-[0-9]{4})|(01[16789]-[0-9]{3,4}))-([0-9]{4})$/
+			var tel = $("#userTel1").val() + "-" + $("#userTel2").val() + "-"
+					+ $("#userTel3").val();
+
+			if (!pattern.test(tel)) {
+				alert("전화번호를 확인해 주세요");
+				return false;
+			}
+			return true;
+
+		}
+		function passVerify() {
+
+			//alert("passVerify");
+			var id = $("#userId").val();
+			var password = $("#userPw").val();
+
+			if (!/^[a-zA-Z0-9]{10,15}$/.test(password)) {
+				$("#helpPw").html('숫자와 영문자 조합으로 10~15자리를 사용해야 합니다.');
+				return false;
+			}
+
+			var checkNumber = password.search(/[0-9]/g);
+			var checkEnglish = password.search(/[a-z]/ig);
+
+			if (checkNumber < 0 || checkEnglish < 0) {
+				$("#helpPw").html("숫자와 영문자를 혼용하여야 합니다.");
+				return false;
+			}
+
+			if (/(\w)\1\1\1/.test(password)) {
+				$("#helpPw").html('같은 문자를 4번 이상 사용하실 수 없습니다.');
+				return false;
+			}
+
+			if (password.search(id) > -1) {
+				$("#helpPw").html("비밀번호에 아이디가 포함되었습니다.");
+				return false;
+			}
+
+			$("#helpPw").html("");
+
+			return true;
+		}
+
+
 		function idVerify() {
+			//alert("idVerify");
 			var id = $("#userId").val();
 			var helpMsg = "";
 			var patten = /^[A-z0-9]*$/;
+			var aflag = false;
 
 			if (!patten.test(id)) {
 				$("#helpId").html("ID 는 알파벳과 숫자만 사용 할 수 있습니다.");
-				return false;
+				idVerifyflag = false;
+				return;
 			}
 
 			if (id.length < 6) {
 				$("#helpId").html("ID 길이가 짧습니다.");
-				return false;
+				idVerifyflag = false;
+				return;
 			}
 
 			$.ajax({
@@ -323,11 +413,18 @@
 				data : {
 					"userId" : id
 				},
-				dataType : "text",
+				dataType : "json",
 				success : function(resp) {
-					$("#helpId").html(resp);
+					if (resp.data == "T") {
+						$("#helpId").html("이미 존재하는 ID입니다.");
+						idVerifyflag = false;
+					} else if(resp.data == "F") {
+						$("#helpId").html("사용하실 수 있는 ID입니다.");
+						idVerifyflag = true;
+					}
 				}
 			});
+			
 		}
 
 		function setEmailAddr(mail) {
@@ -362,8 +459,8 @@
 								}
 								// 건물명이 있을 경우 추가한다.
 								if (data.buildingName !== '') {
-									extraAddr += (extraAddr !== '' ? ', '
-											+ data.buildingName
+									extraAddr += (extraAddr !== ''
+											? ', ' + data.buildingName
 											: data.buildingName);
 								}
 								// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.

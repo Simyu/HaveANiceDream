@@ -19,7 +19,8 @@
 <body>
 
 	<h3>
-		<i class="fa fa-angle-right"></i> 차단회원 조회
+		<i class="fa fa-angle-right"></i>
+		차단회원 조회
 	</h3>
 	<div class="row mt">
 
