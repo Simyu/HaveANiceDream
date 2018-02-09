@@ -41,4 +41,6 @@ public class UserQuery {
 			     + "USER_TEL = ?, "
 			     + "USER_IMAGE = ? "
 			+ "WHERE USER_ID = ?";
+	public static final String USER_FIND_ID = "select substr(user_id,1,length(user_id)-3)||lpad('*',3,'*') from member where USER_EMAIL = ?";
+	public static final String USER_FIND_PASS = "update member set USER_PW = ? where USER_ID = ? and USER_EMAIL = ?";
 }

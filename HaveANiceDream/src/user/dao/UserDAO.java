@@ -30,4 +30,8 @@ public interface UserDAO {
 	int userUpdate(MemberDTO user, Connection connection) throws SQLException;
 
 	int userUpdatePass(String userId, String oldPass, String newPass, Connection connection) throws SQLException;
+
+	ArrayList<String> userFindID(String userEmail, Connection connection) throws SQLException;
+
+	int userFindPass(String userId, String userEmail, String userPass, Connection connection) throws SQLException;
 }

@@ -66,20 +66,20 @@ public class UserDAOImpl implements UserDAO {
 
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		
+
 		if (type == 1) {
 			preparedStatement = connection.prepareStatement(UserQuery.USER_SERCH_ID);
-			preparedStatement.setString(1, "%"+condition+"%");
+			preparedStatement.setString(1, "%" + condition + "%");
 		} else if (type == 2) {
 			preparedStatement = connection.prepareStatement(UserQuery.USER_SERCH_NAME);
-			preparedStatement.setString(1, "%"+condition+"%");
+			preparedStatement.setString(1, "%" + condition + "%");
 		} else {
 			preparedStatement = connection.prepareStatement(UserQuery.USER_LIST);
 			// "select * from member";
 		}
 
 		resultSet = preparedStatement.executeQuery();
-		
+
 		while (resultSet.next()) {
 			if (list == null) {
 				list = new ArrayList<MemberDTO>();
@@ -312,6 +312,49 @@ public class UserDAOImpl implements UserDAO {
 		DBUtil.close(preparedStatement);
 
 		return rowNum;
+	}
+
+	@Override
+	public ArrayList<String> userFindID(String userEmail, Connection connection) throws SQLException {
+		ArrayList<String> list = null;
+
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_FIND_ID);
+		// "select substr(user_id,1,length(user_id)-3)||lpad('*',3,'*') from
+		// member where USER_EMAIL = ?";
+		preparedStatement.setString(1, userEmail);
+
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		while (resultSet.next()) {
+			if (list == null) {
+				list = new ArrayList<String>();
+			}
+
+			list.add(resultSet.getString(1));
+		}
+
+		DBUtil.close(resultSet);
+		DBUtil.close(preparedStatement);
+		
+		return list;
+	}
+
+	@Override
+	public int userFindPass(String userId, String userEmail, String userPass, Connection connection)
+			throws SQLException {
+		int res = 0;
+		PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.USER_FIND_PASS);
+		//"update member set USER_PW = ? where USER_ID = ? and USER_EMAIL = ?";
+	
+		preparedStatement.setString(1, userPass);
+		preparedStatement.setString(2, userId);
+		preparedStatement.setString(3, userEmail);
+		
+		res  = preparedStatement.executeUpdate();
+		
+		DBUtil.close(preparedStatement);
+		
+		return res;
 	}
 
 }

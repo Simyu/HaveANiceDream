@@ -24,4 +24,8 @@ public interface UserService {
 	int userUpdate(MemberDTO user);
 	
 	int userUpdatePass(String userId, String oldPass, String newPass);
+
+	ArrayList<String> userFindID(String userEmail);
+
+	int userFindPass(String userId, String userEmail, String userPass);
 }

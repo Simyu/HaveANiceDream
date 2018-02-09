@@ -219,4 +219,39 @@ public class UserServiceImpl implements UserService {
 		return rowNum;
 	}
 
+	@Override
+	public ArrayList<String> userFindID(String userEmail) {
+		ArrayList<String> list = null;
+		Connection connection = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			list = new UserDAOImpl().userFindID(userEmail, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int userFindPass(String userId, String userEmail, String userPass) {
+		int res = 0;
+		Connection connection = null;
+		
+		try {
+			connection = DBUtil.getConnect();
+			res = new UserDAOImpl().userFindPass(userId, userEmail, userPass, connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(connection);
+		}
+		
+		return res;
+	}
+
+
 }

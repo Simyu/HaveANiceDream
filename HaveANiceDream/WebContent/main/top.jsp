@@ -199,19 +199,6 @@
 		</div>
 	</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<!-- 카카오 SDK -->
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript">
