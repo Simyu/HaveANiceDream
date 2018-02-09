@@ -327,10 +327,12 @@
 						<div class="desc" id="userTel"></div>
 						<div class="desc" id="userType"></div>
 					</div>
-					<button class="btn btn-comment" type="button" onclick="chatstart()">
+					<div>
+					<button class="btn btn-primary" type="button" onclick="chatstart()" style="border: 1px solid;">
 						<i class="fa fa-comment"></i>
-						1:1 대화하기
+					
 					</button>
+					</div>
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
 						<li role="presentation" class="active">
 							<a data-target="#home" id="home-tab" role="tab" data-toggle="tab"
