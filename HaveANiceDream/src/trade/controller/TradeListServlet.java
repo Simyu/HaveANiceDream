@@ -26,57 +26,55 @@ import user.dto.MemberDTO;
 public class TradeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession ses = request.getSession(false);
-		
-		String viewpath="";
-		
-		
-		if(ses!=null){
+
+		String viewpath = "";
+
+		if (ses != null) {
 			TradeService tradeservice = new TradeServiceImpl();
 			TradeDTO tradedto = null;
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
-			String userId= user.getUserId();
+			String userId = user.getUserId();
 			ArrayList<TradeDTO> tradelist = tradeservice.tradeSelect(userId);
-			
-			
-			if(tradelist!=null){//트레이드에 해당되는 물품번호를 가지고 product를 받아서 list에 담는 작업!!!
+
+			if (tradelist != null) {// 트레이드에 해당되는 물품번호를 가지고 product를 받아서 list에
+									// 담는 작업!!!
 				ArrayList<ProductDTO> productlist = new ArrayList<ProductDTO>();
 				ProductDTO productdto = null;
 				ProductService proservice = new ProductServiceimpl();
 				for (int i = 0; i < tradelist.size(); i++) {
 					tradedto = tradelist.get(i);
-					productdto=proservice.productSelect(tradedto.getProductNo());
-					
+					productdto = proservice.productSelect(tradedto.getProductNo());
+
 					productlist.add(productdto);
-					
+
 				}
 				request.setAttribute("productlist", productlist);
 				request.setAttribute("tradelist", tradelist);
 			}
-			
+
 			ArrayList<GradeDTO> gradelist = new ArrayList<GradeDTO>();
 			GradeService gradeservice = new GradeServiceImpl();
 			gradelist = gradeservice.gradeList1();
 			request.setAttribute("gradelist", gradelist);
-			
-			
-			viewpath="../Trade/trade_list.jsp";
-			
-			
-		}else{
-			
-			viewpath="../user/login.html";
-			
+
+			viewpath = "../Trade/trade_list.jsp";
+
+			request.setAttribute("viewpath", viewpath);
+
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
+			requestDispatcher.forward(request, response);
+
+		} else {
+
+			response.sendRedirect("/HaveANiceDream/user/login.html");
+
 		}
-		
-		request.setAttribute("viewpath", viewpath);
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-		requestDispatcher.forward(request, response);
+
 	}
 }

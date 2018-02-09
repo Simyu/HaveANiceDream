@@ -41,33 +41,26 @@ public class ReplyInsertServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		
+
 		HttpSession ses = request.getSession(false);
-		
+
 		String boardNo = request.getParameter("boardNo");
 		String replyContent = request.getParameter("replyContent");
 		String viewpath = "";
-		
-		if(ses!=null){
+
+		if (ses != null) {
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
-			String sesuserId= user.getUserId();
+			String sesuserId = user.getUserId();
 			ReplyService service = new ReplyServiceImpl();
 			ReplyDTO replywrite = new ReplyDTO(null, Integer.parseInt(boardNo), replyContent, sesuserId, null);
 			int res = service.replyInsert(replywrite);
-			
-			
-		}else{
-			
-			viewpath="../user/login.html";
-			request.setAttribute("viewpath", viewpath);
 
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-			requestDispatcher.forward(request, response);
-			
+		} else {
+
+			response.sendRedirect("/HaveANiceDream/user/login.html");
+
 		}
-		
 
-		
-	} 
+	}
 
 }

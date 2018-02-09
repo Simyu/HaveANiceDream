@@ -16,29 +16,32 @@
 
 <title>DASHGUM - Bootstrap Admin Template</title>
 <script type="text/javascript">
-function windowpopup(i){
-	num =1;
-	$("#back").val(i);
-	popup = window.open("Answer_list_user.jsp","num","width=1000,height=700,left=100 top=50");
-	num++;
-}
+	function windowpopup(i) {
+		num = 1;
+		$("#back").val(i);
+		popup = window.open("Answer_list_user.jsp", "num",
+				"width=1000,height=700,left=100 top=50");
+		num++;
+	}
 </script>
 </head>
 
 <body>
-<%
-	ArrayList<BlameDTO> user_list = (ArrayList)request.getAttribute("user_list");
-	int size = user_list.size();
-%>
+	<%
+		ArrayList<BlameDTO> user_list = (ArrayList) request.getAttribute("user_list");
+		int size = user_list.size();
+	%>
 
 	<h3>
-		<i class="fa fa-angle-right"></i> 신고 내역
+		<i class="fa fa-angle-right"></i>
+		신고 내역
 	</h3>
 	<div class="row mt">
 
 		<div class="col-md-12">
 			<div class="content-panel">
-				<form class="form-horizontal style-form" method="get" name="formlist">
+				<form class="form-horizontal style-form" method="get"
+					name="formlist">
 					<input type="hidden" name="list" id="back">
 				</form>
 				<table class="table table-striped table-advance table-hover">
@@ -54,23 +57,26 @@ function windowpopup(i){
 						</tr>
 					</thead>
 					<tbody>
-					<%
-						for(int i=0;i<size;i++){
-							BlameDTO dept = user_list.get(i);
-						
-					%>
-						
+						<%
+							for (int i = 0; i < size; i++) {
+								BlameDTO dept = user_list.get(i);
+						%>
+
 						<tr>
-							<td><%=dept.getBlameNo() %></td>
-							<td><%=dept.getBlameDate() %></td>
-							<td><%=dept.getBlameType() %></td>
-							<td><%=dept.getUserIdBlamere() %></td>
-							<td><%=dept.getUserIdBlamee() %></td>
-							
-							<td><a href="javascript:windowpopup(<%=dept.getBlameNo()%>)"><%=dept.getBlameTitle() %></a></td>
-							<td><%=dept.getBlameanswer() %></td>
+							<td><%=dept.getBlameNo()%></td>
+							<td><%=dept.getBlameDate()%></td>
+							<td><%=dept.getBlameType()%></td>
+							<td><%=dept.getUserIdBlamere()%></td>
+							<td><%=dept.getUserIdBlamee()%></td>
+
+							<td>
+								<a href="javascript:windowpopup(<%=dept.getBlameNo()%>)"><%=dept.getBlameTitle()%></a>
+							</td>
+							<td><%=dept.getBlameanswer()%></td>
 						</tr>
-						<%} %>
+						<%
+							}
+						%>
 					</tbody>
 				</table>
 			</div>

@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-
 import reply.dto.ReplyDTO;
 import reply.service.ReplyService;
 import reply.service.ReplyServiceImpl;
@@ -31,18 +30,16 @@ public class ReplyListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("application/json;charset=utf-8");
-		
+
 		HttpSession ses = request.getSession(false);
-		
+
 		String boardNo = request.getParameter("boardNo");
 		String replyContent = request.getParameter("replyContent");
 		String viewpath = "";
-		
-		
-		
-		if(ses!=null){
+
+		if (ses != null) {
 			MemberDTO user = (MemberDTO) ses.getAttribute("user");
-			String sesuserId= user.getUserId();
+			String sesuserId = user.getUserId();
 			ReplyService service = new ReplyServiceImpl();
 			ArrayList<ReplyDTO> replyList = null;
 			ReplyDTO reply = null;
@@ -58,30 +55,23 @@ public class ReplyListServlet extends HttpServlet {
 				replyjson.put("BorderNo", reply.getBorderNo());
 				replyjson.put("ReplyContent", reply.getReplyContent());
 				replyjson.put("UserId", reply.getUserId());
-				replyjson.put("ReplyEditDate", reply.getReplyEditDate()+"");
+				replyjson.put("ReplyEditDate", reply.getReplyEditDate() + "");
 				replyjsonlist.add(replyjson);
 			}
 			replyroot.put("replylist", replyjsonlist);
-			
+
 			System.out.println(replyroot.toJSONString());
-			
+
 			response.setHeader("cache-control", "no-cache,no-store");
 			PrintWriter pw = response.getWriter();
 			pw.print(replyroot.toJSONString());
-			
-			
-		}else{
-			
-			viewpath="../user/login.html";
-			request.setAttribute("viewpath", viewpath);
 
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-			requestDispatcher.forward(request, response);
-			
+		} else {
+
+			response.sendRedirect("/HaveANiceDream/user/login.html");
+
 		}
-		
 
-		
-	} 
+	}
 
 }

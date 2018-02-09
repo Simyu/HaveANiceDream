@@ -48,36 +48,34 @@ public class Product_Search_Servlet extends HttpServlet {
 		user = (MemberDTO) ses.getAttribute("user");
 		if (ses != null & user != null) {
 			String enrollId = product.getUserId();
-			if(state.equals("SEARCH")){
+			if (state.equals("SEARCH")) {
 				request.setAttribute("category_list", category_list);
-			}
-			else if (user.getUserId().equals(enrollId) & state.equals("BUY")) {
+			} else if (user.getUserId().equals(enrollId) & state.equals("BUY")) {
 				request.setAttribute("productNo", productNo);
 				request.setAttribute("category_list", category_list);
 				request.setAttribute("product", product);
 				viewpath = "../product/product_edit.jsp";
 			} else if (state.equals("BUY")) {
-				//System.out.println("서블릿"+product);
+				// System.out.println("서블릿"+product);
 				viewpath = "../Trade/trade_popup.jsp";// 팝업이 아닌 경로를 변경... 거기서 다시
 				request.setAttribute("productNo", productNo);
 				request.setAttribute("category_list", category_list);
 				request.setAttribute("product", product);
 			}
 
+			request.setAttribute("viewpath", viewpath);
+
+			request.setAttribute("file1", fileName);
+
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
+			requestDispatcher.forward(request, response);
 		} else {
-			viewpath = "../user/login.html";
+			response.sendRedirect("/HaveANiceDream/user/login.html");
 		}
 
 		// else로그인화면
 		// System.out.println(product);
 		// 세팅...
-		
-		request.setAttribute("viewpath", viewpath);
-
-		request.setAttribute("file1", fileName);
-
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/main/main_layout.jsp");
-		requestDispatcher.forward(request, response);
 
 	}
 
