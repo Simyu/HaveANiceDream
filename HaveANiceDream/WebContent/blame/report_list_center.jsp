@@ -23,13 +23,13 @@
 				"width=1000,height=700,left=100 top=50");
 		num++;
 	}
-	$(document).ready(function(){
-		$("#search").keyup(function(){
+	$(document).ready(function() {
+		$("#search").keyup(function() {
 			var k = $(this).val();
-			 $("#table > tbody > tr").hide();
-			 var temp = $("#table > tbody > tr > td:contains('" + k + "')");
+			$("#table > tbody > tr").hide();
+			var temp = $("#table > tbody > tr > td:contains('" + k + "')");
 
-             $(temp).parent().show();
+			$(temp).parent().show();
 		});
 	});
 </script>
@@ -38,11 +38,11 @@
 <body>
 	<%
 		ArrayList<BlameDTO> list = (ArrayList) request.getAttribute("blamelist");
-		int size = list.size();
 	%>
 
 	<h3>
-		<i class="fa fa-angle-right"></i> 신고 접수내역
+		<i class="fa fa-angle-right"></i>
+		신고 접수내역
 	</h3>
 	<div class="row mt">
 
@@ -50,7 +50,8 @@
 			<div class="content-panel">
 				<form class="form-horizontal style-form" method="get" name="form">
 					<div class="form-group">
-						<label class="col-sm-2 col-sm-2 control-label" style="text-align: right;">검색 : </label>
+						<label class="col-sm-2 col-sm-2 control-label"
+							style="text-align: right;">검색 : </label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" id="search">
 						</div>
@@ -75,19 +76,24 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<%
+						<%
+							if (list != null) {
+								int size = list.size();
 								for (int i = 0; i < size; i++) {
 									BlameDTO dept = list.get(i);
-							%>
+						%>
+						<tr>
 							<td><%=dept.getBlameNo()%></td>
 							<td><%=dept.getBlameDate()%></td>
 							<td><%=dept.getBlameType()%></td>
 							<td><%=dept.getUserIdBlamere()%></td>
 							<td><%=dept.getUserIdBlamee()%></td>
-							<td><a href="javascript:windowpopup(<%=dept.getBlameNo()%>)"><%=dept.getBlameTitle()%></a></td>
+							<td>
+								<a href="javascript:windowpopup(<%=dept.getBlameNo()%>)"><%=dept.getBlameTitle()%></a>
+							</td>
 						</tr>
 						<%
+							}
 							}
 						%>
 					</tbody>

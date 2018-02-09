@@ -58,8 +58,7 @@
 				</li>
 				<!-- inbox dropdown end -->
 				<%if(user!=null) {%>
-				<li><%=user.getUserName() %>님 보유포인트 :
-					<%=user.getPointTotal() %>점
+				<li><%=user.getUserName() %>님 안녕하세요!
 				</li>
 				<%} %>
 			</ul>
@@ -146,7 +145,8 @@
 					<hr>
 					<div id="findiddiv" style="display: none;">
 						<input type="text" class="form-control"
-							placeholder="가입시 사용한 메일주소를 입력해주세요" id="findidmail" required autofocus>
+							placeholder="가입시 사용한 메일주소를 입력해주세요" id="findidmail" required
+							autofocus>
 						<br>
 						<button class="btn btn-theme btn-block" type="button" id="findid">
 							ID 찾기</button>
@@ -160,8 +160,8 @@
 							<input type="text" class="form-control"
 								placeholder="가입시 사용한 메일주소를 입력해주세요" id="findpassmail" required>
 							<br>
-							<button class="btn btn-theme btn-block"  type="button" id="findpass">
-								비밀번호 찾기</button>
+							<button class="btn btn-theme btn-block" type="button"
+								id="findpass">비밀번호 찾기</button>
 							<br>
 						</form>
 					</div>
@@ -212,7 +212,7 @@
 		};
 		
 		var wSocket = new WebSocket(
-				"ws://localhost:8088/HaveANiceDream/user/chat");
+				"ws://192.168.9.50:8088/HaveANiceDream/user/chat");
 
 		function setPath(url) {
 			location.href = "/HaveANiceDream/view.html?url=" + url;
@@ -404,7 +404,6 @@
 		$("#login-page").draggable({
 			handle : ".modal-header"
 		});
-		
 
 		$("#findid").on("click", function() {
 			$.ajax({
@@ -421,7 +420,7 @@
 			});
 
 		});
-		
+
 		$("#findpass").on("click", function() {
 			$.ajax({
 				url : "/HaveANiceDream/user/findpass.do",

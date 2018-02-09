@@ -29,7 +29,6 @@
 <body>
 	<%
 		ArrayList<BlameDTO> user_list = (ArrayList) request.getAttribute("user_list");
-		int size = user_list.size();
 	%>
 
 	<h3>
@@ -58,8 +57,10 @@
 					</thead>
 					<tbody>
 						<%
-							for (int i = 0; i < size; i++) {
-								BlameDTO dept = user_list.get(i);
+							if (user_list != null) {
+								int size = user_list.size();
+								for (int i = 0; i < size; i++) {
+									BlameDTO dept = user_list.get(i);
 						%>
 
 						<tr>
@@ -75,6 +76,7 @@
 							<td><%=dept.getBlameanswer()%></td>
 						</tr>
 						<%
+							}
 							}
 						%>
 					</tbody>

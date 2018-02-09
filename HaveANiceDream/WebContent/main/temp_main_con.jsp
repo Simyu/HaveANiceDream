@@ -60,12 +60,13 @@
 
 			<!-- Left and right controls -->
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="right carousel-control" href="#myCarousel"
-				data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right"></span> <span
-				class="sr-only">Next</span>
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel"
+				data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
 			</a>
 		</div>
 	</div>
@@ -82,7 +83,8 @@
 				<div id="custom-search-input">
 					<div class="input-group col-md-12 centered">
 						<input type="text" class="form-control input-lg" name="title"
-							id="title" placeholder="검색할물건" /> <span class="input-group-btn">
+							id="title" placeholder="검색할물건" />
+						<span class="input-group-btn">
 							<button class="btn btn-info btn-lg" type="submit">
 								<i class="glyphicon glyphicon-search"></i>
 							</button>
@@ -98,7 +100,8 @@
 	%>
 	<!-- 메인 추천 이미지 생성 부분 -->
 	<h3 class="ml">
-		<i class="fa fa-angle-right"></i> 메인추천
+		<i class="fa fa-angle-right"></i>
+		메인추천
 	</h3>
 	<hr>
 	<div class="row mt">
@@ -126,23 +129,25 @@
 
 					}
 		%>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc" style="margin-bottom: 20px;">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc"
+			style="margin-bottom: 20px;">
 			<div class="project-wrapper">
 				<div class="project">
 					<div class="photo-wrapper photo-wrapper-background-color ml">
 						<div class="photo">
 
 							<a class="fancybox"
-								href="/HaveANiceDream/product_search.do?productNo=<%=product.getProductNo()%>&state=BUY"><img
-								class="self-img-full-cont2"
-								src="/HaveANiceDream/uploadresources/product/<%=product.getImageSrc()%>"
-								alt=""></a>
+								href="/HaveANiceDream/product_search.do?productNo=<%=product.getProductNo()%>&state=BUY">
+								<img class="self-img-full-cont2"
+									src="/HaveANiceDream/uploadresources/product/<%=product.getImageSrc()%>"
+									alt="">
+							</a>
 							<div class="col-xs-12 mainview-content-title-font">
 								<%=product.getProductTitle()%>
 							</div>
 							<div class="col-xs-12">
-								<label class="label label-warning">강력추천</label> <label
-									class="label label-primary">new</label>
+								<label class="label label-warning">강력추천</label>
+								<label class="label label-primary">new</label>
 							</div>
 							<div class="col-xs-12">
 								상태 :

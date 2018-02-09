@@ -367,7 +367,7 @@ Monthly 2.0.3 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 		});*/
 		$(document).ready(function(){
 			$("#click").click(function(){
-				alert("tet");
+				//alert("tet");
 				var setMonth = $('#' + uniqueId).data('setMonth'),
 				setYear = $('#' + uniqueId).data('setYear');
 			if (setMonth == currentMonth && setYear == currentYear) {

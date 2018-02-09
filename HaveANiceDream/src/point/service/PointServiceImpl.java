@@ -82,6 +82,7 @@ public class PointServiceImpl implements PointService {
 	@Override
 	public int pointTradeDec(String userid, int point) {
 		PointDTO pointdto = new PointDTO(userid, "드림 받음", point * (-1));
+		System.out.println(pointdto);
 		return pointInsert(pointdto);
 	}
 

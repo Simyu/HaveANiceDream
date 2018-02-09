@@ -3,76 +3,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
-	
-	<script type="text/javascript">
-	$(document).ready(function() {
+<script src="/HaveANiceDream/Theme/assets/js/jquery.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(
+			function() {
 				$.ajax({
-							url : "/HaveANiceDream/trade/detail.do",
-							type : "GET",
-							data : {
-								"tradeNo" : opener.document.itisform2.tradeNo.value,
-								"productNo" : opener.document.itisform3.productNo.value
-							},
-							dataType : "json",
-							success : function(res) {
-								$("#CategoryName").text(res.CategoryName);
-								$("#productImg").attr(
-										"src",
-										"/HaveANiceDream/uploadresources/product/"
-												+ res.productImg);
-								$("#ProductTitle").text(res.ProductTitle);
-								$("#ProductPrice").text(res.ProductPrice);
-								$("#userZipcode").text(res.userZipcode);
-								$("#ProductDate").text(res.ProductDate);
-								$("#ProductName").text(res.ProductName);
-								$("#ProductNo").text(res.ProductNo);
-								$("#TradeType").text(res.TradeType);
-								$("#sellUserId").text(res.sellUserId);
-								$("#sellUserTel").text(res.sellUserTel);
-								$("#sellUserEmail").text(res.sellUserEmail);
-								$("#buyUserId").text(res.buyUserId);
-								$("#buyUserTel").text(res.buyUserTel);
-								$("#buyUserEmail").text(res.buyUserEmail);
-							}
-						});
+					url : "/HaveANiceDream/trade/detail.do",
+					type : "GET",
+					data : {
+						"tradeNo" : opener.document.itisform2.tradeNo.value,
+						"productNo" : opener.document.itisform3.productNo.value
+					},
+					dataType : "json",
+					success : function(res) {
+						$("#CategoryName").text(res.CategoryName);
+						$("#productImg").attr(
+								"src",
+								"/HaveANiceDream/uploadresources/product/"
+										+ res.productImg);
+						$("#ProductTitle").text(res.ProductTitle);
+						$("#ProductPrice").text(res.ProductPrice);
+						$("#userZipcode").text(res.userZipcode);
+						$("#ProductDate").text(res.ProductDate);
+						$("#ProductName").text(res.ProductName);
+						$("#ProductNo").text(res.ProductNo);
+						$("#TradeType").text(res.TradeType);
+						$("#sellUserId").text(res.sellUserId);
+						$("#sellUserTel").text(res.sellUserTel);
+						$("#sellUserEmail").text(res.sellUserEmail);
+						$("#buyUserId").text(res.buyUserId);
+						$("#buyUserTel").text(res.buyUserTel);
+						$("#buyUserEmail").text(res.buyUserEmail);
+					}
+				});
 			});
-	</script>
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	
+
 <title>거래상세page</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/HaveANiceDream/Theme/assets/css/bootstrap.css" rel="stylesheet">
-    <!--external css-->
-    <link href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="/HaveANiceDream/Theme/assets/css/style.css" rel="stylesheet">
-    <link href="/HaveANiceDream/Theme/assets/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="/HaveANiceDream/Theme/assets/css/bootstrap.css"
+	rel="stylesheet">
+<!--external css-->
+<link
+	href="/HaveANiceDream/Theme/assets/font-awesome/css/font-awesome.css"
+	rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="/HaveANiceDream/Theme/assets/css/style.css" rel="stylesheet">
+<link href="/HaveANiceDream/Theme/assets/css/style-responsive.css"
+	rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
-	<div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #ffffff">
+<body>
+	<div class="col-md-12 col-sm-12 col-xs-12"
+		style="background-color: #ffffff">
 		<h4>
-			<i class="fa fa-angle-right"></i> 거래 | <span style="color: black; font-weight: 900; font-size: 16pt;"> 거래상세보기</span>
+			<i class="fa fa-angle-right"></i>
+			거래 |
+			<span style="color: black; font-weight: 900; font-size: 16pt;">
+				거래상세보기</span>
 		</h4>
 		<hr>
-		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3" style="margin-bottom: 15px;">
+		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
+			style="margin-bottom: 15px;">
 			<div class="col-md-8 col-sm-8 col-xs-8">
 				<div class="col-md-4 col-sm-4 col-xs-4">
 					<img class="self-img-full-cont4" id="productImg"
 						src="/HaveANiceDream/Theme/assets/img/portfolio/port05.jpg">
 				</div>
-				<div class="col-md-8 col-sm-8 col-xs-8" style="height: 85px; padding-top: 12px">
+				<div class="col-md-8 col-sm-8 col-xs-8"
+					style="height: 85px; padding-top: 12px">
 					<p class="p-font-sty1" id="CategoryName">카테고리 분류 1 > 카테고리 분류 2</p>
 					<p id="ProductTitle">물품 등록한 제목을 입력합니다.</p>
 				</div>
 			</div>
 		</div>
 		<h4>
-			<i class="fa fa-angle-right icon-sty"></i> <span
-				style="color: black; font-weight: 900; font-size: 12pt;">
+			<i class="fa fa-angle-right icon-sty"></i>
+			<span style="color: black; font-weight: 900; font-size: 12pt;">
 				물품정보</span>
 		</h4>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
@@ -122,9 +133,10 @@
 		</div>
 
 		<h4>
-			<i class="fa fa-angle-right icon-sty"></i> <span
-				style="color: black; font-weight: 900; font-size: 12pt;">판매자
-				정보</span> <span style="margin-left: 20px;"></span>
+			<i class="fa fa-angle-right icon-sty"></i>
+			<span style="color: black; font-weight: 900; font-size: 12pt;">판매자
+				정보</span>
+			<span style="margin-left: 20px;"></span>
 		</h4>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
 			style="border: none; background-color: white; margin-bottom: 10px;">
@@ -152,9 +164,10 @@
 		</div>
 
 		<h4>
-			<i class="fa fa-angle-right icon-sty"></i> <span
-				style="color: black; font-weight: 900; font-size: 12pt;">구매자
-				정보</span> <span style="margin-left: 20px;"></span>
+			<i class="fa fa-angle-right icon-sty"></i>
+			<span style="color: black; font-weight: 900; font-size: 12pt;">구매자
+				정보</span>
+			<span style="margin-left: 20px;"></span>
 		</h4>
 		<div class="col-md-12 col-sm-12 col-xs-12 trade-lookup-con3"
 			style="border: none; background-color: white; margin-bottom: 10px;">
@@ -183,13 +196,14 @@
 
 	</div>
 
-	<!-- js placed at the end of the document so the pages load faster --> 
-    <script src="/HaveANiceDream/Theme/assets/js/bootstrap.min.js"></script>
-    <script src="/HaveANiceDream/Theme/assets/js/jquery.scrollTo.min.js"></script>
-    <script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="/HaveANiceDream/Theme/assets/js/bootstrap.min.js"></script>
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.scrollTo.min.js"></script>
+	<script src="/HaveANiceDream/Theme/assets/js/jquery.nicescroll.js"
+		type="text/javascript"></script>
 
 
-    <!--common script for all pages-->
-    <script src="/HaveANiceDream/Theme/assets/js/common-scripts.js"></script>
+	<!--common script for all pages-->
+	<script src="/HaveANiceDream/Theme/assets/js/common-scripts.js"></script>
 </body>
 </html>

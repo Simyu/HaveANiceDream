@@ -232,7 +232,7 @@
 								});
 							});
 					$("#enterEmailRandNum").on("click", function() {
-						alert("enterEmailRandNum");
+						//alert("enterEmailRandNum");
 						var msg = "";
 						if ($("#txtEmailRandNum").val() != emailRandNum) {
 							msg = "인증번호가 다릅니다.";
@@ -267,7 +267,7 @@
 							});
 					$("#enterTelRandNum").on("click", function() {
 
-						alert("enterTelRandNum");
+						//alert("enterTelRandNum");
 						var msg = "";
 						if ($("#txtTelRandNum").val() != telRandNum) {
 							msg = "인증번호가 다릅니다.";
@@ -303,7 +303,7 @@
 					&&telVerify() && (emailConf||telConf)) {
 				return true;
 			} else {
-				alert("test");
+				//alert("test");
 				return false;
 			}
 			

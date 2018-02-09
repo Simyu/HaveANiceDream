@@ -2,7 +2,7 @@
 <%@page import="point.dto.PointDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,8 @@ pageEncoding="utf-8"%>
 <body>
 
 	<h3>
-		<i class="fa fa-angle-right"></i> 포인트 내역
+		<i class="fa fa-angle-right"></i>
+		포인트 내역
 	</h3>
 	<div class="row mt">
 		<div class="col-lg-12">
@@ -43,23 +44,23 @@ pageEncoding="utf-8"%>
 
 								if (pointlist != null) {
 									int size = pointlist.size();
-									
+
 									int total = 0;
 									int point = 0;
 									int usedPoint = 0;
 									int getPoint = 0;
-									
+
 									PointDTO dto = null;
-									
+
 									for (int i = 0; i < size; i++) {
 										dto = pointlist.get(i);
 										point = dto.getPoint();
 										total += point;
-										
+
 										if (point > 0) {
 											usedPoint = 0;
 											getPoint = point;
-											
+
 										} else {
 											usedPoint = getPoint * (-1);
 											getPoint = 0;
