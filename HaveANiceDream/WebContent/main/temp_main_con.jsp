@@ -126,7 +126,7 @@
 
 					}
 		%>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc" style="margin-bottom: 20px;">
 			<div class="project-wrapper">
 				<div class="project">
 					<div class="photo-wrapper photo-wrapper-background-color ml">
