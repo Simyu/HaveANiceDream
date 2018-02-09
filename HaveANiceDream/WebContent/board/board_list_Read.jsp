@@ -200,7 +200,7 @@ pageEncoding="utf-8"%>
 					
 					<div class="col-xs-12 col-sm-12 col-md-12 border-reply-back">
 						<span class="col-xs-3 col-sm-3 col-md-3 border-reply-id-font"><i class="fa fa-user" style="color: #1290c3;"></i> <a><%=user.getUserId()%></a> 
-							<img class="reply-img-full-cont" src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>">
+							<span class="col-xs-12 col-sm-12 col-md-12"><img class="reply-img-full-cont" src="/HaveANiceDream/uploadresources/user/<%=user.getUserImage()%>"></span>
 						</span> 
 						<span class="col-xs-7 col-sm-7 col-md-7">
 							<textarea name="replyContent" id="replyContentwrite" style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;" rows=5></textarea>

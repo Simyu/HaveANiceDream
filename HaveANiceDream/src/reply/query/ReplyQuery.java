@@ -17,6 +17,6 @@ USER_TYPE                                          VARCHAR2(20)
 */
 public class ReplyQuery {
 	public static final String REPLY_INSERT = "insert into reply values(reply_seq.nextval,?,?,?,sysdate)";
-	public static final String REPLY_LIST = "select * from reply where border_no = ?";
+	public static final String REPLY_LIST = "select * from reply where board_no = ?";
 
 }
